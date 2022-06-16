@@ -1,42 +1,38 @@
-set number
-set showmatch
-set tabstop=4
-set softtabstop=4
-set expandtab
-set shiftwidth=4
-set autoindent
-set ttyfast
-syntax on
-set mouse=a
-set cursorline
-set nowrap
-set termguicolors
-
-autocmd VimEnter * PlugInstall
-
-source ~/.config/nvim/keymap.vim
-source ~/.config/nvim/which-key.vim
-
-call plug#begin('~/.config/nvim/autoload/')
-    Plug 'liuchengxu/vim-which-key' " WhichKey popup
-    Plug 'chun-yang/auto-pairs' " Auto brackets, parens, quotes, etc
-    Plug 'sheerun/vim-polyglot' " Syntax highlighting
-    Plug 'phanviet/vim-monokai-pro' " Monokai Pro Theme
-    Plug 'vim-airline/vim-airline' " vim-airline bottom status bar
-    Plug 'kyazdani42/nvim-web-devicons' " dev icons for telescope
-    "    Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    Plug 'elihunter173/dirbuf.nvim' " Directory buffer - edit files like text.
-    Plug 'neovim/nvim-lspconfig' " Neovim 
-    Plug 'junegunn/fzf'
+call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
+	"	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+	Plug 'kyazdani42/nvim-web-devicons'
+	Plug 'romgrk/barbar.nvim'	
+	Plug 'sheerun/vim-polyglot'
+	Plug 'phanviet/vim-monokai-pro'
+	Plug 'pangloss/vim-javascript'
+	Plug 'https://github.com/ap/vim-css-color'
+	Plug 'folke/zen-mode.nvim' " ZenMode
+	Plug 'folke/twilight.nvim' " Twilight
+	Plug 'KabbAmine/vCoolor.vim' " Alt+C
+	Plug 'ctrlpvim/ctrlp.vim'
+	Plug 'neoclide/coc.nvim', {'branch': 'release'}
+	" lightline or powerline
+	" live server
+	" telescope
+	" tmux sessions
+	" nerdtree or chadtree
 call plug#end()
 
+
+set termguicolors
+"set cindent
+set smartindent
 colorscheme monokai_pro
-set laststatus=2 " Enable airline 
-set noshowmode " Omit normal status bar because we have Airline now. :)
+set mouse=a
 
-" :PlugInstall
-" :PlugUpdate
-" :PlugClean
+set number
 
+" CUSTOM KEYBINDS
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
 
-
+" COC Info
+" :CocInstall coc-emmet
+" <C-n> and <C-p> to choose a completion option
+" <C-y> to paste a picked completion
+:PlugInstall
