@@ -1,4 +1,4 @@
-" *****pLace this file here: ~/.config/nvim/init.vim*****
+" *****Place this file here: ~/.config/nvim/init.vim*****
 	" WHERE YOU LEFT OFF https://github.com/romkatv/powerlevel10k
 
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
@@ -21,47 +21,52 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 	Plug 'nvim-telescope/telescope.nvim'
 	Plug 'nvim-lua/popup.nvim'
 	Plug 'nvim-lua/plenary.nvim'
+	Plug 'itchyny/lightline.vim'
 	" lightline or powerline
 	" live server
 	" tmux sessions
 call plug#end()
 
+lua << EOF
+require("telescope").setup {
+  defaults = {
+  },
+  pickers = {
+    find_files = {
+      find_command = {"fdfind"},
+			hidden = {true}
+    },
+  }
+}
+
+EOF
+
+
+
+" Custom Keybinds. Leader is \
+nnoremap <leader>c <cmd>CHADopen<cr>
+
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>bb <cmd>Telescope buffers<cr>
+nnoremap <leader>h <cmd>Telescope help_tags<cr>
+nnoremap <leader>fb <cmd>Telescope file_browser<cr>
 
 set termguicolors
 "set cindent
 set smartindent
 colorscheme monokai_pro
 set mouse=a
-
 set number
 set relativenumber
-
-" Custom Commands
-
-
-" Custom Keybinds. Leader is \
-nnoremap <leader>c <cmd>CHADopen<cr>
-" Find files using Telescope command-line sugar.
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+"Redundant now that there's Lightline
+set noshowmode
+set noshowcmd
+set shortmess+=F
+set noruler
+"set laststatus=3 "Global status line at bottom
+"
+set cmdheight=0
+set cmdwinheight=0
 
 :PlugInstall
-
-lua << EOF
-require('telescope').setup{
-pickers = {
-  find_files = {
-    find_command = {
-        "fzf",
-        ".",
-        "--type",
-        "file",
-        "--hidden",
-        "--strip-cwd-prefix"
-    }
-  }
-}
-}
-EOF
