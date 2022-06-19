@@ -41,8 +41,8 @@ require("telescope").setup {
 EOF
 
 
-
-" Custom Keybinds. Leader is \
+" Custom Keybinds. Default leader is \
+let mapleader = ','
 nnoremap <leader>c <cmd>CHADopen<cr>
 
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
@@ -51,6 +51,11 @@ nnoremap <leader>bb <cmd>Telescope buffers<cr>
 nnoremap <leader>h <cmd>Telescope help_tags<cr>
 nnoremap <leader>fb <cmd>Telescope file_browser<cr>
 nnoremap <leader>w <cmd>close<cr>
+nnoremap <leader>zz <cmd>ZenMode<cr>
+
+"Normal Mode
+nnoremap C-S-Up<cmd>m .-2<CR>
+nnoremap C-S-Down<cmd>m .+1<CR>
 
 set termguicolors
 "set cindent
@@ -67,6 +72,3 @@ set noruler
 "set laststatus=3 "Global status line at bottom
 "
 set cmdheight=0
-set cmdwinheight=0
-
-:PlugInstall
