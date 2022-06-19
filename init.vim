@@ -1,5 +1,6 @@
 " *****Place this file here: ~/.config/nvim/init.vim*****
 	" WHERE YOU LEFT OFF https://github.com/romkatv/powerlevel10k
+	" THIS LINE IS NEW. Edited from a simlink...
 
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 	Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
