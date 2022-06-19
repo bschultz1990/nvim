@@ -1,6 +1,5 @@
 " *****Place this file here: ~/.config/nvim/init.vim*****
 	" WHERE YOU LEFT OFF https://github.com/romkatv/powerlevel10k
-	" THIS LINE IS NEW. Edited from a simlink...
 
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 	Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
@@ -16,16 +15,16 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 	Plug 'KabbAmine/vCoolor.vim' " Alt+C
 "	Plug 'ctrlpvim/ctrlp.vim'
 	Plug 'fladson/vim-kitty' " Kitty config syntax highlighting
-	" Telescope
-	Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+
+	Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }	" Telescope stuff
 	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 	Plug 'nvim-telescope/telescope.nvim'
 	Plug 'nvim-lua/popup.nvim'
 	Plug 'nvim-lua/plenary.nvim'
 	Plug 'itchyny/lightline.vim'
-	" lightline or powerline
 	" live server
 	" tmux sessions
+	"
 call plug#end()
 
 lua << EOF
@@ -39,7 +38,6 @@ require("telescope").setup {
     },
   }
 }
-
 EOF
 
 
@@ -52,6 +50,7 @@ nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>bb <cmd>Telescope buffers<cr>
 nnoremap <leader>h <cmd>Telescope help_tags<cr>
 nnoremap <leader>fb <cmd>Telescope file_browser<cr>
+nnoremap <leader>w <cmd>close<cr>
 
 set termguicolors
 "set cindent
