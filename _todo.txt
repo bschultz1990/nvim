@@ -1,4 +1,2 @@
 TO DO
-- Create a telescope lua config file in ~/.config/nvim/
-- Move telescope lua into that config file
-- Link to the telescope-config.lua through init.vim
+
