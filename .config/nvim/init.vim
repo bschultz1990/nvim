@@ -21,7 +21,9 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 	Plug 'nvim-lua/popup.nvim'
 	Plug 'nvim-lua/plenary.nvim'
 	Plug 'itchyny/lightline.vim'
-	Plug 'nvim-telescope/telescope-project.nvim'
+	Plug 'tpope/vim-obsession'
+	Plug 'dhruvasagar/vim-prosession'
+	Plug 'mhinz/vim-startify'
 	" live server
 	" tmux sessions
 	"
@@ -38,12 +40,12 @@ require("telescope").setup {
     },
   }
 }
-require'telescope'.load_extension('project')
 EOF
 
 
 " Custom Keybinds. Default leader is \
 let mapleader = ','
+let g:prosession_dir = '~/.config/nvim/prosession/'
 nnoremap <leader>c <cmd>CHADopen<cr>
 nnoremap <leader>, <cmd>Telescope<cr>
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
@@ -74,6 +76,6 @@ set noshowmode
 set noshowcmd
 set shortmess+=F
 set noruler
-"set laststatus=3 "Global status line at bottom
-"
 set cmdheight=0
+"set laststatus=3 "Global status line at bottom
+
