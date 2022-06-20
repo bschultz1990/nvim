@@ -64,7 +64,7 @@ colorscheme monokai_pro
 set mouse=a
 set number
 set relativenumber
-"Redundant now that there's Lightline
+"Remove redundant stuff now that we have Lightline
 set noshowmode
 set noshowcmd
 set shortmess+=F
