@@ -53,7 +53,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'bschultz1990/cheatsheet.nvim'
 Plug 'preservim/nerdcommenter'
 Plug 'folke/which-key.nvim'
-Plug 'chrisbra/csv.vim'
+Plug 'dhruvasagar/vim-table-mode'
 call plug#end()
 
 colorscheme monokai_pro
