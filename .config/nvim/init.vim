@@ -51,10 +51,14 @@ Plug 'mhinz/vim-startify'
 Plug 'junegunn/vim-easy-align'
 "Plug 'sudormrfbin/cheatsheet.nvim'
 Plug 'bschultz1990/cheatsheet.nvim'
+Plug 'preservim/nerdcommenter'
+Plug 'folke/which-key.nvim'
+Plug 'chrisbra/csv.vim'
 call plug#end()
 
 colorscheme monokai_pro
-
+local wk = require("which-key")
+wk.register(mappings,opts)
 
 " --------------------------------------
 " 								TELESCOPE
@@ -72,33 +76,63 @@ require("telescope").setup {
 	}
 EOF
 
+
+
+" --------------------------------------
+"  					 CUSTOM FUNCTIONS
+" --------------------------------------
+  " Experimental feature (preview definition): gp, `<leader>K`, or <Shift-F12>:
+  " Peek into the definition in a floating window.
+  " TODO: If there are 2+ definitions, it does not work with floating windows (coc.nvim problem)
+  "command! -nargs=0 PreviewDefinition :call CocActionAsync('jumpDefinition', ':OpenAsPreview')
+  "command! -nargs=* OpenAsPreview :call s:open_as_preview("<args>")
+  "function! s:open_as_preview(callstr)
+    """ e.g. the string should look like: +call cursor(<line>,<col>) <filename>
+    "let m = matchlist(a:callstr, '^+call cursor(\(\d\+\),\s*\(\d\+\))\s\+\(.*\)')
+    ""if len(m) < 4   " TODO: more robust error handling
+      "echohl WarningMsg | echom "ERROR: Invalid callstr format" | echohl None
+      "return
+    "endif
+    "let linenr = m[1]
+    "let filename = expand(m[3])
+    "call quickui#preview#open(filename, {
+          "\ 'cursor': linenr,
+          "\ 'number' : 1,
+          "\ 'persist': 0,
+          "\ })
+  "endfunction
+  """ <F24> = <Shift-F12>
+  "nmap <F24>         :<C-U>PreviewDefinition<CR>
+  "nmap <leader>K     :<C-U>PreviewDefinition<CR>
+  "nmap <silent> gp   :<C-U>PreviewDefinition<CR>
+
 " --------------------------------------
 " 								KEYBINDS
 " --------------------------------------								|
+let mapleader = ','																			"|Change leader. Default is \
 
-let mapleader = ','																			"Change leader. Default is \
-nnoremap <leader>c <cmd>Lexplore<cr>										"Toggle netrw
-nnoremap <C-e>=G
+" NORMAL MODE
+nnoremap <C-Up> :m .-2<cr>==
+nnoremap <C-Down> :m .+1<cr>==" Normal mode
+nnoremap <C-j> :m .+1<CR>==
+nnoremap <C-k> :m .-2<CR>==
+nnoremap <leader>c <cmd>Lexplore<cr>
 nnoremap <leader>, <cmd>Telescope<cr>
-nnoremap <leader>bd<cmd>bd<cr>
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>bb <cmd>Telescope buffers<cr>
 nnoremap <leader>h <cmd>Telescope help_tags<cr>
 nnoremap <leader>fb <cmd>Telescope file_browser<cr>
-"nnoremap <leader>w <cmd>bd<cr>
+" nnoremap <leader>w <cmd>bd<cr>
 nnoremap <leader>w <cmd>tabclose<cr>
 nnoremap <leader>zz <cmd>ZenMode<cr>
 nnoremap <leader>diff <cmd>DiffviewOpen<cr>
 xmap ga <Plug>(EasyAlign)
-nmap ga <Plug>(EasyAlign)
+map ga <Plug>(EasyAlign)
+nnoremap <silent><nowait> <space>d :call CocAction('jumpDefinition', v:false)<CR> 
 
-" Normal mode
-nnoremap <C-Up> :m .-2<cr>==
-nnoremap <C-Down> :m .+1<cr>==" Normal mode
-nnoremap <C-j> :m .+1<CR>==
-nnoremap <C-k> :m .-2<CR>==
-
+"TODO: INSERT MODE
+"inoremap <C-BS><C-w> 
 " --------------------------------------
 " 								STARTIFY              
 " --------------------------------------								|
