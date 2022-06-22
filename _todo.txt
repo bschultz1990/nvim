@@ -1,2 +1,26 @@
-TO DO
+===============
+		TO DO
+===============
 
+Reload vimrc.
+Delete whole words in INSERT mode.
+
+
+
+
+
+
+
+Change background number color after applying Monokai Pro
+
+Get TabNine in here!! :)  https://www.tabnine.com/install/neovim
+
+Live Server (NPM probably)
+
+TMux Sessions workflow??
+
+Kitty in full screen?
+
+Put this list in Startify!
+
+Find an awesome GUI for Neovim.
