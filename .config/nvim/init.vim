@@ -8,7 +8,7 @@
 let g:netrw_keepdir=0																		"Keep current dir and browsing dir synced.
 let g:netrw_winsize=15																	"window split
 let g:netrw_localcopydircmd = 'cp -r'										"Recursively copy directories
-hi link netrwMarkFile Search														
+hi link netrwMarkFile Search														"Highlight search	
 let g:netrw_liststyle=0																	"0, 1 per line, 1 long w/ size, 2 wide, 3 tree
 
 set termguicolors
@@ -100,7 +100,7 @@ nnoremap <C-j> :m .+1<CR>==
 nnoremap <C-k> :m .-2<CR>==
 
 " --------------------------------------
-" 								STARTIFY                                                                            │    netrw-mm    Move marked files to target                                                                                  11 - twilight.nvim: Already installed     
+" 								STARTIFY              
 " --------------------------------------								|
 let g:startify_session_persistence = 1
 let g:startify_session_dir='~/.config/nvim/startify_sessions'
@@ -126,7 +126,7 @@ let g:startify_lists = [
 "g:startify_commands|
 "g:startify_custom_footer|
 "g:startify_custom_header_quotes|
-"g:startify_custom_indices|                                                                            │    netrw-mm    Move marked files to target                                                                                  11 - twilight.nvim: Already installed     
+"g:startify_custom_indices|            
 "g:startify_disable_at_vimenter|
 "g:startify_enable_unsafe|
 "g:startify_files_number|
