@@ -13,12 +13,15 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +24 cheatsheet-netrw.txt
-badd +7 ~/Documents/bens/_todo.txt
-badd +82 ~/Documents/bens/.config/nvim/init.vim
+badd +25 cheatsheet-netrw.txt
+badd +6 ~/Documents/bens/_todo.txt
+badd +75 ~/Documents/bens/.config/nvim/init.vim
+badd +389 cheatsheet-default.txt
+badd +1 ~/cheatsheet-custom.txt
+badd +0 term://~//9805:/bin/bash
 argglobal
 %argdel
-edit ~/Documents/bens/.config/nvim/init.vim
+edit ~/Documents/cheatsheet.nvim/cheatsheets
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
@@ -35,10 +38,10 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 101 + 101) / 202)
-exe 'vert 2resize ' . ((&columns * 100 + 101) / 202)
+exe 'vert 1resize ' . ((&columns * 27 + 64) / 128)
+exe 'vert 2resize ' . ((&columns * 100 + 64) / 128)
 argglobal
-balt ~/Documents/bens/_todo.txt
+balt ~/cheatsheet-custom.txt
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -49,20 +52,20 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 103 - ((42 * winheight(0) + 24) / 49)
+let s:l = 8 - ((7 * winheight(0) + 31) / 62)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 103
-normal! 060|
-lcd ~
+keepjumps 8
+normal! 0
+lcd ~/Documents/cheatsheet.nvim/cheatsheets
 wincmd w
 argglobal
-if bufexists(fnamemodify("~/Documents/bens/_todo.txt", ":p")) | buffer ~/Documents/bens/_todo.txt | else | edit ~/Documents/bens/_todo.txt | endif
+if bufexists(fnamemodify("term://~//9805:/bin/bash", ":p")) | buffer term://~//9805:/bin/bash | else | edit term://~//9805:/bin/bash | endif
 if &buftype ==# 'terminal'
-  silent file ~/Documents/bens/_todo.txt
+  silent file term://~//9805:/bin/bash
 endif
-balt ~/Documents/bens/.config/nvim/init.vim
+balt ~/cheatsheet-custom.txt
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -71,9 +74,7 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 6 - ((5 * winheight(0) + 24) / 49)
+let s:l = 6 - ((5 * winheight(0) + 31) / 62)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -82,8 +83,8 @@ normal! 0
 lcd ~
 wincmd w
 2wincmd w
-exe 'vert 1resize ' . ((&columns * 101 + 101) / 202)
-exe 'vert 2resize ' . ((&columns * 100 + 101) / 202)
+exe 'vert 1resize ' . ((&columns * 27 + 64) / 128)
+exe 'vert 2resize ' . ((&columns * 100 + 64) / 128)
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf

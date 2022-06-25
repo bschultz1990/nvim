@@ -4,23 +4,26 @@
 
 Change background number color after applying Monokai Pro
 
-
-
-
-
-
-
-
+COC Complete on tab.
+COC inline suggestions.
 Get TabNine in here!! :)  https://www.tabnine.com/install/neovim
+
+
+
+
+
+
 
 Live Server (NPM probably)
 
 TMux Sessions workflow??
-
-Kitty in full screen?
 
 Put this list in Startify!
 
 Find an awesome GUI for Neovim.
 
 Delete whole words in INSERT mode.
+
+Window manager
+
+

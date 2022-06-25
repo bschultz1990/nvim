@@ -31,7 +31,8 @@ set shortmess=F
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'kyazdani42/nvim-web-devicons'
-Plug 'romgrk/barbar.nvim'	
+Plug 'akinsho/bufferline.nvim', { 'tag': 'v2.*' }
+Plug 'kyazdani42/nvim-web-devicons'
 Plug 'sheerun/vim-polyglot'
 Plug 'phanviet/vim-monokai-pro'
 Plug 'pangloss/vim-javascript'
@@ -51,19 +52,49 @@ Plug 'mhinz/vim-startify'
 Plug 'junegunn/vim-easy-align'
 "Plug 'sudormrfbin/cheatsheet.nvim'
 Plug 'bschultz1990/cheatsheet.nvim'
-Plug 'preservim/nerdcommenter'
-Plug 'folke/which-key.nvim'
-Plug 'dhruvasagar/vim-table-mode'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
 call plug#end()
 
 colorscheme monokai_pro
-local wk = require("which-key")
-wk.register(mappings,opts)
 
 " --------------------------------------
-" 								TELESCOPE
+" 								KEYBINDS
+" --------------------------------------                                            |
+let mapleader = ','                                                                 "|Change leader. Default is \
+
+" NORMAL MODE
+""Move Line Down
+nnoremap <C-Down> :m .+1<cr>
+nnoremap <C-Up> :m .-2<cr>
+nnoremap <C-j> :m .+1<CR>
+nnoremap <C-k> :m .-2<CR>
+nnoremap <leader>c <cmd>Lexplore<cr>                                                
+nnoremap <leader>, <cmd>Telescope<cr>                                               
+nnoremap <leader>ff <cmd>Telescope find_files<cr>                                   
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>                                    
+nnoremap <leader>bb <cmd>Telescope buffers<cr>                                      
+nnoremap <leader>h <cmd>Telescope help_tags<cr>                                     
+nnoremap <leader>fb <cmd>Telescope file_browser<cr>                                
+" nnoremap <leader>w <cmd>bd<cr>
+nnoremap <leader>w <cmd>tabclose<cr>                                                
+nnoremap <leader>zz <cmd>ZenMode<cr>                                                
+nnoremap <leader>diff <cmd>DiffviewOpen<cr>
+xmap ga <Plug>(EasyAlign)
+map ga <Plug>(EasyAlign)
+nnoremap <silent><nowait> <space>k :call CocAction('jumpDefinition', v:false)<CR>
+
+"TODO: INSERT MODE
+"inoremap <C-BS> <cmd>dw<cr>
+" --------------------------------------
+" 					    WHICH-KEY
+" --------------------------------------	
+
+" --------------------------------------
+" 							TELESCOPE
 " --------------------------------------								|
 lua << EOF
+require("bufferline").setup{}
 require("telescope").setup {
 	defaults = {
 		},
@@ -106,33 +137,7 @@ EOF
   "nmap <leader>K     :<C-U>PreviewDefinition<CR>
   "nmap <silent> gp   :<C-U>PreviewDefinition<CR>
 
-" --------------------------------------
-" 								KEYBINDS
-" --------------------------------------								|
-let mapleader = ','																			"|Change leader. Default is \
 
-" NORMAL MODE
-nnoremap <C-Up> :m .-2<cr>==
-nnoremap <C-Down> :m .+1<cr>==" Normal mode
-nnoremap <C-j> :m .+1<CR>==
-nnoremap <C-k> :m .-2<CR>==
-nnoremap <leader>c <cmd>Lexplore<cr>
-nnoremap <leader>, <cmd>Telescope<cr>
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>bb <cmd>Telescope buffers<cr>
-nnoremap <leader>h <cmd>Telescope help_tags<cr>
-nnoremap <leader>fb <cmd>Telescope file_browser<cr>
-" nnoremap <leader>w <cmd>bd<cr>
-nnoremap <leader>w <cmd>tabclose<cr>
-nnoremap <leader>zz <cmd>ZenMode<cr>
-nnoremap <leader>diff <cmd>DiffviewOpen<cr>
-xmap ga <Plug>(EasyAlign)
-map ga <Plug>(EasyAlign)
-nnoremap <silent><nowait> <space>d :call CocAction('jumpDefinition', v:false)<CR> 
-
-"TODO: INSERT MODE
-"inoremap <C-BS><C-w> 
 " --------------------------------------
 " 								STARTIFY              
 " --------------------------------------								|
