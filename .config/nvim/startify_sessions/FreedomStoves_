@@ -13,16 +13,18 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +29 Documents/bens/_todo.txt
-badd +1 Documents/FreedomStoves/index.html
+badd +1 Documents/bens/.config/nvim/init.vim
+badd +25 Documents/bens/_todo.txt
+badd +9 Documents/FreedomStoves/index.html
 badd +1 Documents/FreedomStoves/css/style.css
-badd +10 Documents/FreedomStoves/js/app.js
-badd +0 Documents/bens/.config/nvim/init.vim
+badd +21 Documents/FreedomStoves/js/app.js
+badd +11 Documents/bens/test.html
+badd +1 Documents/bens/.config/coc/Documents/bens/test.html
 argglobal
 %argdel
 edit Documents/bens/.config/nvim/init.vim
 argglobal
-balt Documents/bens/_todo.txt
+balt Documents/bens/test.html
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -33,13 +35,13 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 35 - ((34 * winheight(0) + 32) / 64)
+let s:l = 9 - ((5 * winheight(0) + 20) / 40)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 35
-normal! 035|
-lcd ~/Documents/bens
+keepjumps 9
+normal! 026|
+lcd ~/Documents/bens/.config/coc
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf

@@ -1,6 +1,4 @@
 " *****Place this file here: ~/.config/nvim/init.vim*****
-" WHERE YOU LEFT OFF https://github.com/romkatv/powerlevel10k
-
 " --------------------------------------	
 " 								GENERAL
 " --------------------------------------								|
@@ -8,7 +6,8 @@
 let g:netrw_keepdir=0																		"Keep current dir and browsing dir synced.
 let g:netrw_winsize=15																	"window split
 let g:netrw_localcopydircmd = 'cp -r'										"Recursively copy directories
-hi link netrwMarkFile Search														"Highlight search	
+"Highlight selected files.
+hi link netrwMarkFile Search
 let g:netrw_liststyle=0																	"0, 1 per line, 1 long w/ size, 2 wide, 3 tree
 
 set termguicolors
@@ -23,6 +22,7 @@ set noshowmode
 set noshowcmd
 "set cmdheight=0
 set shortmess=F
+set clipboard+=unnamedplus
 
 " --------------------------------------	
 " 								PLUGINS
@@ -30,8 +30,6 @@ set shortmess=F
 " /home/bens/.local/share/nvim/plugged
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'kyazdani42/nvim-web-devicons'
-Plug 'akinsho/bufferline.nvim', { 'tag': 'v2.*' }
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'sheerun/vim-polyglot'
 Plug 'phanviet/vim-monokai-pro'
@@ -48,14 +46,18 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'itchyny/lightline.vim'
+" Replace with feline.nvim??
 Plug 'mhinz/vim-startify'
 Plug 'junegunn/vim-easy-align'
 "Plug 'sudormrfbin/cheatsheet.nvim'
 Plug 'bschultz1990/cheatsheet.nvim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
-call plug#end()
+Plug 'romgrk/barbar.nvim'
+Plug 'elihunter173/dirbuf.nvim'
+Plug 'akinsho/toggleterm.nvim'
 
+call plug#end()
 colorscheme monokai_pro
 
 " --------------------------------------
@@ -69,16 +71,16 @@ nnoremap <C-Down> :m .+1<cr>
 nnoremap <C-Up> :m .-2<cr>
 nnoremap <C-j> :m .+1<CR>
 nnoremap <C-k> :m .-2<CR>
-nnoremap <leader>c <cmd>Lexplore<cr>                                                
-nnoremap <leader>, <cmd>Telescope<cr>                                               
-nnoremap <leader>ff <cmd>Telescope find_files<cr>                                   
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>                                    
-nnoremap <leader>bb <cmd>Telescope buffers<cr>                                      
-nnoremap <leader>h <cmd>Telescope help_tags<cr>                                     
-nnoremap <leader>fb <cmd>Telescope file_browser<cr>                                
+nnoremap <leader>c <cmd>Lexplore<cr>
+nnoremap <leader>, <cmd>Telescope<cr>
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>bb <cmd>Telescope buffers<cr>
+nnoremap <leader>h <cmd>Telescope help_tags<cr>
+nnoremap <leader>fb <cmd>Telescope file_browser<cr>
 " nnoremap <leader>w <cmd>bd<cr>
-nnoremap <leader>w <cmd>tabclose<cr>                                                
-nnoremap <leader>zz <cmd>ZenMode<cr>                                                
+nnoremap <leader>w <cmd>tabclose<cr>
+nnoremap <leader>zz <cmd>ZenMode<cr>
 nnoremap <leader>diff <cmd>DiffviewOpen<cr>
 xmap ga <Plug>(EasyAlign)
 map ga <Plug>(EasyAlign)
@@ -94,7 +96,7 @@ nnoremap <silent><nowait> <space>k :call CocAction('jumpDefinition', v:false)<CR
 " 							TELESCOPE
 " --------------------------------------								|
 lua << EOF
-require("bufferline").setup{}
+require("toggleterm").setup{}
 require("telescope").setup {
 	defaults = {
 		},
@@ -112,6 +114,17 @@ EOF
 " --------------------------------------
 "  					 CUSTOM FUNCTIONS
 " --------------------------------------
+" use <tab> for trigger completion and navigate to the next complete item
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#_select_confirm()
+
   " Experimental feature (preview definition): gp, `<leader>K`, or <Shift-F12>:
   " Peek into the definition in a floating window.
   " TODO: If there are 2+ definitions, it does not work with floating windows (coc.nvim problem)

@@ -1,0 +1,5 @@
+{
+	"emmet.showExpandedAbbreviation": "never",
+	"emmet.showAbbreviationSuggestions": false,
+	"html.autoClosingTags": true
+}
