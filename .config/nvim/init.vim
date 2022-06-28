@@ -1,15 +1,14 @@
-" *****Place this file here: ~/.config/nvim/init.vim*****
-" --------------------------------------	
-" 								GENERAL
-" --------------------------------------								|
+" *****Place this file here: ~/.config/nvim/init.vim
+"----------------GENERAL---------------{{{
 " NETRW
-let g:netrw_keepdir=0																		"Keep current dir and browsing dir synced.
+let g:netrw_keepdir=1																		"Keep current dir and browsing dir synced.
 let g:netrw_winsize=15																	"window split
 let g:netrw_localcopydircmd = 'cp -r'										"Recursively copy directories
-"Highlight selected files.
 hi link netrwMarkFile Search
 let g:netrw_liststyle=0																	"0, 1 per line, 1 long w/ size, 2 wide, 3 tree
 
+set foldcolumn=2 
+set foldmethod=marker
 set termguicolors
 "set cindent
 set smartindent
@@ -23,10 +22,9 @@ set noshowcmd
 "set cmdheight=0
 set shortmess=F
 set clipboard+=unnamedplus
+set wildmenu"}}}
 
-" --------------------------------------	
-" 								PLUGINS
-" --------------------------------------								|
+"----------------PLUGINS---------------{{{
 " /home/bens/.local/share/nvim/plugged
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -58,11 +56,9 @@ Plug 'elihunter173/dirbuf.nvim'
 Plug 'akinsho/toggleterm.nvim'
 
 call plug#end()
-colorscheme monokai_pro
+colorscheme monokai_pro"}}}
 
-" --------------------------------------
-" 								KEYBINDS
-" --------------------------------------                                            |
+"----------------KEYBINDS---------------{{{
 let mapleader = ','                                                                 "|Change leader. Default is \
 
 " NORMAL MODE
@@ -89,17 +85,12 @@ nnoremap <silent><nowait> <leader>k :call CocAction('jumpDefinition', v:false)<C
 " nnoremap <silent><nowait> <leader>k <cmd>PreviewDefinition<CR>
 nnoremap <silent><C-`> :ToggleTerm<cr>
 
-"gc Comment line
+"gc comment line
 
 ""TODO: INSERT MODE
-"inoremap <C-BS> <cmd>dw<cr>
-" --------------------------------------
-" 					    WHICH-KEY
-" --------------------------------------	
+"inoremap <C-BS> <cmd>dw<cr>}}}
 
-" --------------------------------------
-" 							TELESCOPE
-" --------------------------------------								|
+"----------------LUA CONFIG---------------{{{
 lua << EOF
 require("toggleterm").setup{}
 require("telescope").setup {
@@ -113,6 +104,9 @@ require("telescope").setup {
 		}
 	}
 EOF
+"}}}
+
+"----------------CUSTOM FUNCTIONS---------------{{{
 function! breakhabits#createmappings(keys, message) abort
     for key in a:keys
         call nvim_set_keymap('n', key, ':call BreakHabitsWindow(' . string(a:message). ')<CR>', {'silent': v:true, 'nowait': v:true, 'noremap': v:true})
@@ -167,9 +161,6 @@ function! BreakHabitsWindow(message) abort
 endfunction
 
 
-" --------------------------------------
-"  					 CUSTOM FUNCTIONS
-" --------------------------------------
 " FLOATING WINDOW FUNCTION
 " --------------------------------------
 function! FloatingWindow(message) abort
@@ -252,11 +243,9 @@ inoremap <silent><expr> <Tab>
   "nmap <F24>         :<C-U>PreviewDefinition<CR>
   "nmap <leader>K     :<C-U>PreviewDefinition<CR>
   "nmap <silent> gp   :<C-U>PreviewDefinition<CR>
+"}}}
 
-
-" --------------------------------------
-" 								STARTIFY              
-" --------------------------------------								|
+"----------------STARTIFY---------------{{{
 let g:startify_session_persistence = 1
 let g:startify_session_dir='~/.config/nvim/startify_sessions'
 
@@ -300,4 +289,4 @@ let g:startify_lists = [
 "g:startify_session_remove_lines
 "g:startify_session_savecmds
 "g:startify_session_savevars
-"g:startify_session_sort
+"g:startify_session_sort}}}
