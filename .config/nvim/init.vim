@@ -54,7 +54,7 @@ Plug 'tpope/vim-surround'
 Plug 'romgrk/barbar.nvim'
 Plug 'elihunter173/dirbuf.nvim'
 Plug 'akinsho/toggleterm.nvim'
-
+Plug 'neoclide/coc-snippets'
 call plug#end()
 colorscheme monokai_pro"}}}
 
@@ -90,6 +90,12 @@ nnoremap <silent><C-`> :ToggleTerm<cr>
 ""TODO: INSERT MODE
 "inoremap <C-BS> <cmd>dw<cr>}}}
 
+"----------------SNIPPETS---------------{{{
+"READ command:
+"nnoremap ,html <cmd>-1read path/to/file.extension(cursor movement nonsense here)
+nnoremap <leader>html <cmd>-1read $HOME/.config/nvim/user-snippets/boilerplate.html<CR>12Gi
+"}}}
+
 "----------------LUA CONFIG---------------{{{
 lua << EOF
 require("toggleterm").setup{}
@@ -107,11 +113,11 @@ EOF
 "}}}
 
 "----------------CUSTOM FUNCTIONS---------------{{{
-function! breakhabits#createmappings(keys, message) abort
-    for key in a:keys
-        call nvim_set_keymap('n', key, ':call BreakHabitsWindow(' . string(a:message). ')<CR>', {'silent': v:true, 'nowait': v:true, 'noremap': v:true})
-    endfor
-endfunction
+" function! breakhabits#createmappings(keys, message) abort
+"     for key in a:keys
+"         call nvim_set_keymap('n', key, ':call BreakHabitsWindow(' . string(a:message). ')<CR>', {'silent': v:true, 'nowait': v:true, 'noremap': v:true})
+"     endfor
+" endfunction
 
 function! BreakHabitsWindow(message) abort
     " Define the size of the floating window
@@ -213,15 +219,18 @@ endfunction
 " --------------------------------------
 
 " use <tab> for trigger completion and navigate to the next complete item
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
 function! s:check_back_space() abort
   let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
+  return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-inoremap <silent><expr> <Tab>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<Tab>" :
-      \ coc#_select_confirm()
+let g:coc_snippet_next = '<tab>'
 
    " Experimental feature (preview definition): gp, `<leader>K`, or <Shift-F12>:
    " Peek into the definition in a floating window.
