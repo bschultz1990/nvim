@@ -51,7 +51,6 @@ Plug 'nvim-telescope/telescope-file-browser.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
-" Try feline.nvim??
 Plug 'mhinz/vim-startify'
 Plug 'junegunn/vim-easy-align'
 "Plug 'sudormrfbin/cheatsheet.nvim'
@@ -76,7 +75,7 @@ nnoremap <C-Down> :m .+1<cr>
 vnoremap <C-Down> :m .+1<cr>
 nnoremap <C-Up> :m .-2<cr>
 vnoremap <C-Up> :m .-2<cr>
-nnoremap <leader>c <cmd>Lexplore<cr>
+nnoremap <silent><leader>c <cmd>Lexplore<cr>
 nnoremap <leader>, <cmd>Telescope<cr>
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
