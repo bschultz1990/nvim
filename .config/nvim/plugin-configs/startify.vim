@@ -49,7 +49,7 @@ let g:startify_custom_header=[
 
 let g:startify_bookmarks = [
 			\ '~/.config/nvim/init.vim',
-			\ '~/.config/nvim/startify-config.vim',
+			\ '~/.config/nvim/plugin-configs/',
 			\'~/Documents/bens/_todo.txt'
 			\]
 let g:startify_lists = [

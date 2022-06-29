@@ -13,14 +13,14 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +39 cheatsheet-netrw.txt
-badd +6 ~/Documents/bens/_todo.txt
+badd +9 cheatsheet-netrw.txt
+badd +8 ~/Documents/bens/_todo.txt
 badd +2 ~/Documents/bens/.config/nvim/init.vim
 argglobal
 %argdel
 edit cheatsheet-netrw.txt
 argglobal
-balt ~/Documents/bens/.config/nvim/init.vim
+balt ~/Documents/bens/_todo.txt
 setlocal fdm=marker
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -29,12 +29,12 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 9 - ((8 * winheight(0) + 25) / 50)
+let s:l = 19 - ((18 * winheight(0) + 20) / 41)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 9
-normal! 0
+keepjumps 19
+normal! 039|
 lcd ~/Documents/cheatsheet.nvim/cheatsheets
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'

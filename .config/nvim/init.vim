@@ -1,7 +1,8 @@
 
 "----------------SOURCES---------------
 " *****Place this file here: ~/.config/nvim/init.vim
-source $HOME/.config/nvim/startify-config.vim
+source $HOME/.config/nvim/plugin-configs/startify.vim
+
 "----------------GENERAL---------------{{{
 " NETRW
 let g:netrw_keepdir=1																		"Keep current dir and browsing dir synced.
@@ -14,11 +15,11 @@ set foldcolumn=2
 set foldmethod=marker
 set termguicolors
 "set cindent
+set autoindent
 set smartindent
 set mouse=a
 set number
 set relativenumber
-"Remove redundant stuff now that we have Lightline
 set noruler
 set noshowmode
 set noshowcmd
@@ -30,10 +31,13 @@ set wildmenu"}}}
 "----------------PLUGINS---------------{{{
 " /home/bens/.local/share/nvim/plugged
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
+Plug 'lewis6991/gitsigns.nvim'
+Plug 'feline-nvim/feline.nvim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'sheerun/vim-polyglot'
-Plug 'phanviet/vim-monokai-pro'
+Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+" Plug 'phanviet/vim-monokai-pro'
 Plug 'pangloss/vim-javascript'
 Plug 'https://github.com/ap/vim-css-color'
 Plug 'folke/zen-mode.nvim'																" ZenMode
@@ -41,12 +45,12 @@ Plug 'folke/twilight.nvim'																" Twilight
 Plug 'KabbAmine/vCoolor.vim'															" Alt+C color picker
 Plug 'fladson/vim-kitty'																	" Kitty config syntax highlighting
 Plug 'sindrets/diffview.nvim'
-Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-file-browser.nvim'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
-Plug 'itchyny/lightline.vim'
 " Try feline.nvim??
 Plug 'mhinz/vim-startify'
 Plug 'junegunn/vim-easy-align'
@@ -58,17 +62,20 @@ Plug 'romgrk/barbar.nvim'
 Plug 'akinsho/toggleterm.nvim'
 Plug 'neoclide/coc-snippets'
 call plug#end()
-colorscheme monokai_pro"}}}
+" colorscheme monokai_pro
+let g:tokyonight_style = "storm"
+colorscheme tokyonight
+" "}}}
 
 "----------------KEYBINDS---------------{{{
 let mapleader = ','                                                                 "|Change leader. Default is \
 
 " NORMAL MODE
-""Move Line Down
+""Move Line Down Or up like VSCode
 nnoremap <C-Down> :m .+1<cr>
+vnoremap <C-Down> :m .+1<cr>
 nnoremap <C-Up> :m .-2<cr>
-nnoremap <C-j> :m .+1<CR>
-nnoremap <C-k> :m .-2<CR>
+vnoremap <C-Up> :m .-2<cr>
 nnoremap <leader>c <cmd>Lexplore<cr>
 nnoremap <leader>, <cmd>Telescope<cr>
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
@@ -100,13 +107,18 @@ nnoremap <leader>html <cmd>-1read $HOME/.config/nvim/user-snippets/boilerplate.h
 "----------------LUA CONFIG---------------{{{
 lua << EOF
 require("toggleterm").setup{}
+require('feline').setup()
+require('gitsigns').setup{
+signcolumn = false,
+}
 require("telescope").setup {
 	defaults = {
 		},
 	pickers = {
 		find_files = {
 			find_command = {"fdfind"},
-			hidden = {true}
+			hidden = {true},
+      search_dirs = {"~/"}
 			},
 		}
 	}

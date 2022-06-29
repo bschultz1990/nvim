@@ -1,8 +1,7 @@
 Change background number color after applying Monokai Pro
 
-COC inline suggestions.
 Get TabNine in here!! :)  https://www.tabnine.com/install/neovim
-
+COC inline suggestions.
 
 
 
@@ -15,10 +14,6 @@ TMux Sessions workflow??
 
 Put this list in Startify!
 
-Find an awesome GUI for Neovim.
-
 Delete whole words in INSERT mode.
 
 Window manager
-
-
