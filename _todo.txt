@@ -1,6 +1,5 @@
 Change background number color after applying Monokai Pro
 
-COC Complete on tab.
 COC inline suggestions.
 Get TabNine in here!! :)  https://www.tabnine.com/install/neovim
 
