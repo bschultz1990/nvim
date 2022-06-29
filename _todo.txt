@@ -1,5 +1,6 @@
 Change background number color after applying Monokai Pro
 
+Ignore directories in find-files: .local
 Get TabNine in here!! :)  https://www.tabnine.com/install/neovim
 COC inline suggestions.
 
