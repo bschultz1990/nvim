@@ -23,10 +23,11 @@ set relativenumber
 set noruler
 set noshowmode
 set noshowcmd
-"set cmdheight=0
+set cmdheight=1
 set shortmess=F
 set clipboard+=unnamedplus
-set wildmenu"}}}
+set wildmenu
+"}}}
 
 "----------------PLUGINS---------------{{{
 " /home/bens/.local/share/nvim/plugged
@@ -37,7 +38,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'sheerun/vim-polyglot'
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
-" Plug 'phanviet/vim-monokai-pro'
+Plug 'phanviet/vim-monokai-pro'
 Plug 'pangloss/vim-javascript'
 Plug 'https://github.com/ap/vim-css-color'
 Plug 'folke/zen-mode.nvim'																" ZenMode
@@ -61,9 +62,9 @@ Plug 'romgrk/barbar.nvim'
 Plug 'akinsho/toggleterm.nvim'
 Plug 'neoclide/coc-snippets'
 call plug#end()
-" colorscheme monokai_pro
-let g:tokyonight_style = "storm"
-colorscheme tokyonight
+colorscheme monokai_pro
+" let g:tokyonight_style = "storm"
+" colorscheme tokyonight
 " "}}}
 
 "----------------KEYBINDS---------------{{{
@@ -71,19 +72,19 @@ let mapleader = ','                                                             
 
 " NORMAL MODE
 ""Move Line Down Or up like VSCode
-nnoremap <C-Down> :m .+1<cr>
-vnoremap <C-Down> :m .+1<cr>
-nnoremap <C-Up> :m .-2<cr>
-vnoremap <C-Up> :m .-2<cr>
-nnoremap <silent><leader>c <cmd>Lexplore<cr>
+nnoremap <silent>C-Down> :m .+1<cr>
+vnoremap <silent>C-Down> :m .+1<cr>
+nnoremap <silent>C-Up> :m .-2<cr>
+vnoremap <silent><C-Up> :m .-2<cr>
+nnoremap <silent><leader>c <cmd> Lexplore<cr>
 nnoremap <leader>, <cmd>Telescope<cr>
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>bb <cmd>Telescope buffers<cr>
 nnoremap <leader>h <cmd>Telescope help_tags<cr>
 nnoremap <leader>fb <cmd>Telescope file_browser<cr>
-nnoremap <leader>bd <cmd>bd<cr>
-nnoremap <leader>w <cmd>bd<cr>
+nnoremap <silent><leader>bd <cmd>bd<cr>
+nnoremap <silent><leader>w <cmd>bd<cr>
 " nnoremap <leader>w <cmd>tabclose<cr>
 nnoremap <leader>zz <cmd>ZenMode<cr>
 nnoremap <leader>diff <cmd>DiffviewOpen<cr>
@@ -124,112 +125,19 @@ require("telescope").setup {
 EOF
 "}}}
 
-"----------------CUSTOM FUNCTIONS---------------{{{
-" function! breakhabits#createmappings(keys, message) abort
-"     for key in a:keys
-"         call nvim_set_keymap('n', key, ':call BreakHabitsWindow(' . string(a:message). ')<CR>', {'silent': v:true, 'nowait': v:true, 'noremap': v:true})
-"     endfor
-" endfunction
+"----------------CUSTOM FUNCTIONS---------------
 
-function! BreakHabitsWindow(message) abort
-    " Define the size of the floating window
-    let width = 50
-    let height = 10
+"Silent Binds with cmdheight=0
 
-    " Create the scratch buffer displayed in the floating window
-    let buf = nvim_create_buf(v:false, v:true)
+"function! SilentBind(command) abort
+"set cmdheight=1
+"a:command
+"set cmdheight=0
+"endfunction
 
-    " create the lines to draw a box
-    let horizontal_border = '+' . repeat('-', width - 2) . '+'
-    let empty_line = '|' . repeat(' ', width - 2) . '|'
-    let lines = flatten([horizontal_border, map(range(height-2), 'empty_line'), horizontal_border])
-    " set the box in the buffer
-    call nvim_buf_set_lines(buf, 0, -1, v:false, lines)
-
-    " Create the lines for the centered message and put them in the buffer
-    let offset = 0
-    for line in a:message
-        let start_col = (width - len(line))/2
-        let end_col = start_col + len(line)
-        let current_row = height/2-len(a:message)/2 + offset
-        let offset = offset + 1
-        call nvim_buf_set_text(buf, current_row, start_col, current_row, end_col, [line])
-    endfor
-
-    " Set mappings in the buffer to close the window easily
-    let closingKeys = ['<Esc>', '<CR>', '<Leader>']
-    for closingKey in closingKeys
-        call nvim_buf_set_keymap(buf, 'n', closingKey, ':close<CR>', {'silent': v:true, 'nowait': v:true, 'noremap': v:true})
-    endfor
-
-    " Create the floating window
-    let ui = nvim_list_uis()[0]
-    let opts = {'relative': 'editor',
-                \ 'width': width,
-                \ 'height': height,
-                \ 'col': (ui.width/2) - (width/2),
-                \ 'row': (ui.height/2) - (height/2),
-                \ 'anchor': 'NW',
-                \ 'style': 'minimal',
-                \ }
-    let win = nvim_open_win(buf, 1, opts)
-
-    " Change highlighting
-    call nvim_win_set_option(win, 'winhl', 'Normal:ErrorFloat')
-endfunction
-
-
-" FLOATING WINDOW FUNCTION
-" --------------------------------------
-function! FloatingWindow(message) abort
-    " Define the size of the floating window
-    let width = 50
-    let height = 10
-
-    " Create the scratch buffer displayed in the floating window
-    let buf = nvim_create_buf(v:false, v:true)
-
-    " create the lines to draw a box
-    let horizontal_border = '+' . repeat('-', width - 2) . '+'
-    let empty_line = '|' . repeat(' ', width - 2) . '|'
-    let lines = flatten([horizontal_border, map(range(height-2), 'empty_line'), horizontal_border])
-    " set the box in the buffer
-    call nvim_buf_set_lines(buf, 0, -1, v:false, lines)
-
-    " Create the lines for the centered message and put them in the buffer
-    let offset = 0
-    for line in a:message
-        let start_col = (width - len(line))/2
-        let end_col = start_col + len(line)
-        let current_row = height/2-len(a:message)/2 + offset
-        let offset = offset + 1
-        call nvim_buf_set_text(buf, current_row, start_col, current_row, end_col, [line])
-    endfor
-
-    " Set mappings in the buffer to close the window easily
-    let closingKeys = ['<Esc>', '<CR>', '<Leader>']
-    for closingKey in closingKeys
-        call nvim_buf_set_keymap(buf, 'n', closingKey, ':close<CR>', {'silent': v:true, 'nowait': v:true, 'noremap': v:true})
-    endfor
-
-    " Create the floating window
-    let ui = nvim_list_uis()[0]
-    let opts = {'relative': 'editor',
-                \ 'width': width,
-                \ 'height': height,
-                \ 'col': (ui.width/2) - (width/2),
-                \ 'row': (ui.height/2) - (height/2),
-                \ 'anchor': 'NW',
-                \ 'style': 'minimal',
-                \ }
-    let win = nvim_open_win(buf, 1, opts)
-
-    " Change highlighting
-    call nvim_win_set_option(win, 'winhl', 'Normal:ErrorFloat')
-endfunction
-" END FLOATING WINDOW FUNCTION
 " --------------------------------------
 
+"COC - USE TAB FOR COMPLETION
 " use <tab> for trigger completion and navigate to the next complete item
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? coc#_select_confirm() :
@@ -243,25 +151,3 @@ function! s:check_back_space() abort
 endfunction
 
 let g:coc_snippet_next = '<tab>'
-
-   " Experimental feature (preview definition): gp, `<leader>K`, or <Shift-F12>:
-   " Peek into the definition in a floating window.
-   " TODO: If there are 2+ definitions, it does not work with floating windows (coc.nvim problem)
-  command! -nargs=0 PreviewDefinition :call CocActionAsync('jumpDefinition', ':OpenAsPreview')
-  command! -nargs=* OpenAsPreview :call s:open_as_preview("<args>")
-  function! s:open_as_preview(callstr)
-    "" e.g. the string should look like: +call cursor(<line>,<col>) <filename>
-    let m = matchlist(a:callstr, '^+call cursor(\(\d\+\),\s*\(\d\+\))\s\+\(.*\)')
-    let linenr = m[1]
-    let filename = expand(m[3])
-    call quickui#preview#open(filename, {
-          \ 'cursor': linenr,
-          \ 'number' : 1,
-          \ 'persist': 0,
-          \ })
-  endfunction
-  """ <F24> = <Shift-F12>
-  "nmap <F24>         :<C-U>PreviewDefinition<CR>
-  "nmap <leader>K     :<C-U>PreviewDefinition<CR>
-  "nmap <silent> gp   :<C-U>PreviewDefinition<CR>
-"}}}
