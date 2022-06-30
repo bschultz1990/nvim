@@ -13,16 +13,17 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +9 Documents/bens/.config/nvim/init.vim
+badd +112 Documents/bens/.config/nvim/init.vim
 badd +23 Documents/bens/_todo.txt
-badd +9 Documents/FreedomStoves/index.html
+badd +18 Documents/FreedomStoves/index.html
 badd +1 Documents/FreedomStoves/css/style.css
 badd +21 Documents/FreedomStoves/js/app.js
+badd +1 Documents/bens/.config/nvim/coc-settings.json
 argglobal
 %argdel
-edit Documents/FreedomStoves/index.html
+edit Documents/bens/.config/nvim/init.vim
 argglobal
-balt Documents/bens/.config/nvim/init.vim
+balt Documents/bens/.config/nvim/coc-settings.json
 setlocal fdm=marker
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -31,12 +32,14 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 29 - ((28 * winheight(0) + 20) / 41)
+32
+normal! zo
+let s:l = 70 - ((35 * winheight(0) + 22) / 45)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 29
-normal! 030|
+keepjumps 70
+normal! 020|
 lcd ~/Documents/bens/.config/coc
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'

@@ -1,5 +1,6 @@
 {
 	"emmet.showExpandedAbbreviation": "never",
 	"emmet.showAbbreviationSuggestions": false,
-	"html.autoClosingTags": true
+	"html.autoClosingTags": true,
+	"tabnine.shortcut": "TN"
 }

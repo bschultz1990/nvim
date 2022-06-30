@@ -4,6 +4,8 @@ source $HOME/.config/nvim/plugin-configs/startify.vim
 " source $HOME/.config/nvim/config.lua
 "----------------GENERAL---------------{{{
 " NETRW
+let g:python3_host_prog="python3"
+let g:loaded_perl_provider = 0 
 let g:netrw_keepdir=1																		"Keep current dir and browsing dir synced.
 let g:netrw_winsize=15																	"window split
 let g:netrw_localcopydircmd = 'cp -r'										"Recursively copy directories
@@ -25,7 +27,6 @@ set noshowcmd
 set cmdheight=1
 set shortmess=F
 set clipboard+=unnamedplus
-set wildmenu
 "}}}
 
 "----------------PLUGINS---------------{{{
@@ -60,8 +61,14 @@ Plug 'tpope/vim-surround'
 Plug 'romgrk/barbar.nvim'
 Plug 'akinsho/toggleterm.nvim'
 Plug 'neoclide/coc-snippets'
+Plug 'navarasu/onedark.nvim'
 call plug#end()
-colorscheme monokai_pro
+
+let g:onedark_config = {
+    \ 'style': 'warm',
+\}
+colorscheme onedark
+" colorscheme monokai_pro
 " let g:tokyonight_style = 
 " colorscheme tokyonight
 "}}}
@@ -83,6 +90,9 @@ nnoremap <leader>bb <cmd>Telescope buffers<cr>
 nnoremap <leader>h <cmd>Telescope help_tags<cr>
 nnoremap <leader>fb <cmd>Telescope file_browser<cr>
 nnoremap <silent><leader>bd <cmd>bd<cr>
+nnoremap <leader>n <cmd>bn<cr>
+vnoremap <leader>n <cmd><cr>
+nnoremap <leader>vs <cmd>vs<cr>
 " nnoremap <leader>w <cmd>tabclose<cr>
 nnoremap <leader>zz <cmd>ZenMode<cr>
 nnoremap <leader>diff <cmd>DiffviewOpen<cr>
@@ -108,6 +118,7 @@ lua << EOF
 
 require("toggleterm").setup{}
 require('feline').setup()
+
 require('gitsigns').setup{
 signcolumn = false,
 }
