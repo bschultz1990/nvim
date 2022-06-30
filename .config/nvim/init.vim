@@ -1,7 +1,7 @@
 "----------------SOURCES---------------
 " *****Place this file here: ~/.config/nvim/init.vim
 source $HOME/.config/nvim/plugin-configs/startify.vim
-
+" source $HOME/.config/nvim/config.lua
 "----------------GENERAL---------------{{{
 " NETRW
 let g:netrw_keepdir=1																		"Keep current dir and browsing dir synced.
@@ -18,7 +18,7 @@ set autoindent
 set smartindent
 set mouse=a
 set number
-set relativenumber
+" set relativenumber
 set noruler
 set noshowmode
 set noshowcmd
@@ -71,9 +71,9 @@ let mapleader = ','                                                             
 
 " NORMAL MODE
 ""Move Line Down Or up like VSCode
-nnoremap <silent>C-Down> :m .+1<cr>
-vnoremap <silent>C-Down> :m .+1<cr>
-nnoremap <silent>C-Up> :m .-2<cr>
+nnoremap <silent><C-Down> :m .+1<cr>
+vnoremap <silent><C-Down> :m .+1<cr>
+nnoremap <silent><C-Up> :m .-2<cr>
 vnoremap <silent><C-Up> :m .-2<cr>
 nnoremap <silent><leader>c <cmd> Lexplore<cr>
 nnoremap <leader>, <cmd>Telescope<cr>
@@ -83,14 +83,12 @@ nnoremap <leader>bb <cmd>Telescope buffers<cr>
 nnoremap <leader>h <cmd>Telescope help_tags<cr>
 nnoremap <leader>fb <cmd>Telescope file_browser<cr>
 nnoremap <silent><leader>bd <cmd>bd<cr>
-nnoremap <silent><leader>w <cmd>bd<cr>
 " nnoremap <leader>w <cmd>tabclose<cr>
 nnoremap <leader>zz <cmd>ZenMode<cr>
 nnoremap <leader>diff <cmd>DiffviewOpen<cr>
 xmap ga <Plug>(EasyAlign)
 map ga <Plug>(EasyAlign)
 nnoremap <silent><nowait> <leader>k :call CocAction('jumpDefinition', v:false)<CR>
-" nnoremap <silent><nowait> <leader>k <cmd>PreviewDefinition<CR>
 nnoremap <silent><C-`> :ToggleTerm<cr>
 nnoremap <silent><C-/> :Commentary<cr>
 vnoremap <silent><C-/> :Commentary<cr>
@@ -115,6 +113,7 @@ signcolumn = false,
 }
 require("telescope").setup {
 	defaults = {
+    file_ignore_patterns = {"^/home/bens/.local/", "%.git", "%.npm", "%.mozilla", "%.cache", "%node_modules"},
 		},
 	pickers = {
 		find_files = {
