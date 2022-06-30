@@ -1,4 +1,3 @@
-
 "----------------SOURCES---------------
 " *****Place this file here: ~/.config/nvim/init.vim
 source $HOME/.config/nvim/plugin-configs/startify.vim
@@ -63,9 +62,9 @@ Plug 'akinsho/toggleterm.nvim'
 Plug 'neoclide/coc-snippets'
 call plug#end()
 colorscheme monokai_pro
-" let g:tokyonight_style = "storm"
+" let g:tokyonight_style = 
 " colorscheme tokyonight
-" "}}}
+"}}}
 
 "----------------KEYBINDS---------------{{{
 let mapleader = ','                                                                 "|Change leader. Default is \
@@ -94,9 +93,11 @@ nnoremap <silent><nowait> <leader>k :call CocAction('jumpDefinition', v:false)<C
 " nnoremap <silent><nowait> <leader>k <cmd>PreviewDefinition<CR>
 nnoremap <silent><C-`> :ToggleTerm<cr>
 nnoremap <silent><C-/> :Commentary<cr>
+vnoremap <silent><C-/> :Commentary<cr>
 
 ""TODO: INSERT MODE
-"inoremap <C-BS> <cmd>dw<cr>}}}
+"inoremap <C-BS> <cmd>dw<cr>
+"}}}
 
 "----------------SNIPPETS---------------{{{
 "READ command:
@@ -106,6 +107,7 @@ nnoremap <leader>html <cmd>-1read $HOME/.config/nvim/user-snippets/boilerplate.h
 
 "----------------LUA CONFIG---------------{{{
 lua << EOF
+
 require("toggleterm").setup{}
 require('feline').setup()
 require('gitsigns').setup{
@@ -125,15 +127,8 @@ require("telescope").setup {
 EOF
 "}}}
 
-"----------------CUSTOM FUNCTIONS---------------
+"----------------CUSTOM FUNCTIONS---------------{{{
 
-"Silent Binds with cmdheight=0
-
-"function! SilentBind(command) abort
-"set cmdheight=1
-"a:command
-"set cmdheight=0
-"endfunction
 
 " --------------------------------------
 
@@ -151,3 +146,6 @@ function! s:check_back_space() abort
 endfunction
 
 let g:coc_snippet_next = '<tab>'
+
+
+"}}}

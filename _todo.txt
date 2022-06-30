@@ -1,5 +1,9 @@
 Change background number color after applying Monokai Pro
 
+Migrate over to init.lua:
+https://www.notonlycode.org/neovim-lua-config/
+https://github.com/nanotee/nvim-lua-guide#vlua
+
 Ignore directories in find-files: .local
 Get TabNine in here!! :)  https://www.tabnine.com/install/neovim
 COC inline suggestions.
