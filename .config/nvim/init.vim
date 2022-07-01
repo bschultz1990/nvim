@@ -71,7 +71,7 @@ let g:onedark_config = {'style': 'warm'}
 " colorscheme tokyonight
 "}}}
 
-"----------------KEYBINDS---------------{{{
+"----------------KEYMAPS---------------{{{
 let mapleader = ','                                                                 "|Change leader. Default is \
 
 " NORMAL MODE
@@ -101,8 +101,10 @@ nnoremap <silent><C-`> :ToggleTerm<cr>
 nnoremap <silent><C-/> :Commentary<cr>
 vnoremap <silent><C-/> :Commentary<cr>
 
+inoremap <silent><F3> <C-o><cmd>w<cr>
+
 ""TODO: INSERT MODE
-"inoremap <C-BS> <cmd>dw<cr>
+" inoremap <C-BS> <C-o><cmd>dw<cr>
 "}}}
 
 "----------------SNIPPETS---------------{{{

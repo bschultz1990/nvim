@@ -3,7 +3,7 @@ let s:so_save = &g:so | let s:siso_save = &g:siso | setg so=0 siso=0 | setl so=-
 let v:this_session=expand("<sfile>:p")
 silent only
 silent tabonly
-cd ~/Documents/webdevelopmentbootcamp/Projects/dieRoller3
+cd ~/Documents/webdevelopmentbootcamp
 if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
@@ -13,14 +13,13 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +1 ~/Documents/bens/.config/nvim/init.vim
-badd +6 ~/Documents/bens/.config/nvim/coc-settings.json
-badd +19 index.html
-badd +1 styles.css
-badd +1 app.js
+badd +15 Projects/dieRoller3/index.html
+badd +1 Projects/dieRoller3/app.js
+badd +1 Projects/dieRoller3/styles.css
+badd +105 ~/Documents/bens/.config/nvim/init.vim
 argglobal
 %argdel
-edit ~/Documents/bens/.config/nvim/init.vim
+edit Projects/dieRoller3/styles.css
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
@@ -40,31 +39,6 @@ set winwidth=1
 exe 'vert 1resize ' . ((&columns * 96 + 96) / 192)
 exe 'vert 2resize ' . ((&columns * 95 + 96) / 192)
 argglobal
-balt app.js
-setlocal fdm=marker
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-32
-normal! zo
-116
-normal! zo
-let s:l = 121 - ((59 * winheight(0) + 23) / 46)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 121
-normal! 0
-wincmd w
-argglobal
-if bufexists(fnamemodify("index.html", ":p")) | buffer index.html | else | edit index.html | endif
-if &buftype ==# 'terminal'
-  silent file index.html
-endif
 balt ~/Documents/bens/.config/nvim/init.vim
 setlocal fdm=marker
 setlocal fde=0
@@ -74,13 +48,36 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 21 - ((20 * winheight(0) + 23) / 46)
+let s:l = 4 - ((3 * winheight(0) + 23) / 46)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 21
-normal! 0
+keepjumps 4
+normal! 024|
+lcd ~/Documents/webdevelopmentbootcamp
 wincmd w
+argglobal
+enew | setl bt=help
+help :delete@en
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal nofen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 221 - ((45 * winheight(0) + 23) / 46)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 221
+normal! 0
+lcd ~/Documents/webdevelopmentbootcamp
+wincmd w
+2wincmd w
 exe 'vert 1resize ' . ((&columns * 96 + 96) / 192)
 exe 'vert 2resize ' . ((&columns * 95 + 96) / 192)
 tabnext 1
@@ -98,7 +95,6 @@ if filereadable(s:sx)
 endif
 let &g:so = s:so_save | let &g:siso = s:siso_save
 set hlsearch
-nohlsearch
 doautoall SessionLoadPost
 unlet SessionLoad
 " vim: set ft=vim :
