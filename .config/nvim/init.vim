@@ -1,11 +1,5 @@
-"----------------SOURCES---------------
-" *****Place this file here: ~/.config/nvim/init.vim
-source $HOME/.config/nvim/plugin-configs/startify.vim
-luafile $HOME/.config/nvim/plugin-configs/feline/feline.lua
-" source $HOME/.config/nvim/config.lua
 "----------------GENERAL---------------{{{
 " NETRW
-
 let g:python3_host_prog="python3"
 let g:loaded_perl_provider = 0 
 let g:netrw_keepdir=1																		"Keep current dir and browsing dir synced.
@@ -14,13 +8,12 @@ let g:netrw_localcopydircmd = 'cp -r'										"Recursively copy directories
 hi link netrwMarkFile Search
 let g:netrw_liststyle=0																	"0, 1 per line, 1 long w/ size, 2 wide, 3 treenetrw
 
-" set completeopt
 set pumheight=2
+set pumblend=25
 set cursorline
 " set foldcolumn=2 
 set foldmethod=marker
 set termguicolors
-"set cindent
 set autoindent
 set smartindent
 set mouse=a
@@ -40,6 +33,7 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'feline-nvim/feline.nvim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc-snippets'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'sheerun/vim-polyglot'
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
@@ -66,7 +60,6 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'romgrk/barbar.nvim'
 Plug 'akinsho/toggleterm.nvim'
-Plug 'neoclide/coc-snippets'
 Plug 'navarasu/onedark.nvim'
 Plug 'alvan/vim-closetag'
 call plug#end()
@@ -118,34 +111,6 @@ vnoremap <silent><C-/> :Commentary<cr>
 nnoremap <leader>html <cmd>-1read $HOME/.config/nvim/user-snippets/boilerplate.html<CR>12Gi
 "}}}
 
-"----------------LUA CONFIG---------------{{{
-lua << EOF
-
-require("toggleterm").setup{}
-require('feline').setup()
-require('monokai').setup { palette = require('monokai').pro }
---require('monokai').setup { palette = require('monokai').soda }
---require('monokai').setup { palette = require('monokai').ristretto }
-require('gitsigns').setup{
-signcolumn = false,
-}
-require("telescope").setup {
-	defaults = {
-    file_ignore_patterns = {"^/home/bens/.local/", "%.git", "%.npm", "%.mozilla", "%.cache", "%node_modules"},
-		},
-	pickers = {
-    live_grep = {
-      },
-		find_files = {
-			find_command = {"fdfind"},
-			hidden = {true},
-      search_dirs = {"~/"}
-			},
-		}
-	}
-EOF
-"}}}
-
 "----------------CUSTOM FUNCTIONS---------------{{{
 
 
@@ -169,3 +134,9 @@ let g:coc_snippet_next = '<tab>'
 
 "}}}
 
+"----------------SOURCES---------------{{{
+" *****Place this file here: ~/.config/nvim/init.vim
+source $HOME/.config/nvim/plugin-configs/startify.vim
+luafile $HOME/.config/nvim/plugin-configs/feline/feline.lua
+luafile $HOME/.config/nvim/config.lua
+"}}}
