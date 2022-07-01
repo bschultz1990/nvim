@@ -4,7 +4,6 @@ Migrate over to init.lua:
 https://www.notonlycode.org/neovim-lua-config/
 https://github.com/nanotee/nvim-lua-guide#vlua
 
-Get TabNine in here!! :)  https://www.tabnine.com/install/neovim
 COC inline suggestions.
 
 

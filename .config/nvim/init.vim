@@ -1,18 +1,23 @@
 "----------------SOURCES---------------
 " *****Place this file here: ~/.config/nvim/init.vim
 source $HOME/.config/nvim/plugin-configs/startify.vim
+luafile $HOME/.config/nvim/plugin-configs/feline/feline.lua
 " source $HOME/.config/nvim/config.lua
 "----------------GENERAL---------------{{{
 " NETRW
+
 let g:python3_host_prog="python3"
 let g:loaded_perl_provider = 0 
 let g:netrw_keepdir=1																		"Keep current dir and browsing dir synced.
 let g:netrw_winsize=15																	"window split
 let g:netrw_localcopydircmd = 'cp -r'										"Recursively copy directories
 hi link netrwMarkFile Search
-let g:netrw_liststyle=0																	"0, 1 per line, 1 long w/ size, 2 wide, 3 tree
+let g:netrw_liststyle=0																	"0, 1 per line, 1 long w/ size, 2 wide, 3 treenetrw
 
-set foldcolumn=2 
+" set completeopt
+set pumheight=2
+set cursorline
+" set foldcolumn=2 
 set foldmethod=marker
 set termguicolors
 "set cindent
@@ -38,7 +43,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'sheerun/vim-polyglot'
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
-Plug 'phanviet/vim-monokai-pro'
+" Plug 'phanviet/vim-monokai-pro'
+Plug 'tanvirtin/monokai.nvim'
 Plug 'pangloss/vim-javascript'
 Plug 'https://github.com/ap/vim-css-color'
 Plug 'folke/zen-mode.nvim'																" ZenMode
@@ -62,12 +68,11 @@ Plug 'romgrk/barbar.nvim'
 Plug 'akinsho/toggleterm.nvim'
 Plug 'neoclide/coc-snippets'
 Plug 'navarasu/onedark.nvim'
+Plug 'alvan/vim-closetag'
 call plug#end()
 
-let g:onedark_config = {
-    \ 'style': 'warm',
-\}
-colorscheme onedark
+" colorscheme onedark
+let g:onedark_config = {'style': 'warm'}
 " colorscheme monokai_pro
 " let g:tokyonight_style = 
 " colorscheme tokyonight
@@ -118,7 +123,9 @@ lua << EOF
 
 require("toggleterm").setup{}
 require('feline').setup()
-
+require('monokai').setup { palette = require('monokai').pro }
+--require('monokai').setup { palette = require('monokai').soda }
+--require('monokai').setup { palette = require('monokai').ristretto }
 require('gitsigns').setup{
 signcolumn = false,
 }
@@ -127,6 +134,8 @@ require("telescope").setup {
     file_ignore_patterns = {"^/home/bens/.local/", "%.git", "%.npm", "%.mozilla", "%.cache", "%node_modules"},
 		},
 	pickers = {
+    live_grep = {
+      },
 		find_files = {
 			find_command = {"fdfind"},
 			hidden = {true},
@@ -159,3 +168,4 @@ let g:coc_snippet_next = '<tab>'
 
 
 "}}}
+
