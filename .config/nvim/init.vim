@@ -31,7 +31,8 @@ set clipboard+=unnamedplus
 " /home/bens/.local/share/nvim/plugged
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 Plug 'lewis6991/gitsigns.nvim'
-Plug 'feline-nvim/feline.nvim'
+Plug 'glepnir/galaxyline.nvim' , { 'branch': 'main' }
+" Plug 'feline-nvim/feline.nvim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/coc-snippets'
 Plug 'kyazdani42/nvim-web-devicons'
@@ -90,7 +91,10 @@ nnoremap <leader>fb <cmd>Telescope file_browser<cr>
 nnoremap <silent><leader>bd <cmd>bd<cr>
 nnoremap <leader>n <cmd>bn<cr>
 vnoremap <leader>n <cmd><cr>
-nnoremap <leader>vs <cmd>vs<cr>
+nnoremap <leader>vs <cmd>vs<cr><C-w>w
+inoremap <leader>vs <cmd>vs<cr><C-w>w
+nnoremap <leader>sp <cmd>sp<cr><C-w>w
+inoremap <leader>sp <cmd>sp<cr><C-w>w
 " nnoremap <leader>w <cmd>tabclose<cr>
 nnoremap <leader>zz <cmd>ZenMode<cr>
 nnoremap <leader>diff <cmd>DiffviewOpen<cr>
@@ -102,6 +106,8 @@ nnoremap <silent><C-/> :Commentary<cr>
 vnoremap <silent><C-/> :Commentary<cr>
 
 inoremap <silent><F3> <C-o><cmd>w<cr>
+inoremap <silent><ESC> <C-y>
+
 
 ""TODO: INSERT MODE
 " inoremap <C-BS> <C-o><cmd>dw<cr>

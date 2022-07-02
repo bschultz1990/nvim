@@ -15,11 +15,11 @@ else
 endif
 badd +15 Projects/dieRoller3/index.html
 badd +1 Projects/dieRoller3/app.js
-badd +1 Projects/dieRoller3/styles.css
-badd +105 ~/Documents/bens/.config/nvim/init.vim
+badd +6 Projects/dieRoller3/styles.css
+badd +92 ~/Documents/bens/.config/nvim/init.vim
 argglobal
 %argdel
-edit Projects/dieRoller3/styles.css
+edit ~/Documents/bens/.config/nvim/init.vim
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
@@ -36,29 +36,12 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 96 + 96) / 192)
-exe 'vert 2resize ' . ((&columns * 95 + 96) / 192)
-argglobal
-balt ~/Documents/bens/.config/nvim/init.vim
-setlocal fdm=marker
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-let s:l = 4 - ((3 * winheight(0) + 23) / 46)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 4
-normal! 024|
-lcd ~/Documents/webdevelopmentbootcamp
-wincmd w
+exe 'vert 1resize ' . ((&columns * 128 + 128) / 256)
+exe 'vert 2resize ' . ((&columns * 127 + 128) / 256)
 argglobal
 enew | setl bt=help
-help :delete@en
+help :split@en
+balt Projects/dieRoller3/styles.css
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -69,17 +52,37 @@ setlocal fdn=20
 setlocal nofen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 221 - ((45 * winheight(0) + 23) / 46)
+let s:l = 181 - ((21 * winheight(0) + 32) / 65)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 221
-normal! 0
+keepjumps 181
+normal! 053|
+lcd ~/Documents/webdevelopmentbootcamp
+wincmd w
+argglobal
+balt ~/Documents/webdevelopmentbootcamp/Projects/dieRoller3/styles.css
+setlocal fdm=marker
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+74
+normal! zo
+let s:l = 96 - ((95 * winheight(0) + 32) / 65)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 96
+normal! 037|
 lcd ~/Documents/webdevelopmentbootcamp
 wincmd w
 2wincmd w
-exe 'vert 1resize ' . ((&columns * 96 + 96) / 192)
-exe 'vert 2resize ' . ((&columns * 95 + 96) / 192)
+exe 'vert 1resize ' . ((&columns * 128 + 128) / 256)
+exe 'vert 2resize ' . ((&columns * 127 + 128) / 256)
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
@@ -95,6 +98,7 @@ if filereadable(s:sx)
 endif
 let &g:so = s:so_save | let &g:siso = s:siso_save
 set hlsearch
+nohlsearch
 doautoall SessionLoadPost
 unlet SessionLoad
 " vim: set ft=vim :
