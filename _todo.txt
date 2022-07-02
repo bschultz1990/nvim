@@ -9,6 +9,13 @@ COC inline suggestions.
 
 
 
+if nvim is in insert mode,
+	set pumheight=2
+	else
+		setpumheight=0
+		endif
+
+
 
 
 Live Server (NPM probably)
