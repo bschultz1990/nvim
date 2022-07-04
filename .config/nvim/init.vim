@@ -30,23 +30,23 @@ set clipboard+=unnamedplus
 "----------------PLUGINS---------------{{{
 " /home/bens/.local/share/nvim/plugged
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
+Plug 'sainnhe/sonokai'
 Plug 'lewis6991/gitsigns.nvim'
-Plug 'glepnir/galaxyline.nvim' , { 'branch': 'main' }
-" Plug 'feline-nvim/feline.nvim'
+"Plug 'itchyny/lightline.vim'
+Plug 'feline-nvim/feline.nvim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/coc-snippets'
 Plug 'kyazdani42/nvim-web-devicons'
-Plug 'sheerun/vim-polyglot'
+"Plug 'sheerun/vim-polyglot'
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 " Plug 'phanviet/vim-monokai-pro'
 Plug 'tanvirtin/monokai.nvim'
 Plug 'pangloss/vim-javascript'
-Plug 'https://github.com/ap/vim-css-color'
+Plug 'ap/vim-css-color'
 Plug 'folke/zen-mode.nvim'																" ZenMode
 Plug 'folke/twilight.nvim'																" Twilight
 Plug 'KabbAmine/vCoolor.vim'															" Alt+C color picker
 Plug 'fladson/vim-kitty'																	" Kitty config syntax highlighting
-Plug 'sindrets/diffview.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-file-browser.nvim'
@@ -66,10 +66,15 @@ Plug 'alvan/vim-closetag'
 call plug#end()
 
 " colorscheme onedark
-let g:onedark_config = {'style': 'warm'}
+" let g:onedark_config = {'style': 'warm'}
 " colorscheme monokai_pro
 " let g:tokyonight_style = 
 " colorscheme tokyonight
+
+let g:sonokai_style = 'andromeda'
+        let g:sonokai_better_performance = 1
+        colorscheme sonokai
+
 "}}}
 
 "----------------KEYMAPS---------------{{{
