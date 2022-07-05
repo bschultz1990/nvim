@@ -38,8 +38,9 @@ Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 Plug 'navarasu/onedark.nvim'"}}}
 
 "----------------BOTTOM BAR---------------{{{
-"Plug 'itchyny/lightline.vim'
-Plug 'feline-nvim/feline.nvim'"}}}
+Plug 'itchyny/lightline.vim'
+" Plug 'feline-nvim/feline.nvim'"}}}
+
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/coc-snippets'
 Plug 'lewis6991/gitsigns.nvim'
