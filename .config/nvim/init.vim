@@ -168,6 +168,5 @@ let g:coc_snippet_next = '<tab>'
 "----------------SOURCES---------------{{{
 " *****Place this file here: ~/.config/nvim/init.vim
 source $HOME/.config/nvim/plugin-configs/startify.vim
-luafile $HOME/.config/nvim/plugin-configs/feline/feline.lua
 luafile $HOME/.config/nvim/config.lua
 "}}}
