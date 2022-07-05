@@ -13,10 +13,10 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +15 Projects/dieRoller3/index.html
+badd +19 Projects/dieRoller3/index.html
 badd +1 Projects/dieRoller3/app.js
 badd +6 Projects/dieRoller3/styles.css
-badd +92 ~/Documents/bens/.config/nvim/init.vim
+badd +30 ~/Documents/bens/.config/nvim/init.vim
 argglobal
 %argdel
 edit ~/Documents/bens/.config/nvim/init.vim
@@ -36,31 +36,32 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 128 + 128) / 256)
-exe 'vert 2resize ' . ((&columns * 127 + 128) / 256)
+exe 'vert 1resize ' . ((&columns * 83 + 90) / 180)
+exe 'vert 2resize ' . ((&columns * 96 + 90) / 180)
 argglobal
-enew | setl bt=help
-help :split@en
-balt Projects/dieRoller3/styles.css
-setlocal fdm=manual
+setlocal fdm=marker
 setlocal fde=0
 setlocal fmr={{{,}}}
 setlocal fdi=#
 setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
-setlocal nofen
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 181 - ((21 * winheight(0) + 32) / 65)
+setlocal fen
+30
+normal! zo
+let s:l = 30 - ((29 * winheight(0) + 25) / 50)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 181
-normal! 053|
-lcd ~/Documents/webdevelopmentbootcamp
+keepjumps 30
+normal! 0
+lcd ~/Documents/bens/.config/nvim
 wincmd w
 argglobal
+if bufexists(fnamemodify("~/Documents/bens/.config/nvim/init.vim", ":p")) | buffer ~/Documents/bens/.config/nvim/init.vim | else | edit ~/Documents/bens/.config/nvim/init.vim | endif
+if &buftype ==# 'terminal'
+  silent file ~/Documents/bens/.config/nvim/init.vim
+endif
 balt ~/Documents/webdevelopmentbootcamp/Projects/dieRoller3/styles.css
 setlocal fdm=marker
 setlocal fde=0
@@ -70,19 +71,18 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-74
+30
 normal! zo
-let s:l = 96 - ((95 * winheight(0) + 32) / 65)
+let s:l = 50 - ((16 * winheight(0) + 25) / 50)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 96
-normal! 037|
+keepjumps 50
+normal! 0
 lcd ~/Documents/webdevelopmentbootcamp
 wincmd w
-2wincmd w
-exe 'vert 1resize ' . ((&columns * 128 + 128) / 256)
-exe 'vert 2resize ' . ((&columns * 127 + 128) / 256)
+exe 'vert 1resize ' . ((&columns * 83 + 90) / 180)
+exe 'vert 2resize ' . ((&columns * 96 + 90) / 180)
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf

@@ -30,24 +30,27 @@ set clipboard+=unnamedplus
 "----------------PLUGINS---------------{{{
 " /home/bens/.local/share/nvim/plugged
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
+
+"----------------COLOR SCHEMES---------------{{{
 Plug 'sainnhe/sonokai'
-Plug 'lewis6991/gitsigns.nvim'
+" Plug 'phanviet/vim-monokai-pro'
+Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+Plug 'navarasu/onedark.nvim'"}}}
+
+"----------------BOTTOM BAR---------------{{{
 "Plug 'itchyny/lightline.vim'
-Plug 'feline-nvim/feline.nvim'
+Plug 'feline-nvim/feline.nvim'"}}}
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/coc-snippets'
+Plug 'lewis6991/gitsigns.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
-"Plug 'sheerun/vim-polyglot'
-Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
-" Plug 'phanviet/vim-monokai-pro'
-Plug 'tanvirtin/monokai.nvim'
 Plug 'pangloss/vim-javascript'
 Plug 'ap/vim-css-color'
+Plug 'sheerun/vim-polyglot'
+Plug 'KabbAmine/vCoolor.vim'															" Alt+C color picker
 Plug 'folke/zen-mode.nvim'																" ZenMode
 Plug 'folke/twilight.nvim'																" Twilight
-Plug 'KabbAmine/vCoolor.vim'															" Alt+C color picker
 Plug 'fladson/vim-kitty'																	" Kitty config syntax highlighting
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-file-browser.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
@@ -61,7 +64,6 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'romgrk/barbar.nvim'
 Plug 'akinsho/toggleterm.nvim'
-Plug 'navarasu/onedark.nvim'
 Plug 'alvan/vim-closetag'
 call plug#end()
 
