@@ -25,6 +25,8 @@ set noshowcmd
 set cmdheight=1
 set shortmess=F
 set clipboard+=unnamedplus
+set wrap linebreak
+set whichwrap+=<,>,h,l
 "}}}
 
 "----------------PLUGINS---------------{{{
