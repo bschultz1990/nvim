@@ -71,7 +71,7 @@ call plug#end()
 " let g:tokyonight_style = 
 " colorscheme tokyonight
 
-let g:sonokai_style = 'andromeda'
+let g:sonokai_style = 'default'
         let g:sonokai_better_performance = 1
         colorscheme sonokai
 
