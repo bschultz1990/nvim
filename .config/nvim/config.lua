@@ -11,8 +11,7 @@ require("telescope").setup {
     file_ignore_patterns = {"^/home/bens/.local/", "%.git", "%.npm", "%.mozilla", "%.cache", "%node_modules"},
 		},
 	pickers = {
-    live_grep = {
-      },
+    live_grep = {},
 		find_files = {
 			find_command = {"fdfind"},
 			hidden = {true},

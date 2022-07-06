@@ -27,6 +27,7 @@ set shortmess=F
 set clipboard+=unnamedplus
 set wrap linebreak
 set whichwrap+=<,>,h,l
+set ignorecase
 "}}}
 
 "----------------PLUGINS---------------{{{
@@ -68,6 +69,7 @@ Plug 'tpope/vim-surround'
 Plug 'romgrk/barbar.nvim'
 Plug 'akinsho/toggleterm.nvim'
 Plug 'alvan/vim-closetag'
+Plug 'tpope/vim-fugitive'
 call plug#end()
 
 " colorscheme onedark
