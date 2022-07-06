@@ -102,14 +102,13 @@ nnoremap <leader>h <cmd>Telescope help_tags<cr>
 nnoremap <leader>fb <cmd>Telescope file_browser<cr>
 nnoremap <silent><leader>bd <cmd>bd<cr>
 nnoremap <leader>n <cmd>bn<cr>
-vnoremap <leader>n <cmd><cr>
+vnoremap <leader>n <cmd>bn<cr>
 nnoremap <leader>vs <cmd>vs<cr><C-w>w
 inoremap <leader>vs <cmd>vs<cr><C-w>w
 nnoremap <leader>sp <cmd>sp<cr><C-w>w
 inoremap <leader>sp <cmd>sp<cr><C-w>w
 " nnoremap <leader>w <cmd>tabclose<cr>
 nnoremap <leader>zz <cmd>ZenMode<cr>
-nnoremap <leader>diff <cmd>DiffviewOpen<cr>
 xmap ga <Plug>(EasyAlign)
 map ga <Plug>(EasyAlign)
 nnoremap <silent><nowait> <leader>k :call CocAction('jumpDefinition', v:false)<CR>
