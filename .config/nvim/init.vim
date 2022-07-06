@@ -8,7 +8,7 @@ let g:netrw_localcopydircmd = 'cp -r'										"Recursively copy directories
 hi link netrwMarkFile Search
 let g:netrw_liststyle=0																	"0, 1 per line, 1 long w/ size, 2 wide, 3 treenetrw
 
-set pumheight=2
+set pumheight=5
 set pumblend=25
 set cursorline
 " set foldcolumn=2 
