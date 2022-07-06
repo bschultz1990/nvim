@@ -116,7 +116,6 @@ nnoremap <silent><C-`> :ToggleTerm<cr>
 nnoremap <silent><C-/> :Commentary<cr>
 vnoremap <silent><C-/> :Commentary<cr>
 
-
 inoremap <silent><F3> <C-o><cmd>w<cr>
 " inoremap <ESC> <C-o>:call PopupCheck()<CR>
 " Map ESC to menu exit 
