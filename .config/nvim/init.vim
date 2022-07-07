@@ -116,7 +116,6 @@ vnoremap <silent><C-/> :Commentary<cr>
 
 nnoremap <C-CR> i<CR><CR><Up><Tab>
 inoremap <C-CR> <CR><CR><Up><Tab>
-" 2a<CTRL-M><ESC>i<Tab><ESC>pki<Tab>
 
 inoremap <silent><F3> <C-o><cmd>w<cr>
 " inoremap <ESC> <C-o>:call PopupCheck()<CR>
