@@ -126,7 +126,7 @@ alias gpull='git pull'
 alias gs='git status'
 alias ga='git add .'
 alias gc='git commit -m "Added files via CMD"'
-alias gp='git push'
+alias gp='git push origin HEAD' # Push local branch to matching remote branch.
 alias gf='git fetch'
 
 # Custom PATH Additions
