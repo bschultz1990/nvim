@@ -115,6 +115,15 @@ nnoremap <silent><C-`> :ToggleTerm<cr>
 nnoremap <silent><C-/> :Commentary<cr>
 vnoremap <silent><C-/> :Commentary<cr>
 
+nnoremap <silent><leader>cs <cmd>noh<cr>
+nnoremap <silent><F5> <cmd>source ~/.config/nvim/init.vim<cr>
+
+function ReloadConfig() {
+        <cmd>source ~/.config/nvim/init.vim<cr>
+        echo "Reloaded settings."
+                }
+endfunction
+
 "
 nnoremap <C-CR> i<CR><CR><Up><Tab>
 inoremap <C-CR> <CR><CR><Up><Tab>
@@ -133,7 +142,7 @@ inoremap <silent><F3> <C-o><cmd>w<cr>
 nnoremap <leader>html <cmd>-1read $HOME/.config/nvim/user-snippets/boilerplate.html<CR>12Gi
 "}}}
 
-"----------------CUSTOM FUNCTIONS---------------{{{
+"----------------CUSTOM FUNCTIONS-za--------------{{{
 
 
 " --------------------------------------
