@@ -114,25 +114,12 @@ nnoremap <silent><C-`> :ToggleTerm<cr>
 nnoremap <silent><C-/> :Commentary<cr>
 vnoremap <silent><C-/> :Commentary<cr>
 
-" inoremap <silent><leader><cr> <cmd>ldwa<cr><cr><esc>ki
-inoremap <silent><leader><cr> <cmd>ldw<cr>
-function () {}
+nnoremap <leader><e> <cmd>\^V\^V<cr>
+" 2a<CTRL-M><ESC>i<Tab><ESC>pki<Tab>
 
 inoremap <silent><F3> <C-o><cmd>w<cr>
 " inoremap <ESC> <C-o>:call PopupCheck()<CR>
 " Map ESC to menu exit 
-function! PopupCheck() abort
-  if pumvisible()
-    inoremap <silent><ESC> <C-y>
-    nnoremap <silent><ESC> <C-y>
-    echomsg "Closed menu!"
-  else
-    inoremap <silent><ESC> <ESC>
-    nnoremap <silent><ESC> <ESC>
-    echomsg "Nothing changed"
-  endif
-endfunction
-
 
 ""TODO: INSERT MODE
 " inoremap <C-BS> <C-o><cmd>dw<cr>
