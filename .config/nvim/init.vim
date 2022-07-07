@@ -114,7 +114,8 @@ nnoremap <silent><C-`> :ToggleTerm<cr>
 nnoremap <silent><C-/> :Commentary<cr>
 vnoremap <silent><C-/> :Commentary<cr>
 
-nnoremap <leader><e> <cmd>\^V\^V<cr>
+nnoremap <C-CR> i<CR><CR><Up><Tab>
+inoremap <C-CR> <CR><CR><Up><Tab>
 " 2a<CTRL-M><ESC>i<Tab><ESC>pki<Tab>
 
 inoremap <silent><F3> <C-o><cmd>w<cr>
