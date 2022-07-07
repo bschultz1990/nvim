@@ -87,8 +87,7 @@ let g:sonokai_style = 'default'
 "----------------KEYMAPS---------------{{{
 let mapleader = ','                                                                 "|Change leader. Default is \
 
-" NORMAL MODE
-""Move Line Down Or up like VSCode
+"Move Line Down Or up like VSCode
 nnoremap <silent><C-Down> :m .+1<cr>
 vnoremap <silent><C-Down> :m .+1<cr>
 nnoremap <silent><C-Up> :m .-2<cr>
@@ -106,7 +105,6 @@ vnoremap <leader>n <cmd>bn<cr>
 nnoremap <leader>vs <cmd>vs<cr><C-w>w
 inoremap <leader>vs <cmd>vs<cr><C-w>w
 nnoremap <leader>sp <cmd>sp<cr><C-w>w
-inoremap <leader>sp <cmd>sp<cr><C-w>w
 " nnoremap <leader>w <cmd>tabclose<cr>
 nnoremap <leader>zz <cmd>ZenMode<cr>
 xmap ga <Plug>(EasyAlign)
@@ -115,6 +113,10 @@ nnoremap <silent><nowait> <leader>k :call CocAction('jumpDefinition', v:false)<C
 nnoremap <silent><C-`> :ToggleTerm<cr>
 nnoremap <silent><C-/> :Commentary<cr>
 vnoremap <silent><C-/> :Commentary<cr>
+
+" inoremap <silent><leader><cr> <cmd>ldwa<cr><cr><esc>ki
+inoremap <silent><leader><cr> <cmd>ldw<cr>
+function () {}
 
 inoremap <silent><F3> <C-o><cmd>w<cr>
 " inoremap <ESC> <C-o>:call PopupCheck()<CR>
@@ -138,7 +140,7 @@ endfunction
 
 "----------------SNIPPETS---------------{{{
 "READ command:
-"nnoremap ,html <cmd>-1read path/to/file.extension(cursor movement nonsense here)
+"nnoremap ,html <cmd>-1read path/to/file.extension<cr>(cursor movement nonsense here)
 nnoremap <leader>html <cmd>-1read $HOME/.config/nvim/user-snippets/boilerplate.html<CR>12Gi
 "}}}
 
