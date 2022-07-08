@@ -130,7 +130,7 @@ nnoremap <F5> <cmd>source ~/.config/nvim/init.vim<cr>
 
 "
 nnoremap <C-CR> i<CR><CR><Up><BS>
-inoremap <C-CR> <CR><CR><BS><Up><BS><CR>
+inoremap <C-CR> <CR><CR><Up><BS><CR>
 
 nnoremap <silent><F3> <cmd>wa<cr>
 inoremap <silent><F3> <C-o><cmd>wa<cr>
