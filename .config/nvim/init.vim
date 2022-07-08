@@ -1,4 +1,5 @@
 "----------------GENERAL---------------{{{
+"
 " NETRW
 let g:python3_host_prog="python3"
 let g:loaded_perl_provider = 0 
@@ -28,6 +29,9 @@ set clipboard+=unnamedplus
 set wrap linebreak
 set whichwrap+=<,>,h,l
 set ignorecase
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
 "}}}
 
 "----------------PLUGINS---------------{{{
@@ -118,11 +122,11 @@ vnoremap <silent><C-/> :Commentary<cr>
 nnoremap <silent><leader>cs <cmd>noh<cr>
 nnoremap <silent><F5> <cmd>source ~/.config/nvim/init.vim<cr>
 
-function ReloadConfig() {
-        <cmd>source ~/.config/nvim/init.vim<cr>
-        echo "Reloaded settings."
-                }
-endfunction
+" function ReloadConfig() {
+  "<cmd>source ~/.config/nvim/init.vim<cr>
+  "echo Reloaded settings."
+"}
+" endfunction
 
 "
 nnoremap <C-CR> i<CR><CR><Up><Tab>
