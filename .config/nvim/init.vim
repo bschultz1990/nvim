@@ -120,7 +120,7 @@ nnoremap <silent><C-/> :Commentary<cr>
 vnoremap <silent><C-/> :Commentary<cr>
 
 nnoremap <silent><leader>cs <cmd>noh<cr>
-nnoremap <silent><F5> <cmd>source ~/.config/nvim/init.vim<cr>
+nnoremap <F5> <cmd>source ~/.config/nvim/init.vim<cr>
 
 " function ReloadConfig() {
   "<cmd>source ~/.config/nvim/init.vim<cr>
@@ -129,10 +129,11 @@ nnoremap <silent><F5> <cmd>source ~/.config/nvim/init.vim<cr>
 " endfunction
 
 "
-nnoremap <C-CR> i<CR><CR><Up><Tab>
-inoremap <C-CR> <CR><CR><Up><Tab>
+nnoremap <C-CR> i<CR><CR><Up><BS>
+inoremap <C-CR> <CR><CR><BS><Up><BS><CR>
 
-inoremap <silent><F3> <C-o><cmd>w<cr>
+nnoremap <silent><F3> <cmd>wa<cr>
+inoremap <silent><F3> <C-o><cmd>wa<cr>
 " inoremap <ESC> <C-o>:call PopupCheck()<CR>
 " Map ESC to menu exit 
 
