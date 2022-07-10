@@ -13,14 +13,18 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +1 commercial_invoice.css
-badd +10 commercial_invoice.html
-badd +20 commercial_invoice.js
+badd +213 commercial_invoice.css
+badd +105 commercial_invoice.html
+badd +4 commercial_invoice.js
+badd +31 term://~/Documents/Commercial_Invoice//4583:/bin/bash
 argglobal
 %argdel
-edit commercial_invoice.html
 argglobal
-balt commercial_invoice.css
+if bufexists(fnamemodify("term://~/Documents/Commercial_Invoice//4583:/bin/bash", ":p")) | buffer term://~/Documents/Commercial_Invoice//4583:/bin/bash | else | edit term://~/Documents/Commercial_Invoice//4583:/bin/bash | endif
+if &buftype ==# 'terminal'
+  silent file term://~/Documents/Commercial_Invoice//4583:/bin/bash
+endif
+balt commercial_invoice.js
 setlocal fdm=marker
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -29,12 +33,12 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 45 - ((44 * winheight(0) + 31) / 62)
+let s:l = 31 - ((30 * winheight(0) + 31) / 63)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 45
-normal! 06|
+keepjumps 31
+normal! 054|
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
