@@ -13,18 +13,33 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +213 commercial_invoice.css
-badd +105 commercial_invoice.html
-badd +4 commercial_invoice.js
-badd +31 term://~/Documents/Commercial_Invoice//4583:/bin/bash
+badd +208 commercial_invoice.css
+badd +86 commercial_invoice.html
+badd +42 commercial_invoice.js
+badd +19 term://~/Documents/Commercial_Invoice//6519:/bin/bash
 argglobal
 %argdel
+edit commercial_invoice.js
+let s:save_splitbelow = &splitbelow
+let s:save_splitright = &splitright
+set splitbelow splitright
+wincmd _ | wincmd |
+vsplit
+1wincmd h
+wincmd w
+let &splitbelow = s:save_splitbelow
+let &splitright = s:save_splitright
+wincmd t
+let s:save_winminheight = &winminheight
+let s:save_winminwidth = &winminwidth
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+exe 'vert 1resize ' . ((&columns * 160 + 160) / 320)
+exe 'vert 2resize ' . ((&columns * 159 + 160) / 320)
 argglobal
-if bufexists(fnamemodify("term://~/Documents/Commercial_Invoice//4583:/bin/bash", ":p")) | buffer term://~/Documents/Commercial_Invoice//4583:/bin/bash | else | edit term://~/Documents/Commercial_Invoice//4583:/bin/bash | endif
-if &buftype ==# 'terminal'
-  silent file term://~/Documents/Commercial_Invoice//4583:/bin/bash
-endif
-balt commercial_invoice.js
+balt term://~/Documents/Commercial_Invoice//6519:/bin/bash
 setlocal fdm=marker
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -33,12 +48,36 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 31 - ((30 * winheight(0) + 31) / 63)
+let s:l = 42 - ((41 * winheight(0) + 36) / 72)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 31
-normal! 054|
+keepjumps 42
+normal! 028|
+wincmd w
+argglobal
+if bufexists(fnamemodify("commercial_invoice.html", ":p")) | buffer commercial_invoice.html | else | edit commercial_invoice.html | endif
+if &buftype ==# 'terminal'
+  silent file commercial_invoice.html
+endif
+balt commercial_invoice.css
+setlocal fdm=marker
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+let s:l = 91 - ((18 * winheight(0) + 36) / 72)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 91
+normal! 018|
+wincmd w
+exe 'vert 1resize ' . ((&columns * 160 + 160) / 320)
+exe 'vert 2resize ' . ((&columns * 159 + 160) / 320)
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
@@ -46,6 +85,8 @@ endif
 unlet! s:wipebuf
 set winheight=1 winwidth=20
 let &shortmess = s:shortmess_save
+let &winminheight = s:save_winminheight
+let &winminwidth = s:save_winminwidth
 let s:sx = expand("<sfile>:p:r")."x.vim"
 if filereadable(s:sx)
   exe "source " . fnameescape(s:sx)
