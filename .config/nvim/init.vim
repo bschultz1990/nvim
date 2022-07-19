@@ -74,6 +74,7 @@ Plug 'romgrk/barbar.nvim'
 Plug 'akinsho/toggleterm.nvim'
 Plug 'alvan/vim-closetag'
 Plug 'tpope/vim-fugitive'
+Plug 'tmhedberg/matchit'
 call plug#end()
 
 " colorscheme onedark
@@ -96,7 +97,7 @@ nnoremap <silent><C-Down> :m .+1<cr>
 vnoremap <silent><C-Down> :m .+1<cr>
 nnoremap <silent><C-Up> :m .-2<cr>
 vnoremap <silent><C-Up> :m .-2<cr>
-nnoremap <silent><leader>c <cmd> Lexplore<cr>
+nnoremap <silent><leader>c <cmd> Explore<cr>
 nnoremap <leader>, <cmd>Telescope<cr>
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
@@ -107,7 +108,8 @@ nnoremap <silent><leader>bd <cmd>bd<cr>
 nnoremap <C-Tab>n <cmd>bn<cr>
 vnoremap <C-Tab>n <cmd>bn<cr>
 inoremap <C-Tab>n <cmd>bn<cr>
-nnoremap <leader>vs <cmd>vs<cr><C-w>w
+" nnoremap <leader>vs <cmd>vs<cr><C-w>w
+nnoremap <leader>vs <cmd>vs<cr>
 inoremap <leader>vs <cmd>vs<cr><C-w>w
 nnoremap <leader>sp <cmd>sp<cr><C-w>w
 " nnoremap <leader>w <cmd>tabclose<cr>
@@ -174,4 +176,5 @@ let g:coc_snippet_next = '<tab>'
 " *****Place this file here: ~/.config/nvim/init.vim
 source $HOME/.config/nvim/plugin-configs/startify.vim
 luafile $HOME/.config/nvim/config.lua
+
 "}}}

@@ -128,9 +128,7 @@ alias ga='git add .'
 alias gc='git commit -m "Added files via CMD"'
 alias gp='git push origin HEAD' # Push local branch to matching remote branch.
 alias gf='git fetch'
+alias fnkeys='echo 0 | sudo tee /sys/module/hid_apple/parameters/fnmode'
 
 # Custom PATH Additions
 export PATH="$HOME/.local/bin:$PATH"
-
-# Custom Commands
-# echo 0 | sudo tee /sys/module/hid_apple/parameters/fnmode
