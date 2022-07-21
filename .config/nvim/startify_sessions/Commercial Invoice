@@ -13,16 +13,14 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +46 commercial_invoice.css
-badd +169 commercial_invoice.html
-badd +22 commercial_invoice.js
-badd +5 term://~/Documents/Commercial_Invoice//7714:/bin/bash
-badd +63 ~/Documents/bens/.config/nvim/init.vim
+badd +92 ~/Documents/bens/.config/nvim/init.vim
+badd +28 commercial_invoice.css
+badd +143 commercial_invoice.html
+badd +31 commercial_invoice.js
 argglobal
 %argdel
-edit commercial_invoice.css
+edit commercial_invoice.js
 argglobal
-balt commercial_invoice.html
 setlocal fdm=marker
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -31,12 +29,12 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 52 - ((26 * winheight(0) + 21) / 42)
+let s:l = 31 - ((22 * winheight(0) + 23) / 46)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 52
-normal! 022|
+keepjumps 31
+normal! 046|
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
@@ -50,6 +48,7 @@ if filereadable(s:sx)
 endif
 let &g:so = s:so_save | let &g:siso = s:siso_save
 set hlsearch
+nohlsearch
 doautoall SessionLoadPost
 unlet SessionLoad
 " vim: set ft=vim :

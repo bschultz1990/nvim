@@ -88,8 +88,8 @@ let g:sonokai_style = 'default'
 
 " nightfox, dayfox, dawnfox, duskfox, nordfox, terafox
 " PaperColor, sonokai
-set background=light
-colorscheme PaperColor
+" set background=light
+colorscheme duskfox
 "}}}
 
 "----------------KEYMAPS---------------{{{
