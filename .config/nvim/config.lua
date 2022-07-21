@@ -1,14 +1,11 @@
 require("toggleterm").setup{}
 -- require('feline').setup()
--- require('monokai').setup { palette = require('monokai').pro }
---require('monokai').setup { palette = require('monokai').soda }
---require('monokai').setup { palette = require('monokai').ristretto }
 require('gitsigns').setup{
 signcolumn = false,
 }
 require("telescope").setup {
 	defaults = {
-    file_ignore_patterns = {"^/home/bens/.local/", "%.git", "%.npm", "%.mozilla", "%.cache", "%node_modules"},
+    file_ignore_patterns = {"^/home/bens/.local/", "^home/bens/.var/", "%.git", "%.npm", "%.mozilla", "%.cache", "%node_modules"},
 		},
 	pickers = {
     live_grep = {},

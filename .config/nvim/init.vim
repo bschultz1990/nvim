@@ -42,11 +42,14 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 Plug 'sainnhe/sonokai'
 " Plug 'phanviet/vim-monokai-pro'
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
-Plug 'navarasu/onedark.nvim'"}}}
+Plug 'EdenEast/nightfox.nvim'
+Plug 'kjssad/quantum.vim'
+Plug 'NLKNguyen/papercolor-theme'
+"}}}
 
 "----------------BOTTOM BAR---------------{{{
-Plug 'itchyny/lightline.vim'
-" Plug 'feline-nvim/feline.nvim'"}}}
+" Plug 'itchyny/lightline.vim'
+Plug 'vim-airline/vim-airline'"}}}
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/coc-snippets'
@@ -74,19 +77,19 @@ Plug 'romgrk/barbar.nvim'
 Plug 'akinsho/toggleterm.nvim'
 Plug 'alvan/vim-closetag'
 Plug 'tpope/vim-fugitive'
+Plug 'preservim/vim-colors-pencil'
 Plug 'tmhedberg/matchit'
 call plug#end()
 
-" colorscheme onedark
-" let g:onedark_config = {'style': 'warm'}
-" colorscheme monokai_pro
-" let g:tokyonight_style = 
-" colorscheme tokyonight
-
+let g:onedark_config = {'style': 'warm'}
+" sonokai_style options: default, atlantis, andromeda, shusia, maia, espresso
 let g:sonokai_style = 'default'
         let g:sonokai_better_performance = 1
-        colorscheme sonokai
 
+" nightfox, dayfox, dawnfox, duskfox, nordfox, terafox
+" PaperColor, sonokai
+set background=light
+colorscheme PaperColor
 "}}}
 
 "----------------KEYMAPS---------------{{{
@@ -106,10 +109,7 @@ nnoremap <leader>bb <cmd>Telescope buffers<cr>
 nnoremap <leader>h <cmd>Telescope help_tags<cr>
 nnoremap <leader>fb <cmd>Telescope file_browser<cr>
 nnoremap <silent><leader>bd <cmd>bd<cr>
-nnoremap <C-Tab>n <cmd>bn<cr>
-vnoremap <C-Tab>n <cmd>bn<cr>
-inoremap <C-Tab>n <cmd>bn<cr>
-" nnoremap <leader>vs <cmd>vs<cr><C-w>w
+nnoremap <leader>n :bn<cr>
 nnoremap <leader>vs <cmd>vs<cr>
 inoremap <leader>vs <cmd>vs<cr><C-w>w
 nnoremap <leader>sp <cmd>sp<cr><C-w>w
@@ -150,7 +150,7 @@ inoremap <silent><F3> <C-o><cmd>wa<cr>
 nnoremap <leader>html <cmd>-1read $HOME/.config/nvim/user-snippets/boilerplate.html<CR>12Gi
 "}}}
 
-"----------------CUSTOM FUNCTIONS-za--------------{{{
+"----------------CUSTOM FUNCTIONS---------------{{{
 
 
 " --------------------------------------
