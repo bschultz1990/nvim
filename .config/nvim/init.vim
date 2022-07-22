@@ -13,7 +13,10 @@ set pumheight=5
 set pumblend=25
 set cursorline
 " set foldcolumn=2 
-set foldmethod=marker
+set foldmethod=manual
+setlocal foldmethod=indent
+set nofoldenable
+set foldlevel=99
 set termguicolors
 set autoindent
 set smartindent
@@ -38,18 +41,18 @@ set softtabstop=2
 " /home/bens/.local/share/nvim/plugged
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 
-"----------------COLOR SCHEMES---------------{{{
-Plug 'sainnhe/sonokai'
-" Plug 'phanviet/vim-monokai-pro'
-Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
-Plug 'EdenEast/nightfox.nvim'
-Plug 'kjssad/quantum.vim'
-Plug 'NLKNguyen/papercolor-theme'
-"}}}
+  "----------------COLOR SCHEMES---------------
+  Plug 'sainnhe/sonokai'
+  " Plug 'phanviet/vim-monokai-pro'
+  Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+  Plug 'EdenEast/nightfox.nvim'
+  Plug 'kjssad/quantum.vim'
+  Plug 'NLKNguyen/papercolor-theme'
 
-"----------------BOTTOM BAR---------------{{{
+
+"----------------BOTTOM BAR---------------
 " Plug 'itchyny/lightline.vim'
-Plug 'vim-airline/vim-airline'"}}}
+Plug 'vim-airline/vim-airline'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/coc-snippets'
@@ -89,7 +92,7 @@ let g:sonokai_style = 'default'
 " nightfox, dayfox, dawnfox, duskfox, nordfox, terafox
 " PaperColor, sonokai
 " set background=light
-colorscheme duskfox
+colorscheme sonokai
 "}}}
 
 "----------------KEYMAPS---------------{{{
