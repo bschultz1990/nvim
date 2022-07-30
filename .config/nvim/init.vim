@@ -3,7 +3,7 @@
 " NETRW
 let g:python3_host_prog="python3"
 let g:loaded_perl_provider = 0 
-let g:netrw_keepdir=1																		"Keep current dir and browsing dir synced.
+" let g:netrw_keepdir=1																		"Keep current dir and browsing dir synced.
 let g:netrw_winsize=15																	"window split
 let g:netrw_localcopydircmd = 'cp -r'										"Recursively copy directories
 hi link netrwMarkFile Search
@@ -103,8 +103,9 @@ nnoremap <silent><C-Down> :m .+1<cr>
 vnoremap <silent><C-Down> :m .+1<cr>
 nnoremap <silent><C-Up> :m .-2<cr>
 vnoremap <silent><C-Up> :m .-2<cr>
-nnoremap <silent><leader>c <cmd>Lexplore<cr>
+nnoremap <nowait> <leader>c <cmd>Lexplore<cr>
 nnoremap <silent><leader>st :Startify<cr>
+nnoremap <silent><leader>ls :terminal<cr>ilive-server<cr>
 nnoremap <leader>, <cmd>Telescope<cr>
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
