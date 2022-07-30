@@ -18,6 +18,94 @@ setlocal foldmethod=indent
 set nofoldenable
 set foldlevel=99
 set termguicolors
+set autoindent
+set smartindent
+set mouse=a
+set number
+" set relativenumber
+set noruler
+set noshowmode
+set noshowcmd
+set cmdheight=1
+set shortmess=F
+set clipboard+=unnamedplus
+set wrap linebreak
+set whichwrap+=<,>,h,l
+set ignorecase
+" set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+"}}}
+
+"----------------PLUGINS---------------{{{
+" /home/bens/.local/share/nvim/plugged
+call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
+
+  "----------------COLOR SCHEMES---------------
+  Plug 'sainnhe/sonokai'
+  " Plug 'phanviet/vim-monokai-pro'
+  Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+  Plug 'EdenEast/nightfox.nvim'
+  Plug 'kjssad/quantum.vim'
+  Plug 'NLKNguyen/papercolor-theme'
+
+
+"----------------BOTTOM BAR---------------
+" Plug 'itchyny/lightline.vim'
+Plug 'vim-airline/vim-airline'
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc-snippets'
+Plug 'lewis6991/gitsigns.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'pangloss/vim-javascript'
+Plug 'ap/vim-css-color'
+Plug 'sheerun/vim-polyglot'
+Plug 'KabbAmine/vCoolor.vim'															" Alt+C color picker
+Plug 'folke/zen-mode.nvim'																" ZenMode
+Plug 'folke/twilight.nvim'																" Twilight
+Plug 'fladson/vim-kitty'																	" Kitty config syntax highlighting
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-file-browser.nvim'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'mhinz/vim-startify'
+Plug 'junegunn/vim-easy-align'
+"Plug 'sudormrfbin/cheatsheet.nvim'
+Plug 'bschultz1990/cheatsheet.nvim'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
+Plug 'romgrk/barbar.nvim'
+Plug 'akinsho/toggleterm.nvim'
+Plug 'alvan/vim-closetag'
+Plug 'tpope/vim-fugitive'
+Plug 'preservim/vim-colors-pencil'
+Plug 'tmhedberg/matchit'
+call plug#end()
+
+let g:onedark_config = {'style': 'warm'}
+" sonokai_style options: default, atlantis, andromeda, shusia, maia, espresso
+let g:sonokai_style = 'default'
+        let g:sonokai_better_performance = 1
+
+" nightfox, dayfox, dawnfox, duskfox, nordfox, terafox
+" PaperColor, sonokai
+" set background=light
+colorscheme sonokai
+"}}}
+
+"----------------KEYMAPS---------------{{{
+let mapleader = ','                                                                 "|Change leader. Default is \
+
+"Move Line Down Or up like VSCode
+nnoremap <silent><C-Down> :m .+1<cr>
+vnoremap <silent><C-Down> :m .+1<cr>
+nnoremap <silent><C-Up> :m .-2<cr>
+vnoremap <silent><C-Up> :m .-2<cr>
+nnoremap <nowait> <leader>c <cmd>Lexplore<cr>
+nnoremap <silent><leader>st :Startify<cr>
+nnoremap <silent><leader>ls :terminal<cr>ilive-server<cr>
 nnoremap <leader>, <cmd>Telescope<cr>
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
@@ -25,9 +113,9 @@ nnoremap <leader>bb <cmd>Telescope buffers<cr>
 nnoremap <leader>h <cmd>Telescope help_tags<cr>
 nnoremap <leader>fb <cmd>Telescope file_browser<cr>
 nnoremap <silent><leader>bd <cmd>bd<cr>
-nnoremap <silent><leader>bc <cmd>BufferClose<cr>
 nnoremap <leader>n :bn<cr>
 nnoremap <leader>vs <cmd>vs<cr>
+inoremap <leader>vs <cmd>vs<cr><C-w>w
 nnoremap <leader>sp <cmd>sp<cr><C-w>w
 " nnoremap <leader>w <cmd>tabclose<cr>
 nnoremap <leader>zz <cmd>ZenMode<cr>
@@ -53,6 +141,8 @@ inoremap <C-CR> <CR><CR><Up><BS><CR>
 
 nnoremap <silent><F3> <cmd>wa<cr>
 inoremap <silent><F3> <C-o><cmd>wa<cr>
+" inoremap <ESC> <C-o>:call PopupCheck()<CR>
+" Map ESC to menu exit 
 
 ""TODO: INSERT MODE
 " inoremap <C-BS> <C-o><cmd>dw<cr>
@@ -93,3 +183,4 @@ source $HOME/.config/nvim/plugin-configs/startify.vim
 luafile $HOME/.config/nvim/config.lua
 
 "}}}
+
