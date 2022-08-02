@@ -129,7 +129,7 @@ alias gc='git commit -m "Added files via CMD"'
 alias gp='git push origin HEAD' # Push local branch to matching remote branch.
 alias gf='git fetch'
 alias fnkeys='echo 0 | sudo tee /sys/module/hid_apple/parameters/fnmode'
-alias eses='xfreerdp /u:"bens" /v:192.168.10.22 /g:remote.pellethead.com -themes /monitors:0,2 /multimon:force +auto-reconnect /auto-reconnect-max-retries:10 +bitmap-cache /compression-level:3 /network:modem'
+alias eses='xfreerdp /u:"bens" /v:192.168.10.22 /g:remote.pellethead.com -themes /monitors:2,1 /multimon:force +auto-reconnect /auto-reconnect-max-retries:10 +bitmap-cache /compression-level:3 /network:modem'
 alias eses-all='xfreerdp /u:"bens" /v:192.168.10.22 /g:remote.pellethead.com -themes /multimon:force +auto-reconnect /auto-reconnect-max-retries:10 +bitmap-cache /compression-level:3 /network:modem'
 
 # Custom PATH Additions

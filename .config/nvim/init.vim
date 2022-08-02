@@ -13,7 +13,7 @@ set pumheight=5
 set pumblend=25
 set cursorline
 " set foldcolumn=2 
-set foldmethod=manual
+" set foldmethod=manual
 setlocal foldmethod=indent
 set nofoldenable
 set foldlevel=99
@@ -86,7 +86,7 @@ call plug#end()
 
 let g:onedark_config = {'style': 'warm'}
 " sonokai_style options: default, atlantis, andromeda, shusia, maia, espresso
-let g:sonokai_style = 'default'
+let g:sonokai_style = 'maia'
         let g:sonokai_better_performance = 1
 
 " nightfox, dayfox, dawnfox, duskfox, nordfox, terafox
@@ -103,6 +103,7 @@ nnoremap <silent><C-Down> :m .+1<cr>
 vnoremap <silent><C-Down> :m .+1<cr>
 nnoremap <silent><C-Up> :m .-2<cr>
 vnoremap <silent><C-Up> :m .-2<cr>
+nnoremap <silent><leader><C-,> <cmd> edit $MYVIMRC<cr>
 nnoremap <nowait> <leader>c <cmd>Lexplore<cr>
 nnoremap <silent><leader>st :Startify<cr>
 nnoremap <silent><leader>ls :terminal<cr>ilive-server<cr>
