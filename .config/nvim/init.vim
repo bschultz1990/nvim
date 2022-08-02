@@ -129,22 +129,11 @@ vnoremap <silent><C-/> :Commentary<cr>
 
 nnoremap <silent><leader>cs <cmd>noh<cr>
 nnoremap <F5> <cmd>source ~/.config/nvim/init.vim<cr>
-
-" function ReloadConfig() {
-  "<cmd>source ~/.config/nvim/init.vim<cr>
-  "echo Reloaded settings."
-"}
-" endfunction
-
-"
 nnoremap <C-CR> i<CR><CR><Up><BS>
 inoremap <C-CR> <CR><CR><Up><BS><CR>
 
 nnoremap <silent><F3> <cmd>wa<cr>
 inoremap <silent><F3> <C-o><cmd>wa<cr>
-" inoremap <ESC> <C-o>:call PopupCheck()<CR>
-" Map ESC to menu exit 
-
 ""TODO: INSERT MODE
 " inoremap <C-BS> <C-o><cmd>dw<cr>
 "}}}
