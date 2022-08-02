@@ -22,7 +22,7 @@ set autoindent
 set smartindent
 set mouse=a
 set number
-" set relativenumber
+set relativenumber
 set noruler
 set noshowmode
 set noshowcmd
@@ -96,7 +96,7 @@ colorscheme sonokai
 "}}}
 
 "----------------KEYMAPS---------------{{{
-let mapleader = ','                                                                 "|Change leader. Default is \
+let mapleader = ','                       "|Change leader. Default is \
 
 "Move Line Down Or up like VSCode
 nnoremap <silent><C-Down> :m .+1<cr>
@@ -114,7 +114,7 @@ nnoremap <leader>bb <cmd>Telescope buffers<cr>
 nnoremap <leader>h <cmd>Telescope help_tags<cr>
 nnoremap <leader>fb <cmd>Telescope file_browser<cr>
 nnoremap <silent><leader>bd <cmd>bd<cr>
-nnoremap <leader>n :bn<cr>
+nnoremap <silent><leader>n :bn<cr>
 nnoremap <leader>vs <cmd>vs<cr>
 inoremap <leader>vs <cmd>vs<cr><C-w>w
 nnoremap <leader>sp <cmd>sp<cr><C-w>w
