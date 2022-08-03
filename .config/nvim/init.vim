@@ -104,7 +104,7 @@ vnoremap <silent><C-Down> :m .+1<cr>
 nnoremap <silent><C-Up> :m .-2<cr>
 vnoremap <silent><C-Up> :m .-2<cr>
 nnoremap <silent><leader><C-,> <cmd> edit $MYVIMRC<cr>
-nnoremap <nowait> <leader>c <cmd>Lexplore<cr>
+nnoremap <nowait> <leader>c <cmd>Explore<cr>
 nnoremap <silent><leader>st :Startify<cr>
 nnoremap <silent><leader>ls :terminal<cr>ilive-server<cr>
 nnoremap <leader>, <cmd>Telescope<cr>
@@ -114,6 +114,7 @@ nnoremap <leader>bb <cmd>Telescope buffers<cr>
 nnoremap <leader>h <cmd>Telescope help_tags<cr>
 nnoremap <leader>fb <cmd>Telescope file_browser<cr>
 nnoremap <silent><leader>bd <cmd>bd<cr>
+nnoremap <silent><leader>bd! <cmd>bd!<cr>
 nnoremap <silent><leader>n :bn<cr>
 nnoremap <leader>vs <cmd>vs<cr>
 inoremap <leader>vs <cmd>vs<cr><C-w>w
