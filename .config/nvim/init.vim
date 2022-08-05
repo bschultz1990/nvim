@@ -149,8 +149,9 @@ nnoremap <leader>html <cmd>-1read $HOME/.config/nvim/user-snippets/boilerplate.h
 
 " --------------------------------------
 
-" New in CoC #3862: Tab to complete using custom menu.
+" New in CoC #3862: Tab completion and ESC to hide completion menu.
 inoremap <silent><expr> <TAB> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+inoremap <silent><expr> <ESC> coc#pum#visible() ? coc#pum#cancel() : "\<ESC>"
 "}}}
 
 "----------------SOURCES---------------{{{
