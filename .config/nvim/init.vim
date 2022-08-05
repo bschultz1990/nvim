@@ -8,9 +8,8 @@ let g:netrw_winsize=15																	"window split
 let g:netrw_localcopydircmd = 'cp -r'										"Recursively copy directories
 hi link netrwMarkFile Search
 let g:netrw_liststyle=0																	"0, 1 per line, 1 long w/ size, 2 wide, 3 treenetrw
-
-set pumheight=5
-set pumblend=25
+set pumheight=3
+set pumblend=12
 set cursorline
 " set foldcolumn=2 
 " set foldmethod=manual
@@ -150,28 +149,13 @@ nnoremap <leader>html <cmd>-1read $HOME/.config/nvim/user-snippets/boilerplate.h
 
 " --------------------------------------
 
-"COC - USE TAB FOR COMPLETION
-" use <tab> for trigger completion and navigate to the next complete item
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? coc#_select_confirm() :
-      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-let g:coc_snippet_next = '<tab>'
-
-
+" New in CoC #3862: Tab to complete using custom menu.
+inoremap <silent><expr> <TAB> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 "}}}
 
 "----------------SOURCES---------------{{{
 " *****Place this file here: ~/.config/nvim/init.vim
 source $HOME/.config/nvim/plugin-configs/startify.vim
 luafile $HOME/.config/nvim/config.lua
-
 "}}}
 
