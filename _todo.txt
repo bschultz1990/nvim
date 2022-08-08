@@ -1,29 +1,9 @@
-Change background number color after applying Monokai Pro
-
 Migrate over to init.lua:
 https://www.notonlycode.org/neovim-lua-config/
 https://github.com/nanotee/nvim-lua-guide#vlua
 
 COC inline suggestions.
 
-
-
-
-if nvim is in insert mode,
-	set pumheight=2
-	else
-		setpumheight=0
-		endif
-
-
-
-
-Live Server (NPM probably)
-
-TMux Sessions workflow??
-
 Put this list in Startify!
-
 Delete whole words in INSERT mode.
-
-Window manager
+i3 Window manager

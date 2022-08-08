@@ -1,14 +1,13 @@
-"----------------GENERAL---------------{{{
-"
+"----------------GENERAL----------------
 " NETRW
 let g:python3_host_prog="python3"
 let g:loaded_perl_provider = 0 
-" let g:netrw_keepdir=1																		"Keep current dir and browsing dir synced.
-let g:netrw_winsize=15																	"window split
-let g:netrw_localcopydircmd = 'cp -r'										"Recursively copy directories
+let g:netrw_keepdir=1								"Keep current dir and browsing dir synced.
+let g:netrw_winsize=15							"window split
+let g:netrw_localcopydircmd = 'cp -r'	"Recursively copy directories
 hi link netrwMarkFile Search
 let g:netrw_liststyle=0																	"0, 1 per line, 1 long w/ size, 2 wide, 3 treenetrw
-set pumheight=3
+set pumheight=5
 set pumblend=12
 set cursorline
 " set foldcolumn=2 
@@ -34,9 +33,8 @@ set ignorecase
 " set tabstop=2
 set shiftwidth=2
 set softtabstop=2
-"}}}
 
-"----------------PLUGINS---------------{{{
+"----------------PLUGINS----------------
 " /home/bens/.local/share/nvim/plugged
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 
@@ -92,9 +90,8 @@ let g:sonokai_style = 'maia'
 " PaperColor, sonokai
 " set background=light
 colorscheme sonokai
-"}}}
 
-"----------------KEYMAPS---------------{{{
+"----------------KEYMAPS----------------
 let mapleader = ','                       "|Change leader. Default is \
 
 "Move Line Down Or up like VSCode
@@ -136,15 +133,13 @@ nnoremap <silent><F3> <cmd>wa<cr>
 inoremap <silent><F3> <C-o><cmd>wa<cr>
 ""TODO: INSERT MODE
 " inoremap <C-BS> <C-o><cmd>dw<cr>
-"}}}
 
-"----------------SNIPPETS---------------{{{
+"----------------SNIPPETS----------------
 "READ command:
-"nnoremap ,html <cmd>-1read path/to/file.extension<cr>(cursor movement nonsense here)
+"nnoremap ,html <cmd>-1read path/to/file.extension<cr>[cursor movement nonsense here]
 nnoremap <leader>html <cmd>-1read $HOME/.config/nvim/user-snippets/boilerplate.html<CR>12Gi
-"}}}
 
-"----------------CUSTOM FUNCTIONS---------------{{{
+"----------------CUSTOM FUNCTIONS----------------
 
 
 " --------------------------------------
@@ -152,11 +147,9 @@ nnoremap <leader>html <cmd>-1read $HOME/.config/nvim/user-snippets/boilerplate.h
 " New in CoC #3862: Tab completion and ESC to hide completion menu.
 inoremap <silent><expr> <TAB> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 inoremap <silent><expr> <ESC> coc#pum#visible() ? coc#pum#cancel() : "\<ESC>"
-"}}}
 
-"----------------SOURCES---------------{{{
+"----------------SOURCES----------------
 " *****Place this file here: ~/.config/nvim/init.vim
 source $HOME/.config/nvim/plugin-configs/startify.vim
 luafile $HOME/.config/nvim/config.lua
-"}}}
 
