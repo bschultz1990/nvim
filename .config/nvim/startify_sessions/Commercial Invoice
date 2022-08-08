@@ -13,32 +13,13 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +157 ~/Documents/bens/.config/nvim/init.vim
 badd +28 commercial_invoice.css
 badd +8 commercial_invoice.html
-badd +55 commercial_invoice.js
+badd +56 commercial_invoice.js
 badd +4 term://~/Documents/Commercial_Invoice//17076:/bin/bash
 argglobal
 %argdel
 edit commercial_invoice.js
-let s:save_splitbelow = &splitbelow
-let s:save_splitright = &splitright
-set splitbelow splitright
-wincmd _ | wincmd |
-split
-1wincmd k
-wincmd w
-let &splitbelow = s:save_splitbelow
-let &splitright = s:save_splitright
-wincmd t
-let s:save_winminheight = &winminheight
-let s:save_winminwidth = &winminwidth
-set winminheight=0
-set winheight=1
-set winminwidth=0
-set winwidth=1
-exe '1resize ' . ((&lines * 53 + 34) / 69)
-exe '2resize ' . ((&lines * 12 + 34) / 69)
 argglobal
 setlocal fdm=marker
 setlocal fde=0
@@ -48,37 +29,12 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 55 - ((34 * winheight(0) + 26) / 53)
+let s:l = 56 - ((32 * winheight(0) + 32) / 65)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 55
-normal! 017|
-wincmd w
-argglobal
-if bufexists(fnamemodify("term://~/Documents/Commercial_Invoice//19555:/bin/bash;\#toggleterm\#1", ":p")) | buffer term://~/Documents/Commercial_Invoice//19555:/bin/bash;\#toggleterm\#1 | else | edit term://~/Documents/Commercial_Invoice//19555:/bin/bash;\#toggleterm\#1 | endif
-if &buftype ==# 'terminal'
-  silent file term://~/Documents/Commercial_Invoice//19555:/bin/bash;\#toggleterm\#1
-endif
-balt commercial_invoice.js
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=99
-setlocal fml=1
-setlocal fdn=20
-setlocal nofen
-let s:l = 19 - ((1 * winheight(0) + 6) / 12)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 19
-normal! 059|
-wincmd w
-2wincmd w
-exe '1resize ' . ((&lines * 53 + 34) / 69)
-exe '2resize ' . ((&lines * 12 + 34) / 69)
+keepjumps 56
+normal! 05|
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
@@ -86,14 +42,13 @@ endif
 unlet! s:wipebuf
 set winheight=1 winwidth=20
 let &shortmess = s:shortmess_save
-let &winminheight = s:save_winminheight
-let &winminwidth = s:save_winminwidth
 let s:sx = expand("<sfile>:p:r")."x.vim"
 if filereadable(s:sx)
   exe "source " . fnameescape(s:sx)
 endif
 let &g:so = s:so_save | let &g:siso = s:siso_save
 set hlsearch
+nohlsearch
 doautoall SessionLoadPost
 unlet SessionLoad
 " vim: set ft=vim :
