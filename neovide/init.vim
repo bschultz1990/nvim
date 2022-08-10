@@ -1,3 +1,4 @@
+"mklink /j "Link" "Source Target"
 let g:python3_host_prog="python3"
 let g:loaded_perl_provider = 0 
 " let g:netrw_keepdir=1			"Keep current dir and browsing dir synced.
@@ -68,10 +69,21 @@ Plug 'sheerun/vim-polyglot'
 Plug 'KabbAmine/vCoolor.vim'
 Plug 'folke/zen-mode.nvim'
 Plug 'folke/twilight.nvim'
-Plug 'fladson/vim-kitty'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-file-browser.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'mhinz/vim-startify'
+Plug 'junegunn/vim-easy-align'
+"Plug 'sudormrfbin/cheatsheet.nvim'
+Plug 'bschultz1990/cheatsheet.nvim'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
+Plug 'romgrk/barbar.nvim'
+Plug 'akinsho/toggleterm.nvim'
+Plug 'tpope/vim-fugitive'
+Plug 'tmhedberg/matchit'
 call plug#end()
 
 colorscheme sonokai
@@ -97,5 +109,31 @@ nnoremap <silent><F3> <cmd>wa<cr>
 inoremap <silent><F3> <C-o><cmd>wa<cr>
 nnoremap <C-CR> i<CR><CR><Up><BS>
 inoremap <C-CR> <CR><CR><Up><BS><CR>
-" I'm another comment! Delete me, please.
 nnoremap <F5> <cmd>source $MYVIMRC<cr>
+
+" PLUGIN-BASED
+nnoremap <leader>zz <cmd>ZenMode<cr>
+
+nnoremap <leader>, <cmd>Telescope<cr>
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>bb <cmd>Telescope buffers<cr>
+nnoremap <leader>h <cmd>Telescope help_tags<cr>
+nnoremap <leader>fb <cmd>Telescope file_browser<cr>
+
+nnoremap <silent><leader>st :Startify<cr>
+
+nnoremap <silent><leader>ls :terminal<cr>ilive-server<cr>
+
+xmap ga <Plug>(EasyAlign)
+map ga <Plug>(EasyAlign)
+
+nnoremap <silent><nowait> <leader>k :call CocAction('jumpDefinition', v:false)<CR>
+
+nnoremap <silent><C-`> :ToggleTerm<cr>
+
+nnoremap <silent><C-/> :Commentary<cr>
+vnoremap <silent><C-/> :Commentary<cr>
+
+"----------------SOURCES----------------
+luafile $HOME/AppData/Local/nvim/config.lua
