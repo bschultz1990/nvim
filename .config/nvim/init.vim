@@ -94,6 +94,7 @@ colorscheme sonokai
 "----------------KEYMAPS----------------
 let mapleader = ','                       "|Change leader. Default is \
 
+"--- GENERAL ---
 "Move Line Down Or up like VSCode
 nnoremap <silent><C-Down> :m .+1<cr>
 vnoremap <silent><C-Down> :m .+1<cr>
@@ -101,14 +102,6 @@ nnoremap <silent><C-Up> :m .-2<cr>
 vnoremap <silent><C-Up> :m .-2<cr>
 nnoremap <silent><leader><C-,> <cmd> edit $MYVIMRC<cr>
 nnoremap <nowait> <leader>c <cmd>Explore<cr>
-nnoremap <silent><leader>st :Startify<cr>
-nnoremap <silent><leader>ls :terminal<cr>ilive-server<cr>
-nnoremap <leader>, <cmd>Telescope<cr>
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>bb <cmd>Telescope buffers<cr>
-nnoremap <leader>h <cmd>Telescope help_tags<cr>
-nnoremap <leader>fb <cmd>Telescope file_browser<cr>
 nnoremap <silent><leader>bd <cmd>bd<cr>
 nnoremap <silent><leader>bd! <cmd>bd!<cr>
 nnoremap <silent><leader>n :bn<cr>
@@ -116,23 +109,38 @@ nnoremap <leader>vs <cmd>vs<cr>
 inoremap <leader>vs <cmd>vs<cr><C-w>w
 nnoremap <leader>sp <cmd>sp<cr><C-w>w
 " nnoremap <leader>w <cmd>tabclose<cr>
+nnoremap <silent><F3> <cmd>wa<cr>
+inoremap <silent><F3> <C-o><cmd>wa<cr>
+nnoremap <C-CR> i<CR><CR><Up><BS>
+inoremap <C-CR> <CR><CR><Up><BS><CR>
+nnoremap <F5> <cmd>source $MYVIMRC<cr>
+
+" PLUGIN-BASED
+nnoremap <silent><leader>st :Startify<cr>
+
+nnoremap <silent><leader>ls :terminal<cr>ilive-server<cr>
+
+nnoremap <leader>, <cmd>Telescope<cr>
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>bb <cmd>Telescope buffers<cr>
+nnoremap <leader>h <cmd>Telescope help_tags<cr>
+nnoremap <leader>fb <cmd>Telescope file_browser<cr>
+
 nnoremap <leader>zz <cmd>ZenMode<cr>
+
 xmap ga <Plug>(EasyAlign)
 map ga <Plug>(EasyAlign)
+
 nnoremap <silent><nowait> <leader>k :call CocAction('jumpDefinition', v:false)<CR>
+
 nnoremap <silent><C-`> :ToggleTerm<cr>
+
 nnoremap <silent><C-/> :Commentary<cr>
 vnoremap <silent><C-/> :Commentary<cr>
 
-nnoremap <silent><leader>cs <cmd>noh<cr>
-nnoremap <F5> <cmd>source ~/.config/nvim/init.vim<cr>
-nnoremap <C-CR> i<CR><CR><Up><BS>
-inoremap <C-CR> <CR><CR><Up><BS><CR>
 
-nnoremap <silent><F3> <cmd>wa<cr>
-inoremap <silent><F3> <C-o><cmd>wa<cr>
-""TODO: INSERT MODE
-" inoremap <C-BS> <C-o><cmd>dw<cr>
+
 
 "----------------SNIPPETS----------------
 "READ command:
