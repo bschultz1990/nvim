@@ -77,7 +77,6 @@ Plug 'romgrk/barbar.nvim'
 Plug 'akinsho/toggleterm.nvim'
 Plug 'alvan/vim-closetag'
 Plug 'tpope/vim-fugitive'
-Plug 'preservim/vim-colors-pencil'
 Plug 'tmhedberg/matchit'
 call plug#end()
 
