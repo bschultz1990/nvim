@@ -115,9 +115,7 @@ inoremap <C-CR> <CR><CR><Up><BS><CR>
 nnoremap <F5> <cmd>source $MYVIMRC<cr>
 
 " PLUGIN-BASED
-nnoremap <silent><leader>st :Startify<cr>
-
-nnoremap <silent><leader>ls :terminal<cr>ilive-server<cr>
+nnoremap <leader>zz <cmd>ZenMode<cr>
 
 nnoremap <leader>, <cmd>Telescope<cr>
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
@@ -126,7 +124,9 @@ nnoremap <leader>bb <cmd>Telescope buffers<cr>
 nnoremap <leader>h <cmd>Telescope help_tags<cr>
 nnoremap <leader>fb <cmd>Telescope file_browser<cr>
 
-nnoremap <leader>zz <cmd>ZenMode<cr>
+nnoremap <silent><leader>st :Startify<cr>
+
+nnoremap <silent><leader>ls :terminal<cr>ilive-server<cr>
 
 xmap ga <Plug>(EasyAlign)
 map ga <Plug>(EasyAlign)
