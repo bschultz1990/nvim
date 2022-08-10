@@ -97,4 +97,5 @@ nnoremap <silent><F3> <cmd>wa<cr>
 inoremap <silent><F3> <C-o><cmd>wa<cr>
 nnoremap <C-CR> i<CR><CR><Up><BS>
 inoremap <C-CR> <CR><CR><Up><BS><CR>
+" I'm another comment! Delete me, please.
 nnoremap <F5> <cmd>source $MYVIMRC<cr>
