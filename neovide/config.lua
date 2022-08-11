@@ -1,4 +1,4 @@
-require("toggleterm").setup{}
+--require("toggleterm").setup{}
 require('gitsigns').setup{
 signcolumn = false,
 }
@@ -11,10 +11,9 @@ require("telescope").setup {
     live_grep = {},
 		find_files = {
 --			find_command = {"fdfind"},
-			hidden = {true},
-      search_dirs = {"$HOME", "D:/"}
+--			hidden = {true},
+--      search_dirs = {"$HOME", "D:/"}
 			},
 		}
 	}
 require("telescope").load_extension ("file_browser")
-require("telescope").load_extension ("fzf")
