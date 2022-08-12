@@ -1,0 +1,6 @@
+{
+	"emmet.showExpandedAbbreviation": "always",
+	"emmet.showAbbreviationSuggestions": true,
+	"html.autoClosingTags": true,
+	"tabnine.shortcut": "Tabnine"
+}

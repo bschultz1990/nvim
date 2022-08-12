@@ -1,9 +1,0 @@
-Migrate over to init.lua:
-https://www.notonlycode.org/neovim-lua-config/
-https://github.com/nanotee/nvim-lua-guide#vlua
-
-COC inline suggestions.
-
-Put this list in Startify!
-Delete whole words in INSERT mode.
-i3 Window manager
