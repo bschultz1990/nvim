@@ -53,6 +53,7 @@ Plug 'folke/zen-mode.nvim'
 Plug 'folke/twilight.nvim'
 Plug 'mhinz/vim-startify'
 Plug 'tpope/vim-surround'
+Plug 'junegunn/vim-easy-align'
 
 vim.call("plug#end")
 
@@ -84,14 +85,31 @@ function tmap(shortcut, command)
   map('t', shortcut, command)
 end
 
+function xxmap(mode, shortcut, command)
+  vim.api.nvim_set_keymap(mode, shortcut, command, { noremap = false, silent = true })
+end
+
+function xmap(shortcut, command)
+  xxmap('x', shortcut, command)
+end
+
 vim.g.mapleader = ','
 
 nmap('<F3>', ':wa<cr>')
 nmap('<F5>', ':luafile $MYVIMRC<cr>')
 nmap("<F6>", ':PlugInstall<cr>')
 nmap("<F7>", ':PlugClean<cr>')
+
+-- BUFFERS AND SPLITS
 nmap("<leader>n", ":bn<cr>")
 nmap("<leader>vs",":vs<cr>")
 imap("<leader>vs",":vs<cr><C-w>w")
 nmap("<leader>sp",":sp<cr><C-w>w")
 
+-- INSERT MODE GOODIES
+imap("<C-cr>","<CR><CR><Up><BS><CR>")
+
+-- PLUGIN SPECIFIC
+nmap("<leader>st",":Startify<cr>")
+nmap("<leader>zz",":ZenMode<cr>")
+xmap("ga","<Plug>(EasyAlign)")
