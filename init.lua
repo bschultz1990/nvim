@@ -2,7 +2,7 @@
 print ("vim.g.neovide: ",vim.g.neovide)
 
 -- GENERAL
-vim.opt.clipboard:append = {"unnamedplus"}
+vim.opt.clipboard = {"unnamedplus"}
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.mouse = "a"
@@ -30,10 +30,11 @@ vim.opt.winblend = 20
 
 
 -- NEOVIDE
-if (vim.g.neovide == true) then
+if (vim.g.neovide) then
   vim.g.neovide_cursor_animation_length = 0.03
   vim.g.neovide_scroll_animation_length = 0.3
-  vim.opt.guifont = "Oxygen Mono:h11"
+  vim.opt.guifont = "Oxygen Mono:h10"
+  -- vim.opt.guifont = ""
 end
 
 -- PLUGINS
@@ -85,8 +86,12 @@ end
 
 vim.g.mapleader = ','
 
-nmap('<F3>', '<cmd>wa<cr>')
-nmap('<F5>', '<cmd>luafile $MYVIMRC<cr>')
-nmap("<F6>", '<cmd>PlugInstall<cr>')
-nmap("<F7>", '<cmd>PlugClean<cr>')
+nmap('<F3>', ':wa<cr>')
+nmap('<F5>', ':luafile $MYVIMRC<cr>')
+nmap("<F6>", ':PlugInstall<cr>')
+nmap("<F7>", ':PlugClean<cr>')
+nmap("<leader>n", ":bn<cr>")
+nmap("<leader>vs",":vs<cr>")
+imap("<leader>vs",":vs<cr><C-w>w")
+nmap("<leader>sp",":sp<cr><C-w>w")
 
