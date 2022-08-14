@@ -1,5 +1,5 @@
 -- print('init.lua loaded!:)')
-print ("vim.g.neovide: ",vim.g.neovide)
+-- print ("vim.g.neovide: ",vim.g.neovide)
 
 -- GENERAL
 vim.opt.clipboard = {"unnamedplus"}
@@ -28,12 +28,16 @@ vim.opt.shiftwidth = 2
 vim.opt.softtabstop = 2
 vim.opt.winblend = 20
 
+---- NETRW
+vim.g.netrw_keepdir = 1
+vim.g.netrw_localcopydircmd = 'cp -r'
+vim.g.netrw_liststyle = 0
 
 -- NEOVIDE
 if (vim.g.neovide) then
   vim.g.neovide_cursor_animation_length = 0.03
   vim.g.neovide_scroll_animation_length = 0.3
-  vim.opt.guifont = "Oxygen Mono:h10"
+  vim.opt.guifont = "Oxygen Mono:h11"
   -- vim.opt.guifont = ""
 end
 
@@ -54,6 +58,10 @@ Plug 'folke/twilight.nvim'
 Plug 'mhinz/vim-startify'
 Plug 'tpope/vim-surround'
 Plug 'junegunn/vim-easy-align'
+
+---- LUALINE
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'nvim-lualine/lualine.nvim'
 
 vim.call("plug#end")
 
@@ -99,6 +107,7 @@ nmap('<F3>', ':wa<cr>')
 nmap('<F5>', ':luafile $MYVIMRC<cr>')
 nmap("<F6>", ':PlugInstall<cr>')
 nmap("<F7>", ':PlugClean<cr>')
+nmap("<F12>",":edit $MYVIMRC<cr>")
 
 -- BUFFERS AND SPLITS
 nmap("<leader>n", ":bn<cr>")
@@ -113,3 +122,7 @@ imap("<C-cr>","<CR><CR><Up><BS><CR>")
 nmap("<leader>st",":Startify<cr>")
 nmap("<leader>zz",":ZenMode<cr>")
 xmap("ga","<Plug>(EasyAlign)")
+
+
+-- EXTERNAL REQUIREMENTS
+require ('plugin-configs\\lualine')
