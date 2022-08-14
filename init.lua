@@ -1,6 +1,3 @@
--- print ("vim.g.neovide: ",vim.g.neovide)
--- print('init.lua loaded!:)')
-
 -- GENERAL
 vim.opt.clipboard = {"unnamedplus"}
 vim.opt.number = true
@@ -37,8 +34,8 @@ vim.g.netrw_liststyle = 0
 if (vim.g.neovide) then
   vim.g.neovide_cursor_animation_length = 0.03
   vim.g.neovide_scroll_animation_length = 0.3
-  vim.opt.guifont = "Oxygen Mono:h11"
-  -- vim.opt.guifont = ""
+  vim.opt.guifont = "FiraCode NF:h10"
+  -- vim.g.neovide_fullscreen = "v:true"
 end
 
 -- PLUGINS
@@ -58,10 +55,17 @@ Plug 'folke/twilight.nvim'
 Plug 'mhinz/vim-startify'
 Plug 'tpope/vim-surround'
 Plug 'junegunn/vim-easy-align'
+Plug 'williamboman/mason.nvim'
+Plug 'bschultz1990/cheatsheet.nvim'
 
 ---- LUALINE
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'nvim-lualine/lualine.nvim'
+
+---- TELESCOPE
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-lua/plenary.nvim'
+
 
 vim.call("plug#end")
 
@@ -105,6 +109,7 @@ end
 
 vim.g.mapleader = ','
 
+
 nmap('<F3>', ':wa<cr>')
 nmap('<F5>', ':luafile $MYVIMRC<cr>')
 nmap("<F6>", ':PlugInstall<cr>')
@@ -125,6 +130,9 @@ nmap("<leader>st",":Startify<cr>")
 nmap("<leader>zz",":ZenMode<cr>")
 xmap("ga","<Plug>(EasyAlign)")
 
--- EXTERNAL REQUIREMENTS
 
+-- EXTERNAL REQUIREMENTS
 require ('config_lualine')
+
+-- SUCCESS! :)
+print('init.lua loaded! :)')
