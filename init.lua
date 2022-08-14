@@ -1,5 +1,5 @@
--- print('init.lua loaded!:)')
 -- print ("vim.g.neovide: ",vim.g.neovide)
+-- print('init.lua loaded!:)')
 
 -- GENERAL
 vim.opt.clipboard = {"unnamedplus"}
@@ -65,6 +65,8 @@ Plug 'nvim-lualine/lualine.nvim'
 
 vim.call("plug#end")
 
+-- default, atlantis, andromeda, shusia, maia, espresso
+vim.g.sonokai_style = 'atlantis'
 vim.cmd("colorscheme sonokai")
 
 
@@ -123,6 +125,6 @@ nmap("<leader>st",":Startify<cr>")
 nmap("<leader>zz",":ZenMode<cr>")
 xmap("ga","<Plug>(EasyAlign)")
 
-
 -- EXTERNAL REQUIREMENTS
-require ('plugin-configs\\lualine')
+
+require ('config_lualine')
