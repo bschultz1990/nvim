@@ -1,4 +1,8 @@
 -- GENERAL
+vim.scriptencoding = 'utf8'
+vim.opt.encoding = 'utf-8'
+vim.opt.fileencoding = 'utf-8'
+
 vim.opt.clipboard = {"unnamedplus"}
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -118,9 +122,8 @@ nmap("<F12>",":edit $MYVIMRC<cr>")
 
 -- BUFFERS AND SPLITS
 nmap("<leader>n", ":bn<cr>")
-nmap("<leader>vs",":vs<cr>")
-imap("<leader>vs",":vs<cr><C-w>w")
-nmap("<leader>sp",":sp<cr><C-w>w")
+nmap("<leader>vs",":vs<cr><C-w>w:Ex<cr>")
+nmap("<leader>sp",":sp<cr>:Ex<cr>")
 
 -- INSERT MODE GOODIES
 imap("<C-cr>","<CR><CR><Up><BS><CR>")
@@ -132,7 +135,9 @@ xmap("ga","<Plug>(EasyAlign)")
 
 
 -- EXTERNAL REQUIREMENTS
-require ('config_lualine')
+require ('cfg_lualine')
+require ('cfg_mason')
+-- require ('cfg_telescope')
 
 -- SUCCESS! :)
 print('init.lua loaded! :)')
