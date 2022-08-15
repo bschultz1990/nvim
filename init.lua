@@ -26,7 +26,7 @@ vim.opt.expandtab = false
 vim.opt.ignorecase = true
 vim.opt.shiftwidth = 2
 vim.opt.softtabstop = 2
-vim.opt.winblend = 20
+vim.opt.winblend = 10
 
 ---- NETRW
 vim.g.netrw_keepdir = 1
@@ -71,9 +71,10 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope-file-browser.nvim'
 
 ---- NVIM-LSP
-Plug 'hrsh7th/nvim-compe'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'glepnir/lspsaga.nvim'
--- Plug 'neovim/nvim-lspconfig'
+Plug 'neovim/nvim-lspconfig'
 
 ------ MASON
 Plug 'williamboman/mason.nvim'
@@ -132,6 +133,7 @@ nmap("<F12>",":edit $MYVIMRC<cr>")
 nmap("<leader>n", ":bn<cr>")
 nmap("<leader>vs",":vs<cr><C-w>w:Ex<cr>")
 nmap("<leader>sp",":sp<cr>:Ex<cr>")
+nmap("<leader>bd",":bd!<cr>")
 
 -- INSERT MODE GOODIES
 imap("<C-cr>","<CR><CR><Up><BS><CR>")

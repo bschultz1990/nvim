@@ -4,6 +4,7 @@ require('telescope').setup {
   },
   pickers = {
     find_files = {
+      hidden = true
       -- find_command = {'fzf'},
       -- search_dirs = {"D:/"}
     },
