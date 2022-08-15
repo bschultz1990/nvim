@@ -2,7 +2,6 @@
 vim.scriptencoding = 'utf8'
 vim.opt.encoding = 'utf-8'
 vim.opt.fileencoding = 'utf-8'
-
 vim.opt.clipboard = {"unnamedplus"}
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -38,8 +37,9 @@ vim.g.netrw_liststyle = 0
 if (vim.g.neovide) then
   vim.g.neovide_cursor_animation_length = 0.03
   vim.g.neovide_scroll_animation_length = 0.3
-  vim.opt.guifont = "FiraCode NF:h10"
-  -- vim.g.neovide_fullscreen = "v:true"
+  vim.opt.guifont = "FiraCode NF:h11"
+  -- set guifont=*  <== lists all fonts
+  vim.g.neovide_fullscreen = false
 end
 
 -- PLUGINS
@@ -59,7 +59,6 @@ Plug 'folke/twilight.nvim'
 Plug 'mhinz/vim-startify'
 Plug 'tpope/vim-surround'
 Plug 'junegunn/vim-easy-align'
-Plug 'williamboman/mason.nvim'
 Plug 'bschultz1990/cheatsheet.nvim'
 
 ---- LUALINE
@@ -69,12 +68,21 @@ Plug 'nvim-lualine/lualine.nvim'
 ---- TELESCOPE
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope-file-browser.nvim'
 
+---- NVIM-LSP
+Plug 'hrsh7th/nvim-compe'
+Plug 'glepnir/lspsaga.nvim'
+-- Plug 'neovim/nvim-lspconfig'
+
+------ MASON
+Plug 'williamboman/mason.nvim'
+Plug 'williamboman/mason-lspconfig.nvim'
 
 vim.call("plug#end")
 
 -- default, atlantis, andromeda, shusia, maia, espresso
-vim.g.sonokai_style = 'atlantis'
+vim.g.sonokai_style = 'shusia'
 vim.cmd("colorscheme sonokai")
 
 
@@ -113,12 +121,12 @@ end
 
 vim.g.mapleader = ','
 
-
 nmap('<F3>', ':wa<cr>')
 nmap('<F5>', ':luafile $MYVIMRC<cr>')
 nmap("<F6>", ':PlugInstall<cr>')
 nmap("<F7>", ':PlugClean<cr>')
 nmap("<F12>",":edit $MYVIMRC<cr>")
+
 
 -- BUFFERS AND SPLITS
 nmap("<leader>n", ":bn<cr>")
@@ -137,7 +145,7 @@ xmap("ga","<Plug>(EasyAlign)")
 -- EXTERNAL REQUIREMENTS
 require ('cfg_lualine')
 require ('cfg_mason')
--- require ('cfg_telescope')
+require ('cfg_telescope')
 
 -- SUCCESS! :)
 print('init.lua loaded! :)')
