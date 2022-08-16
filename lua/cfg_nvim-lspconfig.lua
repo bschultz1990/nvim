@@ -1,0 +1,2 @@
+-- connect to servers
+-- require('lspconfig').typescript-language-server.setup{}

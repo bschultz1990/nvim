@@ -71,14 +71,10 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope-file-browser.nvim'
 
 ---- NVIM-LSP
-Plug 'hrsh7th/nvim-cmp'
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'glepnir/lspsaga.nvim'
 Plug 'neovim/nvim-lspconfig'
-
------- MASON
-Plug 'williamboman/mason.nvim'
-Plug 'williamboman/mason-lspconfig.nvim'
+-- Plug 'hrsh7th/nvim-cmp'
+-- Plug 'hrsh7th/cmp-nvim-lsp'
+-- Plug 'glepnir/lspsaga.nvim'
 
 vim.call("plug#end")
 
@@ -145,9 +141,10 @@ xmap("ga","<Plug>(EasyAlign)")
 
 
 -- EXTERNAL REQUIREMENTS
+require ('cfg_telescope')
 require ('cfg_lualine')
 require ('cfg_mason')
-require ('cfg_telescope')
+
 
 -- SUCCESS! :)
 print('init.lua loaded! :)')
