@@ -150,8 +150,8 @@ nmap("<leader>td",":Telescope diagnostics<cr>")
 -- EXTERNAL REQUIREMENTS
 require ('cfg_telescope')
 require ('cfg_lualine')
-require ('cfg_nvim-lspconfig')
 require ('cfg_nvim-cmp')
+-- require ('cfg_nvim-lspconfig')
 
 -- SUCCESS! :)
-print('init.lua loaded! :)')
+print(' init.lua loaded! :)')
