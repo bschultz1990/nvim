@@ -7,7 +7,7 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.mouse = "a"
 vim.opt.pumheight = 3
-vim.opt.pumblend = 12
+vim.opt.pumblend = 0
 vim.opt.cursorline = true
 vim.opt.foldmethod = "indent"
 vim.opt.foldenable = false
@@ -72,8 +72,11 @@ Plug 'nvim-telescope/telescope-file-browser.nvim'
 
 ---- NVIM-LSP
 Plug 'neovim/nvim-lspconfig'
--- Plug 'hrsh7th/nvim-cmp'
--- Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-path'
+Plug 'L3MON4D3/LuaSnip'
+Plug 'saadparwaiz1/cmp_luasnip'
 -- Plug 'glepnir/lspsaga.nvim'
 
 vim.call("plug#end")
@@ -130,6 +133,9 @@ nmap("<leader>n", ":bn<cr>")
 nmap("<leader>vs",":vs<cr><C-w>w:Ex<cr>")
 nmap("<leader>sp",":sp<cr>:Ex<cr>")
 nmap("<leader>bd",":bd!<cr>")
+nmap("<leader>tt",":tabnew<cr>")
+nmap("<leader>tc",":tabclose<cr>")
+nmap("<leader>tn",":tabnext<cr>")
 
 -- INSERT MODE GOODIES
 imap("<C-cr>","<CR><CR><Up><BS><CR>")
@@ -138,13 +144,14 @@ imap("<C-cr>","<CR><CR><Up><BS><CR>")
 nmap("<leader>st",":Startify<cr>")
 nmap("<leader>zz",":ZenMode<cr>")
 xmap("ga","<Plug>(EasyAlign)")
+nmap("<leader>td",":Telescope diagnostics<cr>")
 
 
 -- EXTERNAL REQUIREMENTS
 require ('cfg_telescope')
 require ('cfg_lualine')
-require ('cfg_mason')
-
+require ('cfg_nvim-lspconfig')
+require ('cfg_nvim-cmp')
 
 -- SUCCESS! :)
 print('init.lua loaded! :)')
