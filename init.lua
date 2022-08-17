@@ -112,7 +112,7 @@ function tmap(shortcut, command)
 end
 
 function xxmap(mode, shortcut, command)
-  vim.api.nvim_set_keymap(mode, shortcut, command, { noremap = false, silent = true })
+  vim.api.nvim_set_keymap(mode, shortcut, command, { noremap = false, silent = true, })
 end
 
 function xmap(shortcut, command)

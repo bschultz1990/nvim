@@ -2,7 +2,7 @@
   local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 require('lspconfig').tsserver.setup {
     on_attach = function()
-      print ('attached! :)'),
+      print ('attached! :)')
     vim.keymap.set("n", "<C-k>", vim.lsp.buf.hover, {buffer=0})
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, {buffer=0})
     vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, {buffer=0})

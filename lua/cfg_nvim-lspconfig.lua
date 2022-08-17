@@ -8,10 +8,11 @@ local servers = {'tsserver', 'sumneko_lua'}
 
 for i, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup{
-    on_attach = function(var)
-    vim.keymap.set("n", "<C-k>", vim.lsp.buf.hover, {buffer=0})
-    vim.keymap.set("n", "gd", vim.lsp.buf.definition, {buffer=0})
-    vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, {buffer=0})
-    vim.keymap.set("n", "gr", vim.lsp.buf.references, {buffer=0})
+    on_attach = function()
+    nmap('<C-k>','vim.lsp.buf.hover')
+    nmap('gd','vim.lsp.buf.definition')
+    nmap('gD','vim.lsp.buf.declaration')
+    nmap('<leader>r','vim.lsp.buf.rename')
+    nmap('gr','vim.lsp.buf.references')
   end,
   }
