@@ -56,10 +56,11 @@ Plug 'tpope/vim-commentary'
 Plug 'KabbAmine/vCoolor.vim'
 Plug 'folke/zen-mode.nvim'
 Plug 'folke/twilight.nvim'
-Plug 'mhinz/vim-startify'
+Plug 'startup-nvim/startup.nvim'
 Plug 'tpope/vim-surround'
 Plug 'junegunn/vim-easy-align'
 Plug 'bschultz1990/cheatsheet.nvim'
+Plug 'mhinz/vim-startify'
 
 ---- LUALINE
 Plug 'kyazdani42/nvim-web-devicons'
@@ -84,7 +85,6 @@ vim.call("plug#end")
 -- default, atlantis, andromeda, shusia, maia, espresso
 vim.g.sonokai_style = 'shusia'
 vim.cmd("colorscheme sonokai")
-
 
 -- KEYMAPS
 function map(mode, shortcut, command)
@@ -141,7 +141,7 @@ nmap("<leader>tn",":tabnext<cr>")
 imap("<C-cr>","<CR><CR><Up><BS><CR>")
 
 -- PLUGIN SPECIFIC
-nmap("<leader>st",":Startify<cr>")
+-- nmap("<leader>st",":Startify<cr>")
 nmap("<leader>zz",":ZenMode<cr>")
 xmap("ga","<Plug>(EasyAlign)")
 nmap("<leader>td",":Telescope diagnostics<cr>")
