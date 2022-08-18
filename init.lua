@@ -57,7 +57,7 @@ Plug 'KabbAmine/vCoolor.vim'
 Plug 'folke/zen-mode.nvim'
 Plug 'folke/twilight.nvim'
 Plug 'startup-nvim/startup.nvim'
-Plug 'tpope/vim-surround'
+-- Plug 'tpope/vim-surround'
 Plug 'junegunn/vim-easy-align'
 Plug 'bschultz1990/cheatsheet.nvim'
 Plug 'mhinz/vim-startify'
@@ -78,10 +78,11 @@ Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-path'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
--- Plug 'glepnir/lspsaga.nvim'
+Plug 'glepnir/lspsaga.nvim'
 
 vim.call("plug#end")
 
+-- Colorschemes
 -- default, atlantis, andromeda, shusia, maia, espresso
 vim.g.sonokai_style = 'shusia'
 vim.cmd("colorscheme sonokai")
@@ -151,7 +152,7 @@ nmap("<leader>td",":Telescope diagnostics<cr>")
 require ('cfg_telescope')
 require ('cfg_lualine')
 require ('cfg_nvim-cmp')
--- require ('cfg_nvim-lspconfig')
+require ('cfg_nvim-lspconfig')
 
 -- SUCCESS! :)
 print(' init.lua loaded! :)')
