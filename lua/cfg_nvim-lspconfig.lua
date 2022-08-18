@@ -20,6 +20,13 @@ for i, lsp in ipairs(Servers) do
     nmap('<leader>r','vim.lsp.buf.rename')
     nmap('gr','vim.lsp.buf.references')
 
+    vim.diagnostic.config({
+      virtual_text=false
+    })
+    -- Show line diagnostics in hover window.
+    vim.o.updatetime=250
+    vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
+
     if (lsp == 'sumneko_lua') then
       local settings = {
 	Lua = {
@@ -29,7 +36,7 @@ for i, lsp in ipairs(Servers) do
 	  },
 	  diagnostics = {
 	    -- Get the language server to recognize the `vim` global
-	    globals = {'vim',},
+	    globals = {'vim'},
 	  },
 	  workspace = {
 	    -- Make the server aware of Neovim runtime files
