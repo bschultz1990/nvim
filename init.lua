@@ -32,7 +32,6 @@ vim.opt.winblend = 10
 vim.g.netrw_keepdir = 1
 vim.g.netrw_localcopydircmd = 'cp -r'
 vim.g.netrw_liststyle = 0
-
 -- NEOVIDE
 if (vim.g.neovide) then
   vim.g.neovide_cursor_animation_length = 0.03
@@ -133,7 +132,7 @@ nmap("<F12>",":edit $MYVIMRC<cr>")
 nmap("<leader>n", ":bn<cr>")
 nmap("<leader>vs",":vs<cr><C-w>w:Ex<cr>")
 nmap("<leader>sp",":sp<cr>:Ex<cr>")
-nmap("<leader>bd",":bd!<cr>")
+nmap("<leader>bd",":bp|bd#!<cr>")
 nmap("<leader>tt",":tabnew<cr>")
 nmap("<leader>tc",":tabclose<cr>")
 nmap("<leader>tn",":tabnext<cr>")
