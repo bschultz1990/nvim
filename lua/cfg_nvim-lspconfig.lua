@@ -24,7 +24,7 @@ for i, lsp in ipairs(Servers) do
       virtual_text=false
     })
     -- Show line diagnostics in hover window.
-    vim.o.updatetime=250
+    vim.o.updatetime=500
     vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
 
     if (lsp == 'sumneko_lua') then
