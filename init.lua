@@ -44,6 +44,7 @@ end
 -- PLUGINS
 -- https://www.notonlycode.org/neovim-lua-config/
 -- https://dev.to/vonheikemen/neovim-using-vim-plug-in-lua-3oom
+-- Plug('scrooloose/nerdtree', {on = {NERDTreeToggle', 'NERDTree'})
 local Plug = vim.fn["plug#"]
 vim.call("plug#begin", vim.fn.stdpath('data').."/plugins")
 
