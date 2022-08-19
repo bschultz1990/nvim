@@ -2,8 +2,11 @@ Migrate over to init.lua:
 https://www.notonlycode.org/neovim-lua-config/
 https://github.com/nanotee/nvim-lua-guide#vlua
 
-COC inline suggestions.
+COMPE inline suggestions.
 
 Put this list in Startify!
 Delete whole words in INSERT mode.
 i3 Window manager
+
+XRDP Getting Started
+https://help.ubuntu.com/community/xrdp

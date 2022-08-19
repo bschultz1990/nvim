@@ -65,6 +65,9 @@ Plug 'mhinz/vim-startify'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'nvim-lualine/lualine.nvim'
 
+---- BUFFERLINE
+Plug 'akinsho/bufferline.nvim'
+
 ---- TELESCOPE
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-lua/plenary.nvim'
@@ -152,6 +155,7 @@ require ('cfg_telescope')
 require ('cfg_lualine')
 require ('cfg_nvim-cmp')
 require ('cfg_nvim-lspconfig')
+require ('cfg_bufferline')
 
 -- SUCCESS! :)
 print(' init.lua loaded! :)')
