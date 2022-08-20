@@ -1,4 +1,4 @@
--- Do we have an lspconfig in the building?
+-- Is there an lspconfig in the building?
 local status_ok, _ = pcall(require, 'lspconfig')
 if not status_ok then return end
 ----------------------------------------
@@ -19,14 +19,11 @@ for i, lsp in ipairs(Servers) do
     nmap('gD','vim.lsp.buf.declaration')
     nmap('<leader>r','vim.lsp.buf.rename')
     nmap('gr','vim.lsp.buf.references')
+    nmap('<C-d>','vim.diagnostic.open_float(nil, {focus=false}))')
 
     vim.diagnostic.config({
-      virtual_text=false
+      virtual_text=false -- disable diag text unless summoned.
     })
-    -- Show line diagnostics in hover window.
-    vim.o.updatetime=500
-    vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
-
     if (lsp == 'sumneko_lua') then
       local settings = {
 	Lua = {
@@ -46,7 +43,6 @@ for i, lsp in ipairs(Servers) do
 	},
       }
     end
-
   end
   }
 end
