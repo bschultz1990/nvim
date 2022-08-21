@@ -1,8 +1,8 @@
 -- Is there an lspconfig in the house?
 local status_ok, _ = pcall(require, 'lspconfig')
 if not status_ok then return end
-----------------------------------------
--- connect to servers
+
+----------CONNECT TO SERVERS------------
 -- read more at :h vim.lsp.buf<TAB>
 -- Need more servers?
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
@@ -15,13 +15,14 @@ for i, lsp in ipairs(Servers) do
   require('lspconfig')[lsp].setup{
   on_attach = function()
     capabilities=capabilities
-    print(lsp..' ATTACHED! :D')
+    -- print(lsp..' ATTACHED! :D')
+    vim.notify(lsp.. ' attached')
     nmap('<C-k>','vim.lsp.buf.hover')
     nmap('gd','vim.lsp.buf.definition')
     nmap('gD','vim.lsp.buf.declaration')
     nmap('<leader>r','vim.lsp.buf.rename')
     nmap('gr','vim.lsp.buf.references')
-    nmap('<C-d>','vim.diagnostic.open_float(nil, {focus=false})')
+    nmap('<leader><d>','vim.diagnostic.open_float(nil, {focus=false})')
 
     vim.diagnostic.config({
       virtual_text=false -- disable diag text unless summoned.
@@ -41,7 +42,7 @@ for i, lsp in ipairs(Servers) do
 	    -- Make the server aware of Neovim runtime files
 	    library = vim.api.nvim_get_runtime_file("", true),
 	  },
-	  telemetry = {enable = false,},
+	  telemetry = {enable = false},
 	},
       }
     end
@@ -51,6 +52,7 @@ end
 
 
 
+--------------NVIM-CMP--------------
 
 -- Template:
   -- local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
@@ -59,24 +61,25 @@ end
   -- }
 
 
+-- local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 -- for i, lsp in ipairs(Servers) do
 --   require('lspconfig')['lsp'].setup{
 --     capabilities=capabilities
 --   }
 -- end
+
 -- Setup nvim-cmp.
   vim.opt.completeopt = {"menu", "menuone", "noselect"}
   local cmp = require'cmp'
   cmp.setup({
     snippet = {
-      -- REQUIRED - you must specify a snippet engine
       expand = function(args)
         require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
       end,
     },
     window = {
-      -- completion = cmp.config.window.bordered(),
-      -- documentation = cmp.config.window.bordered(),
+      completion = cmp.config.window.bordered(),
+      documentation = cmp.config.window.bordered(),
     },
     mapping = cmp.mapping.preset.insert({
       ['<C-b>'] = cmp.mapping.scroll_docs(-4),

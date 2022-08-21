@@ -48,8 +48,9 @@ end
 local Plug = vim.fn["plug#"]
 vim.call("plug#begin", vim.fn.stdpath('data').."/plugins")
 
----- COLOR SCHEMES
+---- COLOR
 Plug 'sainnhe/sonokai'
+Plug 'norcalli/nvim-colorizer.lua'
 
 ---- DEV
 Plug 'tpope/vim-commentary'
@@ -61,6 +62,8 @@ Plug 'tpope/vim-surround'
 Plug 'junegunn/vim-easy-align'
 Plug 'bschultz1990/cheatsheet.nvim'
 Plug 'mhinz/vim-startify'
+Plug 'windwp/nvim-autopairs'
+Plug 'rcarriga/nvim-notify'
 
 ---- LUALINE
 Plug 'kyazdani42/nvim-web-devicons'
@@ -151,13 +154,16 @@ nmap("<leader>zz",":ZenMode<cr>")
 xmap("ga","<Plug>(EasyAlign)")
 nmap("<leader>td",":Telescope diagnostics<cr>")
 
-
+Plugins = {}
 -- EXTERNAL REQUIREMENTS
+require ('cfg_vim-notify')
 require ('cfg_telescope')
-require ('cfg_lualine')
 require ('cfg_nvim-cmp')
 require ('cfg_nvim-lspconfig')
 require ('cfg_bufferline')
+require ('cfg_nvim-autopairs')
+require ('cfg_lualine')
+require ('colorizer').setup()
 
 -- SUCCESS! :)
-print(' init.lua loaded! :)')
+-- print(' init.lua loaded! :)')
