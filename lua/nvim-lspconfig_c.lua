@@ -32,7 +32,7 @@ for i, lsp in pairs(Servers) do
       virtual_text=false -- disable diag text unless summoned.
     })
     if (lsp == 'sumneko_lua') then
-      local settings = {
+      Settings = {
 	Lua = {
 	  runtime = {
 	    -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
@@ -40,7 +40,7 @@ for i, lsp in pairs(Servers) do
 	  },
 	  diagnostics = {
 	    -- Get the language server to recognize the `vim` global
-	    globals = {'vim'},
+	    globals = 'vim'
 	  },
 	  workspace = {
 	    -- Make the server aware of Neovim runtime files
