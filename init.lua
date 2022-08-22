@@ -48,12 +48,6 @@ end
 local Plug = vim.fn["plug#"]
 vim.call("plug#begin", vim.fn.stdpath('data').."/plugins")
 
----- COLOR
-Plug 'sainnhe/sonokai'
-Plug 'norcalli/nvim-colorizer.lua'
-Plug ('folke/tokyonight.nvim', { branch= 'main' })
-Plug 'EdenEast/nightfox.nvim'
-
 ---- DEV
 Plug 'tpope/vim-commentary'
 Plug 'KabbAmine/vCoolor.vim'
@@ -89,15 +83,18 @@ Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'glepnir/lspsaga.nvim'
 
+---- COLOR
+Plug 'sainnhe/sonokai'
+Plug 'norcalli/nvim-colorizer.lua'
+Plug ('folke/tokyonight.nvim', { branch= 'main' })
+
 vim.call("plug#end")
 
 -- Colorschemes
 -- default, atlantis, andromeda, shusia, maia, espresso
--- nightfox, dayfox, dawnfox, duskfox, nordfox, terafox
 vim.g.sonokai_style = 'shusia'
 vim.cmd("colorscheme sonokai")
 -- vim.cmd("colorscheme tokyonight")
--- vim.cmd("colorscheme nordfox")
 
 -- KEYMAPS
 function map(mode, shortcut, command)

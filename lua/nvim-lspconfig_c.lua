@@ -2,7 +2,8 @@
 local status_ok, _ = pcall(require, "lspconfig")
 if not status_ok then
 vim.notify("lspconfig not found.", "error")
-  return end
+  return
+end
 
 ----------CONNECT TO SERVERS------------
 -- read more at :h vim.lsp.buf<TAB>
@@ -14,19 +15,18 @@ vim.notify("lspconfig not found.", "error")
 --- DOES NOT RECOGNIZE CUSTOM GLOBALS ---
 Servers = {'tsserver', 'sumneko_lua'}
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
--- local nvim_lsp = require('lspconfig')
 
 for i, lsp in pairs(Servers) do
   require('lspconfig')[lsp].setup{
   on_attach = function()
     capabilities=capabilities
     print(lsp.. ' attached')
-    nmap('<C-k>','vim.lsp.buf.hover')
-    nmap('gd','vim.lsp.buf.definition')
-    nmap('gD','vim.lsp.buf.declaration')
-    nmap('<leader>r','vim.lsp.buf.rename')
-    nmap('gr','vim.lsp.buf.references')
-    nmap('<leader><d>','vim.diagnostic.open_float(nil, {focus=false})')
+    vim.keymap.set('n', '<C-k>', vim.lsp.buf.hover, {buffer=0})
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {buffer=0})
+    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, {buffer=0})
+    vim.keymap.set('n', '<leader>r', vim.lsp.buf.rename, {buffer=0})
+    vim.keymap.set('n', 'gr', vim.lsp.buf.references, {buffer=0})
+    vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float)
 
     vim.diagnostic.config({
       virtual_text=false -- disable diag text unless summoned.
