@@ -1,4 +1,6 @@
-Migrate over to init.lua:
+Neovim highlight brackets
+Neovim highlight If, EndIf, Functions, etc...
+
 https://www.notonlycode.org/neovim-lua-config/
 https://github.com/nanotee/nvim-lua-guide#vlua
 
