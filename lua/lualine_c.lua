@@ -1,4 +1,3 @@
-vim.notify("lualine loaded")
 require('lualine').setup {
   options = {
     icons_enabled = true,

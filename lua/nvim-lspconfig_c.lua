@@ -9,112 +9,78 @@ vim.notify("lspconfig not found.", "error")
 -- Need more servers?
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 ----------------------------------------
-local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-require"lspconfig".sumneko_lua.setup {
+
+--- DOES NOT RECOGNIZE CUSTOM GLOBALS ---
+Servers = {'tsserver', 'sumneko_lua'}
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+-- local nvim_lsp = require('lspconfig')
+
+for i, lsp in pairs(Servers) do
+  require('lspconfig')[lsp].setup{
   on_attach = function()
     capabilities=capabilities
-    local settings = {
-      Lua = {
-	diagnostics = {
-	  -- Get the language server to recognize the `vim` global
-	  globals = {"vim"}
+    print(lsp.. ' attached')
+    nmap('<C-k>','vim.lsp.buf.hover')
+    nmap('gd','vim.lsp.buf.definition')
+    nmap('gD','vim.lsp.buf.declaration')
+    nmap('<leader>r','vim.lsp.buf.rename')
+    nmap('gr','vim.lsp.buf.references')
+    nmap('<leader><d>','vim.diagnostic.open_float(nil, {focus=false})')
+
+    vim.diagnostic.config({
+      virtual_text=false -- disable diag text unless summoned.
+    })
+    if (lsp == 'sumneko_lua') then
+      local settings = {
+	Lua = {
+	  runtime = {
+	    -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+	    version = 'LuaJIT',
+	  },
+	  diagnostics = {
+	    -- Get the language server to recognize the `vim` global
+	    globals = {'vim'},
+	  },
+	  workspace = {
+	    -- Make the server aware of Neovim runtime files
+	    library = vim.api.nvim_get_runtime_file("", true),
+	  },
+	  telemetry = {enable = false},
 	},
-	runtime = {
-	  -- Tell the language server which version of Lua you"re using (most likely LuaJIT in the case of Neovim)
-	  version = "LuaJIT",
-	},
-	workspace = {
-	  -- Make the server aware of Neovim runtime files
-	  library = vim.api.nvim_get_runtime_file("", true),
-	},
-	-- Do not send telemetry data containing a randomized but unique identifier
-	telemetry = {
-	  enable = false,
-	},
-      },
-    }
+      }
+    end
   end
-}
+  }
+end
 
+-- TESTING FOR ONE SERVER AT A TIME
+-- local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
--- require('lspconfig').sumneko_lua.setup{
+-- require"lspconfig".sumneko_lua.setup {
 --   on_attach = function()
 --     capabilities=capabilities
---     vim.notify('sumneko_lua'.. ' attached')
---     nmap('<C-k>','vim.lsp.buf.hover')
---     nmap('gd','vim.lsp.buf.definition')
---     nmap('gD','vim.lsp.buf.declaration')
---     nmap('<leader>r','vim.lsp.buf.rename')
---     nmap('gr','vim.lsp.buf.references')
---     nmap('<leader><d>','vim.diagnostic.open_float(nil, {focus=false})')
-
---     vim.diagnostic.config({
---       virtual_text=false -- disable diag text unless summoned.
---     })
---       local settings = {
--- 	Lua = {
--- 	  runtime = {
--- 	    -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
--- 	    version = 'LuaJIT',
--- 	  },
--- 	  diagnostics = {
--- 	    -- Get the language server to recognize the `vim` global
--- 	    globals = {'vim'},
--- 	  },
--- 	  workspace = {
--- 	    -- Make the server aware of Neovim runtime files
--- 	    library = vim.api.nvim_get_runtime_file("", true),
--- 	  },
--- 	  telemetry = {enable = false},
+--     local settings = {
+--       Lua = {
+-- 	diagnostics = {
+-- 	  globals = {"vim"}
 -- 	},
---       }
---   end
---   }
-
-
--- --- DOES NOT RECOGNIZE CUSTOM GLOBALS ---
--- Servers = {'tsserver', 'sumneko_lua'}
--- local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
--- -- local nvim_lsp = require('lspconfig')
-
--- for i, lsp in pairs(Servers) do
---   require('lspconfig')[lsp].setup{
---   on_attach = function()
---     capabilities=capabilities
---     -- vim.notify(lsp.. ' attached')
---     nmap('<C-k>','vim.lsp.buf.hover')
---     nmap('gd','vim.lsp.buf.definition')
---     nmap('gD','vim.lsp.buf.declaration')
---     nmap('<leader>r','vim.lsp.buf.rename')
---     nmap('gr','vim.lsp.buf.references')
---     nmap('<leader><d>','vim.diagnostic.open_float(nil, {focus=false})')
-
---     vim.diagnostic.config({
---       virtual_text=false -- disable diag text unless summoned.
---     })
---     if (lsp == 'sumneko_lua') then
---       local settings = {
--- 	Lua = {
--- 	  runtime = {
--- 	    -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
--- 	    version = 'LuaJIT',
--- 	  },
--- 	  diagnostics = {
--- 	    -- Get the language server to recognize the `vim` global
--- 	    globals = {'vim'},
--- 	  },
--- 	  workspace = {
--- 	    -- Make the server aware of Neovim runtime files
--- 	    library = vim.api.nvim_get_runtime_file("", true),
--- 	  },
--- 	  telemetry = {enable = false},
+-- 	runtime = {
+-- 	  version = "LuaJIT"
 -- 	},
---       }
---     end
+-- 	workspace = {
+-- 	  library = vim.api.nvim_get_runtime_file("", true)
+-- 	},
+-- 	telemetry = {
+-- 	  enable = false
+-- 	},
+--       },
+--     }
 --   end
---   }
--- end
+-- }
+-- --------------------------------------
+
+
 
 
 

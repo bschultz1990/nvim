@@ -95,9 +95,9 @@ vim.call("plug#end")
 -- default, atlantis, andromeda, shusia, maia, espresso
 -- nightfox, dayfox, dawnfox, duskfox, nordfox, terafox
 vim.g.sonokai_style = 'shusia'
--- vim.cmd("colorscheme sonokai")
+vim.cmd("colorscheme sonokai")
 -- vim.cmd("colorscheme tokyonight")
-vim.cmd("colorscheme nordfox")
+-- vim.cmd("colorscheme nordfox")
 
 -- KEYMAPS
 function map(mode, shortcut, command)
@@ -134,12 +134,13 @@ end
 
 vim.g.mapleader = ','
 
+-- GENERAL
 nmap('<F3>', ':wa<cr>')
 nmap('<F5>', ':luafile $MYVIMRC<cr>')
 nmap("<F6>", ':PlugInstall<cr>')
 nmap("<F7>", ':PlugClean<cr>')
 nmap("<F12>",":edit $MYVIMRC<cr>")
-
+nmap("<leader>ex", ":Explore<cr>")
 
 -- BUFFERS AND SPLITS
 nmap("<leader>n", ":bn<cr>")
@@ -162,8 +163,7 @@ nmap("<leader>td",":Telescope diagnostics<cr>")
 Plugins = {}
 -- EXTERNAL REQUIREMENTS
 require ('_plugins')
-require ('nvim-lspconfig_c')
 require ('colorizer').setup()
 
 -- SUCCESS! :)
--- print(' init.lua loaded! :)')
+vim.notify(' init.lua loaded! :)')
