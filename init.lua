@@ -51,6 +51,8 @@ vim.call("plug#begin", vim.fn.stdpath('data').."/plugins")
 ---- COLOR
 Plug 'sainnhe/sonokai'
 Plug 'norcalli/nvim-colorizer.lua'
+Plug ('folke/tokyonight.nvim', { branch= 'main' })
+Plug 'EdenEast/nightfox.nvim'
 
 ---- DEV
 Plug 'tpope/vim-commentary'
@@ -91,8 +93,11 @@ vim.call("plug#end")
 
 -- Colorschemes
 -- default, atlantis, andromeda, shusia, maia, espresso
+-- nightfox, dayfox, dawnfox, duskfox, nordfox, terafox
 vim.g.sonokai_style = 'shusia'
-vim.cmd("colorscheme sonokai")
+-- vim.cmd("colorscheme sonokai")
+-- vim.cmd("colorscheme tokyonight")
+vim.cmd("colorscheme nordfox")
 
 -- KEYMAPS
 function map(mode, shortcut, command)
@@ -149,20 +154,15 @@ nmap("<leader>tn",":tabnext<cr>")
 imap("<C-cr>","<CR><CR><Up><BS><CR>")
 
 -- PLUGIN SPECIFIC
--- nmap("<leader>st",":Startify<cr>")
+nmap("<leader>st",":Startify<cr>")
 nmap("<leader>zz",":ZenMode<cr>")
 xmap("ga","<Plug>(EasyAlign)")
 nmap("<leader>td",":Telescope diagnostics<cr>")
 
 Plugins = {}
 -- EXTERNAL REQUIREMENTS
-require ('cfg_vim-notify')
-require ('cfg_telescope')
-require ('cfg_nvim-cmp')
-require ('cfg_nvim-lspconfig')
-require ('cfg_bufferline')
-require ('cfg_nvim-autopairs')
-require ('cfg_lualine')
+require ('_plugins')
+require ('nvim-lspconfig_c')
 require ('colorizer').setup()
 
 -- SUCCESS! :)
