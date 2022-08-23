@@ -4,8 +4,6 @@ Neovim highlight If, EndIf, Functions, etc...
 https://www.notonlycode.org/neovim-lua-config/
 https://github.com/nanotee/nvim-lua-guide#vlua
 
-COMPE inline suggestions.
-
 Put this list in Startify!
 Delete whole words in INSERT mode.
 i3 Window manager

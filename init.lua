@@ -6,7 +6,7 @@ vim.opt.clipboard = {"unnamedplus"}
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.mouse = "a"
-vim.opt.pumheight = 3
+vim.opt.pumheight = 20
 vim.opt.pumblend = 0
 vim.opt.cursorline = true
 vim.opt.foldmethod = "indent"
@@ -81,7 +81,7 @@ Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-path'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
--- Plug 'glepnir/lspsaga.nvim'
+Plug ('glepnir/lspsaga.nvim', {branch='main'} )
 
 ---- COLOR
 Plug 'sainnhe/sonokai'
@@ -157,9 +157,8 @@ nmap("<leader>zz",":ZenMode<cr>")
 xmap("ga","<Plug>(EasyAlign)")
 nmap("<leader>td",":Telescope diagnostics<cr>")
 
-Plugins = {}
--- EXTERNAL REQUIREMENTS
-plugins = {
+-- EXTERNAL REQUIREMENT
+Plugins = {
   'vim-notify_c',
   'telescope_c',
   'nvim-cmp_c',
@@ -169,11 +168,11 @@ plugins = {
   'lualine_c'
 }
 
-for _, plug in ipairs(plugins) do
+for _, plug in ipairs(Plugins) do
   require(plug)
 end
 
 require ('colorizer').setup()
 
 -- SUCCESS! :)
-vim.notify(' init.lua loaded! :)')
+print(' init.lua loaded! :)')
