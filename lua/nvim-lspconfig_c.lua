@@ -5,34 +5,47 @@ vim.notify("lspconfig not found.", "error")
   return
 end
 
+local saga_ok, _ = pcall(require, "lspsaga")
+if not saga_ok then
+  vim.notify("lspsaga not found.", "error")
+  return
+end
+
+local saga = require('lspsaga')
+require('lspsaga').init_lsp_saga()
+
 ----------CONNECT TO SERVERS------------
 -- read more at :h vim.lsp.buf<TAB>
 -- Need more servers?
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 ----------------------------------------
-Servers = {'tsserver', 'sumneko_lua'}
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-
-for i, lsp in pairs(Servers) do
-  require('lspconfig')[lsp].setup{
-  on_attach = function()
-    capabilities=capabilities
-    print(lsp.. ' attached')
-    vim.keymap.set('n', '<C-k>', vim.lsp.buf.hover, {buffer=0})
-    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {buffer=0})
-    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, {buffer=0})
-    vim.keymap.set('n', '<leader>r', vim.lsp.buf.rename, {buffer=0})
-    vim.keymap.set('n', 'gr', vim.lsp.buf.references, {buffer=0})
-    vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float)
-
-    vim.diagnostic.config({
-      virtual_text=false -- disable diag text unless summoned.
-    })
-  end
-  }
+Servers = {'tsserver', 'sumneko_lua', 'emmet_ls'}
+for index, lsp in ipairs(Servers) do
+  require('lspconfig')[lsp].setup{}
 end
 
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+
+function LspKeymaps()
+  -- vim.keymap.set('n', '<C-k>', vim.lsp.buf.hover, {buffer=0})
+  vim.keymap.set('n', '<C-k>', '<cmd>Lspsaga hover_doc<cr>', { silent = true })
+  vim.keymap.set("n", "gd", "<cmd>Lspsaga preview_definition<CR>", { silent = true })
+  vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, {buffer=0})
+  vim.keymap.set('n', '<leader>r', "<cmd>Lspsaga rename<CR>", { silent = true })
+  vim.keymap.set('n', 'gr', vim.lsp.buf.references, {buffer=0})
+  vim.keymap.set('n', '<leader>d', "<cmd>Lspsaga show_line_diagnostics<CR>", { silent = true } )
+  vim.keymap.set("n","<leader>o", "<cmd>LSoutlineToggle<CR>",{ silent = true })
+  vim.diagnostic.config({ virtual_text=false })
+  capabilities=capabilities
+end
+
+
+-----------SUMNEKO-LUA-----------
 require ('lspconfig').sumneko_lua.setup {
+  on_attach = function()
+    LspKeymaps()
+    print("sumneko_lua attached")
+  end,
   settings = {
     Lua = {
       runtime = {
@@ -52,6 +65,14 @@ require ('lspconfig').sumneko_lua.setup {
   }
 }
 
+
+--------------TSSERVER--------------
+require('lspconfig').tsserver.setup{
+  on_attach = function ()
+    LspKeymaps()
+    print('tsserver attached')
+  end
+}
 --------------NVIM-CMP--------------
 -- Setup nvim-cmp.
 vim.opt.completeopt = {"menu", "menuone", "noselect"}
@@ -71,12 +92,17 @@ cmp.setup({
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.abort(),
-    ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    ['<Tab>'] = cmp.mapping.confirm({
+      select = true,
+      behavior = cmp.ConfirmBehavior.Insert,
+    }),
   }),
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
     { name = 'luasnip' }, -- For luasnip users.
     { name = 'nvim_lua' },
+    { name = 'path' },
+    { name = 'buffer', keyword_length=5 },
   }),
   experimental = {
     native_menu = false,
