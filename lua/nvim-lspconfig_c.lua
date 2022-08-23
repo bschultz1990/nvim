@@ -31,7 +31,7 @@ for i, lsp in pairs(Servers) do
     vim.diagnostic.config({
       virtual_text=false -- disable diag text unless summoned.
     })
-    if (lsp == 'sumneko_lua') then
+  end,
       settings = {
 	Lua = {
 	  runtime = {
@@ -40,7 +40,7 @@ for i, lsp in pairs(Servers) do
 	  },
 	  diagnostics = {
 	    -- Get the language server to recognize the `vim` global
-	    globals = {'vim', 'Vim'}
+	    globals = {'vim'}
 	  },
 	  workspace = {
 	    -- Make the server aware of Neovim runtime files
@@ -49,8 +49,6 @@ for i, lsp in pairs(Servers) do
 	  telemetry = {enable = false},
 	},
       }
-    end
-  end
   }
 end
 
