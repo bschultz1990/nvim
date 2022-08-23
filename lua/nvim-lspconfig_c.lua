@@ -1,6 +1,6 @@
 -- Is there an lspconfig in the house?
-local status_ok, _ = pcall(require, "lspconfig")
-if not status_ok then
+local lspconfig_ok, _ = pcall(require, "lspconfig")
+if not lspconfig_ok then
 vim.notify("lspconfig not found.", "error")
   return
 end
@@ -28,8 +28,9 @@ local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protoco
 
 function LspKeymaps()
   -- vim.keymap.set('n', '<C-k>', vim.lsp.buf.hover, {buffer=0})
-  vim.keymap.set('n', '<C-k>', '<cmd>Lspsaga hover_doc<cr>', { silent = true })
-  vim.keymap.set("n", "gd", "<cmd>Lspsaga preview_definition<CR>", { silent = true })
+  vim.keymap.set('n', 'K', '<cmd>Lspsaga hover_doc<cr>', { silent = true })
+  vim.keymap.set("n", "<C-k>", "<cmd>Lspsaga preview_definition<CR>", { silent = true })
+  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { buffer = 0 })
   vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, {buffer=0})
   vim.keymap.set('n', '<leader>r', "<cmd>Lspsaga rename<CR>", { silent = true })
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, {buffer=0})
