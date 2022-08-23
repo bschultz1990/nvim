@@ -81,7 +81,7 @@ Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-path'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
-Plug 'glepnir/lspsaga.nvim'
+-- Plug 'glepnir/lspsaga.nvim'
 
 ---- COLOR
 Plug 'sainnhe/sonokai'

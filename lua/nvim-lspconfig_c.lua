@@ -32,7 +32,7 @@ for i, lsp in pairs(Servers) do
       virtual_text=false -- disable diag text unless summoned.
     })
     if (lsp == 'sumneko_lua') then
-      Settings = {
+      settings = {
 	Lua = {
 	  runtime = {
 	    -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
