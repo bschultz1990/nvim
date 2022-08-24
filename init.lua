@@ -9,8 +9,10 @@ vim.opt.mouse = "a"
 vim.opt.pumheight = 20
 vim.opt.pumblend = 0
 vim.opt.cursorline = true
-vim.opt.foldmethod = "indent"
-vim.opt.foldenable = false
+
+vim.opt.foldmethod = 'expr'
+vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
+-- vim.opt.foldenable = false
 vim.opt.foldlevel = 99
 vim.opt.termguicolors = true
 vim.opt.autoindent = true
@@ -27,6 +29,9 @@ vim.opt.ignorecase = true
 vim.opt.shiftwidth = 2
 vim.opt.softtabstop = 2
 vim.opt.winblend = 10
+
+vim.g.python3_host_prog = true
+vim.g.loaded_perl_provider = false
 
 ---- NETRW
 vim.g.netrw_keepdir = 1
@@ -60,6 +65,7 @@ Plug 'bschultz1990/cheatsheet.nvim'
 Plug 'mhinz/vim-startify'
 Plug 'windwp/nvim-autopairs'
 Plug 'rcarriga/nvim-notify'
+Plug 'nvim-treesitter/nvim-treesitter'
 
 ---- LUALINE
 Plug 'kyazdani42/nvim-web-devicons'
@@ -157,7 +163,7 @@ nmap("<leader>zz",":ZenMode<cr>")
 xmap("ga","<Plug>(EasyAlign)")
 nmap("<leader>td",":Telescope diagnostics<cr>")
 
--- EXTERNAL REQUIREMENT
+-- EXTERNAL REQUIREMENTS
 Plugins = {
   'vim-notify_c',
   'telescope_c',
@@ -165,14 +171,23 @@ Plugins = {
   'nvim-lspconfig_c',
   'bufferline_c',
   'nvim-autopairs_c',
-  'lualine_c'
+  'lualine_c',
+  'treesitter_c'
 }
 
-for _, plug in ipairs(Plugins) do
-  require(plug)
+for _, pConfig in ipairs(Plugins) do
+  require(pConfig)
 end
 
 require ('colorizer').setup()
+
+function ConfigCheck(module)
+  local status_ok, _ = pcall(require(module))
+  if not status_ok then
+    vim.notify(module..' not found', 'error')
+    return
+  end
+end
 
 -- SUCCESS! :)
 print(' init.lua loaded! :)')

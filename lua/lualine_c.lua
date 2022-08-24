@@ -1,3 +1,9 @@
+local lualine_c = {}
+
+function Testing123()
+  vim.notify("Hello from Lualine!")
+end
+
 require('lualine').setup {
   options = {
     icons_enabled = true,
@@ -38,3 +44,5 @@ require('lualine').setup {
   inactive_winbar = {},
   extensions = {}
 }
+
+return lualine_c
