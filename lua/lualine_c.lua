@@ -1,6 +1,6 @@
 local lualine_c = {}
 
-function Testing123()
+function lualine_c.Testing123()
   vim.notify("Hello from Lualine!")
 end
 

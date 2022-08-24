@@ -181,13 +181,5 @@ end
 
 require ('colorizer').setup()
 
-function ConfigCheck(module)
-  local status_ok, _ = pcall(require(module))
-  if not status_ok then
-    vim.notify(module..' not found', 'error')
-    return
-  end
-end
-
 -- SUCCESS! :)
 print(' init.lua loaded! :)')
