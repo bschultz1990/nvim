@@ -2,7 +2,8 @@
 vim.scriptencoding = 'utf8'
 vim.opt.encoding = 'utf-8'
 vim.opt.fileencoding = 'utf-8'
-vim.opt.clipboard = {"unnamedplus"}
+table.insert(vim.opt.clipboard, "unnamedplus")
+-- vim.opt.clipboard = {"unnamedplus"}
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.mouse = "a"
@@ -54,12 +55,13 @@ local Plug = vim.fn["plug#"]
 vim.call("plug#begin", vim.fn.stdpath('data').."/plugins")
 
 ---- DEV
+Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-repeat'
 Plug 'KabbAmine/vCoolor.vim'
 Plug 'folke/zen-mode.nvim'
 Plug 'folke/twilight.nvim'
 Plug 'startup-nvim/startup.nvim'
-Plug 'tpope/vim-surround'
 Plug 'junegunn/vim-easy-align'
 Plug 'bschultz1990/cheatsheet.nvim'
 Plug 'mhinz/vim-startify'
