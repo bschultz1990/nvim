@@ -46,7 +46,7 @@ end
 -----------SUMNEKO-LUA-----------
 require ('lspconfig').sumneko_lua.setup {
   on_attach = function()
-    LspKeymaps()
+    M.LspKeymaps()
     print("sumneko_lua attached")
   end,
   settings = {
@@ -72,7 +72,7 @@ require ('lspconfig').sumneko_lua.setup {
 --------------TSSERVER--------------
 require('lspconfig').tsserver.setup{
   on_attach = function ()
-    LspKeymaps()
+    M.LspKeymaps()
     print('tsserver attached')
   end
 }
