@@ -2,18 +2,14 @@
 vim.scriptencoding = 'utf8'
 vim.opt.encoding = 'utf-8'
 vim.opt.fileencoding = 'utf-8'
-table.insert(vim.opt.clipboard, "unnamedplus")
--- vim.opt.clipboard = {"unnamedplus"}
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.mouse = "a"
 vim.opt.pumheight = 20
 vim.opt.pumblend = 0
 vim.opt.cursorline = true
-
 vim.opt.foldmethod = 'expr'
 vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
--- vim.opt.foldenable = false
 vim.opt.foldlevel = 99
 vim.opt.termguicolors = true
 vim.opt.autoindent = true
@@ -22,7 +18,7 @@ vim.opt.ruler = false
 vim.opt.showmode = false
 vim.opt.showcmd = false
 vim.opt.cmdheight = 1
-vim.opt.shortmess ="F"
+vim.opt.shortmess = "F"
 vim.opt.wrap.linebreak = true
 vim.opt.linebreak = true
 vim.opt.whichwrap = "<,>,h,l"
@@ -32,6 +28,8 @@ vim.opt.shiftwidth = 2
 vim.opt.softtabstop = 2
 vim.opt.winblend = 10
 
+-- vim.opt.clipboard = {"unnamedplus"}
+-- vim.opt.foldenable = false
 vim.g.python3_host_prog = true
 vim.g.loaded_perl_provider = false
 
@@ -39,6 +37,7 @@ vim.g.loaded_perl_provider = false
 vim.g.netrw_keepdir = 1
 vim.g.netrw_localcopydircmd = 'cp -r'
 vim.g.netrw_liststyle = 0
+
 -- NEOVIDE
 if (vim.g.neovide) then
   vim.g.neovide_cursor_animation_length = 0.03
@@ -97,6 +96,9 @@ Plug 'sainnhe/sonokai'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug ('folke/tokyonight.nvim', { branch= 'main' })
 
+---- CHEATSHEETS
+Plug 'RishabhRD/popfix'
+Plug 'RishabhRD/nvim-cheat.sh'
 vim.call("plug#end")
 
 -- Colorschemes
@@ -106,65 +108,34 @@ vim.cmd("colorscheme sonokai")
 -- vim.cmd("colorscheme tokyonight")
 
 -- KEYMAPS
-function map(mode, shortcut, command)
-  vim.api.nvim_set_keymap(mode, shortcut, command, { noremap = true, silent = true })
-end
-
-function nmap(shortcut, command)
-  map('n', shortcut, command)
-end
-
-function imap(shortcut, command)
-  map('i', shortcut, command)
-end
-
-function vmap(shortcut, command)
-  map('v', shortcut, command)
-end
-
-function cmap(shortcut, command)
-  map('c', shortcut, command)
-end
-
-function tmap(shortcut, command)
-  map('t', shortcut, command)
-end
-
-function xxmap(mode, shortcut, command)
-  vim.api.nvim_set_keymap(mode, shortcut, command, { noremap = false, silent = true, })
-end
-
-function xmap(shortcut, command)
-  xxmap('x', shortcut, command)
-end
-
 vim.g.mapleader = ','
 
 -- GENERAL
-nmap('<F3>', ':wa<cr>')
-nmap('<F5>', ':luafile $MYVIMRC<cr>')
-nmap("<F6>", ':PlugInstall<cr>')
-nmap("<F7>", ':PlugClean<cr>')
-nmap("<F12>",":edit $MYVIMRC<cr>")
-nmap("<leader>ex", ":Explore<cr>")
+vim.api.nvim_set_keymap("n",'<F3>',':wa<cr>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n",'<F5>',':luafile $MYVIMRC<cr>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n","<F6>", ':PlugInstall<cr>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n","<F7>", ':PlugClean<cr>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n","<F12>",":edit $MYVIMRC<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n","<leader>ex", ":Explore<cr>", { noremap = true, silent = true })
 
 -- BUFFERS AND SPLITS
-nmap("<leader>n", ":bn<cr>")
-nmap("<leader>vs",":vs<cr><C-w>w:Ex<cr>")
-nmap("<leader>sp",":sp<cr>:Ex<cr>")
-nmap("<leader>bd",":bp|bd#!<cr>")
-nmap("<leader>tt",":tabnew<cr>")
-nmap("<leader>tc",":tabclose<cr>")
-nmap("<leader>tn",":tabnext<cr>")
+vim.api.nvim_set_keymap('n',"<leader>n", ":bn<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n',"<leader>vs",":vs<cr><C-w>w:Ex<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n',"<leader>sp",":sp<cr>:Ex<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n',"<leader>bd",":bp|bd#!<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n',"<leader>tt",":tabnew<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n',"<leader>tc",":tabclose<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n',"<leader>tn",":tabnext<cr>", { noremap = true, silent = true })
 
 -- INSERT MODE GOODIES
-imap("<C-cr>","<CR><CR><Up><BS><CR>")
+vim.api.nvim_set_keymap('i',"<C-cr>","<CR><CR><Up><BS><CR>", {noremap = true, silent = true })
 
 -- PLUGIN SPECIFIC
-nmap("<leader>st",":Startify<cr>")
-nmap("<leader>zz",":ZenMode<cr>")
-xmap("ga","<Plug>(EasyAlign)")
-nmap("<leader>td",":Telescope diagnostics<cr>")
+vim.api.nvim_set_keymap('n',"<leader>st",":Startify<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n',"<leader>zz",":ZenMode<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n',"<leader>td",":Telescope diagnostics<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap('x',"ga","<Plug>(EasyAlign)", { noremap = false, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>ch', ':Cheat<cr>', { noremap = false, silent = true } )
 
 -- EXTERNAL REQUIREMENTS
 Plugins = {
@@ -175,7 +146,8 @@ Plugins = {
   'bufferline_c',
   'nvim-autopairs_c',
   'lualine_c',
-  'treesitter_c'
+  'treesitter_c',
+  'cheat_c'
 }
 
 for _, pConfig in ipairs(Plugins) do

@@ -1,15 +1,15 @@
 local M = {}
 
 -- Is there an lspconfig in the house?
-local lspconfig_ok, _ = pcall(require, "lspconfig")
+local lspconfig_ok, _ = pcall(require, 'lspconfig')
 if not lspconfig_ok then
-vim.notify("lspconfig not found.", "error")
+vim.notify('lspconfig not found.', 'error')
   return
 end
 
-local saga_ok, _ = pcall(require, "lspsaga")
+local saga_ok, _ = pcall(require, 'lspsaga')
 if not saga_ok then
-  vim.notify("lspsaga not found.", "error")
+  vim.notify('lspsaga not found.', 'error')
   return
 end
 
@@ -31,13 +31,13 @@ local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protoco
 function M.LspKeymaps()
   -- vim.keymap.set('n', '<C-k>', vim.lsp.buf.hover, {buffer=0})
   vim.keymap.set('n', 'K', '<cmd>Lspsaga hover_doc<cr>', { silent = true })
-  vim.keymap.set("n", "<C-k>", "<cmd>Lspsaga preview_definition<CR>", { silent = true })
+  vim.keymap.set('n', '<C-k>', '<cmd>Lspsaga preview_definition<CR>', { silent = true })
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { buffer = 0 })
   vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, {buffer=0})
-  vim.keymap.set('n', '<leader>r', "<cmd>Lspsaga rename<CR>", { silent = true })
+  vim.keymap.set('n', '<leader>r', '<cmd>Lspsaga rename<CR>', { silent = true })
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, {buffer=0})
-  vim.keymap.set('n', '<leader>d', "<cmd>Lspsaga show_line_diagnostics<CR>", { silent = true } )
-  vim.keymap.set("n","<leader>o", "<cmd>LSoutlineToggle<CR>",{ silent = true })
+  vim.keymap.set('n', '<leader>d', '<cmd>Lspsaga show_line_diagnostics<CR>', { silent = true } )
+  vim.keymap.set('n','<leader>o', '<cmd>LSoutlineToggle<CR>',{ silent = true })
   vim.diagnostic.config({ virtual_text=false })
   capabilities=capabilities
 end
@@ -47,7 +47,7 @@ end
 require ('lspconfig').sumneko_lua.setup {
   on_attach = function()
     M.LspKeymaps()
-    print("sumneko_lua attached")
+    print('sumneko_lua attached')
   end,
   settings = {
     Lua = {
@@ -61,7 +61,7 @@ require ('lspconfig').sumneko_lua.setup {
       },
       workspace = {
 	-- Make the server aware of Neovim runtime files
-	library = vim.api.nvim_get_runtime_file("", true),
+	library = vim.api.nvim_get_runtime_file('', true),
       },
       telemetry = {enable = false},
     },
@@ -78,7 +78,7 @@ require('lspconfig').tsserver.setup{
 }
 --------------NVIM-CMP--------------
 -- Setup nvim-cmp.
-vim.opt.completeopt = {"menu", "menuone", "noselect"}
+vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
 local cmp = require'cmp'
 cmp.setup({
   snippet = {
