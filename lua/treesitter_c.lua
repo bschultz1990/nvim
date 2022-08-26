@@ -1,7 +1,7 @@
 -- need help?
 -- :h nvim-treesitter-commands
 
-local treesitter_c = {}
+local M = {}
 
 require 'nvim-treesitter.configs'.setup{
   sync_install = true,
@@ -11,4 +11,4 @@ require 'nvim-treesitter.configs'.setup{
   indent = { enable = true },
 }
 
-return treesitter_c
+return M

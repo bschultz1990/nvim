@@ -1,3 +1,5 @@
+local M = {}
+
 require('telescope').setup {
   defaults = {
     file_ignore_patterns = {"%.git", "%.npm", "%node_modules"}
@@ -20,3 +22,5 @@ nmap("<leader>fg",":Telescope live_grep<cr>")
 nmap("<leader>bb",":Telescope buffers<cr>")
 nmap("<leader>h",":Telescope help_tags<cr>")
 nmap("<leader>fb",":Telescope file_browser<cr>")
+
+return M

@@ -24,6 +24,7 @@ vim.opt.showcmd = false
 vim.opt.cmdheight = 1
 vim.opt.shortmess ="F"
 vim.opt.wrap.linebreak = true
+vim.opt.linebreak = true
 vim.opt.whichwrap = "<,>,h,l"
 vim.opt.expandtab = false
 vim.opt.ignorecase = true

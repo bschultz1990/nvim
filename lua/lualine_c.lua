@@ -1,4 +1,4 @@
-local lualine_c = {}
+local M = {}
 
 require('lualine').setup {
   options = {
@@ -41,4 +41,4 @@ require('lualine').setup {
   extensions = {}
 }
 
-return lualine_c
+return M

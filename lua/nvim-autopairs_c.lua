@@ -1,4 +1,4 @@
-local autopairs_c = {}
+local M = {}
 
 require("nvim-autopairs").setup {
   disable_filetype = { "TelescopePrompt" },
@@ -18,4 +18,4 @@ require("nvim-autopairs").setup {
   map_c_w = false, -- map <c-w> to delete a pair if possible
 }
 
-return autopairs_c
+return M

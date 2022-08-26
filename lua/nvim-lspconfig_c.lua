@@ -1,3 +1,5 @@
+local M = {}
+
 -- Is there an lspconfig in the house?
 local lspconfig_ok, _ = pcall(require, "lspconfig")
 if not lspconfig_ok then
@@ -26,7 +28,7 @@ end
 
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-function LspKeymaps()
+function M.LspKeymaps()
   -- vim.keymap.set('n', '<C-k>', vim.lsp.buf.hover, {buffer=0})
   vim.keymap.set('n', 'K', '<cmd>Lspsaga hover_doc<cr>', { silent = true })
   vim.keymap.set("n", "<C-k>", "<cmd>Lspsaga preview_definition<CR>", { silent = true })
