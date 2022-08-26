@@ -1,9 +1,5 @@
 local lualine_c = {}
 
-function lualine_c.Testing123()
-  vim.notify("Hello from Lualine!")
-end
-
 require('lualine').setup {
   options = {
     icons_enabled = true,
