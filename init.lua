@@ -22,10 +22,11 @@ vim.opt.shortmess = "F"
 vim.opt.wrap.linebreak = true
 vim.opt.linebreak = true
 vim.opt.whichwrap = "<,>,h,l"
-vim.opt.expandtab = false
+vim.opt.expandtab = true
 vim.opt.ignorecase = true
+vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
-vim.opt.softtabstop = 2
+-- vim.opt.softtabstop = 2
 vim.opt.winblend = 10
 
 -- vim.opt.clipboard = {"unnamedplus"}

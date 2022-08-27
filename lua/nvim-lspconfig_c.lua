@@ -21,7 +21,11 @@ require('lspsaga').init_lsp_saga()
 -- Need more servers?
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 ----------------------------------------
-Servers = { 'tsserver', 'sumneko_lua', 'emmet_ls' }
+Servers = { 'tsserver',
+  'sumneko_lua',
+  'emmet_ls',
+  -- 'cssls',
+}
 for index, lsp in ipairs(Servers) do
   require('lspconfig')[lsp].setup{}
 end
@@ -43,6 +47,16 @@ function M.LspKeymaps()
 end
 
 
+-----------CSSLS-----------
+require'lspconfig'.cssls.setup {
+  on_attach = function ()
+    capabilities.textDocument.completion.completionItem.snippetSupport = true
+    M.LspKeymaps()
+    vim.keymap.set('n', '<C-k>', vim.lsp.buf.references, { buffer = 0 })
+    print ('cssls attached!')
+  end,
+}
+
 -----------SUMNEKO-LUA-----------
 require ('lspconfig').sumneko_lua.setup {
   on_attach = function()
@@ -60,7 +74,7 @@ require ('lspconfig').sumneko_lua.setup {
 	globals = { 'vim' },
       },
       workspace = {
-	-- Make the server aware of Neovim runtime files
+
 	library = vim.api.nvim_get_runtime_file('', true),
       },
       telemetry = { enable = false },
