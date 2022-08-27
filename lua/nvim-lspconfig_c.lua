@@ -21,7 +21,7 @@ require('lspsaga').init_lsp_saga()
 -- Need more servers?
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 ----------------------------------------
-Servers = {'tsserver', 'sumneko_lua', 'emmet_ls'}
+Servers = { 'tsserver', 'sumneko_lua', 'emmet_ls' }
 for index, lsp in ipairs(Servers) do
   require('lspconfig')[lsp].setup{}
 end
@@ -33,9 +33,9 @@ function M.LspKeymaps()
   vim.keymap.set('n', 'K', '<cmd>Lspsaga hover_doc<cr>', { silent = true })
   vim.keymap.set('n', '<C-k>', '<cmd>Lspsaga preview_definition<CR>', { silent = true })
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { buffer = 0 })
-  vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, {buffer=0})
+  vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { buffer=0 })
   vim.keymap.set('n', '<leader>r', '<cmd>Lspsaga rename<CR>', { silent = true })
-  vim.keymap.set('n', 'gr', vim.lsp.buf.references, {buffer=0})
+  vim.keymap.set('n', 'gr', vim.lsp.buf.references, { buffer=0 })
   vim.keymap.set('n', '<leader>d', '<cmd>Lspsaga show_line_diagnostics<CR>', { silent = true } )
   vim.keymap.set('n','<leader>o', '<cmd>LSoutlineToggle<CR>',{ silent = true })
   vim.diagnostic.config({ virtual_text=false })
@@ -57,13 +57,13 @@ require ('lspconfig').sumneko_lua.setup {
       },
       diagnostics = {
 	-- Get the language server to recognize the `vim` global
-	globals = {'vim'},
+	globals = { 'vim' },
       },
       workspace = {
 	-- Make the server aware of Neovim runtime files
 	library = vim.api.nvim_get_runtime_file('', true),
       },
-      telemetry = {enable = false},
+      telemetry = { enable = false },
     },
   }
 }
@@ -78,7 +78,7 @@ require('lspconfig').tsserver.setup{
 }
 --------------NVIM-CMP--------------
 -- Setup nvim-cmp.
-vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
+vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
 local cmp = require'cmp'
 cmp.setup({
   snippet = {
