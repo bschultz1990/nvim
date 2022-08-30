@@ -1,3 +1,4 @@
+-- BUMP! Test!
 -- GENERAL
 vim.scriptencoding = 'utf8'
 vim.opt.encoding = 'utf-8'
