@@ -9,5 +9,6 @@
 		"typescriptreact",
 		"javascriptreact",
 		"ejs",
-	]
+  ],
+  "coc.preferences.extensionUpdateCheck": "daily"
 }

@@ -85,7 +85,7 @@ vim.api.nvim_set_keymap('n','<leader>q',':q<cr>', { noremap = true, silent = tru
 vim.api.nvim_set_keymap('n','<F3>',':wa<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n','<F5>',':luafile $MYVIMRC<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n','<F6>', ':Lazy<cr>', { noremap = true, silent = true }) -- Lazy
-vim.api.nvim_set_keymap('n','<F11>',':edit /home/bens/.dotfiles/nvim/.config/nvim/lua/plugins_c.lua<cr>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n','<F11>',':edit /home/bens/.config/nvim/lua/plugins_c.lua<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n','<F12>',':edit $MYVIMRC<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n','<leader>ex', ':Explore<cr>', { noremap = true, silent = true })
 
@@ -106,6 +106,12 @@ function sourcefile()
 end
 
 vim.api.nvim_set_keymap('n','<C-cr>', 'yy:lua sourcefile()<cr>', { noremap = true, silent = true })
+
+vim.api.nvim_create_user_command('Snippets',
+	function()
+	vim.cmd("CocCommand snippets.editSnippets")
+end,
+	{ nargs = 0 })
 
 function mdpreview()
 	-- Get current file name	
