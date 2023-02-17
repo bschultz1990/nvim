@@ -83,8 +83,7 @@ require("lazy").setup({
 			init = function () require('configs.tabnine_c') end
 		},
 		{ 'neoclide/coc.nvim',
-			branch = 'master',
-			build = 'yarn install --frozen-lockfile',
+			branch = 'release',
 			init = function() require('configs.coc_c') end
 		},
 
