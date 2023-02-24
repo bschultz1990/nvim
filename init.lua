@@ -1,10 +1,9 @@
 require('plugins_c')
-
 -- https://bryankegley.me/posts/nvim-getting-started/kind
 -- GENERAL
 vim.scriptencoding = 'utf8'
 vim.opt.encoding = 'utf-8'
-vim.opt.fileencoding = 'utf-8'
+vim.opt.fileencoding= 'utf-8'
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.mouse = 'a'
@@ -69,7 +68,15 @@ vim.opt.wrap = false
 
 -- CLIPBOARD
 -- vim.opt.clipboard:append {'unnamedplus', 'unnamed'}
-vim.g.python3_host_prog = '/usr/bin/python3'
+
+-- vim.g.python3_host_prog = '/usr/bin/python3'
+function shebang(cmd)
+	local env = io.popen(cmd):read("*a") -- read the output of "which python3"
+	env = string.sub(env, 1, -2) -- cut out the newline character
+	io.close() -- close the file handle
+	return env
+end
+vim.g.python3_host_prog = shebang("which python3")
 vim.g.loaded_perl_provider = false
 
 ---- NETRW
@@ -109,8 +116,8 @@ vim.api.nvim_set_keymap('n','<C-cr>', 'yy:lua sourcefile()<cr>', { noremap = tru
 
 vim.api.nvim_create_user_command('Snippets',
 	function()
-	vim.cmd("CocCommand snippets.editSnippets")
-end,
+		vim.cmd("CocCommand snippets.editSnippets")
+	end,
 	{ nargs = 0 })
 
 function mdpreview()
