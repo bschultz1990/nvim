@@ -78,52 +78,52 @@ require("lazy").setup({
 		{ 'metakirby5/codi.vim',
 			init = function() require('configs.codi_c') end
 		},
-		{ 'codota/tabnine-nvim',
-			build = './dl_binaries.sh',
-			init = function () require('configs.tabnine_c') end
-		},
-		{ 'neoclide/coc.nvim',
-			branch = 'release',
-			init = function() require('configs.coc_c') end
-		},
+		-- { 'codota/tabnine-nvim',
+		-- 	build = './dl_binaries.sh',
+		-- 	init = function () require('configs.tabnine_c') end
+		-- },
+		-- { 'neoclide/coc.nvim',
+		-- 	branch = 'release',
+		-- 	init = function() require('configs.coc_c') end
+		-- },
 
-		----------------------------------------------------------------
-		---- Nvim CMP Setup
-		----------------------------------------------------------------
-		--{ 'glepnir/lspsaga.nvim',
-		--	init = function() require ('configs.lspsaga_c') end
-		--},
-		--{ 'hrsh7th/nvim-cmp',
-		--	dependencies = {
-		--		'hrsh7th/cmp-nvim-lua',
-		--		'hrsh7th/cmp-nvim-lsp',
-		--		'hrsh7th/cmp-path',
-		--		'hrsh7th/cmp-cmdline',
-		--	}
-		--},
-		--{ 'hrsh7th/vim-vsnip',
-		--	event = 'VimEnter',
-		--	dependencies = {
-		--		'rafamadriz/friendly-snippets',
-		--	}
-		--},
-		--{ 'tzachar/cmp-tabnine',
-		--	build = './install.sh',
-		--	event = 'VimEnter'
-		--},
-		--{ 'williamboman/mason.nvim',
-		--	init = function () require('mason').setup() end
-		--},
-		--{ 'williamboman/mason-lspconfig.nvim',
-		--	event = 'VimEnter',
-		--	init = function()
-		--		require("mason-lspconfig").setup({ automatic_installation = true, }) end
-		--},
-		--{ 'neovim/nvim-lspconfig',
-		--	event = 'VimEnter',
-		--	dependencies = 'onsails/lspkind.nvim',
-		--	init = function() require('configs.nvim-lspconfig_c') end
-		--},
+		--------------------------------------------------------------
+		-- Nvim CMP Setup
+		--------------------------------------------------------------
+		{ 'glepnir/lspsaga.nvim',
+			init = function() require ('configs.lspsaga_c') end
+		},
+		{ 'hrsh7th/nvim-cmp',
+			dependencies = {
+				'hrsh7th/cmp-nvim-lua',
+				'hrsh7th/cmp-nvim-lsp',
+				'hrsh7th/cmp-path',
+				'hrsh7th/cmp-cmdline',
+			}
+		},
+		{ 'hrsh7th/vim-vsnip',
+			event = 'VimEnter',
+			dependencies = {
+				'rafamadriz/friendly-snippets',
+			}
+		},
+		{ 'tzachar/cmp-tabnine',
+			build = './install.sh',
+			event = 'VimEnter'
+		},
+		{ 'williamboman/mason.nvim',
+			init = function () require('mason').setup() end
+		},
+		{ 'williamboman/mason-lspconfig.nvim',
+			event = 'VimEnter',
+			init = function()
+				require("mason-lspconfig").setup({ automatic_installation = true, }) end
+		},
+		{ 'neovim/nvim-lspconfig',
+			event = 'VimEnter',
+			dependencies = 'onsails/lspkind.nvim',
+			init = function() require('configs.nvim-lspconfig_c') end
+		},
 
 		--------------------------------------------------------------
 		-- END Nvim CMP Setup

@@ -13,30 +13,26 @@ local configs = require('lspconfig/configs')
 -- Need more servers?
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 ----------------------------------------
-Servers = {
-	'tsserver',
-	'sumneko_lua',
-	'emmet_ls',
-	'cssls',
+Unconfigured_servers = {
 }
-for index, lsp in ipairs(Servers) do
+for index, lsp in ipairs(Unconfigured_servers) do
 	require('lspconfig')[lsp].setup{}
 end
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
--- function LspKeymaps()
--- 	-- vim.keymap.set('n', '<C-k>', vim.lsp.buf.hover, {buffer=0})
--- 	vim.keymap.set('n', 'K', '<cmd>Lspsaga hover_doc<cr>', { silent = true })
--- 	vim.keymap.set('n', 'gd', '<cmd>Lspsaga peek_definition<CR>', { buffer = 0, silent = true })
--- 	vim.keymap.set('n', '<leader>r', '<cmd>Lspsaga rename<CR>', { silent = true })
--- 	vim.keymap.set('n', '<leader>d', '<cmd>Lspsaga show_line_diagnostics<CR>', { silent = true } )
--- 	vim.keymap.set('n','<leader>o', '<cmd>LSoutlineToggle<CR>',{ silent = true })
--- 	-- Show or hide diagnostic text
--- 	vim.diagnostic.config({ virtual_text=false })
--- 	capabilities=capabilities
--- end
+function LspKeymaps()
+	vim.keymap.set('n', '<C-k>', vim.lsp.buf.hover, {buffer=0})
+	vim.keymap.set('n', 'K', '<cmd>Lspsaga hover_doc<cr>', { silent = true })
+	vim.keymap.set('n', 'gd', '<cmd>Lspsaga peek_definition<CR>', { buffer = 0, silent = true })
+	vim.keymap.set('n', '<leader>r', '<cmd>Lspsaga rename<CR>', { silent = true })
+	vim.keymap.set('n', '<leader>d', '<cmd>Lspsaga show_line_diagnostics<CR>', { silent = true } )
+	vim.keymap.set('n','<leader>o', '<cmd>LSoutlineToggle<CR>',{ silent = true })
+	-- Show or hide diagnostic text
+	vim.diagnostic.config({ virtual_text=false })
+	capabilities=capabilities
+end
 
 
 -----------JSON-----------
@@ -67,11 +63,11 @@ require'lspconfig'.cssls.setup {
 	end,
 }
 
------------SUMNEKO-LUA-----------
-require ('lspconfig').sumneko_lua.setup {
+------------LUA-LS----------
+require'lspconfig'.lua_ls.setup {
 	on_attach = function()
 		LspKeymaps()
-		print('sumneko_lua attached')
+		print('lua_ls attached')
 	end,
 	settings = {
 		Lua = {
