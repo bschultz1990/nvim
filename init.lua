@@ -163,5 +163,16 @@ vim.api.nvim_set_keymap('n', '<leader><Tab>', 'magg=G`azz', { noremap = true, si
 vim.api.nvim_set_keymap('n', '<leader><', 'I<% <Esc>A %><Esc>', { noremap = true, silent = true, nowait = true})
 vim.api.nvim_set_keymap('n', '<leader><<', 'I<%= <Esc>A %><Esc>', { noremap = true, silent = true, nowait = true})
 
+-------BASH LANGUAGE SERVER---------
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'sh', 'zsh' },
+  callback = function()
+    vim.lsp.start({
+      name = 'bash-language-server',
+      cmd = { 'bash-language-server', 'start' },
+    })
+  end,
+})
+
 -- SUCCESS! :)
 print(' init.lua loaded! :)')

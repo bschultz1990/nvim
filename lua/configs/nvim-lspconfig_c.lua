@@ -53,6 +53,13 @@ require('lspconfig').emmet_ls.setup {
 	},
 }
 
+-----------SHELLCHECK-----------
+require'lspconfig'.shellcheck.setup {
+	on_attach = function()
+
+	end
+}
+
 -----------CSSLS-----------
 require'lspconfig'.cssls.setup {
 	on_attach = function ()
