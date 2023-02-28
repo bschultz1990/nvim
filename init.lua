@@ -13,6 +13,19 @@ vim.opt.cursorline = true
 
 -- Create an autocommand to remember folds in between sessions.
 
+vim.opt.foldmethod = 'expr'
+vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
+vim.opt.foldlevel = 99
+vim.opt.foldenable = true
+
+----------CUSTOM COMMANDS----------
+-- Open help files in a new tab.
+vim.api.nvim_create_user_command('H', ':tab help <args>', { nargs = 1, complete = "help" })
+-- FIXME: Doesn't work in some color schemes.
+-- vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile', 'VimEnter' }, {
+-- 		pattern = '*',
+-- 		command = 'syn match parens /[(){}]/ | hi parens ctermfg=red',
+-- 	})
 vim.g.viewoptions = 'options'
 local remember_folds = vim.api.nvim_create_augroup('remember_folds', { clear = true })
 vim.api.nvim_create_autocmd({ 'BufWinLeave', 'BufWritePost' }, {
@@ -31,19 +44,6 @@ vim.api.nvim_create_autocmd({ 'BufWinEnter', 'BufWritePost'}, {
 -- marker	    Markers are used to specify folds.
 -- syntax	    Syntax highlighting items specify folds.
 -- diff	    Fold text that is not changed.
-vim.opt.foldmethod = 'expr'
-vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
-vim.opt.foldlevel = 99
-vim.opt.foldenable = true
-
-----------CUSTOM COMMANDS----------
--- Open help files in a new tab.
-vim.api.nvim_create_user_command('H', ':tab help <args>', { nargs = 1, complete = "help" })
--- FIXME: Doesn't work in some color schemes.
--- vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile', 'VimEnter' }, {
--- 		pattern = '*',
--- 		command = 'syn match parens /[(){}]/ | hi parens ctermfg=red',
--- 	})
 
 -- vim.opt.termguicolors = true
 vim.opt.autoindent = true
@@ -58,6 +58,7 @@ vim.opt.whichwrap = '<,>,h,l'
 vim.opt.linebreak = false
 vim.opt.ignorecase = true
 vim.opt.winblend = 5
+
 -- TABSTOPS
 vim.opt.expandtab = false
 vim.opt.tabstop = 2
@@ -65,9 +66,6 @@ vim.opt.shiftwidth = 2
 -- vim.opt.shiftround = true
 -- vim.opt.softtabstop = 2
 vim.opt.wrap = false
-
--- CLIPBOARD
--- vim.opt.clipboard:append {'unnamedplus', 'unnamed'}
 
 -- vim.g.python3_host_prog = '/usr/bin/python3'
 function shebang(cmd)
@@ -77,7 +75,7 @@ function shebang(cmd)
 	return env
 end
 vim.g.python3_host_prog = shebang("which python3")
-vim.g.loaded_perl_provider = false
+vim.g.loaded_perl_provider = 0
 
 ---- NETRW
 vim.g.netrw_keepdir = 1
@@ -92,7 +90,13 @@ vim.api.nvim_set_keymap('n','<leader>q',':q<cr>', { noremap = true, silent = tru
 vim.api.nvim_set_keymap('n','<F3>',':wa<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n','<F5>',':luafile $MYVIMRC<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n','<F6>', ':Lazy<cr>', { noremap = true, silent = true }) -- Lazy
-vim.api.nvim_set_keymap('n','<F11>',':edit /home/bens/.config/nvim/lua/plugins_c.lua<cr>', { noremap = true, silent = true })
+
+function open_plugins ()
+	local plugin_dir = vim.fn.stdpath("config").."/lua/plugins_c.lua"
+	vim.cmd("edit "..plugin_dir)
+end
+
+vim.api.nvim_set_keymap('n','<F11>',":lua open_plugins()<cr>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n','<F12>',':edit $MYVIMRC<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n','<leader>ex', ':Explore<cr>', { noremap = true, silent = true })
 
@@ -145,7 +149,6 @@ vim.api.nvim_set_keymap('n','<leader>n', ':bn<cr>', { noremap = true, silent = t
 vim.api.nvim_set_keymap('n','<leader>vs',':vs<cr><C-w>w:Ex<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n','<leader>sp',':sp<cr>:Ex<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n','<leader>tt',':tabnew<cr>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n','<leader>tc',':tabclose<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n','<leader>tn',':tabnext<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n','<leader>`','<cmd>sp<cr><C-w>w<cmd>terminal<cr>i', { noremap = true, silent = true })
 
@@ -158,21 +161,6 @@ vim.api.nvim_set_keymap('x','ga','<Plug>(EasyAlign)', { noremap = false, silent 
 
 -- CUSTOM KEYMAPS
 vim.api.nvim_set_keymap('n', '<leader><Tab>', 'magg=G`azz', { noremap = true, silent = true }) -- indent on command and center the cursor
-
--- EJS
-vim.api.nvim_set_keymap('n', '<leader><', 'I<% <Esc>A %><Esc>', { noremap = true, silent = true, nowait = true})
-vim.api.nvim_set_keymap('n', '<leader><<', 'I<%= <Esc>A %><Esc>', { noremap = true, silent = true, nowait = true})
-
--------BASH LANGUAGE SERVER---------
-vim.api.nvim_create_autocmd('FileType', {
-  pattern = { 'sh', 'zsh' },
-  callback = function()
-    vim.lsp.start({
-      name = 'bash-language-server',
-      cmd = { 'bash-language-server', 'start' },
-    })
-  end,
-})
 
 -- SUCCESS! :)
 print(' init.lua loaded! :)')

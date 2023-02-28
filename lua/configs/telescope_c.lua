@@ -18,6 +18,9 @@ require('telescope').setup {
 			hidden = true
 			-- find_command = {'fzf'},
 		},
+		colorscheme = {
+			enable_preview = true
+		}
 	}
 }
 -- Load Extra Extensions
@@ -31,5 +34,6 @@ vim.api.nvim_set_keymap('n','<leader>td',':Telescope diagnostics<cr>', { noremap
 vim.api.nvim_set_keymap('n','<leader>th',':Telescope help_tags<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n','<leader>tk',':Telescope keymaps<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n','<leader>tb',':Telescope file_browser path=%:p:h select_buffer=true<cr>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n','<leader>tc',':Telescope colorscheme<cr>', { noremap = true, silent = true })
 
 return M

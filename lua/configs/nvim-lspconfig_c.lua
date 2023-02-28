@@ -53,13 +53,18 @@ require('lspconfig').emmet_ls.setup {
 	},
 }
 
------------SHELLCHECK-----------
-require'lspconfig'.shellcheck.setup {
-	on_attach = function()
-
-	end
-}
-
+-------------SHELLCHECK-----------
+-- Shh! This file doesn't know this code isn't an lspconfig server!
+-- We're sneaking it in!
+vim.api.nvim_create_autocmd('FileType', {
+		pattern = { 'sh', 'zsh' },
+		callback = function()
+			vim.lsp.start({
+					name = 'bash-language-server',
+					cmd = { 'bash-language-server', 'start' },
+				})
+		end,
+	})
 -----------CSSLS-----------
 require'lspconfig'.cssls.setup {
 	on_attach = function ()

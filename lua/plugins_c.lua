@@ -78,6 +78,7 @@ require("lazy").setup({
 		{ 'metakirby5/codi.vim',
 			init = function() require('configs.codi_c') end
 		},
+		{ 'overcache/NeoSolarized' },
 		-- { 'codota/tabnine-nvim',
 		-- 	build = './dl_binaries.sh',
 		-- 	init = function () require('configs.tabnine_c') end
@@ -102,12 +103,6 @@ require("lazy").setup({
 				'quangnguyen30192/cmp-nvim-ultisnips'
 			}
 		},
-		{ 'hrsh7th/vim-vsnip',
-			event = 'VimEnter',
-			dependencies = {
-				'rafamadriz/friendly-snippets',
-			}
-		},
 		{ 'tzachar/cmp-tabnine',
 			build = './install.sh',
 			event = 'VimEnter'
@@ -118,14 +113,35 @@ require("lazy").setup({
 		{ 'williamboman/mason-lspconfig.nvim',
 			event = 'VimEnter',
 			init = function()
-				require("mason-lspconfig").setup({ automatic_installation = true, }) end
+			require("mason-lspconfig").setup({ automatic_installation = true, }) end
 		},
 		{ 'neovim/nvim-lspconfig',
 			event = 'VimEnter',
 			dependencies = 'onsails/lspkind.nvim',
 			init = function() require('configs.nvim-lspconfig_c') end
 		},
+		{ 'folke/trouble.nvim',
+			event = 'VimEnter',
+			depends = { "kyazdani42/nvim-web-devicons"},
+			init = function () require('configs.trouble_c') end
+		},
+		{ 'mfussenegger/nvim-dap',
+		},
+		-- SNIPPETS --
+		{ 'sirver/ultisnips',
+			dependencies = {
+				'honza/vim-snippets',
+				'quangnguyen30192/cmp-nvim-ultisnips',
+			},
+			init = function () require('configs.ultisnips_c') end
+		},
 
+		-- { 'hrsh7th/vim-vsnip',
+		-- 	event = 'VimEnter',
+		-- 	dependencies = {
+		-- 		'rafamadriz/friendly-snippets',
+		-- 	}
+		-- },
 		--------------------------------------------------------------
 		-- END Nvim CMP Setup
 		--------------------------------------------------------------
