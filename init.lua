@@ -1,6 +1,7 @@
 require('plugins_c')
 -- https://bryankegley.me/posts/nvim-getting-started/kind
 -- GENERAL
+vim.opt.rtp:append("/usr/local/opt/fzf")
 vim.scriptencoding = 'utf8'
 vim.opt.encoding = 'utf-8'
 vim.opt.fileencoding= 'utf-8'
