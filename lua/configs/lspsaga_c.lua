@@ -22,17 +22,4 @@
  					color_mode = false,
  				},
  			})
-
- 		function LspKeymaps()
- 			-- vim.keymap.set('n', '<C-k>', vim.lsp.buf.hover, {buffer=0})
- 			vim.keymap.set('n', 'K', '<cmd>Lspsaga hover_doc<cr>', { silent = true })
- 			vim.keymap.set('n', 'gd', '<cmd>Lspsaga peek_definition<CR>', { buffer = 0, silent = true })
- 			vim.keymap.set('n', '<leader>r', '<cmd>Lspsaga rename<CR>', { silent = true })
- 			vim.keymap.set('n', '<leader>d', '<cmd>Lspsaga show_line_diagnostics<CR>', { silent = true } )
- 			vim.keymap.set('n','<leader>o', '<cmd>LSoutlineToggle<CR>',{ silent = true })
- 			-- Show or hide diagnostic text
- 			vim.diagnostic.config({ virtual_text=false })
- 			-- capabilities=capabilities
- 		end
- 		LspKeymaps()
  	end

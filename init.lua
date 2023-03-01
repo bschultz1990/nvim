@@ -128,6 +128,7 @@ function mdpreview()
 	-- Get current file name	
 end
 
+-- Center movements everywhere like craftzdog
 
 -- Center Scroll Results on Page
 vim.api.nvim_set_keymap('n','<C-d>', '<C-d>zz', { noremap = true, silent = true })
@@ -153,7 +154,7 @@ vim.api.nvim_set_keymap('n','<leader>tn',':tabnext<cr>', { noremap = true, silen
 vim.api.nvim_set_keymap('n','<leader>`','<cmd>sp<cr><C-w>w<cmd>terminal<cr>i', { noremap = true, silent = true })
 
 -- INSERT MODE GOODIES
-vim.api.nvim_set_keymap('i','<C-cr>','<CR><CR><Up><BS><CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('i','<C-CR>','<CR><CR><Up><BS><CR>', { noremap = true, silent = true })
 
 -- PLUGIN SPECIFIC
 vim.api.nvim_set_keymap('n','<leader>zz',':ZenMode<cr>', { noremap = true, silent = true })

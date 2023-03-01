@@ -91,9 +91,11 @@ require("lazy").setup({
 		--------------------------------------------------------------
 		-- Nvim CMP Setup
 		--------------------------------------------------------------
-		{ 'glepnir/lspsaga.nvim',
-			init = function() require ('configs.lspsaga_c') end
+		{ 'RishabhRD/lspactions',
 		},
+		-- { 'glepnir/lspsaga.nvim',
+		-- 	init = function() require ('configs.lspsaga_c') end
+		-- },
 		{ 'hrsh7th/nvim-cmp',
 			dependencies = {
 				'hrsh7th/cmp-nvim-lua',
@@ -131,7 +133,6 @@ require("lazy").setup({
 		{ 'sirver/ultisnips',
 			dependencies = {
 				'honza/vim-snippets',
-				'quangnguyen30192/cmp-nvim-ultisnips',
 			},
 			init = function () require('configs.ultisnips_c') end
 		},

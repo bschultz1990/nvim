@@ -5,8 +5,6 @@ if not lspconfig_ok then
 	return
 end
 
-
-
 local configs = require('lspconfig/configs')
 ----------CONNECT TO SERVERS------------
 -- read more at :h vim.lsp.buf<TAB>
@@ -23,17 +21,14 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protoc
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 function LspKeymaps()
-	vim.keymap.set('n', '<C-k>', vim.lsp.buf.hover, {buffer=0})
-	vim.keymap.set('n', 'K', '<cmd>Lspsaga hover_doc<cr>', { silent = true })
-	vim.keymap.set('n', 'gd', '<cmd>Lspsaga peek_definition<CR>', { buffer = 0, silent = true })
-	vim.keymap.set('n', '<leader>r', '<cmd>Lspsaga rename<CR>', { silent = true })
-	vim.keymap.set('n', '<leader>d', '<cmd>Lspsaga show_line_diagnostics<CR>', { silent = true } )
-	vim.keymap.set('n','<leader>o', '<cmd>LSoutlineToggle<CR>',{ silent = true })
+	vim.keymap.set('n', '<C-k>', vim.lsp.buf.hover(), {buffer=0})
+	vim.keymap.set('n', 'gd',vim.lsp.buf.declaration(), { buffer = 0, silent = true })
+	vim.keymap.set('n', '<leader>r',vim.lsp.util.rename(), { silent = true })
+	vim.keymap.set('n', '<leader>d',vim.lsp.diagnostic(), { silent = true } )
 	-- Show or hide diagnostic text
 	vim.diagnostic.config({ virtual_text=false })
 	capabilities=capabilities
 end
-
 
 -----------JSON-----------
 -----------EMMET-----------
