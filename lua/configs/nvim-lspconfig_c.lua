@@ -21,11 +21,11 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protoc
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 function LspKeymaps()
-	vim.keymap.set('n', '<C-k>', vim.lsp.buf.hover(), {buffer=0})
-	vim.keymap.set('n', 'gd',vim.lsp.buf.declaration(), { buffer = 0, silent = true })
-	vim.keymap.set('n', '<leader>r',vim.lsp.util.rename(), { silent = true })
-	vim.keymap.set('n', '<leader>d',vim.lsp.diagnostic(), { silent = true } )
-	-- Show or hide diagnostic text
+	vim.keymap.set('n', '<C-k>', vim.lsp.buf.references, { buffer = 0 })
+	vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { buffer = 0, silent = true })
+	vim.keymap.set('n', 'gD', vim.lsp.buf.definition, { buffer = 0, silent = true })
+	vim.keymap.set('n', '<leader>r', vim.lsp.util.rename, { silent = true })
+	-- -- Show or hide diagnostic text
 	vim.diagnostic.config({ virtual_text=false })
 	capabilities=capabilities
 end
@@ -49,7 +49,7 @@ require('lspconfig').emmet_ls.setup {
 }
 
 -------------SHELLCHECK-----------
--- Shh! This file doesn't know this code isn't an lspconfig server!
+-- Shh! This file doesn't know this code isn't an lspconfig server
 -- We're sneaking it in!
 vim.api.nvim_create_autocmd('FileType', {
 		pattern = { 'sh', 'zsh' },
@@ -65,7 +65,6 @@ require'lspconfig'.cssls.setup {
 	on_attach = function ()
 		capabilities.textDocument.completion.completionItem.snippetSupport = true
 		LspKeymaps()
-		vim.keymap.set('n', '<C-k>', vim.lsp.buf.references, { buffer = 0 })
 		print ('cssls attached!')
 	end,
 }
