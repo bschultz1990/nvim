@@ -66,10 +66,11 @@ vim.opt.scrolloff = 999
 -- vim.opt.shiftround = true
 -- vim.opt.softtabstop = 2
 -- vim.opt.wrap = false
+
 -- TAKUYA TABS:
 vim.opt.expandtab = true
 vim.opt.smarttab = true
-vim.opt.tabstop = 1
+vim.opt.tabstop = 2
 -- vim.opt.shiftwidth = 2
 vim.opt.ai = true -- auto indent
 vim.opt.si = true -- smart indent
@@ -89,14 +90,28 @@ vim.g.netrw_keepdir = 1
 vim.g.netrw_localcopydircmd = 'cp -r'
 vim.g.netrw_liststyle = 1
 
-function open_plugins ()
-  local plugin_dir = vim.fn.stdpath("config").."/lua/plugins_c.lua"
-  vim.cmd("edit "..plugin_dir)
-end
 
-vim.api.nvim_set_keymap('n','<F11>',":lua open_plugins()<cr>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n','<F12>',':edit $MYVIMRC<cr>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n','<leader>ex', ':Explore<cr>', { noremap = true, silent = true })
+vim.api.nvim_create_user_command('Plugins',
+  function ()
+    local plugin_dir = vim.fn.stdpath("config").."/lua/plugins_c.lua"
+    vim.cmd("edit "..plugin_dir)
+  end,
+  { nargs = 0 }
+  )
+
+vim.api.nvim_create_user_command('Reload',
+  function()
+    vim.cmd('luafile $MYVIMRC')
+  end,
+  { nargs = 0 }
+  )
+
+vim.api.nvim_create_user_command('Vimrc',
+  function()
+    vim.cmd('edit $MYVIMRC')
+  end,
+  { nargs = 0 }
+  )
 
 -- Save session to directory via custom Session command
 vim.api.nvim_create_user_command('Session',
@@ -133,6 +148,8 @@ end
 -- KEYMAPS
 vim.g.mapleader = ','
 
+vim.api.nvim_set_keymap('n','<leader>ex', ':Explore<cr>', { noremap = true, silent = true })
+
 -- Do not yank with x
 vim.api.nvim_set_keymap('n', 'x', '"_x', { noremap = true, silent = true, nowait = true })
 
@@ -159,7 +176,7 @@ vim.api.nvim_set_keymap('n','<leader>uf', ':set foldlevel=99<cr><cmd> echo "Unfo
 
 -- BUFFERS AND SPLITS
 vim.api.nvim_set_keymap('n','<leader>n', ':bn<cr>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n','<leader>vs',':vs<cr><C-w>w:Ex<cr>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n','<leader>vs',':vs<cr><C-w>w', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n','<leader>sp',':sp<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n','<leader>w','<C-w>w<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n','<leader>c','<C-w><C-c><cr>', { noremap = true, silent = true })
