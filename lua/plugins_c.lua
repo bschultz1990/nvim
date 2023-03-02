@@ -11,9 +11,6 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- KEYMAPS
-vim.g.mapleader = ','
-
 require("lazy").setup({
 		{ 'windwp/nvim-autopairs',
 			init = function() require('configs.nvim-autopairs_c')	end
@@ -81,6 +78,12 @@ require("lazy").setup({
 		{ 'bignimbus/pop-punk.vim', },
 		{ 'tiagovla/tokyodark.nvim', },
 		{ 'overcache/NeoSolarized' },
+		{ 'projekt0n/github-nvim-theme', version = 'v0.0.7',
+			init = function() require('github-theme').setup({
+
+					})
+			end
+		},
 		-- { 'codota/tabnine-nvim',
 		-- 	build = './dl_binaries.sh',
 		-- 	init = function () require('configs.tabnine_c') end
