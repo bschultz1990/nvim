@@ -78,6 +78,8 @@ require("lazy").setup({
 		{ 'metakirby5/codi.vim',
 			init = function() require('configs.codi_c') end
 		},
+		{ 'bignimbus/pop-punk.vim', },
+		{ 'tiagovla/tokyodark.nvim', },
 		{ 'overcache/NeoSolarized' },
 		-- { 'codota/tabnine-nvim',
 		-- 	build = './dl_binaries.sh',
