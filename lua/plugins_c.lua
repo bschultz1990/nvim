@@ -51,6 +51,10 @@ require("lazy").setup({
 			init = function () require('configs.telescope_c')	end
 		},
 		{ 'ap/vim-css-color'},
+		{ 'metakirby5/codi.vim',
+			init = function() require('configs.codi_c') end
+		},
+		--=========== COLORSCHEMES ===========--
 		{ 'marko-cerovac/material.nvim',
 			priority = 9000,
 			init = function() require ('configs.material_c') end
@@ -72,11 +76,8 @@ require("lazy").setup({
 			init = function() require('configs.lazyvim_c') end
 		},
 		{ 'catppuccin/nvim', name = "catppuccin" },
-		{ 'metakirby5/codi.vim',
-			init = function() require('configs.codi_c') end
-		},
-		{ 'bignimbus/pop-punk.vim', },
 		{ 'tiagovla/tokyodark.nvim', },
+    { 'shaunsingh/moonlight.nvim' },
 		{ 'overcache/NeoSolarized' },
 		{ 'projekt0n/github-nvim-theme', version = 'v0.0.7',
 			init = function() require('github-theme').setup({
@@ -140,6 +141,9 @@ require("lazy").setup({
 				'honza/vim-snippets',
 			},
 			init = function () require('configs.ultisnips_c') end
+		},
+		{ 'sudoerwx/vim-ray-so-beautiful',
+			-- To use, type :Ray
 		},
 
 		-- { 'hrsh7th/vim-vsnip',

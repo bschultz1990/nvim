@@ -16,32 +16,6 @@ vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
 vim.opt.foldlevel = 99
 vim.opt.foldenable = true
 
-----------CUSTOM COMMANDS----------
--- Open help files in a new tab.
-vim.api.nvim_create_user_command('H', ':tab help <args>', { nargs = 1, complete = "help" })
--- FIXME: Doesn't work in some color schemes.
--- vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile', 'VimEnter' }, {
--- 		pattern = '*',
--- 		command = 'syn match parens /[(){}]/ | hi parens ctermfg=red',
--- 	})
-vim.g.viewoptions = 'options'
-local remember_folds = vim.api.nvim_create_augroup('remember_folds', { clear = true })
-vim.api.nvim_create_autocmd({ 'BufWinLeave', 'BufWritePost' }, {
-    pattern = '*.*',
-    group = remember_folds,
-    command = 'if &ft !=# "help" | mkview | endif',
-  })
-vim.api.nvim_create_autocmd({ 'BufWinEnter', 'BufWritePost'}, {
-    pattern = '*.*',
-    group = remember_folds,
-    command = 'if &ft !=# "help" | silent! loadview | endif',
-  })
--- manual	    Folds are created manually.
--- indent	    Lines with equal indent form a fold.
--- expr	    'foldexpr' gives the fold level of a line.
--- marker	    Markers are used to specify folds.
--- syntax	    Syntax highlighting items specify folds.
--- diff	    Fold text that is not changed.
 
 -- vim.opt.termguicolors = true
 vim.opt.autoindent = true
@@ -65,7 +39,7 @@ vim.opt.scrolloff = 999
 -- vim.opt.shiftwidth = 2
 -- vim.opt.shiftround = true
 -- vim.opt.softtabstop = 2
--- vim.opt.wrap = false
+vim.opt.wrap = false
 
 -- TAKUYA TABS:
 vim.opt.expandtab = true
@@ -90,7 +64,28 @@ vim.g.netrw_keepdir = 1
 vim.g.netrw_localcopydircmd = 'cp -r'
 vim.g.netrw_liststyle = 1
 
+----------CUSTOM COMMANDS----------
+-- Open help files in a new tab.
+vim.g.viewoptions = 'options'
+local remember_folds = vim.api.nvim_create_augroup('remember_folds', { clear = true })
+vim.api.nvim_create_autocmd({ 'BufWinLeave', 'BufWritePost' }, {
+    pattern = '*.*',
+    group = remember_folds,
+    command = 'if &ft !=# "help" | mkview | endif',
+  })
+vim.api.nvim_create_autocmd({ 'BufWinEnter', 'BufWritePost'}, {
+    pattern = '*.*',
+    group = remember_folds,
+    command = 'if &ft !=# "help" | silent! loadview | endif',
+  })
+-- manual	    Folds are created manually.
+-- indent	    Lines with equal indent form a fold.
+-- expr	    'foldexpr' gives the fold level of a line.
+-- marker	    Markers are used to specify folds.
+-- syntax	    Syntax highlighting items specify folds.
+-- diff	    Fold text that is not changed.
 
+vim.api.nvim_create_user_command('H', ':tab help <args>', { nargs = 1, complete = "help" })
 vim.api.nvim_create_user_command('Plugins',
   function ()
     local plugin_dir = vim.fn.stdpath("config").."/lua/plugins_c.lua"
@@ -106,7 +101,7 @@ vim.api.nvim_create_user_command('Reload',
   { nargs = 0 }
   )
 
-vim.api.nvim_create_user_command('Vimrc',
+vim.api.nvim_create_user_command('Init',
   function()
     vim.cmd('edit $MYVIMRC')
   end,
@@ -191,7 +186,7 @@ vim.api.nvim_set_keymap('i','<C-CR>','<CR><CR><Up><BS><CR>', { noremap = true, s
 require('plugins_c')
 
 -- Colorschemes
-vim.cmd('colorscheme github_dark')
+vim.cmd('colorscheme moonlight')
 -- For more options, :Telescope colorschemes
 
 -- PLUGIN SPECIFIC KEYMAPS
