@@ -4,7 +4,8 @@ require('telescope').setup {
 	extensions = {
 		file_browser = {
 			-- hijack_netrw = true,
-		}
+			hidden = true,
+		},
 	},
 	defaults = {
 		file_ignore_patterns = {'%.git', '%.npm', '%node_modules'},

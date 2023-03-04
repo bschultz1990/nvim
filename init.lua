@@ -30,6 +30,7 @@ vim.opt.ignorecase = true
 vim.opt.winblend = 5
 -- Center cursor line on the screen.
 vim.opt.scrolloff = 15
+vim.opt.wrap = false
 
 -- TABSTOPS
 -- vim.opt.expandtab = false
@@ -37,7 +38,6 @@ vim.opt.scrolloff = 15
 -- vim.opt.shiftwidth = 2
 -- vim.opt.shiftround = true
 -- vim.opt.softtabstop = 2
-vim.opt.wrap = false
 
 -- TAKUYA TABS:
 vim.opt.expandtab = true
@@ -63,7 +63,6 @@ vim.g.netrw_localcopydircmd = 'cp -r'
 vim.g.netrw_liststyle = 1
 
 ----------CUSTOM COMMANDS----------
--- Open help files in a new tab.
 vim.g.viewoptions = 'options'
 local remember_folds = vim.api.nvim_create_augroup('remember_folds', { clear = true })
 vim.api.nvim_create_autocmd({ 'BufWinLeave', 'BufWritePost' }, {
@@ -83,6 +82,7 @@ vim.api.nvim_create_autocmd({ 'BufWinEnter', 'BufWritePost'}, {
 -- syntax	    Syntax highlighting items specify folds.
 -- diff	    Fold text that is not changed.
 
+-- Open help files in a new tab.
 vim.api.nvim_create_user_command('H', ':tab help <args>', { nargs = 1, complete = "help" })
 vim.api.nvim_create_user_command('Plugins',
   function ()

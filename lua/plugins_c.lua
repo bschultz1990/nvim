@@ -81,7 +81,12 @@ require("lazy").setup({
 
 					})
 			end
+			--======== END COLORSCHEMES =========--
 		},
+		-- { '',
+		-- 	init = function () require ('') end,
+
+		-- },
 
 		--------------------------------------------------------------
 		-- Nvim CMP Setup
