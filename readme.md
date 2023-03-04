@@ -1,7 +1,10 @@
+## Like What You See?
+Feel free to fork this repo and hack away with your own config!
+
 ## Installation
 ```bash
-git clone --depth 1 --branch pacman https://github.com/bschultz1990/nvim
-./install.sh
+git clone --depth 1 --branch pacman https://github.com/bschultz1990/nvim \
+  && ./install.sh
 ```
 
 After installation, launch neovim (`nvim`) let LazyVim update plugins. Relaunch, then run `:checkhealth` to field for any edge cases or extra packages you might need to grab.
@@ -28,27 +31,34 @@ View all keybinds with `<leader>tk` or `:Telescope keybinds`, then search throug
 
 ### Manage Plugin Updates, Etc..
 
-``
-`:Lazy` Brings up Lazy.nvim plugin manager. `q` will exit that window.
+```
+:Lazy Brings up Lazy.nvim plugin manager. `q` will exit that window.
 ```
 
 ### Sessions
 ```
-`:Session name` will create a new session in your `sessions` folder. Saves all tabs, windows, and cursor positions. Combine this with `<C-cr>` when viewing the sessions folder in Netrw, and Neovim will automatically source that file to load that session.
+:Session name
 ```
+- Where `name` is the name of your session WITHOUT a file extension.
+- Will create a new session in your `sessions` folder.
+- Saves all tabs, windows, and cursor positions.
+- Combine this with `<C-cr>` when viewing the sessions folder in Netrw.
+- Neovim will then source the session file to its former state.
+
 ### Reload Your Init.lua
-
-`:Reload`
-
+```bash
+:Reload
+```
 ### Edit Your Init.lua File
-
-`:Vimrc`
-
+```
+:Vimrc
+```
 ### Edit Your Plugins File
-
-`:Plugins`
-
+```
+:Plugins
+```
 ### Show Help File In Its Own Tab
-
-`H document`, where `document` is whatever help subject you want. Switch tabs with `<leader>tn` or :tabnext.
-
+```
+:H document
+```
+- Where `document` is whatever help subject you want. Switch tabs with `<leader>tn` or `:tabnext`.
