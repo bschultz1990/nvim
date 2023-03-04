@@ -1,7 +1,7 @@
 ## Installation
 ```bash
-
-
+git clone --depth 1 --branch pacman https://github.com/bschultz1990/nvim
+./install.sh
 ```
 
 After installation, launch neovim (`nvim`) let LazyVim update plugins. Relaunch, then run `:checkhealth` to field for any edge cases or extra packages you might need to grab.
@@ -28,12 +28,14 @@ View all keybinds with `<leader>tk` or `:Telescope keybinds`, then search throug
 
 ### Manage Plugin Updates, Etc..
 
+``
 `:Lazy` Brings up Lazy.nvim plugin manager. `q` will exit that window.
+```
 
 ### Sessions
-
+```
 `:Session name` will create a new session in your `sessions` folder. Saves all tabs, windows, and cursor positions. Combine this with `<C-cr>` when viewing the sessions folder in Netrw, and Neovim will automatically source that file to load that session.
-
+```
 ### Reload Your Init.lua
 
 `:Reload`
