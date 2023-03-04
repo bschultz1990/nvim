@@ -3,7 +3,8 @@ Feel free to fork this repo and hack away with your own config!
 
 ## Installation
 ```bash
-git clone --depth 1 --branch pacman https://github.com/bschultz1990/nvim \
+cd ~/.config \
+  && git clone --depth 1 --branch pacman https://github.com/bschultz1990/nvim \
   && ./install.sh
 ```
 
