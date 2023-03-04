@@ -121,23 +121,24 @@ function sourcefile()
   local path = dir .. "/" .. file
   vim.cmd("source "..path)
 end
-
 vim.api.nvim_set_keymap('n','<C-cr>', 'yy:lua sourcefile()<cr>', { noremap = true, silent = true })
 
-vim.api.nvim_create_user_command('Snippets',
-  function()
-    vim.cmd("CocCommand snippets.editSnippets")
-  end,
-  { nargs = 0 })
+-- Broken right now. TODO: Change this to Ultisnips later.
+-- vim.api.nvim_create_user_command('Snippets',
+--   function()
+--     vim.cmd("CocCommand snippets.editSnippets")
+--   end,
+--   { nargs = 0 })
 
-function mdpreview()
+-- TODO: Make a cool markdown preview command.
+-- function mdpreview()
   -- Currently powered by !Grip <filename>
   -- Get current file name	
   -- Split pane to the right.
   -- Activate termial
   -- Insert mode
   -- open glow with current file name <carriage return>
-end
+-- end
 
 -- KEYMAPS
 vim.g.mapleader = ','
@@ -154,7 +155,7 @@ vim.api.nvim_set_keymap('n','<leader>q',':q<cr>', { noremap = true, silent = tru
 vim.api.nvim_set_keymap('n','<F3>',':wa<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n','<F5>',':luafile $MYVIMRC<cr>', { noremap = true, silent = true })
 
--- Indents
+-- <leader><tab> indents your entire file.
 vim.api.nvim_set_keymap('n', '<leader><Tab>', 'magg=G`azz', { noremap = true, silent = true }) -- indent on command and center the cursor
 
 -- Center Search Results on the Page
@@ -165,6 +166,7 @@ vim.api.nvim_set_keymap('n','N', 'Nzzzv', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n','G', 'Gzz', { noremap = true, silent = true })
 
 -- FOLDS AND SUCH
+-- <leader>fd folds everything. <leader>uf unfolds everything.
 vim.api.nvim_set_keymap('n','<leader>fd', ':set foldlevel=1<cr><cmd>echo "Folding..."<cr>', { noremap = true, silent = true }) -- Fold
 vim.api.nvim_set_keymap('n','<leader>uf', ':set foldlevel=99<cr><cmd> echo "Unfolding..."<cr>', { noremap = true, silent = true }) -- Unfold
 
@@ -178,7 +180,7 @@ vim.api.nvim_set_keymap('n','<leader>tt',':tabnew<cr>', { noremap = true, silent
 vim.api.nvim_set_keymap('n','<leader>tn',':tabnext<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n','<leader>`','<cmd>sp<cr><C-w>w<cmd>terminal<cr>i', { noremap = true, silent = true })
 
--- INSERT MODE GOODIES
+-- <C-cr> 
 vim.api.nvim_set_keymap('i','<C-CR>','<CR><CR><Up><BS><CR>', { noremap = true, silent = true })
 
 -- PLUGINS
