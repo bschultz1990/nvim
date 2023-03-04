@@ -29,7 +29,7 @@ vim.opt.linebreak = false
 vim.opt.ignorecase = true
 vim.opt.winblend = 5
 -- Center cursor line on the screen.
-vim.opt.scrolloff = 999
+vim.opt.scrolloff = 15
 
 -- TABSTOPS
 -- vim.opt.expandtab = false
@@ -99,7 +99,7 @@ vim.api.nvim_create_user_command('Reload',
   { nargs = 0 }
   )
 
-vim.api.nvim_create_user_command('Init',
+vim.api.nvim_create_user_command('Vimrc',
   function()
     vim.cmd('edit $MYVIMRC')
   end,
@@ -131,6 +131,7 @@ vim.api.nvim_create_user_command('Snippets',
   { nargs = 0 })
 
 function mdpreview()
+  -- Currently powered by !Grip <filename>
   -- Get current file name	
   -- Split pane to the right.
   -- Activate termial
@@ -184,7 +185,25 @@ vim.api.nvim_set_keymap('i','<C-CR>','<CR><CR><Up><BS><CR>', { noremap = true, s
 require('plugins_c')
 
 -- Colorschemes
-vim.cmd('colorscheme moonlight')
+vim.cmd('colorscheme '..
+  -- 'NeoSolarized'
+  -- 'carbonfox'
+  -- 'catppuccin'
+  -- 'dawnfox'
+  -- 'dayfox'
+  -- 'duskfox'
+  -- 'github_dark'
+  -- 'github_light'
+  -- 'moonlight'
+  'night-owl'
+  -- 'nightfox'
+  -- 'nord'
+  -- 'nordfox'
+  -- 'sonokai'
+  -- 'terrafox'
+  -- 'tokyodark'
+  -- 'tokyonight'
+  )
 -- For more options, :Telescope colorschemes
 
 -- PLUGIN SPECIFIC KEYMAPS
