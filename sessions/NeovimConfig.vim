@@ -13,13 +13,11 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +1 .dotfiles/notes/notes/notes.txt
-badd +25 .dotfiles/notes/notes/done.txt
-badd +45 Documents/notes/terminal_notes.md
+badd +66 .config/nvim/lua/plugins_c.lua
+badd +34 .config/nvim/init.lua
 argglobal
 %argdel
-$argadd .dotfiles/notes/notes/notes.txt
-edit Documents/notes/terminal_notes.md
+edit .config/nvim/init.lua
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
@@ -36,9 +34,10 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 152 + 116) / 232)
-exe 'vert 2resize ' . ((&columns * 79 + 116) / 232)
+exe 'vert 1resize ' . ((&columns * 90 + 90) / 180)
+exe 'vert 2resize ' . ((&columns * 89 + 90) / 180)
 argglobal
+balt .config/nvim/lua/plugins_c.lua
 setlocal fdm=expr
 setlocal fde=nvim_treesitter#foldexpr()
 setlocal fmr={{{,}}}
@@ -47,20 +46,20 @@ setlocal fdl=99
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 45 - ((31 * winheight(0) + 30) / 60)
+let s:l = 34 - ((30 * winheight(0) + 23) / 46)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 45
-normal! 047|
+keepjumps 34
+normal! 011|
 lcd ~
 wincmd w
 argglobal
-if bufexists(fnamemodify("~/.dotfiles/notes/notes/notes.txt", ":p")) | buffer ~/.dotfiles/notes/notes/notes.txt | else | edit ~/.dotfiles/notes/notes/notes.txt | endif
+if bufexists(fnamemodify("~/.config/nvim/lua/plugins_c.lua", ":p")) | buffer ~/.config/nvim/lua/plugins_c.lua | else | edit ~/.config/nvim/lua/plugins_c.lua | endif
 if &buftype ==# 'terminal'
-  silent file ~/.dotfiles/notes/notes/notes.txt
+  silent file ~/.config/nvim/lua/plugins_c.lua
 endif
-balt ~/Documents/notes/terminal_notes.md
+balt ~/.config/nvim/init.lua
 setlocal fdm=expr
 setlocal fde=nvim_treesitter#foldexpr()
 setlocal fmr={{{,}}}
@@ -69,16 +68,17 @@ setlocal fdl=99
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 1 - ((0 * winheight(0) + 30) / 60)
+let s:l = 66 - ((27 * winheight(0) + 23) / 46)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 1
-normal! 0
+keepjumps 66
+normal! 016|
 lcd ~
 wincmd w
-exe 'vert 1resize ' . ((&columns * 152 + 116) / 232)
-exe 'vert 2resize ' . ((&columns * 79 + 116) / 232)
+2wincmd w
+exe 'vert 1resize ' . ((&columns * 90 + 90) / 180)
+exe 'vert 2resize ' . ((&columns * 89 + 90) / 180)
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf

@@ -15,11 +15,11 @@ require("lazy").setup({
 		{ 'windwp/nvim-autopairs',
 			init = function() require('configs.nvim-autopairs_c')	end
 		},
-		{ "akinsho/bufferline.nvim",
-			version = "v3.*",
-			depends = { "kyazdani42/nvim-web-devicons"},
-			init = function () require ('configs.bufferline_c') end
-		},
+		-- { "akinsho/bufferline.nvim",
+		-- 	version = "v3.*",
+		-- 	depends = { "kyazdani42/nvim-web-devicons"},
+		-- 	init = function () require ('configs.bufferline_c') end
+		-- },
 		{ "echasnovski/mini.bufremove",
 			keys = {
 				{ "<leader>bd", function() require("mini.bufremove").delete(0, false) end, desc = "Delete Buffer" },
@@ -54,19 +54,6 @@ require("lazy").setup({
 		{ 'metakirby5/codi.vim',
 			init = function() require('configs.codi_c') end
 		},
-		--=========== COLORSCHEMES ===========--
-		{ 'marko-cerovac/material.nvim',
-			priority = 9000,
-			init = function() require ('configs.material_c') end
-		},
-		{ 'ghifarit53/tokyonight-vim',
-			init = function() require ('configs.tokyonight_c') end
-		},
-		{ 'sainnhe/sonokai',
-			init = function() require ('configs.sonokai_c') end
-		},
-		{ 'shaunsingh/nord.nvim'},
-		{ 'EdenEast/nightfox.nvim'},
 		{ 'sheerun/vim-polyglot'},
 		{ 'norcalli/nvim-colorizer.lua' },
 		{ 'KabbAmine/vCoolor.vim' },
@@ -75,9 +62,19 @@ require("lazy").setup({
 			event = "VimEnter",
 			init = function() require('configs.lazyvim_c') end
 		},
+		--=========== COLORSCHEMES ===========--
+		{ 'haishanh/night-owl.vim', },
+		{ 'ghifarit53/tokyonight-vim',
+			init = function() require ('configs.tokyonight_c') end
+		},
+		{ 'sainnhe/sonokai',
+			init = function() require ('configs.sonokai_c') end
+		},
+		{ 'shaunsingh/nord.nvim'},
+		{ 'EdenEast/nightfox.nvim'},
 		{ 'catppuccin/nvim', name = "catppuccin" },
 		{ 'tiagovla/tokyodark.nvim', },
-    { 'shaunsingh/moonlight.nvim' },
+		{ 'shaunsingh/moonlight.nvim' },
 		{ 'overcache/NeoSolarized' },
 		{ 'projekt0n/github-nvim-theme', version = 'v0.0.7',
 			init = function() require('github-theme').setup({
@@ -85,23 +82,12 @@ require("lazy").setup({
 					})
 			end
 		},
-		-- { 'codota/tabnine-nvim',
-		-- 	build = './dl_binaries.sh',
-		-- 	init = function () require('configs.tabnine_c') end
-		-- },
-		-- { 'neoclide/coc.nvim',
-		-- 	branch = 'release',
-		-- 	init = function() require('configs.coc_c') end
-		-- },
 
 		--------------------------------------------------------------
 		-- Nvim CMP Setup
 		--------------------------------------------------------------
 		{ 'RishabhRD/lspactions',
 		},
-		-- { 'glepnir/lspsaga.nvim',
-		-- 	init = function() require ('configs.lspsaga_c') end
-		-- },
 		{ 'hrsh7th/nvim-cmp',
 			dependencies = {
 				'hrsh7th/cmp-nvim-lua',
@@ -113,7 +99,8 @@ require("lazy").setup({
 		},
 		{ 'tzachar/cmp-tabnine',
 			build = './install.sh',
-			event = 'VimEnter'
+			event = 'VimEnter',
+			init = function () require('configs.tabnine_c') end,
 		},
 		{ 'williamboman/mason.nvim',
 			init = function () require('mason').setup() end
@@ -145,6 +132,14 @@ require("lazy").setup({
 		{ 'sudoerwx/vim-ray-so-beautiful',
 			-- To use, type :Ray
 		},
+
+		-- { 'glepnir/lspsaga.nvim',
+		-- 	init = function() require ('configs.lspsaga_c') end
+		-- },
+		-- { 'neoclide/coc.nvim',
+		-- 	branch = 'release',
+		-- 	init = function() require('configs.coc_c') end
+		-- },
 
 		-- { 'hrsh7th/vim-vsnip',
 		-- 	event = 'VimEnter',
