@@ -102,11 +102,11 @@ require("lazy").setup({
 				'quangnguyen30192/cmp-nvim-ultisnips'
 			}
 		},
-		{ 'tzachar/cmp-tabnine',
-			build = './install.sh',
-			event = 'VimEnter',
-			init = function () require('configs.tabnine_c') end,
-		},
+		-- { 'tzachar/cmp-tabnine',
+		-- 	build = './install.sh',
+		-- 	event = 'VimEnter',
+		-- 	init = function () require('configs.tabnine_c') end,
+		-- },
 		{ 'williamboman/mason.nvim',
 			init = function () require('mason').setup() end
 		},

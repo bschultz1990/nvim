@@ -26,7 +26,7 @@ vim.opt.shortmess = 'F'
 vim.opt.wrap.linebreak = false
 vim.opt.whichwrap = '<,>,h,l'
 vim.opt.linebreak = false
-vim.opt.ignorecase = true
+vim.opt.ignorecase = false
 vim.opt.winblend = 5
 -- Center cursor line on the screen.
 vim.opt.scrolloff = 15
@@ -94,7 +94,7 @@ vim.api.nvim_create_user_command('Plugins',
 
 vim.api.nvim_create_user_command('Reload',
   function()
-    vim.cmd('luafile $MYVIMRC')
+    vim.cmd('luafile $MYVIMRC') -- Source config
   end,
   { nargs = 0 }
   )
@@ -107,12 +107,20 @@ vim.api.nvim_create_user_command('Vimrc',
   )
 
 -- Save session to directory via custom Session command
+Session_dir = vim.fn.stdpath("config") .. "/sessions/"
+
 vim.api.nvim_create_user_command('Session',
-  function(opts)
-    Session_dir = vim.fn.stdpath("config") .. "/sessions/"
-    vim.cmd("mksession "..Session_dir..opts.fargs[1]..".vim")
+	function(opts)
+		vim.cmd("mksession! "..Session_dir..opts.fargs[1]..".vim")
+		print('Session \"'..opts.fargs[1]..'.vim\" created in '..Session_dir)
+	end,
+	{ nargs = 1 })
+
+vim.api.nvim_create_user_command('Sessions',
+  function (opts)
+    vim.cmd("Ex "..Session_dir)
   end,
-  { nargs = 1 })
+  { nargs = 0 })
 
 -- Source the file under the cursor in Netrw
 function sourcefile()
@@ -124,11 +132,11 @@ end
 
 vim.api.nvim_set_keymap('n','<C-cr>', 'yy:lua sourcefile()<cr>', { noremap = true, silent = true })
 
-vim.api.nvim_create_user_command('Snippets',
-  function()
-    vim.cmd("CocCommand snippets.editSnippets")
-  end,
-  { nargs = 0 })
+-- vim.api.nvim_create_user_command('Snippets',
+-- 	function()
+-- 		vim.cmd("CocCommand snippets.editSnippets")
+-- 	end,
+-- 	{ nargs = 0 })
 
 function mdpreview()
   -- Currently powered by !Grip <filename>
@@ -204,7 +212,7 @@ vim.cmd('colorscheme '..
   -- 'tokyodark'
   -- 'tokyonight'
   )
--- For more options, :Telescope colorschemes
+-- For more options, :Telescope colorscheme
 
 -- PLUGIN SPECIFIC KEYMAPS
 vim.api.nvim_set_keymap('n','<F6>', ':Lazy<cr>', { noremap = true, silent = true }) -- Lazy
