@@ -16,8 +16,6 @@ vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
 vim.opt.foldlevel = 99
 vim.opt.foldenable = true
 -- vim.opt.termguicolors = true
-vim.opt.autoindent = true
-vim.opt.smartindent = true
 vim.opt.ruler = false
 vim.opt.showmode = false
 vim.opt.showcmd = false
@@ -44,8 +42,8 @@ vim.opt.expandtab = true
 vim.opt.smarttab = true
 vim.opt.tabstop = 2
 -- vim.opt.shiftwidth = 2
-vim.opt.ai = true -- auto indent
-vim.opt.si = true -- smart indent
+vim.opt.autoindent = true
+-- vim.opt.smartindent = true
 
 -- vim.g.python3_host_prog = '/usr/bin/python3'
 function shebang(cmd)
