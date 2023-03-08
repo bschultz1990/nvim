@@ -137,6 +137,7 @@ require("lazy").setup({
 		{ 'sudoerwx/vim-ray-so-beautiful',
 			-- To use, type :Ray
 		},
+		{ 'tpope/vim-fugitive' }
 
 		-- { 'glepnir/lspsaga.nvim',
 		-- 	init = function() require ('configs.lspsaga_c') end
