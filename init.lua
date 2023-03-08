@@ -128,7 +128,7 @@ function sourcefile()
   vim.cmd("source "..path)
 end
 
-vim.api.nvim_set_keymap('n','<C-cr>', 'yy:lua sourcefile()<cr>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n','<C-Cr>', 'yy:lua sourcefile()<cr>', { noremap = true, silent = true })
 
 -- vim.api.nvim_create_user_command('Snippets',
 -- 	function()
@@ -185,7 +185,7 @@ vim.api.nvim_set_keymap('n','<leader>tn',':tabnext<cr>', { noremap = true, silen
 vim.api.nvim_set_keymap('n','<leader>`','<cmd>sp<cr><C-w>w<cmd>terminal<cr>i', { noremap = true, silent = true })
 
 -- INSERT MODE GOODIES
-vim.api.nvim_set_keymap('i','<C-CR>','<CR><CR><Up><BS><CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('i','<C-Cr>','<CR><CR><Up><BS><CR>', { noremap = true, silent = true })
 
 -- PLUGINS
 require('plugins_c')
