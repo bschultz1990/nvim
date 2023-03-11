@@ -6,6 +6,11 @@ require('telescope').setup {
 			-- hijack_netrw = true,
 			hidden = true,
 		},
+		["ui-select"] = {
+			require("telescope.themes").get_dropdown {
+
+			},
+		},
 	},
 	defaults = {
 		file_ignore_patterns = {'%.git', '%.npm', '%node_modules'},
@@ -26,6 +31,8 @@ require('telescope').setup {
 }
 -- Load Extra Extensions
 require("telescope").load_extension "file_browser"
+require("telescope").load_extension "ui-select"
+
 
 ---- TELESCOPE MAPPINGS
 vim.api.nvim_set_keymap('n','<leader>bb',':Telescope buffers<cr>',{ noremap = true, silent = true })

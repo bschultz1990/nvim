@@ -1,4 +1,4 @@
--- https://bryankegley.me/posts/nvim-getting-started/kind
+-- https://bryankegley.me/posts/nvim-getting-started/
 -- GENERAL
 vim.opt.rtp:append("/usr/local/opt/fzf")
 vim.scriptencoding = 'utf8'
@@ -27,7 +27,7 @@ vim.opt.linebreak = false
 vim.opt.ignorecase = false
 vim.opt.winblend = 5
 -- Center cursor line on the screen.
-vim.opt.scrolloff = 15
+-- vim.opt.scrolloff = 15
 vim.opt.wrap = false
 
 -- TABSTOPS

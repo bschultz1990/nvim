@@ -26,6 +26,13 @@ require("lazy").setup({
 				{ "<leader>bD", function() require("mini.bufremove").delete(0, true) end, desc = "Delete Buffer (Force)" },
 			},
 		},
+		{ 'folke/which-key.nvim',
+			config = function()
+				vim.o.timeout = true
+				vim.o.timeoutlen = 300
+				require("which-key").setup ({})
+			end
+		},
 		{ 'tpope/vim-surround'},
 		{ 'tpope/vim-commentary'},
 		{ 'tpope/vim-repeat'},
@@ -46,7 +53,8 @@ require("lazy").setup({
 			dependencies = {
 				'nvim-lua/popup.nvim',
 				'nvim-lua/plenary.nvim',
-				'nvim-telescope/telescope-file-browser.nvim'
+				'nvim-telescope/telescope-file-browser.nvim',
+				'nvim-telescope/telescope-ui-select.nvim'
 			},
 			init = function () require('configs.telescope_c')	end
 		},
@@ -77,12 +85,9 @@ require("lazy").setup({
 		{ 'shaunsingh/moonlight.nvim' },
 		{ 'overcache/NeoSolarized' },
 		{ 'projekt0n/github-nvim-theme', version = 'v0.0.7',
-			init = function() require('github-theme').setup({
-
-					})
-			end
-			--======== END COLORSCHEMES =========--
+			init = function() require('github-theme').setup({}) end
 		},
+			--======== END COLORSCHEMES =========--
 		-- { '',
 		-- 	init = function () require ('') end,
 
