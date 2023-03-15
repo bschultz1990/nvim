@@ -130,20 +130,19 @@ end
 
 vim.api.nvim_set_keymap('n','<C-Cr>', 'yy:lua sourcefile()<cr>', { noremap = true, silent = true })
 
--- vim.api.nvim_create_user_command('Snippets',
--- 	function()
--- 		vim.cmd("CocCommand snippets.editSnippets")
--- 	end,
--- 	{ nargs = 0 })
+vim.api.nvim_create_user_command('Snippets',
+	function()
+    vim.cmd("UltiSnipsEdit")
+		-- vim.cmd("CocCommand snippets.editSnippets")
+	end,
+	{ nargs = 0 })
 
-function mdpreview()
-  -- Currently powered by !Grip <filename>
-  -- Get current file name	
-  -- Split pane to the right.
-  -- Activate termial
-  -- Insert mode
-  -- open glow with current file name <carriage return>
-end
+vim.api.nvim_create_user_command('Mdpreview',
+  function (opts)
+    vim.cmd("terminal grip %")
+    vim.cmd("!open http://localhost:6419")
+  end,
+  { nargs = 0 })
 
 -- KEYMAPS
 vim.g.mapleader = ','
