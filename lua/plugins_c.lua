@@ -99,18 +99,18 @@ require("lazy").setup({
 		{ 'RishabhRD/lspactions',
 		},
 		-- SNIPPETS --
-		{ 'L3MON4D3/LuaSnip',
-			build = "make install_jsregexp",
-			init = function() require('configs.luasnip_c') end
-		},
+		-- { 'L3MON4D3/LuaSnip',
+		-- 	build = "make install_jsregexp",
+		-- 	init = function() require('configs.luasnip_c') end
+		-- },
 		{ 'hrsh7th/nvim-cmp',
 			dependencies = {
 				'hrsh7th/cmp-nvim-lua',
 				'hrsh7th/cmp-nvim-lsp',
 				'hrsh7th/cmp-path',
 				'hrsh7th/cmp-cmdline',
-				-- 'quangnguyen30192/cmp-nvim-ultisnips'
-				'saadparwaiz1/cmp_luasnip'
+				'quangnguyen30192/cmp-nvim-ultisnips'
+				-- 'saadparwaiz1/cmp_luasnip'
 			}
 		},
 		{ 'tzachar/cmp-tabnine',
@@ -138,12 +138,12 @@ require("lazy").setup({
 		},
 		{ 'mfussenegger/nvim-dap',
 		},
-		-- { 'sirver/ultisnips',
-		-- 	dependencies = {
-		-- 		'honza/vim-snippets',
-		-- 	},
-		-- 	init = function () require('configs.ultisnips_c') end
-		-- },
+		{ 'sirver/ultisnips',
+			dependencies = {
+				'honza/vim-snippets',
+			},
+			init = function () require('configs.ultisnips_c') end
+		},
 		{ 'sudoerwx/vim-ray-so-beautiful',
 			-- To use, type :Ray
 		},

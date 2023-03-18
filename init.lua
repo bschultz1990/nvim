@@ -24,18 +24,12 @@ vim.opt.shortmess = 'F'
 vim.opt.wrap.linebreak = false
 vim.opt.whichwrap = '<,>,h,l'
 vim.opt.linebreak = false
-vim.opt.ignorecase = false
+vim.opt.ignorecase = true
 vim.opt.winblend = 5
--- Center cursor line on the screen.
--- vim.opt.scrolloff = 15
-vim.opt.wrap = false
 
--- TABSTOPS
--- vim.opt.expandtab = false
--- vim.opt.tabstop = 2
--- vim.opt.shiftwidth = 2
--- vim.opt.shiftround = true
--- vim.opt.softtabstop = 2
+-- Center cursor line on the screen.
+vim.opt.scrolloff = 15
+vim.opt.wrap = false
 
 -- TAKUYA TABS:
 vim.opt.expandtab = true
@@ -45,14 +39,13 @@ vim.opt.tabstop = 2
 vim.opt.autoindent = true
 -- vim.opt.smartindent = true
 
--- vim.g.python3_host_prog = '/usr/bin/python3'
-function shebang(cmd)
+function Shebang(cmd)
   local env = io.popen(cmd):read("*a") -- read the output of "which python3"
   env = string.sub(env, 1, -2) -- cut out the newline character
   io.close() -- close the file handle
   return env
 end
-vim.g.python3_host_prog = shebang("which python3")
+vim.g.python3_host_prog = Shebang("which python3")
 vim.g.loaded_perl_provider = 0
 
 ---- NETRW
@@ -108,39 +101,44 @@ vim.api.nvim_create_user_command('Vimrc',
 Session_dir = vim.fn.stdpath("config") .. "/sessions/"
 
 vim.api.nvim_create_user_command('Session',
-	function(opts)
-		vim.cmd("mksession! "..Session_dir..opts.fargs[1]..".vim")
-		print('Session \"'..opts.fargs[1]..'.vim\" created in '..Session_dir)
-	end,
-	{ nargs = 1 })
+  function(opts)
+    vim.cmd("mksession! "..Session_dir..opts.fargs[1]..".vim")
+    print('Session \"'..opts.fargs[1]..'.vim\" created in '..Session_dir)
+  end,
+  { nargs = 1 })
 
 vim.api.nvim_create_user_command('Sessions',
-  function (opts)
+  function ()
     vim.cmd("Ex "..Session_dir)
   end,
   { nargs = 0 })
 
 -- Source the file under the cursor in Netrw
-function sourcefile()
+function Sourcefile()
   local dir = vim.api.nvim_eval("@%")
   local file = string.match(vim.api.nvim_eval("@\""), ".*%.vim")
   local path = dir .. "/" .. file
   vim.cmd("source "..path)
 end
 
-vim.api.nvim_set_keymap('n','<C-Cr>', 'yy:lua sourcefile()<cr>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n','<C-Cr>', 'yy:lua Sourcefile()<cr>', { noremap = true, silent = true })
 
 vim.api.nvim_create_user_command('Snippets',
-	function()
-    vim.cmd("UltiSnipsEdit")
-		-- vim.cmd("CocCommand snippets.editSnippets")
-	end,
-	{ nargs = 0 })
+  function()
+    vim.cmd("UltiSnipsEdit") -- UltiSnips
+    -- vim.cmd("CocCommand snippets.editSnippets") -- CoC
+  end,
+  { nargs = 0 })
 
 vim.api.nvim_create_user_command('Mdpreview',
-  function (opts)
-    vim.cmd("terminal grip %")
-    vim.cmd("!open http://localhost:6419")
+  function ()
+    local grip_path = "/usr/bin/grip"
+    -- print (grip_path)
+    if not vim.loop.fs_stat(grip_path) then
+    print ("Grip not found! Install grip to continue.")
+    return
+    end
+    vim.cmd("terminal grip -b %")
   end,
   { nargs = 0 })
 
@@ -148,7 +146,7 @@ vim.api.nvim_create_user_command('Mdpreview',
 vim.g.mapleader = ','
 
 vim.api.nvim_set_keymap('n','<leader>ex', ':Explore<cr>', { noremap = true, silent = true })
-
+vim.api.nvim_set_keymap('n', '<leader>H', ':lua vim.cmd("tab h " .. vim.fn.expand("<cword>"))<cr>', { noremap = true })
 -- Do not yank with x
 vim.api.nvim_set_keymap('n', 'x', '"_x', { noremap = true, silent = true, nowait = true })
 
@@ -215,6 +213,8 @@ vim.cmd('colorscheme '..
 vim.api.nvim_set_keymap('n','<F6>', ':Lazy<cr>', { noremap = true, silent = true }) -- Lazy
 vim.api.nvim_set_keymap('n','<leader>zz',':ZenMode<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('x','ga','<Plug>(EasyAlign)', { noremap = false, silent = true })
+vim.api.nvim_set_keymap('n','<leader>tr','<cmd>TroubleToggle<cr>', { noremap = false, silent = true })
+
 
 -- SUCCESS! :)
 print(' init.lua loaded! :)')

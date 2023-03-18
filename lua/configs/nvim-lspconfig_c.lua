@@ -120,9 +120,9 @@ cmp.setup({
 		snippet = {
 			expand = function(args)
 				-- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-				require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+				-- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
 				-- require('snippy').expand_snippet(args.body) -- For `snippy` users.
-				-- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+				vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
 			end,
 		},
 		window = {
@@ -141,8 +141,8 @@ cmp.setup({
 		sources = cmp.config.sources({
 				{ name = 'nvim_lsp', keyword_length=1 },
 				{ name = 'emmet_ls', keyword_length=1 },
-				{ name = 'vsnip', keyword_length=3 }, -- vsnip, ultisnips, snippy, luasnip 
-				{ name = 'cmp_tabnine', keyword_length=3 },
+				{ name = 'ultisnips', keyword_length=3 }, -- vsnip, ultisnips, snippy, luasnip 
+				{ name = 'cmp_tabnine', keyword_length=1 },
 				{ name = 'nvim_lua', keyword_length=3 },
 				{ name = 'path', keyword_length=3 },
 				-- { name = 'buffer', keyword_length=3 },
@@ -151,6 +151,6 @@ cmp.setup({
 			entries = "native"
 		},
 		experimental = {
-			ghost_text = false,
+			ghost_text = true,
 		}
 	})
