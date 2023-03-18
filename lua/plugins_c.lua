@@ -78,9 +78,6 @@ require("lazy").setup({
 		{ 'sainnhe/sonokai',
 			init = function() require ('configs.sonokai_c') end
 		},
-		{ 'shaunsingh/nord.nvim'},
-		{ 'EdenEast/nightfox.nvim'},
-		{ 'catppuccin/nvim', name = "catppuccin" },
 		{ 'tiagovla/tokyodark.nvim', },
 		{ 'shaunsingh/moonlight.nvim' },
 		{ 'overcache/NeoSolarized' },
@@ -99,10 +96,6 @@ require("lazy").setup({
 		{ 'RishabhRD/lspactions',
 		},
 		-- SNIPPETS --
-		-- { 'L3MON4D3/LuaSnip',
-		-- 	build = "make install_jsregexp",
-		-- 	init = function() require('configs.luasnip_c') end
-		-- },
 		{ 'hrsh7th/nvim-cmp',
 			dependencies = {
 				'hrsh7th/cmp-nvim-lua',
@@ -110,7 +103,6 @@ require("lazy").setup({
 				'hrsh7th/cmp-path',
 				'hrsh7th/cmp-cmdline',
 				'quangnguyen30192/cmp-nvim-ultisnips'
-				-- 'saadparwaiz1/cmp_luasnip'
 			}
 		},
 		{ 'tzachar/cmp-tabnine',
@@ -155,13 +147,6 @@ require("lazy").setup({
 		-- { 'neoclide/coc.nvim',
 		-- 	branch = 'release',
 		-- 	init = function() require('configs.coc_c') end
-		-- },
-
-		-- { 'hrsh7th/vim-vsnip',
-		-- 	event = 'VimEnter',
-		-- 	dependencies = {
-		-- 		'rafamadriz/friendly-snippets',
-		-- 	}
 		-- },
 		--------------------------------------------------------------
 		-- END Nvim CMP Setup
