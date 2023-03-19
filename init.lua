@@ -25,10 +25,10 @@ vim.opt.wrap.linebreak = false
 vim.opt.whichwrap = '<,>,h,l'
 vim.opt.linebreak = false
 vim.opt.ignorecase = true
-vim.opt.winblend = 5
+vim.opt.winblend = 15
 
 -- Center cursor line on the screen.
-vim.opt.scrolloff = 15
+vim.opt.scrolloff = 5
 vim.opt.wrap = false
 
 -- TAKUYA TABS:
@@ -190,20 +190,12 @@ require('plugins_c')
 -- Colorschemes
 vim.cmd('colorscheme '..
   -- 'NeoSolarized'
-  -- 'carbonfox'
   -- 'catppuccin'
-  -- 'dawnfox'
-  -- 'dayfox'
-  -- 'duskfox'
   -- 'github_dark'
   -- 'github_light'
   -- 'moonlight'
   'night-owl'
-  -- 'nightfox'
-  -- 'nord'
-  -- 'nordfox'
   -- 'sonokai'
-  -- 'terrafox'
   -- 'tokyodark'
   -- 'tokyonight'
   )
@@ -215,6 +207,7 @@ vim.api.nvim_set_keymap('n','<leader>zz',':ZenMode<cr>', { noremap = true, silen
 vim.api.nvim_set_keymap('x','ga','<Plug>(EasyAlign)', { noremap = false, silent = true })
 vim.api.nvim_set_keymap('n','<leader>tr','<cmd>TroubleToggle<cr>', { noremap = false, silent = true })
 
+-- require('configs.test')
 
 -- SUCCESS! :)
 print(' init.lua loaded! :)')

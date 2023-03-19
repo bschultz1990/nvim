@@ -1,5 +1,12 @@
 local M = {}
 
+function FilePathStatusLine()
+	local path = vim.fn.expand('%:p')
+	local home = vim.fn.expand('~')
+	local short_path = string.gsub(path, home, '~')
+	return short_path
+end
+
 require('lualine').setup {
 	options = {
 		icons_enabled = true,
@@ -13,18 +20,36 @@ require('lualine').setup {
 		},
 		ignore_focus = {},
 		always_divide_middle = true,
-		globalstatus = true,
+		globalstatus = true, -- true: single bar on bottom. false: one bar per window
 		refresh = {
 			statusline = 1000,
 			tabline = 1000,
 			winbar = 1000,
 		}
 	},
+	-- section options
+	-- `branch` (git branch)
+	-- `buffers` (shows currently available buffers)
+	-- `diagnostics` (diagnostics count from your preferred source)
+	-- `diff` (git diff status)
+	-- `encoding` (file encoding)
+	-- `fileformat` (file format)
+	-- `filename`
+	-- `filesize`
+	-- `filetype`
+	-- `hostname`
+	-- `location` (location in file in line:column format)
+	-- `mode` (vim mode)
+	-- `progress` (%progress in file)
+	-- `searchcount` (number of search matches when hlsearch is active)
+	-- `tabs` (shows currently available tabs)
+	-- `windows` (shows currently available windows)
 	sections = {
 		lualine_a = {'mode'},
-		lualine_b = {'branch', 'diff', 'diagnostics'},
-		lualine_c = {'filename'},
-		lualine_x = {'encoding', 'filetype'},
+		lualine_b = {'branch'},
+		lualine_c = { FilePathStatusLine },
+		-- lualine_c = {'filename'},
+		lualine_x = { 'diff', 'diagnostics', 'encoding', 'filetype'},
 		lualine_y = {'progress'},
 		lualine_z = {'location'}
 	},
