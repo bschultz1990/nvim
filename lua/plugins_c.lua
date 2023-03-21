@@ -96,6 +96,12 @@ require("lazy").setup({
 		{ 'RishabhRD/lspactions',
 		},
 		-- SNIPPETS --
+		{ 'sirver/ultisnips',
+			dependencies = {
+				'honza/vim-snippets',
+			},
+			init = function () require('configs.ultisnips_c') end
+		},
 		{ 'hrsh7th/nvim-cmp',
 			dependencies = {
 				'hrsh7th/cmp-nvim-lua',
@@ -129,12 +135,6 @@ require("lazy").setup({
 			init = function () require('configs.trouble_c') end
 		},
 		{ 'mfussenegger/nvim-dap',
-		},
-		{ 'sirver/ultisnips',
-			dependencies = {
-				'honza/vim-snippets',
-			},
-			init = function () require('configs.ultisnips_c') end
 		},
 		{ 'sudoerwx/vim-ray-so-beautiful',
 			-- To use, type :Ray

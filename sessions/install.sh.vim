@@ -13,9 +13,13 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +44 packages.json
-badd +6 test.sh
-badd +107 functions.sh
+badd +1 ~/.config/nvim/sessions/install.sh.vim
+badd +112 packages.json
+badd +21 test.sh
+badd +125 functions.sh
+badd +1 ~/.dotfiles/test.sh
+badd +73 install.sh
+badd +9 ~/.zshrc
 argglobal
 %argdel
 $argadd packages.json
@@ -24,8 +28,8 @@ let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
 wincmd _ | wincmd |
-split
-1wincmd k
+vsplit
+1wincmd h
 wincmd w
 let &splitbelow = s:save_splitbelow
 let &splitright = s:save_splitright
@@ -36,10 +40,10 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe '1resize ' . ((&lines * 29 + 30) / 61)
-exe '2resize ' . ((&lines * 29 + 30) / 61)
+exe 'vert 1resize ' . ((&columns * 127 + 127) / 254)
+exe 'vert 2resize ' . ((&columns * 126 + 127) / 254)
 argglobal
-balt test.sh
+balt ~/.dotfiles/test.sh
 setlocal fdm=expr
 setlocal fde=nvim_treesitter#foldexpr()
 setlocal fmr={{{,}}}
@@ -48,24 +52,32 @@ setlocal fdl=99
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-95
+55
 normal! zo
-97
+82
 normal! zo
-let s:l = 107 - ((14 * winheight(0) + 14) / 29)
+88
+normal! zo
+89
+normal! zo
+94
+normal! zo
+114
+normal! zo
+let s:l = 57 - ((14 * winheight(0) + 28) / 57)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 107
-normal! 050|
+keepjumps 57
+normal! 032|
 lcd ~/.dotfiles
 wincmd w
 argglobal
-if bufexists(fnamemodify("~/.dotfiles/install/test.sh", ":p")) | buffer ~/.dotfiles/install/test.sh | else | edit ~/.dotfiles/install/test.sh | endif
+if bufexists(fnamemodify("~/.zshrc", ":p")) | buffer ~/.zshrc | else | edit ~/.zshrc | endif
 if &buftype ==# 'terminal'
-  silent file ~/.dotfiles/install/test.sh
+  silent file ~/.zshrc
 endif
-balt ~/.dotfiles/install/packages.json
+balt ~/.dotfiles/install/functions.sh
 setlocal fdm=expr
 setlocal fde=nvim_treesitter#foldexpr()
 setlocal fmr={{{,}}}
@@ -74,17 +86,17 @@ setlocal fdl=99
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 6 - ((5 * winheight(0) + 14) / 29)
+let s:l = 11 - ((10 * winheight(0) + 28) / 57)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 6
-normal! 035|
+keepjumps 11
+normal! 09|
 lcd ~/.dotfiles
 wincmd w
 2wincmd w
-exe '1resize ' . ((&lines * 29 + 30) / 61)
-exe '2resize ' . ((&lines * 29 + 30) / 61)
+exe 'vert 1resize ' . ((&columns * 127 + 127) / 254)
+exe 'vert 2resize ' . ((&columns * 126 + 127) / 254)
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
