@@ -54,6 +54,7 @@ vim.g.netrw_localcopydircmd = 'cp -r'
 vim.g.netrw_liststyle = 1
 
 ----------CUSTOM COMMANDS----------
+
 vim.g.viewoptions = 'options'
 local remember_folds = vim.api.nvim_create_augroup('remember_folds', { clear = true })
 vim.api.nvim_create_autocmd({ 'BufWinLeave', 'BufWritePost' }, {

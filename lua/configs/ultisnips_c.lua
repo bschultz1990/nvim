@@ -7,3 +7,8 @@ vim.g.UltiSnipsJumpForwardTrigger = "<tab>"
 vim.g.UltiSnipsEditSplit = "vertical"
 vim.g.UltiSnipsSnippetDirectories = { "UltiSnips", "snippets_custom" }
 
+vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' },{
+    pattern = "*.snippets",
+    command = 'setfiletype snippets'
+  })
+
