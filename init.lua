@@ -122,7 +122,7 @@ function Sourcefile()
   vim.cmd("source "..path)
 end
 
-vim.api.nvim_set_keymap('n','<C-cr>', 'yy:lua Sourcefile()<cr>', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n','<C-cr>', 'yy:lua Sourcefile()<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n','<leader><cr>', 'yy:lua Sourcefile()<cr>', { noremap = true, silent = true })
 
 vim.api.nvim_create_user_command('Snippets',
