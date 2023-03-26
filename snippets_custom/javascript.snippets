@@ -12,5 +12,12 @@ mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: 
 mongoose.connection.on("open", function () {
 	console.log("Connected to MongoDB database")
 })
+endsnippet
 
+snippet log "Log" b
+console.log($1)
+endsnippet
+
+snippet stl "String template literal" i
+${$1}
 endsnippet

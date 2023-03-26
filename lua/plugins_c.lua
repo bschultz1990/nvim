@@ -93,23 +93,21 @@ require("lazy").setup({
 		--------------------------------------------------------------
 		-- Nvim CMP Setup
 		--------------------------------------------------------------
-		{ 'RishabhRD/lspactions',
-		},
-		-- SNIPPETS --
-		{ 'sirver/ultisnips',
-			dependencies = {
-				'honza/vim-snippets',
-			},
-			init = function () require('configs.ultisnips_c') end
-		},
 		{ 'hrsh7th/nvim-cmp',
 			dependencies = {
 				'hrsh7th/cmp-nvim-lua',
 				'hrsh7th/cmp-nvim-lsp',
 				'hrsh7th/cmp-path',
 				'hrsh7th/cmp-cmdline',
-				'quangnguyen30192/cmp-nvim-ultisnips'
-			}
+				'quangnguyen30192/cmp-nvim-ultisnips',
+				'honza/vim-snippets'
+			},
+			init = function () require('configs.nvim-cmp_c') end
+		},
+		{ 'sirver/ultisnips',
+			dependencies = {
+			},
+			init = function () require('configs.ultisnips_c') end
 		},
 		{ 'tzachar/cmp-tabnine',
 			build = './install.sh',
