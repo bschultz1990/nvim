@@ -11,6 +11,8 @@ local configs = require('lspconfig/configs')
 -- Need more servers?
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 ----------------------------------------
+-- WARNING! SERVERS MUST BE EITHER LISTED HERE, OR BELOW WITH SPECIFIC
+-- CONFIGS. NEVER IN BOTH PLACES.
 Unconfigured_servers = {
 }
 for index, lsp in ipairs(Unconfigured_servers) do

@@ -84,6 +84,14 @@ vim.api.nvim_create_user_command('Plugins',
   { nargs = 0 }
   )
 
+vim.api.nvim_create_user_command('Todo',
+  function ()
+    vim.cmd(":vimgrep '\\(TODO\\|FIXME\\|BUG\\)' **")
+    vim.cmd("copen")
+  end,
+  { nargs = 0 }
+)
+
 vim.api.nvim_create_user_command('Reload',
   function()
     vim.cmd('luafile $MYVIMRC') -- Source config
@@ -137,8 +145,8 @@ vim.api.nvim_create_user_command('Mdpreview',
     local grip_path = "/usr/bin/grip"
     -- print (grip_path)
     if not vim.loop.fs_stat(grip_path) then
-    print ("Grip not found! Install grip to continue.")
-    return
+      print ("Grip not found! Install grip to continue.")
+      return
     end
     vim.cmd("terminal grip -b %")
   end,
@@ -209,7 +217,7 @@ vim.api.nvim_set_keymap('n','<leader>zz',':ZenMode<cr>', { noremap = true, silen
 vim.api.nvim_set_keymap('x','ga','<Plug>(EasyAlign)', { noremap = false, silent = true })
 vim.api.nvim_set_keymap('n','<leader>tr','<cmd>TroubleToggle<cr>', { noremap = false, silent = true })
 
--- require('configs.test')
+require('configs.test')
 
 -- SUCCESS! :)
 print(' init.lua loaded! :)')

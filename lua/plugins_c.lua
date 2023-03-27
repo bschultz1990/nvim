@@ -120,7 +120,8 @@ require("lazy").setup({
 		{ 'williamboman/mason-lspconfig.nvim',
 			event = 'VimEnter',
 			init = function()
-			require("mason-lspconfig").setup({ automatic_installation = true, }) end
+				require('configs.mason_c')
+		end
 		},
 		{ 'neovim/nvim-lspconfig',
 			event = 'VimEnter',
