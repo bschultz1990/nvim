@@ -1,8 +1,7 @@
 -- keymaps
-vim.g.UltiSnipsExpandTrigger = "<tab>"
-vim.g.UltiSnipsJumpForwardTrigger = "<tab>"
--- FIXME: JumpBackwardsTrigger with shift-tab
--- vim.g.UltiSnipsJumpBackwardTrigger = "<s><tab>"
+vim.g.UltiSnipsExpandTrigger = "<Tab>"
+vim.g.UltiSnipsJumpForwardTrigger = "<Tab>"
+vim.g.UltiSnipsJumpBackwardTrigger = "<S-Tab>"
 
 vim.g.UltiSnipsEditSplit = "vertical"
 vim.g.UltiSnipsSnippetDirectories = { "UltiSnips", "snippets_custom" }

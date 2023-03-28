@@ -13,7 +13,7 @@ require('telescope').setup {
 		},
 	},
 	defaults = {
-		file_ignore_patterns = {'%.git', '%.npm', '%node_modules'},
+		file_ignore_patterns = {'%.git', '%.npm', '%node_modules', '^go/', '^src/'},
 		layout_strategy = 'vertical',
 		layout_config = {
 			height = 125,
