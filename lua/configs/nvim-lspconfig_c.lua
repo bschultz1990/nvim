@@ -6,13 +6,14 @@ if not lspconfig_ok then
 end
 
 local configs = require('lspconfig/configs')
+
 ----------CONNECT TO SERVERS------------
 -- read more at :h vim.lsp.buf<TAB>
 -- Need more servers?
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 ----------------------------------------
--- WARNING! SERVERS MUST BE EITHER LISTED HERE, OR BELOW WITH SPECIFIC
--- CONFIGS. NEVER IN BOTH PLACES.
+-- WARNING! SERVERS MUST BE EITHER LISTED HERE, OR BELOW WITH SPECIFIC CONFIGS. 
+-- NEVER PUT THEM IN BOTH PLACES.
 Unconfigured_servers = {
 }
 for index, lsp in ipairs(Unconfigured_servers) do
@@ -23,10 +24,21 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protoc
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 function LspKeymaps()
-	vim.keymap.set('n', '<C-k>', vim.lsp.buf.references, { buffer = 0 })
-	vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { buffer = 0, silent = true })
-	vim.keymap.set('n', 'gD', vim.lsp.buf.definition, { buffer = 0, silent = true })
-	vim.keymap.set('n', '<leader>r', vim.lsp.util.rename, { silent = true })
+
+	local references = vim.lsp.buf.references
+	local declaration = vim.lsp.buf.declaration
+	-- local definition = vim.lsp.buf.definition
+	-- local rename = vim.lsp.buf.rename
+
+	-- local references = 
+	-- local declaration = 
+	local definition = "<cmd>Lspsaga peek_definition<cr>"
+	local rename = "<cmd>Lspsaga rename ++project<cr>"
+
+	vim.keymap.set('n', '<C-k>', references, { buffer = 0 })
+	vim.keymap.set('n', 'gD', declaration, { buffer = 0, silent = true })
+	vim.keymap.set('n', 'gD', definition, { buffer = 0, silent = true })
+	vim.keymap.set('n', '<leader>r', rename, { silent = true })
 	-- -- Show or hide diagnostic text
 	vim.diagnostic.config({ virtual_text=false })
 	capabilities=capabilities
@@ -51,7 +63,7 @@ require('lspconfig').emmet_ls.setup {
 }
 
 -------------SHELLCHECK-----------
--- Shh! This file doesn't know this code isn't an lspconfig server
+-- Shh! This config file doesn't know that the following autocommand isn't a real lspconfig server.
 -- We're sneaking it in!
 vim.api.nvim_create_autocmd('FileType', {
 		pattern = { 'sh', 'zsh' },

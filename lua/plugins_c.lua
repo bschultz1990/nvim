@@ -138,11 +138,12 @@ require("lazy").setup({
 		{ 'sudoerwx/vim-ray-so-beautiful',
 			-- To use, type :Ray
 		},
-		{ 'tpope/vim-fugitive' }
+		{ 'tpope/vim-fugitive' },
 
-		-- { 'glepnir/lspsaga.nvim',
-		-- 	init = function() require ('configs.lspsaga_c') end
-		-- },
+		{ 'glepnir/lspsaga.nvim',
+			event = "LspAttach",
+			init = function() require ('configs.lspsaga_c') end
+		},
 		-- { 'neoclide/coc.nvim',
 		-- 	branch = 'release',
 		-- 	init = function() require('configs.coc_c') end

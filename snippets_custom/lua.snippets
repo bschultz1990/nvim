@@ -1,3 +1,14 @@
-snippet require "Require function" b
-require('$1')
+snippet vim.api.nvim_set_keymap "Neovim keymap" b
+vim.api.nvim_set_keymap('${1:mode}','${2:keys}', '${3:command}', keyopts)
+endsnippet
+
+snippet softcall "Soft require call for modules" b
+-- Is there an $1 in the house?
+local $1_ok, _ = pcall(require, '$1')
+if not $1_ok then
+	vim.notify('$1 not found.', 'error')
+	return
+end
+
+$2
 endsnippet
