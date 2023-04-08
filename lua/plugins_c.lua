@@ -80,11 +80,12 @@ require("lazy").setup({
 		},
 		{ 'tiagovla/tokyodark.nvim', },
 		{ 'shaunsingh/moonlight.nvim' },
-		{ 'overcache/NeoSolarized' },
-		{ 'projekt0n/github-nvim-theme', version = 'v0.0.7',
-			init = function() require('github-theme').setup({}) end
+		{ 'svrana/neosolarized.nvim',
+			dependencies = 'tjdevries/colorbuddy.nvim',
+			init = function() require('configs.neosolarized_c')
+			end
 		},
-			--======== END COLORSCHEMES =========--
+		--======== END COLORSCHEMES =========--
 		-- { '',
 		-- 	init = function () require ('') end,
 
@@ -121,7 +122,7 @@ require("lazy").setup({
 			event = 'VimEnter',
 			init = function()
 				require('configs.mason_c')
-		end
+			end
 		},
 		{ 'neovim/nvim-lspconfig',
 			event = 'VimEnter',

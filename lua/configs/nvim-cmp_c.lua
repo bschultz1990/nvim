@@ -6,7 +6,7 @@ local lspkind = require('lspkind')
 cmp.setup({
 		formatting = {
 			format = lspkind.cmp_format ({
-					mode = 'symbol',
+					mode = 'symbol_text',
 					maxwidth = 50,
 					ellipsis_char = '...'
 				})
@@ -36,7 +36,7 @@ cmp.setup({
 				{ name = 'nvim_lsp', keyword_length=1 },
 				{ name = 'emmet_ls', keyword_length=1 },
 				{ name = 'ultisnips', keyword_length=2 }, -- vsnip, ultisnips, snippy, luasnip 
-				-- { name = 'cmp_tabnine', keyword_length=3 },
+				{ name = 'cmp_tabnine', keyword_length=3 },
 				{ name = 'nvim_lua', keyword_length=3 },
 				{ name = 'path', keyword_length=3 },
 				-- { name = 'buffer', keyword_length=3 },

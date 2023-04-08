@@ -12,7 +12,7 @@ local configs = require('lspconfig/configs')
 -- Need more servers?
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 ----------------------------------------
--- WARNING! SERVERS MUST BE EITHER LISTED HERE, OR BELOW WITH SPECIFIC CONFIGS. 
+-- WARNING! SERVERS MUST BE EITHER LISTED IN Unconfigured_servers, OR BELOW WITH SPECIFIC CONFIGS. 
 -- NEVER PUT THEM IN BOTH PLACES.
 Unconfigured_servers = {
 }
@@ -24,11 +24,23 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protoc
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 function LspKeymaps()
-
 	local references = vim.lsp.buf.references
 	local declaration = vim.lsp.buf.declaration
 	-- local definition = vim.lsp.buf.definition
 	-- local rename = vim.lsp.buf.rename
+
+	-- Is there an lspconfig in the house?
+	local lspconfig_ok, _ = pcall(require, 'lspconfig')
+	if not lspconfig_ok then
+		vim.notify('lspconfig not found.', 'error')
+		return
+	end
+	
+	-- Hide all semantic highlights
+	for _, group in ipairs(vim.fn.getcompletion("@lsp", "highlight")) do
+		vim.api.nvim_set_hl(0, group, {})
+	end
+
 
 	-- local references = 
 	-- local declaration = 

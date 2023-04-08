@@ -3,7 +3,8 @@ vim.g.UltiSnipsExpandTrigger = "<Tab>"
 vim.g.UltiSnipsJumpForwardTrigger = "<Tab>"
 vim.g.UltiSnipsJumpBackwardTrigger = "<S-Tab>"
 
-vim.g.UltiSnipsEditSplit = "vertical"
+-- normal, tabdo, horizontal, vertical, context
+vim.g.UltiSnipsEditSplit = "context"
 vim.g.UltiSnipsSnippetDirectories = { "UltiSnips", "snippets_custom" }
 
 vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' },{

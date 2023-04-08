@@ -15,7 +15,7 @@ vim.opt.foldmethod = 'expr'
 vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
 vim.opt.foldlevel = 99
 vim.opt.foldenable = true
--- vim.opt.termguicolors = true
+vim.opt.termguicolors = true
 vim.opt.ruler = false
 vim.opt.showmode = false
 vim.opt.showcmd = false
@@ -171,10 +171,7 @@ require('plugins_c')
 
 -- Colorschemes
 vim.cmd('colorscheme '..
-  'NeoSolarized'
-  -- 'catppuccin'
-  -- 'github_dark'
-  -- 'github_light'
+  'neosolarized'
   -- 'moonlight'
   -- 'night-owl'
   -- 'sonokai'
