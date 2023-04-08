@@ -9,16 +9,12 @@ require ("neosolarized").setup({
 		commit_italics = true
 	})
 
-local colorbuddy = require('colorbuddy.init')
-local Color = colorbuddy.Color
-local colors = colorbuddy.colors
-local Group = colorbuddy.Group
-local groups = colorbuddy.groups
-local styles = colorbuddy.styles
+local Color, colors, Group, groups, styles = require('colorbuddy').setup()
 
-Color.new('black', '#000000')
+-- Color.new('black', '#000000')
 -- Group.new('Cursorline',
 -- 	colors.none,
 -- 	colors.base03,
 -- 	styles.NONE,
--- 	colors.base1)
+-- 	colors.base1
+-- 	)
