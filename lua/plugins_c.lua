@@ -59,9 +59,9 @@ require("lazy").setup({
 			init = function () require('configs.telescope_c')	end
 		},
 		{ 'ap/vim-css-color'},
-		{ 'metakirby5/codi.vim',
-			init = function() require('configs.codi_c') end
-		},
+		-- { 'metakirby5/codi.vim',
+		-- 	init = function() require('configs.codi_c') end
+		-- },
 		{ 'sheerun/vim-polyglot'},
 		{ 'norcalli/nvim-colorizer.lua' },
 		{ 'KabbAmine/vCoolor.vim' },
@@ -110,11 +110,14 @@ require("lazy").setup({
 			},
 			init = function () require('configs.ultisnips_c') end
 		},
-		{ 'tzachar/cmp-tabnine',
-			build = './install.sh',
-			event = 'VimEnter',
-			init = function () require('configs.tabnine_c') end,
+		{ 'jcdickinson/codeium.nvim',
+			init = function () require('configs.codeium_c') end
 		},
+		-- { 'tzachar/cmp-tabnine',
+		-- 	build = './install.sh',
+		-- 	event = 'VimEnter',
+		-- 	init = function () require('configs.tabnine_c') end,
+		-- },
 		{ 'williamboman/mason.nvim',
 			init = function () require('mason').setup() end
 		},
