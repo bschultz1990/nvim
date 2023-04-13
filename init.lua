@@ -78,12 +78,12 @@ vim.api.nvim_create_autocmd({ 'BufWinEnter', 'BufWritePost'}, {
 
 -- Highlight text on yank.
 vim.api.nvim_create_autocmd('TextYankPost', {
-  desc = 'Hightlight selection on yank',
-  pattern = '*',
-  callback = function()
-    vim.highlight.on_yank { higroup = 'IncSearch', timeout = 500 }
-  end,
-})
+    desc = 'Hightlight selection on yank',
+    pattern = '*',
+    callback = function()
+      vim.highlight.on_yank { higroup = 'IncSearch', timeout = 500 }
+    end,
+  })
 
 -- Open help files in a new tab.
 vim.api.nvim_create_user_command('H', ':tab help <args>', { nargs = 1, complete = "help" })
@@ -101,7 +101,7 @@ vim.api.nvim_create_user_command('Todo',
     vim.cmd("copen")
   end,
   { nargs = 0 }
-)
+  )
 
 vim.api.nvim_create_user_command('Reload',
   function()
@@ -134,12 +134,23 @@ vim.api.nvim_create_user_command('Sessions',
   { nargs = 0 })
 
 -- Source the file under the cursor in Netrw
-function Sourcefile()
-  local dir = vim.api.nvim_eval("@%")
-  local file = string.match(vim.api.nvim_eval("@\""), ".*%.vim")
-  local path = dir .. "/" .. file
-  vim.cmd("source "..path)
-end
+vim.api.nvim_create_user_command('Source',
+  function ()
+    local dir = vim.api.nvim_eval("@%")
+    local file = string.match(vim.api.nvim_eval("@\""), ".*%.vim")
+    local path = dir .. "/" .. file
+    vim.cmd("source "..path)
+  end,
+  { nargs = 0 }
+  )
+
+-- -- Source the file under the cursor in Netrw
+-- function Sourcefile()
+--   local dir = vim.api.nvim_eval("@%")
+--   local file = string.match(vim.api.nvim_eval("@\""), ".*%.vim")
+--   local path = dir .. "/" .. file
+--   vim.cmd("source "..path)
+-- end
 
 -- vim.api.nvim_set_keymap('n','<C-cr>', 'yy:lua Sourcefile()<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n','<leader><cr>', 'yy:lua Sourcefile()<cr>', { noremap = true, silent = true })
@@ -151,10 +162,11 @@ vim.api.nvim_create_user_command('Snippets',
   end,
   { nargs = 0 })
 
+-- Preview markdown file while editing
 vim.api.nvim_create_user_command('Mdpreview',
   function ()
-    local grip_path = "/usr/bin/grip"
-    -- print (grip_path)
+    local grip_path = Shebang("which grip")
+    print ("grip is at:", grip_path)
     if not vim.loop.fs_stat(grip_path) then
       print ("Grip not found! Install grip to continue.")
       return
@@ -171,7 +183,7 @@ require('plugins_c')
 
 -- Colorschemes
 vim.cmd('colorscheme '..
-   'neosolarized'
+  'neosolarized'
   -- 'moonlight'
   -- 'night-owl'
   -- 'sonokai'
