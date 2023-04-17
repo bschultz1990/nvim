@@ -37,7 +37,6 @@ require("lazy").setup({
 		{ 'tpope/vim-commentary'},
 		{ 'tpope/vim-repeat'},
 		{ 'folke/zen-mode.nvim'},
-		{ 'folke/twilight.nvim'},
 		{ 'junegunn/vim-easy-align'},
 		{ 'rcarriga/nvim-notify'},
 		{ 'nvim-treesitter/nvim-treesitter',
