@@ -39,6 +39,13 @@ require("lazy").setup({
 		{ 'folke/zen-mode.nvim'},
 		{ 'junegunn/vim-easy-align'},
 		{ 'rcarriga/nvim-notify'},
+		{ 'echasnovski/mini.nvim', 
+			version = false,
+			init = function() require('configs.mini_c') end
+		},
+		{ 'tiagovla/scope.nvim',
+			init = function () require("scope").setup() end
+		},
 		{ 'nvim-treesitter/nvim-treesitter',
 			cmd = 'TSUpdate',
 			lazy = false,
@@ -70,6 +77,7 @@ require("lazy").setup({
 			init = function() require('configs.lazyvim_c') end
 		},
 		--=========== COLORSCHEMES ===========--
+		{ 'wilmanbarrios/palenight.nvim' },
 		{ 'haishanh/night-owl.vim', },
 		{ 'ghifarit53/tokyonight-vim',
 			init = function() require ('configs.tokyonight_c') end
@@ -112,11 +120,6 @@ require("lazy").setup({
 		{ 'jcdickinson/codeium.nvim',
 			init = function () require('configs.codeium_c') end
 		},
-		-- { 'tzachar/cmp-tabnine',
-		-- 	build = './install.sh',
-		-- 	event = 'VimEnter',
-		-- 	init = function () require('configs.tabnine_c') end,
-		-- },
 		{ 'williamboman/mason.nvim',
 			init = function () require('mason').setup() end
 		},

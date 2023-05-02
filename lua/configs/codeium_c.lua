@@ -1,2 +1,1 @@
-require('codeium').setup({
-	})
+require('codeium').setup({})

@@ -33,10 +33,10 @@ cmp.setup({
 					}),
 			}),
 		sources = cmp.config.sources({
+				{ name = 'codeium', keyword_length=0 },
 				{ name = 'nvim_lsp', keyword_length=2 },
 				{ name = 'emmet_ls', keyword_length=2 },
 				{ name = 'ultisnips', keyword_length=2 }, -- vsnip, ultisnips, snippy, luasnip 
-				{ name = 'codeium', keyword_length=2 },
 				-- { name = 'cmp_tabnine', keyword_length=3 },
 				{ name = 'nvim_lua', keyword_length=3 },
 				{ name = 'path', keyword_length=3 },
