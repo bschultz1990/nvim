@@ -52,7 +52,7 @@ function LspKeymaps()
 	vim.keymap.set('n', 'gD', definition, { buffer = 0, silent = true })
 	vim.keymap.set('n', '<leader>r', rename, { silent = true })
 	-- -- Show or hide diagnostic text
-	vim.diagnostic.config({ virtual_text=false })
+	vim.diagnostic.config({ virtual_text=true })
 	capabilities=capabilities
 end
 
@@ -70,7 +70,8 @@ require('lspconfig').emmet_ls.setup {
 		'sass',
 		'scss',
 		'less',
-		'jst'
+		'jst',
+		'ejs'
 	},
 }
 

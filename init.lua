@@ -193,12 +193,7 @@ vim.cmd('colorscheme '..
   )
 -- For more options, :Telescope colorscheme
 
--- PLUGIN SPECIFIC KEYMAPS
-vim.api.nvim_set_keymap('n','<F6>', ':Lazy<cr>', { noremap = true, silent = true }) -- Lazy
-vim.api.nvim_set_keymap('n','<leader>zz',':ZenMode<cr>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('x','ga','<Plug>(EasyAlign)', { noremap = false, silent = true })
-vim.api.nvim_set_keymap('n','<leader>tr','<cmd>TroubleToggle<cr>', { noremap = false, silent = true })
-
+require ('keymaps_plugins_c')
 require('configs.test')
 
 -- SUCCESS! :)

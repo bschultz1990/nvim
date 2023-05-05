@@ -26,19 +26,19 @@ require("lazy").setup({
 				{ "<leader>bD", function() require("mini.bufremove").delete(0, true) end, desc = "Delete Buffer (Force)" },
 			},
 		},
-		{ 'folke/which-key.nvim',
-			config = function()
-				vim.o.timeout = true
-				vim.o.timeoutlen = 300
-				require("which-key").setup ({})
-			end
-		},
+		-- { 'folke/which-key.nvim',
+		-- 	config = function()
+		-- 		vim.o.timeout = true
+		-- 		vim.o.timeoutlen = 300
+		-- 		require("which-key").setup ({})
+		-- 	end
+		-- },
 		{ 'tpope/vim-surround'},
 		{ 'tpope/vim-commentary'},
 		{ 'tpope/vim-repeat'},
 		{ 'folke/zen-mode.nvim'},
-		{ 'junegunn/vim-easy-align'},
-		{ 'rcarriga/nvim-notify'},
+		-- { 'junegunn/vim-easy-align'},
+		-- { 'rcarriga/nvim-notify'},
 		{ 'echasnovski/mini.nvim', 
 			version = false,
 			init = function() require('configs.mini_c') end
@@ -93,10 +93,6 @@ require("lazy").setup({
 			end
 		},
 		--======== END COLORSCHEMES =========--
-		-- { '',
-		-- 	init = function () require ('') end,
-
-		-- },
 
 		--------------------------------------------------------------
 		-- Nvim CMP Setup
@@ -142,9 +138,9 @@ require("lazy").setup({
 		{ 'mfussenegger/nvim-dap',
 		},
 		{ 'sudoerwx/vim-ray-so-beautiful',
-			-- To use, type :Ray
+			-- To use, type :Ray:
 		},
-		{ 'tpope/vim-fugitive' },
+		-- { 'tpope/vim-fugitive' },
 
 		{ 'glepnir/lspsaga.nvim',
 			event = "LspAttach",
@@ -157,6 +153,10 @@ require("lazy").setup({
 		--------------------------------------------------------------
 		-- END Nvim CMP Setup
 		--------------------------------------------------------------
+		{ 'nvim-tree/nvim-tree.lua',
+			event = "VimEnter",
+			init = function () require('configs.nvim-tree_c') end
+		},
 	})
 
 -- MIGRATION FROM PACKER
