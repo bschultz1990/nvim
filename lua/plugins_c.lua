@@ -39,7 +39,7 @@ require("lazy").setup({
 		{ 'folke/zen-mode.nvim'},
 		-- { 'junegunn/vim-easy-align'},
 		-- { 'rcarriga/nvim-notify'},
-		{ 'echasnovski/mini.nvim', 
+		{ 'echasnovski/mini.nvim',
 			version = false,
 			init = function() require('configs.mini_c') end
 		},
@@ -77,6 +77,9 @@ require("lazy").setup({
 			init = function() require('configs.lazyvim_c') end
 		},
 		--=========== COLORSCHEMES ===========--
+		{ "catppuccin/nvim", name = "catppuccin",
+			init = function() require('configs.catppuccin_c') end
+		},
 		{ 'wilmanbarrios/palenight.nvim' },
 		{ 'haishanh/night-owl.vim', },
 		{ 'ghifarit53/tokyonight-vim',

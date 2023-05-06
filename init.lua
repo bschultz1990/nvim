@@ -187,14 +187,16 @@ vim.cmd('colorscheme '..
   -- 'moonlight'
   -- 'night-owl'
   -- 'sonokai'
-  'palenight'
+  -- 'catppuccin'
+  -- 'palenight'
   -- 'tokyodark'
-  -- 'tokyonight'
+  'tokyonight'
+  -- 'default'
   )
 -- For more options, :Telescope colorscheme
 
 require ('keymaps_plugins_c')
-require('configs.test')
+-- require('configs.test')
 
 -- SUCCESS! :)
 print(' init.lua loaded! :)')
