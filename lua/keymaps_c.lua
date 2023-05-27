@@ -22,6 +22,16 @@ vim.api.nvim_set_keymap('n','<C-w><right>','<C-w>>', keyopts)
 vim.api.nvim_set_keymap('n','<C-w><up>',':resize +5<cr>', keyopts)
 vim.api.nvim_set_keymap('n','<C-w><down>',':resize -5<cr>', keyopts)
 
+-- Windows
+vim.api.nvim_set_keymap('n','<leader>ww','<C-w>w', keyopts)
+vim.api.nvim_set_keymap('n','<leader>wx','<C-w>c', keyopts)
+-- vim.api.nvim_set_keymap('n','<leader>wx','<C-w>c', keyopts)
+
+-- Tabs
+vim.api.nvim_set_keymap('n','<leader>tn','<cmd>tabnew<cr>', keyopts)
+vim.api.nvim_set_keymap('n','<leader>tx','<cmd>tabclose<cr>', keyopts)
+vim.api.nvim_set_keymap('n','<leader>tt','<cmd>tabnext<cr>', keyopts)
+
 -- Indents
 vim.api.nvim_set_keymap('n', '<leader><Tab>', 'magg=G`azz', keyopts) -- indent on command and center the cursor
 

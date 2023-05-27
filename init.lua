@@ -185,12 +185,12 @@ require('plugins_c')
 vim.cmd('colorscheme '..
   -- 'neosolarized'
   -- 'moonlight'
-  -- 'night-owl'
+  'night-owl'
   -- 'sonokai'
   -- 'catppuccin'
   -- 'palenight'
   -- 'tokyodark'
-  'tokyonight'
+  -- 'tokyonight'
   -- 'default'
   )
 -- For more options, :Telescope colorscheme
