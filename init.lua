@@ -185,8 +185,8 @@ require('plugins_c')
 vim.cmd('colorscheme '..
   -- 'neosolarized'
   -- 'moonlight'
-  'night-owl'
-  -- 'sonokai'
+  -- 'night-owl'
+  'sonokai'
   -- 'catppuccin'
   -- 'palenight'
   -- 'tokyodark'

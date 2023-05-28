@@ -16,16 +16,16 @@ vim.api.nvim_set_keymap('n','<leader>q',':q<cr>', { noremap = true, silent = tru
 vim.api.nvim_set_keymap('n','<F3>',':wa<cr>', keyopts)
 vim.api.nvim_set_keymap('n','<F5>',':luafile $MYVIMRC<cr>', keyopts)
 
--- Resize windows
-vim.api.nvim_set_keymap('n','<C-w><left>','<C-w><', keyopts)
-vim.api.nvim_set_keymap('n','<C-w><right>','<C-w>>', keyopts)
-vim.api.nvim_set_keymap('n','<C-w><up>',':resize +5<cr>', keyopts)
-vim.api.nvim_set_keymap('n','<C-w><down>',':resize -5<cr>', keyopts)
-
 -- Windows
 vim.api.nvim_set_keymap('n','<leader>ww','<C-w>w', keyopts)
 vim.api.nvim_set_keymap('n','<leader>wx','<C-w>c', keyopts)
 -- vim.api.nvim_set_keymap('n','<leader>wx','<C-w>c', keyopts)
+
+-- Resize windows
+vim.api.nvim_set_keymap('n','<leader>d',':vertical resize +4<cr>', keyopts)
+vim.api.nvim_set_keymap('n','<leader>a',':vertical resize -4<cr>', keyopts)
+vim.api.nvim_set_keymap('n','<leader>w',':resize +1<cr>', keyopts)
+vim.api.nvim_set_keymap('n','<leader>s',':resize -1<cr>', keyopts)
 
 -- Tabs
 vim.api.nvim_set_keymap('n','<leader>tn','<cmd>tabnew<cr>', keyopts)
@@ -50,7 +50,6 @@ vim.api.nvim_set_keymap('n','<leader>uf', ':set foldlevel=99<cr><cmd> echo "Unfo
 vim.api.nvim_set_keymap('n','<leader>n', ':bn<cr>', keyopts)
 vim.api.nvim_set_keymap('n','<leader>vs',':vs<cr><C-w>w', keyopts)
 vim.api.nvim_set_keymap('n','<leader>sp',':sp<cr>', keyopts)
-vim.api.nvim_set_keymap('n','<leader>w','<C-w>w<cr>', keyopts)
 vim.api.nvim_set_keymap('n','<leader>c','<C-w><C-c><cr>', keyopts)
 vim.api.nvim_set_keymap('n','<leader>`','<cmd>sp<cr><C-w>w<cmd>terminal<cr>i', keyopts)
 vim.api.nvim_set_keymap('n','<leader>tt',':tabnew<cr>', keyopts)
