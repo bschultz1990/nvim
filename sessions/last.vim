@@ -13,8 +13,9 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +113 functions.sh
-badd +45 install.sh
+badd +6 functions.sh
+badd +127 install.sh
+badd +41 packages.json
 argglobal
 %argdel
 edit install.sh
@@ -24,10 +25,6 @@ set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
 1wincmd h
-wincmd _ | wincmd |
-split
-1wincmd k
-wincmd w
 wincmd w
 let &splitbelow = s:save_splitbelow
 let &splitright = s:save_splitright
@@ -38,11 +35,8 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe '1resize ' . ((&lines * 30 + 31) / 63)
-exe 'vert 1resize ' . ((&columns * 78 + 78) / 157)
-exe '2resize ' . ((&lines * 29 + 31) / 63)
-exe 'vert 2resize ' . ((&columns * 78 + 78) / 157)
-exe 'vert 3resize ' . ((&columns * 78 + 78) / 157)
+exe 'vert 1resize ' . ((&columns * 82 + 82) / 165)
+exe 'vert 2resize ' . ((&columns * 82 + 82) / 165)
 argglobal
 balt functions.sh
 setlocal fdm=expr
@@ -53,34 +47,12 @@ setlocal fdl=99
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 45 - ((16 * winheight(0) + 15) / 30)
+let s:l = 127 - ((29 * winheight(0) + 30) / 60)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 45
-normal! 025|
-lcd ~/.dotfiles
-wincmd w
-argglobal
-if bufexists(fnamemodify("~/.dotfiles/install/install.sh", ":p")) | buffer ~/.dotfiles/install/install.sh | else | edit ~/.dotfiles/install/install.sh | endif
-if &buftype ==# 'terminal'
-  silent file ~/.dotfiles/install/install.sh
-endif
-balt ~/.dotfiles/install/functions.sh
-setlocal fdm=expr
-setlocal fde=nvim_treesitter#foldexpr()
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=99
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-let s:l = 28 - ((7 * winheight(0) + 14) / 29)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 28
-normal! 0
+keepjumps 127
+normal! 08|
 lcd ~/.dotfiles
 wincmd w
 argglobal
@@ -88,7 +60,7 @@ if bufexists(fnamemodify("~/.dotfiles/install/functions.sh", ":p")) | buffer ~/.
 if &buftype ==# 'terminal'
   silent file ~/.dotfiles/install/functions.sh
 endif
-balt ~/.dotfiles/install/install.sh
+balt ~/.dotfiles/install/packages.json
 setlocal fdm=expr
 setlocal fde=nvim_treesitter#foldexpr()
 setlocal fmr={{{,}}}
@@ -97,20 +69,16 @@ setlocal fdl=99
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 135 - ((38 * winheight(0) + 30) / 60)
+let s:l = 145 - ((45 * winheight(0) + 30) / 60)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 135
-normal! 0
+keepjumps 145
+normal! 025|
 lcd ~/.dotfiles
 wincmd w
-2wincmd w
-exe '1resize ' . ((&lines * 30 + 31) / 63)
-exe 'vert 1resize ' . ((&columns * 78 + 78) / 157)
-exe '2resize ' . ((&lines * 29 + 31) / 63)
-exe 'vert 2resize ' . ((&columns * 78 + 78) / 157)
-exe 'vert 3resize ' . ((&columns * 78 + 78) / 157)
+exe 'vert 1resize ' . ((&columns * 82 + 82) / 165)
+exe 'vert 2resize ' . ((&columns * 82 + 82) / 165)
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
@@ -126,7 +94,6 @@ if filereadable(s:sx)
 endif
 let &g:so = s:so_save | let &g:siso = s:siso_save
 set hlsearch
-nohlsearch
 doautoall SessionLoadPost
 unlet SessionLoad
 " vim: set ft=vim :

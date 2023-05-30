@@ -145,15 +145,15 @@ vim.api.nvim_create_user_command('Source',
   )
 
 -- -- Source the file under the cursor in Netrw
--- function Sourcefile()
---   local dir = vim.api.nvim_eval("@%")
---   local file = string.match(vim.api.nvim_eval("@\""), ".*%.vim")
---   local path = dir .. "/" .. file
---   vim.cmd("source "..path)
--- end
+function Sourcefile()
+  local dir = vim.api.nvim_eval("@%")
+  local file = string.match(vim.api.nvim_eval("@\""), ".*%.vim")
+  local path = dir .. "/" .. file
+  vim.cmd("source "..path)
+end
 
--- vim.api.nvim_set_keymap('n','<C-cr>', 'yy:lua Sourcefile()<cr>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n','<leader><cr>', 'yy:lua Sourcefile()<cr>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n','<C-cr>', 'yy:lua Sourcefile()<cr>', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n','<leader><cr>', 'yy:lua Sourcefile()<cr>', { noremap = true, silent = true })
 
 vim.api.nvim_create_user_command('Snippets',
   function()

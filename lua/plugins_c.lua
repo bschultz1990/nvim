@@ -143,7 +143,7 @@ require("lazy").setup({
 		{ 'sudoerwx/vim-ray-so-beautiful',
 			-- To use, type :Ray:
 		},
-		-- { 'tpope/vim-fugitive' },
+		{ 'tpope/vim-fugitive' },
 
 		{ 'glepnir/lspsaga.nvim',
 			event = "LspAttach",
