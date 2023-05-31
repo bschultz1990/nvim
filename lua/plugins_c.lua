@@ -156,10 +156,15 @@ require("lazy").setup({
 		--------------------------------------------------------------
 		-- END Nvim CMP Setup
 		--------------------------------------------------------------
-		{ 'nvim-tree/nvim-tree.lua',
-			event = "VimEnter",
-			init = function () require('configs.nvim-tree_c') end
-		},
+		-- { 'nvim-tree/nvim-tree.lua',
+		-- 	event = "VimEnter",
+		-- 	init = function () require('configs.nvim-tree_c') end
+		-- },
+		-- add an entry for preservim/tagbar
+		-- { 'preservim/tagbar',
+		-- 	event = 'VimEnter',
+		-- 	init = function() require('configs.tagbar_c') end
+		-- },
 	})
 
 -- MIGRATION FROM PACKER

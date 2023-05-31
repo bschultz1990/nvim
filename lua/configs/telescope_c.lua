@@ -34,14 +34,4 @@ require("telescope").load_extension "file_browser"
 require("telescope").load_extension "ui-select"
 
 
----- TELESCOPE MAPPINGS
-vim.api.nvim_set_keymap('n','<leader>bb',':Telescope buffers<cr>',{ noremap = true, silent = true })
-vim.api.nvim_set_keymap('n','<leader>ff',':Telescope find_files<cr>',{ noremap = true, silent = true })
-vim.api.nvim_set_keymap('n','<leader>tg',':Telescope live_grep<cr>',{ noremap = true, silent = true })
-vim.api.nvim_set_keymap('n','<leader>td',':Telescope diagnostics<cr>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n','<leader>th',':Telescope help_tags<cr>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n','<leader>tk',':Telescope keymaps<cr>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n','<leader>tb',':Telescope file_browser path=%:p:h select_buffer=true<cr>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n','<leader>tc',':Telescope colorscheme<cr>', { noremap = true, silent = true })
-
 return M

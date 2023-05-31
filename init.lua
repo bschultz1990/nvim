@@ -117,6 +117,14 @@ vim.api.nvim_create_user_command('Vimrc',
   { nargs = 0 }
   )
 
+vim.api.nvim_create_user_command('Keymaps',
+  function ()
+    Keymap_dir = vim.fn.stdpath("config") .. "/lua/"
+    vim.cmd("Ex "..Keymap_dir)
+  end,
+  { nargs = 0 }
+  )
+
 -- Save session to directory via custom Session command
 Session_dir = vim.fn.stdpath("config") .. "/sessions/"
 
