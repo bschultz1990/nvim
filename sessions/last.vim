@@ -3,7 +3,7 @@ let s:so_save = &g:so | let s:siso_save = &g:siso | setg so=0 siso=0 | setl so=-
 let v:this_session=expand("<sfile>:p")
 silent only
 silent tabonly
-cd ~/.dotfiles/install
+cd ~/Documents/FarmStand
 if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
@@ -13,19 +13,21 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +86 install.sh
-badd +169 ~/.config/nvim/lua/plugins_c.lua
+badd +59 index.js
+badd +10 views/products/new.ejs
+badd +17 package.json
 argglobal
 %argdel
-tabnew +setlocal\ bufhidden=wipe
-tabrewind
-edit install.sh
+edit index.js
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
-1wincmd h
+wincmd _ | wincmd |
+vsplit
+2wincmd h
+wincmd w
 wincmd w
 let &splitbelow = s:save_splitbelow
 let &splitright = s:save_splitright
@@ -36,9 +38,25 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 82 + 82) / 165)
-exe 'vert 2resize ' . ((&columns * 82 + 82) / 165)
+exe 'vert 1resize ' . ((&columns * 30 + 128) / 256)
+exe 'vert 2resize ' . ((&columns * 112 + 128) / 256)
+exe 'vert 3resize ' . ((&columns * 112 + 128) / 256)
 argglobal
+enew
+file NvimTree_1
+balt views/products/new.ejs
+setlocal fdm=manual
+setlocal fde=nvim_treesitter#foldexpr()
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=99
+setlocal fml=1
+setlocal fdn=20
+setlocal nofen
+lcd ~/Documents/FarmStand
+wincmd w
+argglobal
+balt ~/Documents/FarmStand/package.json
 setlocal fdm=expr
 setlocal fde=nvim_treesitter#foldexpr()
 setlocal fmr={{{,}}}
@@ -47,19 +65,20 @@ setlocal fdl=99
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 79 - ((27 * winheight(0) + 30) / 60)
+let s:l = 59 - ((51 * winheight(0) + 31) / 62)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 79
-normal! 017|
-lcd ~/.dotfiles
+keepjumps 59
+normal! 02|
+lcd ~/Documents/FarmStand
 wincmd w
 argglobal
-if bufexists(fnamemodify("~/.dotfiles/install/functions.sh", ":p")) | buffer ~/.dotfiles/install/functions.sh | else | edit ~/.dotfiles/install/functions.sh | endif
+if bufexists(fnamemodify("~/Documents/FarmStand/views/products/new.ejs", ":p")) | buffer ~/Documents/FarmStand/views/products/new.ejs | else | edit ~/Documents/FarmStand/views/products/new.ejs | endif
 if &buftype ==# 'terminal'
-  silent file ~/.dotfiles/install/functions.sh
+  silent file ~/Documents/FarmStand/views/products/new.ejs
 endif
+balt ~/Documents/FarmStand/index.js
 setlocal fdm=expr
 setlocal fde=nvim_treesitter#foldexpr()
 setlocal fmr={{{,}}}
@@ -68,50 +87,27 @@ setlocal fdl=99
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-45
-normal! zo
-70
-normal! zo
-164
-normal! zo
-let s:l = 152 - ((29 * winheight(0) + 30) / 60)
+let s:l = 11 - ((10 * winheight(0) + 31) / 62)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 152
-normal! 010|
-lcd ~/.dotfiles
+keepjumps 11
+normal! 064|
+lcd ~/Documents/FarmStand
 wincmd w
-exe 'vert 1resize ' . ((&columns * 82 + 82) / 165)
-exe 'vert 2resize ' . ((&columns * 82 + 82) / 165)
-tabnext
-edit ~/.config/nvim/lua/plugins_c.lua
-argglobal
-balt ~/.dotfiles/install/install.sh
-setlocal fdm=expr
-setlocal fde=nvim_treesitter#foldexpr()
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=99
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-14
-normal! zo
-let s:l = 169 - ((46 * winheight(0) + 30) / 60)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 169
-normal! 015|
-lcd ~/.config/nvim/lua
-tabnext 2
+3wincmd w
+exe 'vert 1resize ' . ((&columns * 30 + 128) / 256)
+exe 'vert 2resize ' . ((&columns * 112 + 128) / 256)
+exe 'vert 3resize ' . ((&columns * 112 + 128) / 256)
+tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
 endif
 unlet! s:wipebuf
 set winheight=1 winwidth=20
 let &shortmess = s:shortmess_save
+let &winminheight = s:save_winminheight
+let &winminwidth = s:save_winminwidth
 let s:sx = expand("<sfile>:p:r")."x.vim"
 if filereadable(s:sx)
   exe "source " . fnameescape(s:sx)

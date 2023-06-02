@@ -26,13 +26,13 @@ require("lazy").setup({
 				{ "<leader>bD", function() require("mini.bufremove").delete(0, true) end, desc = "Delete Buffer (Force)" },
 			},
 		},
-		-- { 'folke/which-key.nvim',
-		-- 	config = function()
-		-- 		vim.o.timeout = true
-		-- 		vim.o.timeoutlen = 300
-		-- 		require("which-key").setup ({})
-		-- 	end
-		-- },
+		{ 'folke/which-key.nvim',
+			config = function()
+				vim.o.timeout = true
+				vim.o.timeoutlen = 300
+				require("which-key").setup ({})
+			end
+		},
 		{ 'tpope/vim-surround'},
 		{ 'tpope/vim-commentary'},
 		{ 'tpope/vim-repeat'},
@@ -156,16 +156,19 @@ require("lazy").setup({
 		--------------------------------------------------------------
 		-- END Nvim CMP Setup
 		--------------------------------------------------------------
-		-- { 'nvim-tree/nvim-tree.lua',
-		-- 	event = "VimEnter",
-		-- 	init = function () require('configs.nvim-tree_c') end
-		-- },
+		{ 'nvim-tree/nvim-tree.lua',
+			event = "VimEnter",
+			init = function () require('configs.nvim-tree_c') end
+		},
 		-- add an entry for preservim/tagbar
-		-- { 'preservim/tagbar',
-		-- 	event = 'VimEnter',
-		-- 	init = function() require('configs.tagbar_c') end
-		-- },
+		{ 'preservim/tagbar',
+			event = 'VimEnter',
+			init = function() require('configs.tagbar_c') end
+		},
 	})
+
+-- Neovide
+require('configs.neovide')
 
 -- MIGRATION FROM PACKER
 -- setup => init

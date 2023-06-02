@@ -28,9 +28,11 @@ vim.api.nvim_set_keymap('n','<leader>w',':resize +1<cr>', keyopts)
 vim.api.nvim_set_keymap('n','<leader>s',':resize -1<cr>', keyopts)
 
 -- Tabs
-vim.api.nvim_set_keymap('n','<leader>tn','<cmd>tabnew<cr>', keyopts)
 vim.api.nvim_set_keymap('n','<leader>tx','<cmd>tabclose<cr>', keyopts)
-vim.api.nvim_set_keymap('n','<leader>tt','<cmd>tabnext<cr>', keyopts)
+vim.api.nvim_set_keymap('n','<leader>tt',':tabnew<cr>', keyopts)
+vim.api.nvim_set_keymap('n','<leader>tn',':tabnext<cr>', keyopts)
+vim.api.nvim_set_keymap('n','<leader>tp',':tabprevious<cr>', keyopts)
+vim.api.nvim_set_keymap('n','<leader>tx',':tabclose<cr>', keyopts)
 
 -- Indents
 vim.api.nvim_set_keymap('n', '<leader><Tab>', 'magg=G`azz', keyopts) -- indent on command and center the cursor
@@ -48,14 +50,11 @@ vim.api.nvim_set_keymap('n','<leader>uf', ':set foldlevel=99<cr><cmd> echo "Unfo
 
 -- BUFFERS AND SPLITS
 vim.api.nvim_set_keymap('n','<leader>n', ':bn<cr>', keyopts)
+vim.api.nvim_set_keymap('n','<leader>N', ':bp<cr>', keyopts)
 vim.api.nvim_set_keymap('n','<leader>vs',':vs<cr><C-w>w', keyopts)
 vim.api.nvim_set_keymap('n','<leader>sp',':sp<cr>', keyopts)
 vim.api.nvim_set_keymap('n','<leader>c','<C-w><C-c><cr>', keyopts)
 vim.api.nvim_set_keymap('n','<leader>`','<cmd>sp<cr><C-w>w<cmd>terminal<cr>i', keyopts)
-vim.api.nvim_set_keymap('n','<leader>tt',':tabnew<cr>', keyopts)
-vim.api.nvim_set_keymap('n','<leader>tn',':tabnext<cr>', keyopts)
-vim.api.nvim_set_keymap('n','<leader>tp',':tabprevious<cr>', keyopts)
-vim.api.nvim_set_keymap('n','<leader>tx',':tabclose<cr>', keyopts)
 
 -- INSERT MODE GOODIES
 vim.api.nvim_set_keymap('i','<C-Cr>','<CR><CR><Up><BS><CR>', keyopts)
