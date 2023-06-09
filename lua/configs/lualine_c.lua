@@ -20,7 +20,7 @@ require('lualine').setup {
 		},
 		ignore_focus = {},
 		always_divide_middle = true,
-		globalstatus = false, -- true: single bar on bottom. false: one bar per window
+		globalstatus = true, -- true: single bar on bottom. false: one bar per window
 		refresh = {
 			statusline = 1000,
 			tabline = 1000,

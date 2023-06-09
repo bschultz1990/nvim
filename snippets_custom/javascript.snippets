@@ -32,6 +32,9 @@ const mongoose = require('mongoose');
 // Parse extended urls and convert into a JavaScript object
 app.use(express.urlencoded({ extended: true }))
 
+// Set up static file serving before routes:
+app.use(express.static('stylesheets'));
+
 // Parse JSON bodies.
 app.use(express.json())
 
