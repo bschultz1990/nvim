@@ -27,6 +27,19 @@ vim.opt.linebreak = false
 vim.opt.ignorecase = true
 vim.opt.winblend = 15
 
+-- Clipboard
+let g:clipboard = {
+  'name': 'Lemonade',
+  'copy': {
+    '+': ['lemonade', 'copy']
+    '*': ['lemonade', 'copy']
+  'paste': {
+    '+': ['lemonade', 'paste']
+    '*': ['lemonade', 'paste']
+  },
+  'cache_enabled': 1,
+}
+
 -- Center cursor line on the screen.
 vim.opt.scrolloff = 5
 vim.opt.wrap = false
