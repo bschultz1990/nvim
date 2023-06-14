@@ -4,7 +4,7 @@
 
 scoop bucket add nerd-fonts
 
-$pkglist = $(
+$pkg_scoop = $(
     "git",
     "gh",
     "python",
@@ -15,12 +15,18 @@ $pkglist = $(
     "gzip",
     "pwsh",
     "curl",
-    "firamono",
     "nodejs"
     )
 
-foreach ( $pkg in $pkglist ) {
+foreach ( $pkg in $pkg_scoop ) {
   scoop install $pkg
 }
 
-npm install -g trash-cli empty-trash-cli
+$pkg_npm = $(
+"trash-cli",
+"empty-trash-cli"
+)
+
+foreach ( $pkg in $pkg_npm ) {
+  npm install -g $pkg
+}
