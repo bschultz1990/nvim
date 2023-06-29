@@ -1,6 +1,5 @@
 -- Is there an lspconfig in the house?
-local lspconfig_ok, _ = pcall(require, 'lspconfig')
-if not lspconfig_ok then
+if not pcall(require, 'lspconfig') then
 	vim.notify('lspconfig not found.', 'error')
 	return
 end
@@ -15,6 +14,7 @@ local configs = require('lspconfig/configs')
 -- WARNING! SERVERS MUST BE EITHER LISTED IN Unconfigured_servers, OR BELOW WITH SPECIFIC CONFIGS. 
 -- NEVER PUT THEM IN BOTH PLACES.
 Unconfigured_servers = {
+	"powershell_es"
 }
 for index, lsp in ipairs(Unconfigured_servers) do
 	require('lspconfig')[lsp].setup{}
