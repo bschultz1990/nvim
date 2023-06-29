@@ -1,6 +1,7 @@
 -- KEYMAPS
 -- Want guidance? Me too! :h key-notation is here for you.
 keyopts = { noremap = true, silent = true }
+key_remap = { noremap = false, silent = true }
 vim.g.mapleader = ','
 
 vim.api.nvim_set_keymap('n','<leader>ex', ':Explore<cr>', keyopts)
