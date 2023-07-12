@@ -121,18 +121,16 @@ require("lazy").setup({
 			init = function () require('configs.codeium_c') end
 		},
 		{ 'williamboman/mason.nvim',
-			init = function () require('mason').setup() end
+			-- init = function () require('mason').setup() end
 		},
 		{ 'williamboman/mason-lspconfig.nvim',
 			event = 'VimEnter',
-			init = function()
-				require('configs.mason_c')
-			end
+			init = function() require('configs.mason-lspconfig_c') end
 		},
 		{ 'neovim/nvim-lspconfig',
 			event = 'VimEnter',
 			dependencies = 'onsails/lspkind.nvim',
-			init = function() require('configs.nvim-lspconfig_c') end
+			-- init = function() require('configs.nvim-lspconfig_c') end
 		},
 		{ 'folke/trouble.nvim',
 			event = 'VimEnter',

@@ -30,12 +30,11 @@ function LspKeymaps()
 	-- local rename = vim.lsp.buf.rename
 
 	-- Is there an lspconfig in the house?
-	local lspconfig_ok, _ = pcall(require, 'lspconfig')
-	if not lspconfig_ok then
+	if not pcall(require, 'lspconfig') then
 		vim.notify('lspconfig not found.', 'error')
 		return
 	end
-	
+
 	-- Hide all semantic highlights
 	for _, group in ipairs(vim.fn.getcompletion("@lsp", "highlight")) do
 		vim.api.nvim_set_hl(0, group, {})
@@ -56,6 +55,33 @@ function LspKeymaps()
 	capabilities=capabilities
 end
 
+------------LUA-LS----------
+require'lspconfig'.lua_ls.setup {
+	on_attach = function()
+		LspKeymaps()
+		print('lua_ls attached')
+	end,
+	settings = {
+		Lua = {
+			semantic = {
+				hightlight = false,
+			},
+			runtime = {
+				-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+				version = 'LuaJIT',
+			},
+			diagnostics = {
+				-- Get the language server to recognize the `vim` global
+				globals = { 'vim' },
+			},
+			workspace = {
+				library = vim.api.nvim_get_runtime_file('', true),
+				checkThirdParty = false,
+			},
+			telemetry = { enable = false },
+		},
+	}
+}
 -----------JSON-----------
 -----------EMMET-----------
 require('lspconfig').emmet_ls.setup {
@@ -90,39 +116,13 @@ vim.api.nvim_create_autocmd('FileType', {
 -----------CSSLS-----------
 require'lspconfig'.cssls.setup {
 	on_attach = function ()
-		capabilities.textDocument.completion.completionItem.snippetSupport = true
+		-- -- I don't think we need this.
+		-- capabilities.textDocument.completion.completionItem.snippetSupport = true
 		LspKeymaps()
 		print ('cssls attached!')
 	end,
 }
 
-------------LUA-LS----------
-require'lspconfig'.lua_ls.setup {
-	on_attach = function()
-		LspKeymaps()
-		print('lua_ls attached')
-	end,
-	settings = {
-		Lua = {
-			semantic = {
-				hightlight = false,
-			},
-			runtime = {
-				-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-				version = 'LuaJIT',
-			},
-			diagnostics = {
-				-- Get the language server to recognize the `vim` global
-				globals = { 'vim' },
-			},
-			workspace = {
-				library = vim.api.nvim_get_runtime_file('', true),
-				checkThirdParty = false,
-			},
-			telemetry = { enable = false },
-		},
-	}
-}
 
 
 --------------TSSERVER--------------
