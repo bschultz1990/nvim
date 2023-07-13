@@ -16,51 +16,49 @@ function LspKeymaps()
 	end
 	local references = vim.lsp.buf.references
 	local declaration = vim.lsp.buf.declaration
+	local definition = ''
 	-- local definition = vim.lsp.buf.definition
-	-- local rename = vim.lsp.buf.rename
-	local definition = ':Lspsaga peek_definition<cr>'
-	-- local rename = ':Lspsaga lsp_rename ++project<cr>'
-	local rename = "<cmd>Lspsaga rename ++project<cr>"
+	local rename = vim.lsp.buf.rename
+	-- local rename = "<cmd>lua require'lspactions'.rename()<cr>"
 
 	vim.keymap.set('n', '<C-k>', references, { buffer = 0 })
+	-- vim.keymap.set('n', 'gD', definition, { buffer = 0, silent = true })
 	vim.keymap.set('n', 'gD', declaration, { buffer = 0, silent = true })
-	vim.keymap.set('n', 'gD', definition, { buffer = 0, silent = true })
-	vim.keymap.set('n', '<leader>r', rename, { silent = true })
-	capabilities=capabilities
+	vim.keymap.set('n', '<leader>r', rename, { buffer = 0 })
+
 end
 
-LspKeymaps()
 
 require('mason-lspconfig').setup_handlers {
 	function(server)
 		require('lspconfig')[server].setup({
+				capabilities = capabilities,
 				on_attach = function()
 					print(server,' is attached!')
+					LspKeymaps()
 				end
 			})
 	end,
 
-	-- FIXME:
 	-- ['lua_ls'] = function()
-	-- 	require('lspconfig').lua_ls.setup ({
-	-- 			on_attach = function()
-	-- 				print('lua_ls - custom config attached!')
-	-- 			end, --on_attach
-	-- 			settings = {
-	-- 				Lua = {
-	-- 					semantic = { hightlight = false },
-	-- 					-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-	-- 					runtime = { version = 'LuaJIT' },
-	-- 					-- Get the language server to recognize the `vim` global
-	-- 					diagnostics = { globals = { 'vim' } },
-	-- 					workspace = {
-	-- 						library = vim.api.nvim_get_runtime_file('', true),
-	-- 						checkThirdParty = false,
-	-- 					},
-	-- 					telemetry = { enable = false },
+	-- 	require("lspconfig").lua_ls.setup {
+	-- 		capabilities=capabilities,
+	-- 		on_attach = function()
+	-- 			LspKeymaps()
+	-- 		end,
+	-- 		settings = {
+	-- 			Lua = {
+	-- 				semantic = { hightlight = false, },
+	-- 				runtime = { version = 'LuaJIT', },
+	-- 				diagnostics = { globals = { 'vim' }, },
+	-- 				workspace = {
+	-- 					library = vim.api.nvim_get_runtime_file('', true),
+	-- 					checkThirdParty = false,
 	-- 				},
-	-- 			}
-	-- 		}) -- lua_ls.setup
-
+	-- 				telemetry = { enable = false },
+	-- 			},
+	-- 		}
+	-- 	}
 	-- end -- lua_ls - Mason
+
 } -- mason-lspconfig.setup_handlers

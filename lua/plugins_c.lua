@@ -18,7 +18,7 @@ require("lazy").setup({
 		},
 		-- { "akinsho/bufferline.nvim",
 		-- 	version = "v3.*",
-		-- 	depends = { "kyazdani42/nvim-web-devicons"},
+		-- 	dependencies = { "kyazdani42/nvim-web-devicons"},
 		-- 	init = function () require ('configs.bufferline_c') end
 		-- },
 		{ "echasnovski/mini.bufremove",
@@ -134,7 +134,7 @@ require("lazy").setup({
 		},
 		{ 'folke/trouble.nvim',
 			event = 'VimEnter',
-			depends = { "kyazdani42/nvim-web-devicons"},
+			dependencies = { "kyazdani42/nvim-web-devicons"},
 			init = function () require('configs.trouble_c') end
 		},
 		{ 'mfussenegger/nvim-dap',
@@ -144,9 +144,10 @@ require("lazy").setup({
 		},
 		{ 'tpope/vim-fugitive' },
 
-		{ 'glepnir/lspsaga.nvim',
+		{ 'RishabhRD/lspactions',
 			event = "LspAttach",
-			init = function() require ('configs.lspsaga_c') end
+			dependencies = { 'nvim-lua/plenary.nvim', 'nvim-lua/popup.nvim' },
+			init = function() require ('configs.lspactions_c') end
 		},
 		-- { 'neoclide/coc.nvim',
 		-- 	branch = 'release',
