@@ -35,7 +35,7 @@ vim.api.nvim_set_keymap('n','<leader>tp',':tabprevious<cr>', keyopts)
 vim.api.nvim_set_keymap('n','<leader>tx',':tabclose<cr>', keyopts)
 
 -- Indents
-vim.api.nvim_set_keymap('n', '<leader><Tab>', 'magg=G`azz', keyopts) -- indent on command and center the cursor
+vim.api.nvim_set_keymap('n', '<leader><Tab>', '0magg=G`azz', keyopts) -- indent on command and center the cursor
 
 -- Center Search Results on the Page
 vim.api.nvim_set_keymap('n','n', 'nzzzv', keyopts)
