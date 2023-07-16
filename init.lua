@@ -28,8 +28,6 @@ vim.opt.ignorecase = true
 vim.opt.winblend = 15
 vim.opt.signcolumn = 'yes:1'
 
-local thingy = ''
-
 -- Center cursor line on the screen.
 vim.opt.scrolloff = 5
 vim.opt.wrap = false
