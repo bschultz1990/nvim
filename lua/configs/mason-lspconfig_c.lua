@@ -40,6 +40,28 @@ require('mason-lspconfig').setup_handlers {
 			})
 	end,
 
+
+	lua_ls = function()
+		require("lspconfig").lua_ls.setup {
+			capabilities=capabilities,
+			on_attach = function()
+				LspKeymaps()
+			end,
+			settings = {
+				Lua = {
+					semantic = { hightlight = false, },
+					runtime = { version = 'LuaJIT', },
+					diagnostics = { globals = { 'vim' }, },
+					-- workspace = {
+					-- 	library = vim.api.nvim_get_runtime_file('', true),
+					-- 	checkThirdParty = false,
+					-- },
+					telemetry = { enable = false },
+				},
+			} -- settings
+		}
+	end
+
 	-- ['lua_ls'] = function()
 	-- 	require("lspconfig").lua_ls.setup {
 	-- 		capabilities=capabilities,

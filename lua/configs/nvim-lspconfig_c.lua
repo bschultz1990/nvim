@@ -23,7 +23,7 @@ end
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-function LspKeymaps()
+function LspKeymapssssssss()
 	local references = vim.lsp.buf.references
 	local declaration = vim.lsp.buf.declaration
 	-- local definition = vim.lsp.buf.definition
@@ -58,7 +58,7 @@ end
 ------------LUA-LS----------
 require'lspconfig'.lua_ls.setup {
 	on_attach = function()
-		LspKeymaps()
+		LspKeymapssssssss()
 		print('lua_ls attached')
 	end,
 	settings = {
@@ -118,7 +118,7 @@ require'lspconfig'.cssls.setup {
 	on_attach = function ()
 		-- -- I don't think we need this.
 		-- capabilities.textDocument.completion.completionItem.snippetSupport = true
-		LspKeymaps()
+		LspKeymapssssssss()
 		print ('cssls attached!')
 	end,
 }
@@ -128,7 +128,7 @@ require'lspconfig'.cssls.setup {
 --------------TSSERVER--------------
 require('lspconfig').tsserver.setup{
 	on_attach = function ()
-		LspKeymaps()
+		LspKeymapssssssss()
 		print('tsserver attached')
 	end
 }
