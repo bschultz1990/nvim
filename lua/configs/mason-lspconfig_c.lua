@@ -43,9 +43,7 @@ require('mason-lspconfig').setup_handlers {
 	lua_ls = function()
 		require("lspconfig").lua_ls.setup {
 			capabilities=capabilities,
-			on_attach = function()
-				LspKeymaps()
-			end,
+			on_attach = function() LspKeymaps() end,
 			settings = {
 				Lua = {
 					runtime = { version = 'LuaJIT', },
@@ -59,9 +57,7 @@ require('mason-lspconfig').setup_handlers {
 	emmet_ls = function()
 		require("lspconfig").emmet_ls.setup {
 			capabilities = capabilities,
-			on_attach = function()
-				LspKeymaps()
-			end,
+			on_attach = function() LspKeymaps() end,
 			filetypes = {
 				'html',
 				'typescriptreact',
@@ -74,6 +70,14 @@ require('mason-lspconfig').setup_handlers {
 				'ejs'
 			}, --filetypes
 		} -- setup
-	end -- emmet_ls
+	end, -- emmet_ls
+
+	bashls = function()
+		require('lspconfig').bashls.setup {
+      capabilities = capabilities,
+      on_attach = function() LspKeymaps() end,
+			filetypes = { 'sh', 'zsh', 'bash' },
+    }
+	end,
 
 } -- mason-lspconfig.setup_handlers

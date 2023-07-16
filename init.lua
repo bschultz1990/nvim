@@ -26,7 +26,9 @@ vim.opt.whichwrap = '<,>,h,l'
 vim.opt.linebreak = false
 vim.opt.ignorecase = true
 vim.opt.winblend = 15
-vim.opt.signcolumn = 'auto:1-3'
+vim.opt.signcolumn = 'yes:1'
+
+local thingy = ''
 
 -- Center cursor line on the screen.
 vim.opt.scrolloff = 5
