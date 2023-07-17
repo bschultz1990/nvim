@@ -50,7 +50,7 @@ require('lualine').setup {
 		lualine_b = {'branch'},
 		lualine_c = { FilePathStatusLine },
 		-- lualine_c = {'filename'},
-		lualine_x = { 'diff', 'encoding', 'filetype'},
+		lualine_x = { 'diff', 'encoding', 'diagnostics', 'filetype'},
 		lualine_y = {'progress'},
 		lualine_z = {'location'}
 	},

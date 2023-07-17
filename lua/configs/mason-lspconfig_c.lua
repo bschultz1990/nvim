@@ -17,11 +17,13 @@ function LspKeymaps()
 	-- local definition = vim.lsp.buf.definition
 	-- local rename = vim.lsp.buf.rename
 	-- local declaration = vim.lsp.buf.declaration
-	local definition = "<cmd>lua require'lspactions'.definition()<cr>"
-	local declaration = "<cmd>lua require'lspactions'.declaration()<cr>"
+	local definition = require'lspactions'.definition
+	local declaration = require'lspactions'.declaration
 	local references = vim.lsp.buf.references
-	local rename = "<cmd>lua require'lspactions'.rename()<cr>"
+	local rename = require'lspactions'.rename
+	local hover = vim.lsp.buf.hover
 
+	vim.keymap.set('n', '<leader>O', hover, { buffer = 0 })
 	vim.keymap.set('n', '<C-k>', references, { buffer = 0 })
 	vim.keymap.set('n', '<leader>gd', definition, { buffer = 0, silent = true })
 	vim.keymap.set('n', '<leader>gD', declaration, { buffer = 0, silent = true })
@@ -75,10 +77,10 @@ require('mason-lspconfig').setup_handlers {
 
 	bashls = function()
 		require('lspconfig').bashls.setup {
-      capabilities = capabilities,
-      on_attach = function() LspKeymaps() end,
+			capabilities = capabilities,
+			on_attach = function() LspKeymaps() end,
 			filetypes = { 'sh', 'zsh', 'bash' },
-    }
+		}
 	end,
 
 } -- mason-lspconfig.setup_handlers
