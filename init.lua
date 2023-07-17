@@ -107,16 +107,12 @@ vim.api.nvim_create_user_command('Todo',
   )
 
 vim.api.nvim_create_user_command('Reload',
-  function()
-    vim.cmd('luafile $MYVIMRC') -- Source config
-  end,
+  function() vim.cmd('luafile $MYVIMRC') end,
   { nargs = 0 }
   )
 
 vim.api.nvim_create_user_command('Vimrc',
-  function()
-    vim.cmd('edit $MYVIMRC')
-  end,
+  function() vim.cmd('edit $MYVIMRC') end,
   { nargs = 0 }
   )
 
@@ -139,9 +135,7 @@ vim.api.nvim_create_user_command('Session',
   { nargs = 1 })
 
 vim.api.nvim_create_user_command('Sessions',
-  function ()
-    vim.cmd("Ex "..Session_dir)
-  end,
+  function () vim.cmd("Ex "..Session_dir) end,
   { nargs = 0 })
 
 -- Source the file under the cursor in Netrw
@@ -188,8 +182,6 @@ vim.api.nvim_create_user_command('Mdpreview',
 
 
 require('keymaps_c')
-
--- PLUGINS
 require('plugins_c')
 
 -- Colorschemes
@@ -209,5 +201,4 @@ vim.cmd('colorscheme '..
 require ('keymaps_plugins_c')
 -- require('configs.test')
 
--- SUCCESS! :)
 print(' init.lua loaded! :)')
