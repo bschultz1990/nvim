@@ -10,8 +10,11 @@ Plug 'sainnhe/sonokai'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'tpope/vim-commentary'
+Plug 'junegunn/vim-easy-align'
 
 call plug#end()
+
+nnoremap ga = <Plug>(EasyAlign)
 ]])
 
 require("oil").setup()
@@ -27,3 +30,5 @@ local ok, _ = pcall(vim.cmd, 'colorscheme sonokai')
 if not ok then
         vim.cmd 'colorscheme default' -- if the above fails, then use default
 end
+
+
