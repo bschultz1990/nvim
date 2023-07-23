@@ -31,12 +31,13 @@ vim.opt.scrolloff = 5
 vim.opt.wrap = false
 
 -- TAKUYA TABS:
--- vim.opt.expandtab = true
--- vim.opt.smarttab = true
--- vim.opt.tabstop = 2
--- vim.opt.shiftwidth = 2
--- vim.opt.autoindent = true
--- vim.opt.smartindent = true
+vim.opt.expandtab = false -- use spaces to mimic tabs
+vim.opt.smarttab = false -- insert blanks in new line
+vim.opt.tabstop = 2 -- number of spaces for a tabstop
+vim.opt.shiftwidth = 0 -- use tabstop value
+vim.opt.autoindent = true -- copy current line indent below
+vim.opt.smartindent = true -- smart indenting on new lines. works well with autoindent
+vim.opt.shiftround = true -- round to multiples of tabstop
 
 -- Python provider bonanza
 vim.g.python3_host_prog = Shebang("which python3")
