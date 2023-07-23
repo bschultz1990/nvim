@@ -12,8 +12,9 @@ require('lualine').setup {
 		icons_enabled = true,
 		-- see https://github.com/nvim-lualine/lualine.nvim/blob/master/THEMES.md for a full list of themes
 		theme = 'auto',
-		component_separators = { left = '', right = ''},
-		section_separators = { left = '', right = ''},
+		component_separators = { left = '|', right = '|'},
+		section_separators = { left = '▌', right = '▐'},
+
 		disabled_filetypes = {
 			statusline = {},
 			winbar = {},
@@ -49,7 +50,7 @@ require('lualine').setup {
 		lualine_b = {'branch'},
 		lualine_c = { FilePathStatusLine },
 		-- lualine_c = {'filename'},
-		lualine_x = { 'diff', 'diagnostics', 'encoding', 'filetype'},
+		lualine_x = { 'diff', 'encoding', 'diagnostics', 'filetype'},
 		lualine_y = {'progress'},
 		lualine_z = {'location'}
 	},

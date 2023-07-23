@@ -18,7 +18,7 @@ require("lazy").setup({
 		},
 		-- { "akinsho/bufferline.nvim",
 		-- 	version = "v3.*",
-		-- 	depends = { "kyazdani42/nvim-web-devicons"},
+		-- 	dependencies = { "kyazdani42/nvim-web-devicons"},
 		-- 	init = function () require ('configs.bufferline_c') end
 		-- },
 		{ "echasnovski/mini.bufremove",
@@ -61,7 +61,8 @@ require("lazy").setup({
 				'nvim-lua/popup.nvim',
 				'nvim-lua/plenary.nvim',
 				'nvim-telescope/telescope-file-browser.nvim',
-				'nvim-telescope/telescope-ui-select.nvim'
+				'nvim-telescope/telescope-ui-select.nvim',
+				'/nvim-telescope/telescope-symbols.nvim'
 			},
 			init = function () require('configs.telescope_c')	end
 		},
@@ -121,22 +122,20 @@ require("lazy").setup({
 			init = function () require('configs.codeium_c') end
 		},
 		{ 'williamboman/mason.nvim',
-			init = function () require('mason').setup() end
+			-- init = function () require('mason').setup() end
 		},
 		{ 'williamboman/mason-lspconfig.nvim',
 			event = 'VimEnter',
-			init = function()
-				require('configs.mason_c')
-			end
+			init = function() require('configs.mason-lspconfig_c') end
 		},
 		{ 'neovim/nvim-lspconfig',
 			event = 'VimEnter',
 			dependencies = 'onsails/lspkind.nvim',
-			init = function() require('configs.nvim-lspconfig_c') end
+			-- init = function() require('configs.nvim-lspconfig_c') end
 		},
 		{ 'folke/trouble.nvim',
 			event = 'VimEnter',
-			depends = { "kyazdani42/nvim-web-devicons"},
+			dependencies = { "kyazdani42/nvim-web-devicons"},
 			init = function () require('configs.trouble_c') end
 		},
 		{ 'mfussenegger/nvim-dap',
@@ -146,9 +145,10 @@ require("lazy").setup({
 		},
 		{ 'tpope/vim-fugitive' },
 
-		{ 'glepnir/lspsaga.nvim',
+		{ 'RishabhRD/lspactions',
 			event = "LspAttach",
-			init = function() require ('configs.lspsaga_c') end
+			dependencies = { 'nvim-lua/plenary.nvim', 'nvim-lua/popup.nvim' },
+			init = function() require ('configs.lspactions_c') end
 		},
 		-- { 'neoclide/coc.nvim',
 		-- 	branch = 'release',

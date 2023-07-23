@@ -6,7 +6,7 @@ if not neosolarized_ok then
 end
 
 require ("neosolarized").setup({
-		commit_italics = true
+		commit_italics = false
 	})
 
 local Color, colors, Group, groups, styles = require('colorbuddy').setup()
