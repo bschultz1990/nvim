@@ -5,20 +5,17 @@ vim.cmd([[
 call plug#begin()
 
 Plug 'windwp/nvim-autopairs'
-Plug 'stevearc/oil.nvim'
 Plug 'sainnhe/sonokai'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'tpope/vim-commentary'
 Plug 'junegunn/vim-easy-align'
+Plug 'elihunter173/dirbuf.nvim'
 
 call plug#end()
 
 nnoremap ga = <Plug>(EasyAlign)
 ]])
-
-require("oil").setup()
-vim.keymap.set("n", "-", require("oil").open, { desc = "Open parent directory" })
 
 -- Plenary setup:
 local async = require "plenary.async"
