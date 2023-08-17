@@ -35,8 +35,8 @@ vim.opt.expandtab = true
 vim.opt.smarttab = true
 vim.opt.tabstop = 2
 vim.opt.autoindent = true
--- vim.opt.shiftwidth = 2
--- vim.opt.smartindent = true
+vim.opt.shiftwidth = 2
+vim.opt.smartindent = true
 
 ---- NETRW
 vim.g.netrw_keepdir = 1

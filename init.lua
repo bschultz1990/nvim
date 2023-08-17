@@ -11,6 +11,7 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'tpope/vim-commentary'
 Plug 'junegunn/vim-easy-align'
 Plug 'elihunter173/dirbuf.nvim'
+Plug 'tpope/vim-fugitive'
 
 call plug#end()
 
