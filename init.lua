@@ -12,7 +12,8 @@ Plug 'tpope/vim-commentary'
 Plug 'junegunn/vim-easy-align'
 Plug 'elihunter173/dirbuf.nvim'
 Plug 'tpope/vim-fugitive'
-
+Plug 'tpope/vim-surround'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 call plug#end()
 
 nnoremap ga = <Plug>(EasyAlign)
