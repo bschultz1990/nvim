@@ -39,6 +39,6 @@ vim.opt.shiftwidth = 2
 vim.opt.smartindent = true
 
 ---- NETRW
-vim.g.netrw_keepdir = 1
+vim.g.netrw_keepdir = 0
 vim.g.netrw_localcopydircmd = 'cp -r'
 vim.g.netrw_liststyle = 1
