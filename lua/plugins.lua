@@ -78,29 +78,6 @@ require("lazy").setup({
 			event = "VimEnter",
 			init = function() require('configs.lazyvim_c') end
 		},
-		--=========== COLORSCHEMES ===========--
-		{ "catppuccin/nvim", name = "catppuccin",
-			init = function() require('configs.catppuccin_c') end
-		},
-		{ 'wilmanbarrios/palenight.nvim' },
-		{ 'haishanh/night-owl.vim', },
-		{ 'sainnhe/sonokai',
-			init = function() require ('configs.sonokai_c') end
-		},
-		{
-			'https://github.com/Shatur/neovim-ayu',
-			init = function() require('configs.ayu_c') end
-		},
-		vim.cmd('colorscheme ' ..
-			'ayu-mirage'
-			-- 'sonokai'
-			-- 'catppuccin'
-		-- 'palenight'
-		-- 'tokyonight'
-		-- 'night-owl'
-		-- 'default'
-		)
-		--======== END COLORSCHEMES =========--
 
 		--------------------------------------------------------------
 		-- Nvim CMP Setup
@@ -169,7 +146,30 @@ require("lazy").setup({
 			event = 'VimEnter',
 			init = function() require('configs.tagbar_c') end
 		},
+		--=========== COLORSCHEMES ===========--
+		{ "catppuccin/nvim", name = "catppuccin",
+			init = function() require('configs.catppuccin_c') end
+		},
+		{ 'wilmanbarrios/palenight.nvim' },
+		{ 'haishanh/night-owl.vim', },
+		{ 'sainnhe/sonokai',
+			init = function() require ('configs.sonokai_c') end
+		},
+		{
+			'https://github.com/Shatur/neovim-ayu',
+			init = function() require('configs.ayu_c') end
+		},
+		--======== END COLORSCHEMES =========--
 	})
+		vim.cmd('colorscheme ' ..
+			'ayu'
+			-- 'sonokai'
+			-- 'catppuccin'
+		-- 'palenight'
+		-- 'tokyonight'
+		-- 'night-owl'
+		-- 'default'
+		)
 
 -- Neovide
 require('configs.neovide')
