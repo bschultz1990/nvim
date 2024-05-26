@@ -84,19 +84,22 @@ require("lazy").setup({
 		},
 		{ 'wilmanbarrios/palenight.nvim' },
 		{ 'haishanh/night-owl.vim', },
-		{ 'ghifarit53/tokyonight-vim',
-			init = function() require ('configs.tokyonight_c') end
-		},
 		{ 'sainnhe/sonokai',
 			init = function() require ('configs.sonokai_c') end
 		},
-		{ 'tiagovla/tokyodark.nvim', },
-		{ 'shaunsingh/moonlight.nvim' },
-		{ 'svrana/neosolarized.nvim',
-			dependencies = 'tjdevries/colorbuddy.nvim',
-			init = function() require('configs.neosolarized_c')
-			end
+		{
+			'https://github.com/Shatur/neovim-ayu',
+			init = function() require('configs.ayu_c') end
 		},
+		vim.cmd('colorscheme ' ..
+			'ayu-mirage'
+			-- 'sonokai'
+			-- 'catppuccin'
+		-- 'palenight'
+		-- 'tokyonight'
+		-- 'night-owl'
+		-- 'default'
+		)
 		--======== END COLORSCHEMES =========--
 
 		--------------------------------------------------------------

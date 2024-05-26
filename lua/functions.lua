@@ -32,7 +32,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 vim.api.nvim_create_user_command('H', ':tab help <args>', { nargs = 1, complete = "help" })
 vim.api.nvim_create_user_command('Plugins',
   function ()
-    local plugin_dir = vim.fn.stdpath("config").."/lua/plugins_c.lua"
+    local plugin_dir = vim.fn.stdpath("config").."/lua/plugins.lua"
     vim.cmd("edit "..plugin_dir)
   end,
   { nargs = 0 }
