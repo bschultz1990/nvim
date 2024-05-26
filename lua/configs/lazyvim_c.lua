@@ -19,7 +19,7 @@ local config = {
 		new_section("Recent files", "Telescope oldfiles",   "Telescope"),
 		new_section("Grep text",    "Telescope live_grep",  "Telescope"),
 		new_section("init.lua",     "e $MYVIMRC",           "Config"),
-		new_section("Plugins",":edit ~/.config/nvim/lua/plugins_c.lua", "Config"),
+		new_section("Plugins",":edit ~/.config/nvim/lua/plugins.lua", "Config"),
 		new_section("Lazy",         "Lazy",                 "Config"),
 		new_section("Sessions",     ":Explore ~/.config/nvim/sessions/",    "Bookmarks"),
 		new_section("New file",     "ene | startinsert",    "Built-in"),
