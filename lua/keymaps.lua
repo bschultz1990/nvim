@@ -17,19 +17,19 @@ vim.api.nvim_set_keymap('n','<leader>q',':q<cr>', { noremap = true, silent = tru
 vim.api.nvim_set_keymap('n','<F3>',':wa<cr>', keyopts)
 vim.api.nvim_set_keymap('n','<F5>',':luafile $MYVIMRC<cr>', keyopts)
 
+
 -- Windows
 vim.api.nvim_set_keymap('n','<leader>ww','<C-w>w', keyopts)
 vim.api.nvim_set_keymap('n','<leader>wx','<C-w>c', keyopts)
 -- vim.api.nvim_set_keymap('n','<leader>wx','<C-w>c', keyopts)
 
 -- Resize windows
-vim.api.nvim_set_keymap('n','<leader>d',':vertical resize +4<cr>', keyopts)
-vim.api.nvim_set_keymap('n','<leader>a',':vertical resize -4<cr>', keyopts)
-vim.api.nvim_set_keymap('n','<leader>w',':resize +1<cr>', keyopts)
-vim.api.nvim_set_keymap('n','<leader>s',':resize -1<cr>', keyopts)
+vim.api.nvim_set_keymap('n','<M-Left>',':vertical resize +4<cr>', keyopts)
+vim.api.nvim_set_keymap('n','<M-Right>',':vertical resize -4<cr>', keyopts)
+vim.api.nvim_set_keymap('n','<M-Up>',':resize +1<cr>', keyopts)
+vim.api.nvim_set_keymap('n','<M-Down>',':resize -1<cr>', keyopts)
 
 -- Tabs
-vim.api.nvim_set_keymap('n','<leader>tx','<cmd>tabclose<cr>', keyopts)
 vim.api.nvim_set_keymap('n','<leader>tt',':tabnew<cr>', keyopts)
 vim.api.nvim_set_keymap('n','<leader>tn',':tabnext<cr>', keyopts)
 vim.api.nvim_set_keymap('n','<leader>tp',':tabprevious<cr>', keyopts)
@@ -52,10 +52,16 @@ vim.api.nvim_set_keymap('n','<leader>uf', ':set foldlevel=99<cr><cmd> echo "Unfo
 -- BUFFERS AND SPLITS
 vim.api.nvim_set_keymap('n','<leader>n', ':bn<cr>', keyopts)
 vim.api.nvim_set_keymap('n','<leader>N', ':bp<cr>', keyopts)
+vim.api.nvim_set_keymap('n','<leader>bd', ':bd<cr>', keyopts)
 vim.api.nvim_set_keymap('n','<leader>vs',':vs<cr><C-w>w', keyopts)
 vim.api.nvim_set_keymap('n','<leader>sp',':sp<cr>', keyopts)
-vim.api.nvim_set_keymap('n','<leader>c','<C-w><C-c><cr>', keyopts)
 vim.api.nvim_set_keymap('n','<leader>`','<cmd>sp<cr><C-w>w<cmd>terminal<cr>i', keyopts)
+vim.api.nvim_set_keymap('n','<leader>c','<C-w><C-c><cr>', keyopts)
 
--- INSERT MODE GOODIES
+-- NORMAL MODE GOODIES
+vim.api.nvim_set_keymap('n','<M-Up>',':m-2<CR>', keyopts)
+vim.api.nvim_set_keymap('n','<M-Down>',':m+<CR>', keyopts)
+
+--NSERT MODE GOODIES
+vim.api.nvim_set_keymap('i','<C-Cr>','<CR><CR><Up><BS><CR>', keyopts)
 vim.api.nvim_set_keymap('i','<C-Cr>','<CR><CR><Up><BS><CR>', keyopts)
