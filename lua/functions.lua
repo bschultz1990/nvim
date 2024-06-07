@@ -91,16 +91,16 @@ vim.api.nvim_create_user_command('Sessions',
   end,
   { nargs = 0 })
 
--- Source the file under the cursor in Netrw
-vim.api.nvim_create_user_command('Source',
-  function ()
-    local dir = vim.api.nvim_eval("@%")
-    local file = string.match(vim.api.nvim_eval("@\""), ".*%.vim")
-    local path = dir .. "/" .. file
-    vim.cmd("source "..path)
-  end,
-  { nargs = 0 }
-  )
+-- -- Source the file under the cursor in Netrw
+-- vim.api.nvim_create_user_command('Source',
+--   function ()
+--     local dir = vim.api.nvim_eval("@%")
+--     local file = string.match(vim.api.nvim_eval("@\""), ".*%.vim")
+--     local path = dir .. "/" .. file
+--     vim.cmd("source "..path)
+--   end,
+--   { nargs = 0 }
+--   )
 
 -- -- Source the file under the cursor in Netrw
 function Sourcefile()
