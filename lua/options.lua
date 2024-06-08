@@ -5,8 +5,6 @@ require "nvchad.options"
 local o = vim.o
 o.cursorlineopt = "both" -- to enable cursorline!
 
--- Save session to directory via custom Session command
-Session_dir = "~/Documents/vim_sessions/"
 
 -- Highlight text on yank.
 vim.api.nvim_create_autocmd('TextYankPost', {
@@ -29,6 +27,8 @@ local function folder_exists(folder_path)
   end
 end
 
+-- Save session to directory via custom Session command
+Session_dir = "~/Documents/vim_sessions/"
 vim.api.nvim_create_user_command("Session", function(opts)
   if not folder_exists(Session_dir) then
     os.execute("mkdir " .. Session_dir)

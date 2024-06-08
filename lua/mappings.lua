@@ -5,8 +5,10 @@ require "nvchad.mappings"
 
 local map = vim.keymap.set
 
-map("n", "<M-S-Right>", "<C-w>w", { desc = "Next window" })
-map("n", "<M-S-Left>", "<C-w>W", { desc = "Previous window" })
+map("n", "<M-Right>", "<C-w><Right>", { desc = "Window focus right" })
+map("n", "<M-Left>", "<C-w><Left>", { desc = "Window focus left" })
+map("n", "<M-Up>", "<C-w><Up>", { desc = "Window focus up" })
+map("n", "<M-Down>", "<C-w><Down>", { desc = "Window focus down" })
 
 map(
   "n",
@@ -22,10 +24,10 @@ map("n", "x", '"_x', { noremap = true, silent = true, nowait = true })
 map("n", "<F5>", ":luafile %<cr>", { desc = "Source current buffer" })
 
 -- Resize windows
-map("n", "<M-Left>", ":vertical resize +2<cr>")
-map("n", "<M-Right>", ":vertical resize -2<cr>")
-map("n", "<M-Up>", ":resize +1<cr>")
-map("n", "<M-Down>", ":resize -1<cr>")
+map("n", "<M-S-Left>", ":vertical resize +2<cr>")
+map("n", "<M-S-Right>", ":vertical resize -2<cr>")
+map("n", "<M-S-Up>", ":resize +1<cr>")
+map("n", "<M-S-Down>", ":resize -1<cr>")
 
 -- Tabs
 map("n", "<leader>tx", "<cmd>tabclose<cr>", { desc = "tab close" })
