@@ -16,9 +16,11 @@ map(
   ':lua vim.cmd("tab h " .. vim.fn.expand("<cword>"))<cr>',
   { desc = "display help under cursor" }
 )
---
--- Do not yank with x
-map("n", "x", '"_x', { noremap = true, silent = true, nowait = true })
+
+-- Clipboard
+vim.o.clipboard = ""
+map("n", "x", '"_x', { noremap = true, silent = true, nowait = true }) -- Do not yank with x
+map("v", "<C-c>", "\"+y", { desc = "Copy highlighted text" })
 
 -- Source current buffer
 map("n", "<F5>", ":luafile %<cr>", { desc = "Source current buffer" })
@@ -37,12 +39,12 @@ map("n", "<leader>tp", ":tabprevious<cr>", { desc = "tab previous" })
 map("n", "<leader>tx", ":tabclose<cr>", { desc = "tab close" })
 
 -- Indents
-map("n", "<leader><Tab>", "0magg=G`azz", { desc = "reindent buffer" }) -- indent on command and center the cursor
+map("n", "<leader><Tab>", "0magg=G`azz", { desc = "reindent buffer" })
 
 -- -- FOLDS AND SUCH
 map("n", "<leader>fd", ':set foldlevel=1<cr><cmd>echo "Folding..."<cr>', { desc = "fold" })
 map("n", "<leader>uf", ':set foldlevel=99<cr><cmd> echo "Unfolding..."<cr>', { desc = "unfold" })
 
 -- -- INSERT MODE GOODIES
--- map('i','<C-Cr>','<CR><CR><Up><BS><CR>', keyopts)
+map('i','<M-Cr>','<CR><CR><Up><BS><CR>', { desc = "Double-enter paragraph" })
 map({ "n", "i", "v" }, "<C-s>", "<cmd> wa <cr>", { desc = "save all buffers" })
