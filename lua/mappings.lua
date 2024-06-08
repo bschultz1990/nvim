@@ -40,11 +40,6 @@ map("n", "<leader><Tab>", "0magg=G`azz", { desc = "reindent buffer" }) -- indent
 -- -- FOLDS AND SUCH
 map("n", "<leader>fd", ':set foldlevel=1<cr><cmd>echo "Folding..."<cr>', { desc = "fold" })
 map("n", "<leader>uf", ':set foldlevel=99<cr><cmd> echo "Unfolding..."<cr>', { desc = "unfold" })
---
--- BUFFERS AND SPLITS
--- map('n','<leader>vs',':vs<cr><C-w>w')
--- map('n','<leader>sp',':sp<cr>', keyopts)
--- map('n','<leader>c','<C-w><C-c><cr>', keyopts)
 
 -- -- INSERT MODE GOODIES
 -- map('i','<C-Cr>','<CR><CR><Up><BS><CR>', keyopts)
