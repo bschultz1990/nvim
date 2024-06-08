@@ -12,7 +12,7 @@ map(
   "n",
   "<leader>H",
   ':lua vim.cmd("tab h " .. vim.fn.expand("<cword>"))<cr>',
-  { desc = "show help for current item under cursor" }
+  { desc = "display help under cursor" }
 )
 --
 -- Do not yank with x
