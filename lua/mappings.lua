@@ -2,6 +2,7 @@
 -- Want guidance? Me too! :h key-notation is here for you.
 
 require "nvchad.mappings"
+vim.g.mapleader = " "
 
 local map = vim.keymap.set
 

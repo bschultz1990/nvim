@@ -14,23 +14,13 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     end,
   })
 
-
--- Function to check if a folder exists
-local function folder_exists(folder_path)
-  local f = io.open(folder_path, "r")
-  if f ~= nil then
-    io.close(f)
-    return true
-  else
-    return false
-  end
-end
+ -- if not folder_exists(Session_dir) then
 
 -- Save session to directory via custom Session command
-Session_dir = "~/Documents/vim_sessions/"
+Session_dir = vim.fn.expand("~/Documents/vim_sessions/")
 vim.api.nvim_create_user_command("Session", function(opts)
-  if not folder_exists(Session_dir) then
-    os.execute("mkdir " .. Session_dir)
+  if not vim.loop.fs_stat(Session_dir) then
+    vim.fn.system("mkdir -p " .. Session_dir)
   end
   vim.cmd("mksession! " .. Session_dir .. opts.fargs[1] .. ".vim")
   print('Session "' .. opts.fargs[1] .. '.vim" created in ' .. Session_dir)
