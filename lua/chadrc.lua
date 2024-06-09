@@ -3,7 +3,6 @@
 
 ---@type ChadrcConfig
 local M = {}
-vim.g.mapleader = " "
 
 M.ui = {
 	theme = "github_dark",
