@@ -17,10 +17,11 @@ map(
   { desc = "display help under cursor" }
 )
 
--- Clipboard
+-- Clipboard and Text Manipulation
 vim.o.clipboard = ""
 map("n", "x", '"_x', { noremap = true, silent = true, nowait = true }) -- Do not yank with x
 map("v", "<C-c>", "\"+y", { desc = "Copy highlighted text" })
+map("n", "<C-a>", "maggVG", { desc = "Select all, Return via mark 'a' " })
 
 -- Source current buffer
 map("n", "<F5>", ":luafile %<cr>", { desc = "Source current buffer" })
