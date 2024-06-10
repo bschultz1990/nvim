@@ -1,5 +1,5 @@
--- local pwsh_bundlepath = vim.fn.stdpath "data" .. "/mason/packages/powershell-editor-services/"
 local pwsh_services = vim.fn.expand("/mason/packages/powershell-editor-services")
+local pwsh_start = vim.fn.expand("/PowerShellEditorServices/Start-EditorServices.ps1 -SessionDetailsPath ./session.json")
 local pwsh_bundlepath = vim.fn.stdpath "data" .. pwsh_services
 
 
