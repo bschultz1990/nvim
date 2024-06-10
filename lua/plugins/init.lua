@@ -1,3 +1,5 @@
+local pwsh_bundlepath = vim.fn.stdpath "data" .. "/mason/packages/powershell-editor-services/"
+
 return {
   {
     "stevearc/conform.nvim",
@@ -7,12 +9,18 @@ return {
     end,
   },
 
+
   {
     "TheLeoP/powershell.nvim",
     ---@type powershell.user_config
     opts = {
-      bundle_path = vim.fn.stdpath "data" .. "/mason/packages/powershell-editor-services/PowerShellEditorServices",
+      bundle_path = pwsh_bundlepath
     },
+    config = function()
+      require('powershell').setup({
+      bundle_path = pwsh_bundlepath,
+      })
+    end
   },
 
   {
