@@ -14,6 +14,8 @@ return {
 
   {
     "TheLeoP/powershell.nvim",
+    ---@type powershell.user_config
+    opts = { bundle_path = pwsh_bundlepath },
     config = function()
       require("powershell").setup {
         bundle_path = pwsh_bundlepath,
