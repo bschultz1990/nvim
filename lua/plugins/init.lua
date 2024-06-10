@@ -12,6 +12,10 @@ return {
     end,
   },
 
+  { 'tpope/vim-surround',
+    keys = { "ys", "cs", {"S", mode = 'v'}, "ds" }
+  },
+
   {
     "TheLeoP/powershell.nvim",
     ---@type powershell.user_config
@@ -40,7 +44,7 @@ return {
         "html-lsp",
         "css-lsp",
         "prettier",
-        "powershell_es",
+        "powershell-editor-services",
       },
     },
   },
