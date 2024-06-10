@@ -15,12 +15,15 @@ for _, lsp in ipairs(servers) do
   }
 end
 
+local pwsh_services = vim.fn.expand("/mason/packages/powershell-editor-services")
+local pwsh_bundlepath = vim.fn.stdpath "data" .. pwsh_services
+
 --powershell_es
 lspconfig.powershell_es.setup {
   on_attach = on_attach,
   on_init = on_init,
   capabilities = capabilities,
-  bundle_path = vim.fn.stdpath "data" .. "/mason/packages/powershell-editor-services/",
+  bundle_path = pwsh_bundlepath,
 }
 
 -- bash
