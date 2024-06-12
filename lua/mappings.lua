@@ -5,32 +5,34 @@ require "nvchad.mappings"
 
 local map = vim.keymap.set
 
-map("n", "<M-Right>", "<C-w><Right>", { desc = "Window focus right" })
-map("n", "<M-Left>", "<C-w><Left>", { desc = "Window focus left" })
-map("n", "<M-Up>", "<C-w><Up>", { desc = "Window focus up" })
-map("n", "<M-Down>", "<C-w><Down>", { desc = "Window focus down" })
-
+-- HALP
 map(
   "n",
   "<leader>H",
   ':lua vim.cmd("tab h " .. vim.fn.expand("<cword>"))<cr>',
   { desc = "display help under cursor" }
 )
+map("n", "<leader>?", ":Telescope help_tags<cr>", { desc = "Telescope help tags" })
+
+map('n','<M-Up>',':m-2<CR>', { desc = "Move line up" })
+map('n','<M-Down>',':m+<CR>', { desc = "Move line down" })
 
 -- Clipboard and Text Manipulation
 vim.o.clipboard = ""
 map("n", "x", '"_x', { noremap = true, silent = true, nowait = true }) -- Do not yank with x
 map("v", "<C-c>", "\"+y", { desc = "Copy highlighted text" })
-map("n", "<C-a>", "maggVG", { desc = "Select all, Return via mark 'a' " })
+map("n", "<C-a>", "maggVG", { desc = "Select all; Return via mark 'a' " })
 
 -- Source current buffer
 map("n", "<F5>", ":luafile %<cr>", { desc = "Source current buffer" })
 
--- Resize windows
-map("n", "<M-S-Left>", ":vertical resize +2<cr>")
-map("n", "<M-S-Right>", ":vertical resize -2<cr>")
-map("n", "<M-S-Up>", ":resize +1<cr>")
-map("n", "<M-S-Down>", ":resize -1<cr>")
+-- Windows
+map("n", "<leader>q", "<C-w>q", { desc = "Quit window"})
+map("n", "<M-S-Right>", "<C-w><Right>", { desc = "Window focus right" })
+map("n", "<M-S-Left>", "<C-w><Left>", { desc = "Window focus left" })
+map("n", "<M-S-Up>", "<C-w><Up>", { desc = "Window focus up" })
+map("n", "<M-S-Down>", "<C-w><Down>", { desc = "Window focus down" })
+
 
 -- Tabs
 map("n", "<leader>tx", "<cmd>tabclose<cr>", { desc = "tab close" })
@@ -49,3 +51,8 @@ map("n", "<leader>uf", ':set foldlevel=99<cr><cmd> echo "Unfolding..."<cr>', { d
 -- -- INSERT MODE GOODIES
 map('i','<M-Cr>','<CR><CR><Up><BS><CR>', { desc = "Double-enter paragraph" })
 map({ "n", "i", "v" }, "<C-s>", "<cmd> wa <cr>", { desc = "save all buffers" })
+
+-- Buffers and Splits
+map('n', '<leader>bb', ':Telescope buffers<cr>', { desc = 'Telescope buffers' })
+map('n', '<leader>vs', ':vs<cr>', { desc = 'Vertical split'})
+map('n', '<leader>sp', ':sp<cr>', { desc = 'Horizontal split'})

@@ -1,7 +1,5 @@
 require "nvchad.options"
 
--- add yours here!
-
 local o = vim.o
 o.cursorlineopt = "both" -- to enable cursorline!
 
@@ -14,8 +12,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     end,
   })
 
- -- if not folder_exists(Session_dir) then
-
 -- Save session to directory via custom Session command
 Session_dir = vim.fn.expand("~/Documents/vim_sessions/")
 vim.api.nvim_create_user_command("Session", function(opts)
@@ -25,3 +21,11 @@ vim.api.nvim_create_user_command("Session", function(opts)
   vim.cmd("mksession! " .. Session_dir .. opts.fargs[1] .. ".vim")
   print('Session "' .. opts.fargs[1] .. '.vim" created in ' .. Session_dir)
 end, { nargs = 1 })
+
+-- Oooh, birrrd, tweak that code!
+vim.api.nvim_create_user_command("Config", function()
+  local config_path = vim.fn.stdpath('config')
+  vim.cmd("cd " .. config_path)
+  vim.cmd("Telescope find_files")
+end, { nargs = 0 }
+)
