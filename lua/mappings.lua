@@ -21,6 +21,7 @@ map('n','<M-Down>',':m+<CR>', { desc = "Move line down" })
 vim.o.clipboard = ""
 map("n", "x", '"_x', { noremap = true, silent = true, nowait = true }) -- Do not yank with x
 map("v", "<C-c>", "\"+y", { desc = "Copy highlighted text" })
+map("v", "<C-x>", "\"+d", { desc = "Cut highlighted text" })
 map("n", "<C-a>", "maggVG", { desc = "Select all; Return via mark 'a' " })
 
 -- Source current buffer
@@ -28,10 +29,10 @@ map("n", "<F5>", ":luafile %<cr>", { desc = "Source current buffer" })
 
 -- Windows
 map("n", "<leader>q", "<C-w>q", { desc = "Quit window"})
-map("n", "<M-S-Right>", "<C-w><Right>", { desc = "Window focus right" })
-map("n", "<M-S-Left>", "<C-w><Left>", { desc = "Window focus left" })
-map("n", "<M-S-Up>", "<C-w><Up>", { desc = "Window focus up" })
-map("n", "<M-S-Down>", "<C-w><Down>", { desc = "Window focus down" })
+map("n", "<M-l>", "<C-w><Right>", { desc = "Window focus right" })
+map("n", "<M-h>", "<C-w><Left>", { desc = "Window focus left" })
+map("n", "<M-k>", "<C-w><Up>", { desc = "Window focus up" })
+map("n", "<M-j>", "<C-w><Down>", { desc = "Window focus down" })
 
 
 -- Tabs
@@ -40,6 +41,9 @@ map("n", "<leader>tt", ":tabnew<cr>", { desc = "tab new" })
 map("n", "<leader>tn", ":tabnext<cr>", { desc = "tab next" })
 map("n", "<leader>tp", ":tabprevious<cr>", { desc = "tab previous" })
 map("n", "<leader>tx", ":tabclose<cr>", { desc = "tab close" })
+
+-- Files
+map("n", "<leader>rg", ":Telescope grep_string", { desc = "Grep string" })
 
 -- Indents
 map("n", "<leader><Tab>", "0magg=G`azz", { desc = "reindent buffer" })

@@ -15,7 +15,9 @@ return {
   { 'tpope/vim-surround',
     keys = { "ys", "cs", {"S", mode = 'v'}, "ds" }
   },
-
+  { 'elihunter173/dirbuf.nvim',
+    lazy = false
+  },
   {
     "TheLeoP/powershell.nvim",
     ---@type powershell.user_config
