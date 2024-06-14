@@ -20,7 +20,10 @@ map('n','<M-Down>',':m+<CR>', { desc = "Move line down" })
 -- Clipboard and Text Manipulation
 vim.o.clipboard = ""
 map("n", "x", '"_x', { noremap = true, silent = true, nowait = true }) -- Do not yank with x
+map("n", "<C-c>", "\"+yy", { desc = "Copy current line" })
 map("v", "<C-c>", "\"+y", { desc = "Copy highlighted text" })
+
+map("n", "<C-x>", "\"+dd", { desc = "Cut current line" })
 map("v", "<C-x>", "\"+d", { desc = "Cut highlighted text" })
 map("n", "<C-a>", "maggVG", { desc = "Select all; Return via mark 'a' " })
 
@@ -43,7 +46,7 @@ map("n", "<leader>tp", ":tabprevious<cr>", { desc = "tab previous" })
 map("n", "<leader>tx", ":tabclose<cr>", { desc = "tab close" })
 
 -- Files
-map("n", "<leader>rg", ":Telescope grep_string", { desc = "Grep string" })
+map("n", "<leader>rg", ":Telescope grep_string<cr>", { desc = "Grep string" })
 
 -- Indents
 map("n", "<leader><Tab>", "0magg=G`azz", { desc = "reindent buffer" })
