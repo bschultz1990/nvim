@@ -15,8 +15,6 @@ for _, lsp in ipairs(servers) do
   }
 end
 
--- local pwsh_startpath = vim.fn.expand("/mason/packages/powershell-editor-services/PowerShellEditorServices/Start-EditorServices.ps1")
--- local pwsh_start_script = vim.fn.stdpath "data" .. pwsh_startpath
 local pwsh_services = vim.fn.expand("/mason/packages/powershell-editor-services")
 local pwsh_bundlepath = vim.fn.stdpath "data" .. pwsh_services
 

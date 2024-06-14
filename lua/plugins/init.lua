@@ -1,9 +1,37 @@
-local pwsh_services = vim.fn.expand("/mason/packages/powershell-editor-services")
-local pwsh_start = vim.fn.expand("/PowerShellEditorServices/Start-EditorServices.ps1 -SessionDetailsPath ./session.json")
+local pwsh_services = vim.fn.expand "/mason/packages/powershell-editor-services"
 local pwsh_bundlepath = vim.fn.stdpath "data" .. pwsh_services
 
-
 return {
+  {
+    "folke/twilight.nvim",
+    cmd = "Twilight",
+    opts = {},
+  },
+
+  {
+    "preservim/vim-pencil",
+    cmd = {
+      "PencilToggle",
+      "Pencil",
+      "NoPencil",
+      "PencilOff",
+      "TogglePencil",
+      "PencilToggle",
+      "SoftPencil",
+      "PencilSoft",
+      "HardPencil",
+      "PencilHard",
+    },
+
+    ft = { "markdown", "text", "plaintex" },
+    config = function()
+      vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
+        pattern = { "*.md", "*.txt", "*.tex" },
+        command = "PencilSoft",
+      })
+    end,
+  },
+
   {
     "stevearc/conform.nvim",
     -- event = 'BufWritePre', -- uncomment for format on save
@@ -12,12 +40,8 @@ return {
     end,
   },
 
-  { 'tpope/vim-surround',
-    keys = { "ys", "cs", {"S", mode = 'v'}, "ds" }
-  },
-  { 'elihunter173/dirbuf.nvim',
-    lazy = false
-  },
+  { "tpope/vim-surround", keys = { "ys", "cs", { "S", mode = "v" }, "ds" } },
+  { "elihunter173/dirbuf.nvim", lazy = false },
   {
     "TheLeoP/powershell.nvim",
     ---@type powershell.user_config
@@ -50,18 +74,26 @@ return {
       },
     },
   },
-
+  -- {
+    -- "hrsh7th/nvim-cmp",
+    -- opts = function(_,opts)
+    --   print("this is a test")
+    -- end,
+  -- },
   {
     "nvim-treesitter/nvim-treesitter",
     opts = {
       ensure_installed = {
         "vim",
-        "lua",
         "vimdoc",
+        "lua",
         "html",
         "css",
         "python",
+        "markdown",
       },
     },
   },
+  -- Disabled plugins
+  { "hrsh7th/cmp-buffer", enabled = false },
 }
