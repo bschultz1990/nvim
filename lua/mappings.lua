@@ -32,10 +32,11 @@ map("n", "<F5>", ":luafile %<cr>", { desc = "Source current buffer" })
 
 -- Windows
 map("n", "<leader>q", "<C-w>q", { desc = "Quit window"})
-map("n", "<M-l>", "<C-w><Right>", { desc = "Window focus right" })
-map("n", "<M-h>", "<C-w><Left>", { desc = "Window focus left" })
-map("n", "<M-k>", "<C-w><Up>", { desc = "Window focus up" })
-map("n", "<M-j>", "<C-w><Down>", { desc = "Window focus down" })
+map('n', '<leader>ww','<C-w>w', { desc = "Next window" })
+map("n", "<leader><Right>", "<C-w><Right>", { desc = "Window focus right" })
+map("n", "<leader><Left>", "<C-w><Left>", { desc = "Window focus left" })
+map("n", "<leader><Up>", "<C-w><Up>", { desc = "Window focus up" })
+map("n", "<leader><Down>", "<C-w><Down>", { desc = "Window focus down" })
 
 
 -- Tabs
