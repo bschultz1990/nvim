@@ -7,19 +7,17 @@ return {
     cmd = "Twilight",
     opts = {},
   },
-
+  {
+    "folke/zen-mode.nvim",
+    cmd = "ZenMode"
+  },
   {
     "preservim/vim-pencil",
     cmd = {
-      "PencilToggle",
       "Pencil",
-      "NoPencil",
       "PencilOff",
-      "TogglePencil",
       "PencilToggle",
-      "SoftPencil",
       "PencilSoft",
-      "HardPencil",
       "PencilHard",
     },
 
@@ -75,10 +73,10 @@ return {
     },
   },
   -- {
-    -- "hrsh7th/nvim-cmp",
-    -- opts = function(_,opts)
-    --   print("this is a test")
-    -- end,
+  -- "hrsh7th/nvim-cmp",
+  -- opts = function(_,opts)
+  --   print("this is a test")
+  -- end,
   -- },
   {
     "nvim-treesitter/nvim-treesitter",
