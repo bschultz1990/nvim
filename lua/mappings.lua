@@ -14,21 +14,24 @@ map(
 )
 map("n", "<leader>?", ":Telescope help_tags<cr>", { desc = "Telescope help tags" })
 
-map('n','<M-Up>',':m-2<CR>', { desc = "Move line up" })
-map('n','<M-Down>',':m+<CR>', { desc = "Move line down" })
 
 -- Clipboard and Text Manipulation
 vim.o.clipboard = ""
+
+map('n','<M-Up>',':m-2<CR>', { desc = "Move line up" })
+map('n','<M-Down>',':m+<CR>', { desc = "Move line down" })
 map("n", "x", '"_x', { noremap = true, silent = true, nowait = true }) -- Do not yank with x
+
 map("n", "<C-c>", "\"+yy", { desc = "Copy current line" })
 map("v", "<C-c>", "\"+y", { desc = "Copy highlighted text" })
-
 map("n", "<C-x>", "\"+dd", { desc = "Cut current line" })
 map("v", "<C-x>", "\"+d", { desc = "Cut highlighted text" })
 map("n", "<C-a>", "maggVG", { desc = "Select all; Return via mark 'a' " })
 
+
 -- Source current buffer
 map("n", "<F5>", ":luafile %<cr>", { desc = "Source current buffer" })
+
 
 -- Windows
 map("n", "<leader>q", "<C-w>q", { desc = "Quit window"})
@@ -46,19 +49,24 @@ map("n", "<leader>tn", ":tabnext<cr>", { desc = "tab next" })
 map("n", "<leader>tp", ":tabprevious<cr>", { desc = "tab previous" })
 map("n", "<leader>tx", ":tabclose<cr>", { desc = "tab close" })
 
+
 -- Files
 map("n", "<leader>rg", ":Telescope grep_string<cr>", { desc = "Grep string" })
 
+
 -- Indents
 map("n", "<leader><Tab>", "0magg=G`azz", { desc = "reindent buffer" })
+
 
 -- -- FOLDS AND SUCH
 map("n", "<leader>fd", ':set foldlevel=1<cr><cmd>echo "Folding..."<cr>', { desc = "fold" })
 map("n", "<leader>uf", ':set foldlevel=99<cr><cmd> echo "Unfolding..."<cr>', { desc = "unfold" })
 
+
 -- -- INSERT MODE GOODIES
 map('i','<M-Cr>','<CR><CR><Up><BS><CR>', { desc = "Double-enter paragraph" })
 map({ "n", "i", "v" }, "<C-s>", "<cmd> wa <cr>", { desc = "save all buffers" })
+
 
 -- Buffers and Splits
 map('n', '<leader>bb', ':Telescope buffers<cr>', { desc = 'Telescope buffers' })

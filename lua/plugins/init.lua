@@ -63,12 +63,13 @@ return {
     "williamboman/mason.nvim",
     opts = {
       ensure_installed = {
-        "lua-language-server",
-        "stylua",
-        "html-lsp",
+        "bash-language-server",
         "css-lsp",
-        "prettier",
+        "html-lsp",
+        "lua-language-server",
         "powershell-editor-services",
+        "prettier",
+        "stylua",
       },
     },
   },
