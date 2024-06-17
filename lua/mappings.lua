@@ -28,6 +28,7 @@ map("n", "<C-x>", "\"+dd", { desc = "Cut current line" })
 map("v", "<C-x>", "\"+d", { desc = "Cut highlighted text" })
 map("n", "<C-a>", "maggVG", { desc = "Select all; Return via mark 'a' " })
 
+map("i", "<C-h>", "<C-w>", { desc = "Delete word" })
 
 -- Source current buffer
 map("n", "<F5>", ":luafile %<cr>", { desc = "Source current buffer" })
@@ -51,7 +52,7 @@ map("n", "<leader>tx", ":tabclose<cr>", { desc = "tab close" })
 
 
 -- Files
-map("n", "<leader>rg", ":Telescope grep_string<cr>", { desc = "Grep string" })
+map("n", "<leader>rg", ":Telescope live_grep<cr>", { desc = "Live grep" })
 
 
 -- Indents
