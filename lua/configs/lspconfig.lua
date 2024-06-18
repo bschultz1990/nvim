@@ -25,7 +25,6 @@ lspconfig.powershell_es.setup {
   on_init = on_init,
   capabilities = capabilities,
   bundle_path = pwsh_bundlepath,
-  -- cmd = { 'pwsh', '-NoLogo', '-NoProfile', '-Command', pwsh_start_script },
   init_options = { enableProfileLoading = false }
 }
 

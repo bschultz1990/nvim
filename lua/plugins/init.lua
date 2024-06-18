@@ -73,12 +73,6 @@ return {
       },
     },
   },
-  -- {
-  -- "hrsh7th/nvim-cmp",
-  -- opts = function(_,opts)
-  --   print("this is a test")
-  -- end,
-  -- },
   {
     "nvim-treesitter/nvim-treesitter",
     opts = {
