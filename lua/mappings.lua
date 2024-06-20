@@ -5,6 +5,7 @@ require "nvchad.mappings"
 
 local map = vim.keymap.set
 
+
 -- HALP
 map(
   "n",

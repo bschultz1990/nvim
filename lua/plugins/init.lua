@@ -3,13 +3,21 @@ local pwsh_bundlepath = vim.fn.stdpath "data" .. pwsh_services
 
 return {
   {
+    "godlygeek/tabular",
+    ft = { "markdown", "text", "plaintex" },
+    config = function()
+      vim.keymap.set("i", "|", "|<Esc>:Tabularize /|/l1<cr>A")
+      vim.keymap.set("v", "ta", ":Tabularize /")
+    end,
+  },
+  {
     "folke/twilight.nvim",
     cmd = "Twilight",
     opts = {},
   },
   {
     "folke/zen-mode.nvim",
-    cmd = "ZenMode"
+    cmd = "ZenMode",
   },
   {
     "preservim/vim-pencil",
