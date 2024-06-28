@@ -27,8 +27,11 @@ map("n", "<C-c>", "\"+yy", { desc = "Copy current line" })
 map("v", "<C-c>", "\"+y", { desc = "Copy highlighted text" })
 map("n", "<C-x>", "\"+dd", { desc = "Cut current line" })
 map("v", "<C-x>", "\"+d", { desc = "Cut highlighted text" })
-map("n", "<C-a>", "maggVG", { desc = "Select all; Return via mark 'a' " })
+map("n", "C-S-v", "\"+p", { desc = "Paste from system clipboard." })
+map("v", "C-S-v", "\"+p", { desc = "Paste from system clipboard." })
+map("i", "C-S-v", "\"+p", { desc = "Paste from system clipboard." })
 
+map("n", "<C-a>", "maggVG", { desc = "Select all; Return via mark 'a' " })
 map("i", "<C-h>", "<C-w>", { desc = "Delete word" })
 
 -- Source current buffer
