@@ -37,6 +37,10 @@ map("i", "<C-h>", "<C-w>", { desc = "Delete word" })
 -- Source current buffer
 map("n", "<F5>", ":luafile %<cr>", { desc = "Source current buffer" })
 
+-- Center search results on the page
+map('n', 'n', 'nzzzv', { desc = "Center next search result" })
+map('n', 'N', 'Nzzzv', { desc = "Center previous search result" })
+
 
 -- Windows
 map("n", "<leader>q", "<C-w>q", { desc = "Quit window"})
