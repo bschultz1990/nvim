@@ -42,3 +42,9 @@ if vim.g.neovide then
   require "configs.neovide"
 end
 
+-- Disable autocomplete via a keybinding
+-- function()               
+--        vim.b.cmp_enabled = not vim.b.cmp_enabled
+--        require('cmp').setup.buffer { enabled = vim.b.cmp_enabled }
+--  end
+
