@@ -31,7 +31,7 @@ return {
 
     ft = { "markdown", "text", "plaintex" },
     config = function()
-      vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
+      vim.api.nvim_create_autocmd({ "BufEnter" }, {
         pattern = { "*.md", "*.txt", "*.tex" },
         command = "PencilSoft",
       })
