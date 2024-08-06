@@ -2,7 +2,6 @@ require "nvchad.options"
 
 local o = vim.o
 o.cursorlineopt = "both" -- to enable cursorline!
-o.scrolloff = 5
 
 -- Highlight text on yank.
 vim.api.nvim_create_autocmd('TextYankPost', {
