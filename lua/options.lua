@@ -19,7 +19,7 @@ vim.api.nvim_create_user_command("Session", function(opts)
     vim.fn.system("mkdir -p " .. Session_dir)
   end
   vim.cmd("mksession! " .. Session_dir .. opts.fargs[1] .. ".vim")
-  print('Session "' .. opts.fargs[1] .. '.vim" created in ' .. Session_dir)
+  print("Session '" .. opts.fargs[1] .. ".vim' created in " .. Session_dir)
 end, { nargs = 1 })
 
 -- Oooh, birrrd, tweak that code!
@@ -29,3 +29,11 @@ vim.api.nvim_create_user_command("Config", function()
   vim.cmd("Telescope find_files")
 end, { nargs = 0 }
 )
+
+
+vim.api.nvim_create_autocmd('FileType',{
+  pattern = { 'markdown', 'text', 'plaintex' },
+  callback = function()
+    require('cmp').setup.buffer { enabled = false }
+  end
+})
