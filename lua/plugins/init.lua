@@ -3,12 +3,17 @@ local pwsh_bundlepath = vim.fn.stdpath "data" .. pwsh_services
 
 return {
   {
-    "godlygeek/tabular",
+    'dhruvasagar/vim-table-mode',
     ft = { "markdown", "text", "plaintex" },
-    config = function()
-      vim.keymap.set("i", "|", "|<Esc>:Tabularize /|/l1<cr>A")
-      vim.keymap.set("v", "ta", ":Tabularize /")
-    end,
+    config = function ()
+      vim.keymap.set('n', '<leader>ta', ':TableModeToggle<cr>', { desc = 'Table Mode Toggle' })
+    end
+  },
+  {
+    'MeanderingProgrammer/render-markdown.nvim',
+    opts = {},
+    dependencies = { 'mvin-treesitter/nvim-treesitter', 'echasnovski/mini.icons' },
+    ft = { "markdown", "text", "plaintex" },
   },
   {
     "folke/twilight.nvim",
@@ -18,12 +23,6 @@ return {
   {
     "folke/zen-mode.nvim",
     cmd = "ZenMode",
-  },
-  {
-    'MeanderingProgrammer/render-markdown.nvim',
-    opts = {},
-    dependencies = { 'mvin-treesitter/nvim-treesitter', 'echasnovski/mini.icons' },
-    ft = { "markdown", "text", "plaintex" },
   },
   {
     "preservim/vim-pencil",
