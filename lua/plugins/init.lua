@@ -20,6 +20,12 @@ return {
     cmd = "ZenMode",
   },
   {
+    'MeanderingProgrammer/render-markdown.nvim',
+    opts = {},
+    dependencies = { 'mvin-treesitter/nvim-treesitter', 'echasnovski/mini.icons' },
+    ft = { "markdown", "text", "plaintex" },
+  },
+  {
     "preservim/vim-pencil",
     cmd = {
       "Pencil",
@@ -29,7 +35,8 @@ return {
       "PencilHard",
     },
 
-    ft = { "markdown", "text", "plaintex" },
+    -- ft = { "markdown", "text", "plaintex" },
+    ft = { "text"},
     config = function()
       vim.api.nvim_create_autocmd({ "BufEnter" }, {
         pattern = { "*.md", "*.txt", "*.tex" },
