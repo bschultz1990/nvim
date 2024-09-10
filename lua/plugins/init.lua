@@ -6,7 +6,9 @@ return {
     'dhruvasagar/vim-table-mode',
     ft = { "markdown", "text", "plaintex" },
     config = function ()
-      vim.keymap.set('n', '<leader>ta', ':TableModeToggle<cr>', { desc = 'Table Mode Toggle' })
+
+      vim.keymap.set('n', '<leader>ta', ':TableModeToggle<cr>', { desc = 'Table Mode Enable' })
+      vim.keymap.set('i', '|', '|<Esc>:TableModeRealign<cr>A', { desc = 'Table Mode Realign' })
     end
   },
   {
@@ -39,7 +41,6 @@ return {
       "PencilHard",
     },
 
-    -- ft = { "markdown", "text", "plaintex" },
     ft = {"text", 'markdown', 'plaintex'},
     config = function()
       vim.api.nvim_create_autocmd({ "BufEnter" }, {
