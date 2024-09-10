@@ -40,7 +40,7 @@ return {
     },
 
     -- ft = { "markdown", "text", "plaintex" },
-    ft = { "text"},
+    ft = {"text", 'markdown', 'plaintex'},
     config = function()
       vim.api.nvim_create_autocmd({ "BufEnter" }, {
         pattern = { "*.md", "*.txt", "*.tex" },
