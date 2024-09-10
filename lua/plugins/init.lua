@@ -14,6 +14,11 @@ return {
     opts = {},
     dependencies = { 'mvin-treesitter/nvim-treesitter', 'echasnovski/mini.icons' },
     ft = { "markdown", "text", "plaintex" },
+    config = function ()
+      require('render-markdown').setup({
+          pipe_table = { style = 'normal' },
+})
+    end
   },
   {
     "folke/twilight.nvim",
