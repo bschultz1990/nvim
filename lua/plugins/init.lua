@@ -12,11 +12,11 @@ return {
   {
     'MeanderingProgrammer/render-markdown.nvim',
     opts = {},
-    dependencies = { 'mvin-treesitter/nvim-treesitter', 'echasnovski/mini.icons' },
+    dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' },
     ft = { "markdown", "text", "plaintex" },
     config = function ()
       require('render-markdown').setup({
-          pipe_table = { style = 'normal' },
+        pipe_table = { style = 'normal' },
 })
     end
   },
@@ -103,6 +103,7 @@ return {
         "css",
         "python",
         "markdown",
+        "markdown_inline",
       },
     },
   },
