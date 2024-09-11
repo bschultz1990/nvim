@@ -23,6 +23,7 @@ map('n','<M-Up>',':m-2<CR>', { desc = "Move line up" })
 map('n','<M-Down>',':m+<CR>', { desc = "Move line down" })
 map("n", "x", '"_x', { noremap = true, silent = true, nowait = true }) -- Do not yank with x
 
+map("v", "<leader>r", ":RemitSubject<cr>", { desc = "Copy Remit Subject" })
 map("n", "<C-c>", "\"+yy", { desc = "Copy current line" })
 map("v", "<C-c>", "\"+y", { desc = "Copy highlighted text" })
 map("n", "<leader><C-x>", "\"+dd", { desc = "Cut current line" })

@@ -1,7 +1,9 @@
 require "nvchad.options"
 
+
 local o = vim.o
 o.cursorlineopt = "both" -- to enable cursorline!
+
 
 -- Highlight text on yank.
 vim.api.nvim_create_autocmd('TextYankPost', {
@@ -11,6 +13,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
       vim.highlight.on_yank { higroup = 'IncSearch', timeout = 500 }
     end,
   })
+
 
 -- Save session to directory via custom Session command
 Session_dir = vim.fn.expand("~/Documents/vim_sessions/")
@@ -22,6 +25,7 @@ vim.api.nvim_create_user_command("Session", function(opts)
   print("Session '" .. opts.fargs[1] .. ".vim' created in " .. Session_dir)
 end, { nargs = 1 })
 
+
 -- Oooh, birrrd, tweak that code!
 vim.api.nvim_create_user_command("Config", function()
   local config_path = vim.fn.stdpath('config')
@@ -31,9 +35,24 @@ end, { nargs = 0 }
 )
 
 
+-- Plugin development mojo
+vim.api.nvim_create_user_command("Test", function()
+  local config_path = vim.fn.stdpath('config')
+  local test_path = vim.fn.expand(config_path .. "/lua/plugins/test.lua")
+  if not vim.loop.fs_stat(test_path) then
+    vim.fn.system("touch -p " .. test_path)
+  end
+  vim.cmd('edit ' .. test_path)
+  print("DELETE THE TEST FILE WHEN YOU'RE DONE.")
+end, { nargs = 0 })
+
+
+-- Selectively disable nvim-cmp
 vim.api.nvim_create_autocmd('FileType',{
   pattern = { 'markdown', 'text', 'plaintex' },
   callback = function()
     require('cmp').setup.buffer { enabled = false }
   end
 })
+
+
