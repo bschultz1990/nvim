@@ -74,7 +74,8 @@ map("n", "<leader>uf", ':set foldlevel=99<cr><cmd> echo "Unfolding..."<cr>', { d
 
 
 -- -- INSERT MODE GOODIES
-map('i','<M-Cr>','<CR><CR><Up><BS><CR>', { desc = "Double-enter paragraph" })
+map('i','<F2>','<CR><Up><CR>', { desc = "Double-enter paragraph" })
+map('n','<F2>','i<CR><Up><CR>', { desc = "Double-enter paragraph" })
 map({ "n", "i", "v" }, "<C-s>", "<cmd> wa <cr>", { desc = "save all buffers" })
 
 

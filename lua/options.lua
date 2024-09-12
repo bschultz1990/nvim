@@ -7,12 +7,12 @@ o.cursorlineopt = "both" -- to enable cursorline!
 
 -- Highlight text on yank.
 vim.api.nvim_create_autocmd('TextYankPost', {
-    desc = 'Hightlight selection on yank',
-    pattern = '*',
-    callback = function()
-      vim.highlight.on_yank { higroup = 'IncSearch', timeout = 500 }
-    end,
-  })
+  desc = 'Hightlight selection on yank',
+  pattern = '*',
+  callback = function()
+    vim.highlight.on_yank { higroup = 'IncSearch', timeout = 500 }
+  end,
+})
 
 
 -- Save session to directory via custom Session command
@@ -56,3 +56,24 @@ vim.api.nvim_create_autocmd('FileType',{
 })
 
 
+vim.api.nvim_create_user_command("RS", function()
+  vim.api.nvim_command("normal! gv\"zy")
+  local selected_text = vim.fn.getreg("z")
+  local clean_text = selected_text
+    :gsub(" +%| +", "|")
+    :gsub(" +%|", "|")
+    :gsub("%| +", "|")
+    :gsub("|", " ")
+
+  local lines = vim.split(clean_text, '\n')
+
+  for i, line in ipairs(lines) do
+    lines[i] = line
+      :gsub("^ +", "")
+      :gsub(" +$", "")
+  end
+
+  local final_text = table.concat(lines, '\n')
+  vim.fn.setreg("+", final_text)
+  print(final_text)
+end, { nargs = 0, range = true })
