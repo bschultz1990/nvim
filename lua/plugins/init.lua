@@ -6,7 +6,6 @@ return {
     'dhruvasagar/vim-table-mode',
     ft = { "markdown", "text", "plaintex" },
     config = function ()
-
       vim.keymap.set('n', '<leader>ta', ':TableModeToggle<cr>', { desc = 'Table Mode Enable' })
       vim.keymap.set('i', '|', '|<Esc>:TableModeRealign<cr>A', { desc = 'Table Mode Realign' })
     end

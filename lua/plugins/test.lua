@@ -24,7 +24,7 @@ local function get_selected_text(start_line, end_line)
     return table.concat(lines, "\n")
 end
 
-vim.api.nvim_create_user_command("RemitSubject", function(opts)
+vim.api.nvim_create_user_command("RS", function(opts)
   local selected_text = get_selected_text(opts.line1, opts.line2)
   print(selected_text)
   local stripped_text = selected_text:gsub(" +%| +", "|")
@@ -33,17 +33,3 @@ vim.api.nvim_create_user_command("RemitSubject", function(opts)
   vim.fn.setreg("+", final_text)
   print(final_text)
 end, { range = true })  -- Enable range for the command
-
-
-
-local function set_clipboard()
-  -- Get the selected text in visual mode
-  local selected_text = vim.fn.getreg('*')
-  -- Set the clipboard register to the selected text
-  vim.fn.setreg('+', selected_text)
-  print(selected_text)
-end
-
--- Create a user command to call the function
-vim.api.nvim_create_user_command('SetClipboard', set_clipboard, { range = true })
-
