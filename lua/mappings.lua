@@ -15,6 +15,7 @@ map(
 )
 map("n", "<leader>?", ":Telescope help_tags<cr>", { desc = "Telescope help tags" })
 
+
 -- Clipboard and Text Manipulation
 vim.o.clipboard = ""
 
@@ -31,8 +32,11 @@ map("i", "<C-S-v>", "<C-r>+", { desc = "Paste from system clipboard" })
 map("n", "<leader><C-x>", "\"+dd", { desc = "Cut current line" })
 map("v", "<leader><C-x>", "\"+d", { desc = "Cut highlighted text" })
 
-map("n", "<C-S-a>", "maggVG", { desc = "Select all; Return via mark 'a' " })
+map("n", "<leader><C-a>", "maggVG", { desc = "Select all; Return via mark 'a' " })
+
+-- Yes, we need both of these so this will work in terminal and Neovide
 map("i", "<C-h>", "<C-w>", { desc = "Delete word" })
+map("i", "<C-BS>", "<C-w>", { desc = "Delete word" })
 
 -- Source current buffer
 map("n", "<F5>", ":luafile %<cr>", { desc = "Source current buffer" })

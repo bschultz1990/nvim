@@ -6,8 +6,13 @@ return {
     'dhruvasagar/vim-table-mode',
     ft = { "markdown", "text", "plaintex" },
     config = function ()
-      vim.keymap.set('n', '<leader>ta', ':TableModeToggle<cr>', { desc = 'Table Mode Enable' })
-      vim.keymap.set('i', '|', '|<Esc>:TableModeRealign<cr>A', { desc = 'Table Mode Realign' })
+      vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
+        desc = 'Table keymaps for specific buffers',
+        pattern = { "*.md", "*.txt", "*.tex" },
+        callback = function()
+          vim.api.nvim_buf_set_keymap(0, 'i', '|', '|<Esc>:TableModeRealign<cr>A', { noremap = true, silent = true, desc = 'Table Mode Realign' })
+          vim.api.nvim_buf_set_keymap(0, 'n', '<leader>ta', ':TableModeToggle<cr>', { noremap = true, silent = true, desc = 'Table Mode Enable' })
+        end })
     end
   },
   {
@@ -18,7 +23,7 @@ return {
     config = function ()
       require('render-markdown').setup({
         pipe_table = { style = 'normal' },
-})
+      })
     end
   },
   {
