@@ -12,7 +12,6 @@ return {
         callback = function()
           vim.api.nvim_buf_set_keymap(0, 'i', '|', '|<Esc>:TableModeRealign<cr>A', { noremap = true, silent = true, desc = 'Table Mode Realign' })
           vim.api.nvim_buf_set_keymap(0, 'n', '<leader>ta', ':TableModeToggle<cr>', { noremap = true, silent = true, desc = 'Table Mode Enable' })
-          vim.api.nvim_buf_set_keymap(0, 'i', '--', '- [ ] ', { noremap = true, silent = true, desc = 'Checkbox item' })
         end })
     end
   },

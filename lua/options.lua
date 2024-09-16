@@ -47,12 +47,14 @@ vim.api.nvim_create_user_command("Test", function()
 end, { nargs = 0 })
 
 
--- Selectively disable nvim-cmp
-vim.api.nvim_create_autocmd('FileType',{
-  pattern = { 'markdown', 'text', 'plaintex' },
+vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
+  desc = 'Text-specific keybinds',
+  pattern = { "*.md", "*.txt", "*.tex" },
   callback = function()
     require('cmp').setup.buffer { enabled = false }
-  end
+    vim.api.nvim_buf_set_keymap(0, 'i', '--', '- [ ] ', { noremap = true, silent = true, desc = 'Checkbox item' })
+  end,
+
 })
 
 
@@ -61,8 +63,8 @@ vim.api.nvim_create_user_command("RS", function()
   local selected_text = vim.fn.getreg("z")
   local clean_text = selected_text
     :gsub(" +%| +", "|")
-    :gsub(" +%|", "|")
     :gsub("%| +", "|")
+    :gsub(" +%|", "|")
     :gsub("|", " ")
 
   local lines = vim.split(clean_text, '\n')
