@@ -3,7 +3,7 @@
 This config was designed to use the latest version of NVChad. After every large NVChad update, perform a fresh install of NVChad first. [Instructions here](https://nvchad.com/)
 
 ## Cloning Instructions
-1. Navigate to nvim/lua
+1. Navigate to `nvim/lua`
 2. `gh repo clone nvim user/`
 
 ![file structure](https://github.com/user-attachments/assets/6c4e9315-c3b3-4061-9f10-6a3d945fc74a)
