@@ -15,6 +15,7 @@ return {
         end })
     end
   },
+
   {
     'MeanderingProgrammer/render-markdown.nvim',
     opts = {},
@@ -26,15 +27,14 @@ return {
       })
     end
   },
+
   {
     "folke/twilight.nvim",
     cmd = "Twilight",
     opts = {},
   },
-  {
-    "folke/zen-mode.nvim",
-    cmd = "ZenMode",
-  },
+
+
   {
     "preservim/vim-pencil",
     cmd = {
@@ -54,34 +54,20 @@ return {
     end,
   },
 
-  {
-    "stevearc/conform.nvim",
-    -- event = 'BufWritePre', -- uncomment for format on save
-    config = function()
-      require "configs.conform"
-    end,
-  },
-
   { "tpope/vim-surround", keys = { "ys", "cs", { "S", mode = "v" }, "ds" } },
-  { "elihunter173/dirbuf.nvim", lazy = false },
-  {
-    "TheLeoP/powershell.nvim",
-    ---@type powershell.user_config
-    opts = { bundle_path = pwsh_bundlepath },
-    config = function()
-      require("powershell").setup {
-        bundle_path = pwsh_bundlepath,
-      }
-    end,
-  },
 
-  {
-    "neovim/nvim-lspconfig",
-    config = function()
-      require("nvchad.configs.lspconfig").defaults()
-      require "configs.lspconfig"
-    end,
-  },
+  { "elihunter173/dirbuf.nvim", lazy = false },
+
+  -- {
+  --   "TheLeoP/powershell.nvim",
+  --   ---@type powershell.user_config
+  --   opts = { bundle_path = pwsh_bundlepath },
+  --   config = function()
+  --     require("powershell").setup {
+  --       bundle_path = pwsh_bundlepath,
+  --     }
+  --   end,
+  -- },
 
   {
     "williamboman/mason.nvim",
@@ -97,6 +83,7 @@ return {
       },
     },
   },
+
   {
     "nvim-treesitter/nvim-treesitter",
     opts = {
@@ -112,6 +99,8 @@ return {
       },
     },
   },
+
   -- Disabled plugins
   { "hrsh7th/cmp-buffer", enabled = false },
 }
+
