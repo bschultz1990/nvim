@@ -12451,10 +12451,7 @@ require'lspconfig'.unison.setup{}
 
 
 ## unocss
-
-https://github.com/xna00/unocss-language-server
-
-UnoCSS Language Server can be installed via npm:
+ia npm:
 ```sh
 npm i unocss-language-server -g
 ```
@@ -13516,3 +13513,7 @@ require'lspconfig'.zls.setup{}
 
 
 vim:ft=markdown
+
+https://github.com/xna00/unocss-language-server
+
+UnoCSS Language Server can be installed v

@@ -1,10 +1,4 @@
--- KEYMAPS
--- Want guidance? Me too! :h key-notation is here for you.
-
-require "nvchad.mappings"
-
 local map = vim.keymap.set
-
 
 -- HALP
 map(
