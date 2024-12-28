@@ -78,3 +78,7 @@ end, { nargs = 0, range = true })
 
 -- Snippet goodness
 vim.g.snipmate_snippets_path = vim.fn.stdpath "config" .. "/lua/user/snippets/"
+
+
+-- Folds
+vim.cmd("set foldlevel=99")
