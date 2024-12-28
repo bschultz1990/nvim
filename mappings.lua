@@ -36,9 +36,9 @@ map("i", "<C-BS>", "<C-w>", { desc = "Delete word" })
 map("n", "<F5>", ":luafile %<cr>", { desc = "Source current buffer" })
 map("n", "<leader><leader>s", function()
   local config_path = vim.fn.stdpath('config')
-  local snippet_path = vim.fn.expand(config_path .. "/lua/user/snippets.lua")
-  vim.cmd("source ", snippet_path)
-  print("Snippets reloaded")
+  local snippet_path = vim.fn.expand(config_path .. "/lua/user/snippets")
+  require("luasnip.loaders.from_snipmate").load(snippet_path)
+  print("✨ Snippets reloaded")
   end)
 
 -- Center search results on the page
