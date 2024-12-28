@@ -44,15 +44,14 @@ vim.api.nvim_create_user_command("Test", function()
 end, { nargs = 0 })
 
 
-vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
-  desc = 'Text-specific keybinds',
-  pattern = { "*.md", "*.txt", "*.tex" },
-  callback = function()
-    require('cmp').setup.buffer { enabled = false }
-    vim.api.nvim_buf_set_keymap(0, 'i', '--', '- [ ] ', { noremap = true, silent = true, desc = 'Checkbox item' })
-  end,
-
-})
+-- vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
+--   desc = 'Text-specific keybinds',
+--   pattern = { "*.md", "*.txt", "*.tex" },
+--   callback = function()
+--     require('cmp').setup.buffer { enabled = false }
+--     vim.api.nvim_buf_set_keymap(0, 'i', '--', '- [ ] ', { noremap = true, silent = true, desc = 'Checkbox item' })
+--   end,
+-- })
 
 
 vim.api.nvim_create_user_command("RS", function()
@@ -76,3 +75,6 @@ vim.api.nvim_create_user_command("RS", function()
   vim.fn.setreg("+", final_text)
   print(final_text)
 end, { nargs = 0, range = true })
+
+-- Snippet goodness
+vim.g.snipmate_snippets_path = vim.fn.stdpath "config" .. "/lua/user/snippets/"
