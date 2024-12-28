@@ -32,8 +32,14 @@ map("n", "<leader><C-a>", "maggVG", { desc = "Select all; Return via mark 'a' " 
 map("i", "<C-h>", "<C-w>", { desc = "Delete word" })
 map("i", "<C-BS>", "<C-w>", { desc = "Delete word" })
 
--- Source current buffer
+-- Source current buffer and snippets
 map("n", "<F5>", ":luafile %<cr>", { desc = "Source current buffer" })
+map("n", "<leader><leader>s", function()
+  local config_path = vim.fn.stdpath('config')
+  local snippet_path = vim.fn.expand(config_path .. "/lua/user/snippets.lua")
+  vim.cmd("source ", snippet_path)
+  print("Snippets reloaded")
+  end)
 
 -- Center search results on the page
 map('n', 'n', 'nzzzv', { desc = "Center next search result" })
