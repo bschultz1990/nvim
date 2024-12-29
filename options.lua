@@ -24,11 +24,43 @@ end, { nargs = 1 })
 
 -- Oooh, birrrd, tweak that code!
 vim.api.nvim_create_user_command("Config", function()
-  local config_path = vim.fn.stdpath('config')
-  vim.cmd("cd " .. config_path)
-  vim.cmd("Telescope find_files")
-end, { nargs = 0 }
-)
+  -- vim.cmd('vs')
+  require("telescope.builtin").find_files({
+    cwd = vim.fn.stdpath('config').."/lua/user/"
+  })
+end,
+  { nargs = 0 })
+
+vim.api.nvim_create_user_command('Config',
+  function(opts)
+  local user_config_path = vim.fn.stdpath('config').."/lua/user/"
+    if string.lower(opts.fargs[1]) == "grep" then
+    require("telescope.builtin").live_grep({
+      cwd = user_config_path
+    })
+    elseif string.lower(opts.fargs[1]) == "files" then
+    require("telescope.builtin").find_files({
+      cwd = user_config_path
+    })
+    end
+  end,
+  { nargs = 1,
+    complete = function(ArgLead, CmdLine, CursorPos)
+      -- return completion candidates as a list-like table
+      return { "grep", "files" }
+    end,
+})
+
+
+-- TODO: Find the current file type. Search in snippets directory for filetype.snippets.
+-- If it doesn't exist, create it in the proper directory.
+-- Then, open it to the right.
+vim.api.nvim_create_user_command("Snip", function()
+  vim.cmd('vs')
+  require("telescope.builtin").find_files({
+    cwd = vim.fn.stdpath('config').."/lua/user/snippets"})
+end, { nargs = 0 })
+
 
 
 -- Plugin development mojo
