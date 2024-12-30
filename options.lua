@@ -1,5 +1,9 @@
 vim.o.cursorlineopt = "both" -- to enable cursorline!
-vim.o.colorcolumn = "100"
+vim.o.colorcolumn = "100" -- line length limit
+
+if (vim.loop.os_uname().sysname) == "Windows_NT" then
+  vim.o.shell = "powershell.exe"
+end
 
 -- Highlight text on yank.
 vim.api.nvim_create_autocmd('TextYankPost', {
@@ -23,14 +27,6 @@ end, { nargs = 1 })
 
 
 -- Oooh, birrrd, tweak that code!
-vim.api.nvim_create_user_command("Config", function()
-  -- vim.cmd('vs')
-  require("telescope.builtin").find_files({
-    cwd = vim.fn.stdpath('config').."/lua/user/"
-  })
-end,
-  { nargs = 0 })
-
 vim.api.nvim_create_user_command('Config',
   function(opts)
   local user_config_path = vim.fn.stdpath('config').."/lua/user/"
