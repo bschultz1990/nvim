@@ -109,6 +109,14 @@ return {
       },
     },
   },
+  {
+    "nvim-telescope/telescope.nvim",
+    opts ={
+      defaults = {
+        layout_strategy = 'flex'
+      }
+    }
+  },
 
   -- Disabled plugins
   { "hrsh7th/cmp-buffer", enabled = false },
