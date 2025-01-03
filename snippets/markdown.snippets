@@ -1,20 +1,145 @@
+snippet remember "Reminder in quote block"
+  > 💭 **Remember:** 
+
 snippet note "Note in quote block"
   > ℹ️ **Note:** 
 
-snippet caution "Caution in quote block"
+snippet caution Caution in quote block
   > ⚠️ **Caution:** 
 
-snippet warning "Warning in quote block"
+snippet warning Warning in quote block
   > ❗ **WARNING:** 
 
 snippet hyperlink
   [${1:title}](${2:link})
 
-snippet codeblock "Code block"
+snippet codeblock Code block
   \`\`\`${1:language}
   $0
   \`\`\`
 
-snippet img "Embedded image"
+snippet img Embedded image
   ![${1:title}](${2:image})
 
+
+snippet filter Filter SAP materials
+  ### CIM(s): ${1}
+
+  ${6}  Material Type: FERT
+  ${7}  Procurement Type: E*
+  ${8}  Mt-St-Pl: 03 or 19 if Hershey*
+  ${9}  Unit or Base UOM: Confirm
+  ${10}  Primary: X (FERT / HALB not primary)
+
+  ${11}  SLT ID: Note if different
+  ${12}  PCK ID: Note if different
+
+  ${13}  Gear Size: Note if different
+  ${14}  Impress Up/Across: CF and new materials both in IMP? "FT/IMP Change"
+  ${15}  PRT Cutoff: CF and new materials both in IMP? "FT/IMP Change"
+  ${16}  Primary Rewind: Note if different
+  ${17}  Num. Colors: Note if different
+  ${18}  Roll Length: Note if different
+  ${19}  Customer Name: Note if different
+
+  Cust Item: ${20}
+
+
+snippet barcode Barcode Check
+  Plant: ${2}
+  Tech: ${3}
+  Barcode: ${4}
+  Repeats:
+  ${5:material}
+  ${6:000.00}	${7:000.00}	${8:000.00}
+
+
+snippet colorchange
+  ### Color Change /`CA02/`
+  Plate Mounting: 
+  \`${1:x}\` hours / plate or color * 
+  \`${2:y}\` plates or colors
+  = \`${3:z}\` hrs. plate mounting setup time
+
+  PRT Material | ${4}
+  PRT          | ${6}
+  Tech         | ${5}
+  Colors       | ${7}
+  
+  Work Centers: 
+    - ${8:C00000} : ${9}
+
+
+snippet pack "PCK ID Change"
+  ### PCK ID Change
+  1. Plant 7079 check:
+  - Old PCK ID: 
+  - New PCK ID: 
+  - \`Method Subtype\` changing to or from \`Skid Pack\`?
+    - Review slitting work centers.
+
+  2. Verify Packing Components
+  Compare full ERP Report with BOM in \`ZMM004\`
+  **ERP Report**
+  - Tech Spec: 
+  - Base UOM: 
+  - PCK Spec: 
+  - Finished Slit Width: 
+  - Finished Slit Width UOM: 
+  - Roll Footage: 
+  - Roll Footage UOM: 
+  - Finished Lanes Across: 
+
+  **\`ZMM004\`**
+  - FERT material: 
+  
+
+snippet rewind "Rewind change"
+  ### Rewind Change \`MM02\`
+  ${1:CIM#}
+  ${2:material}: ${3:rewind}
+  ${4:material}: ${5:rewind}
+  ${6:material}: ${7:rewind}
+  ${8:material}: ${9:rewind}
+
+
+snippet slit "Slit ID Chnage"
+  ### SLT ID Change
+  Material: ${1}
+  Old SLT ID: ${2}
+  New SLT ID: ${3}
+  Core Diameter Different? 
+  LaserPerf Diagram in 1065 or 7269? 
+  Manufactured Innolok in 7269? 
+  
+
+snippet validations "Update Validations"
+  ## Validations
+
+  ### Populate Assembly Scrap \`CA97N\`
+  ✔️ Direct Update / Update With Assembly Scrap
+  Scrap populated for ALL materials? ${1}
+
+
+  ### Health \`ZPMR_MMSRCH\` \`MM Validation\` Layout
+  Assembly Scrap Populated for E Steps ${2}
+  Availibility not ZO ${3}
+  MRP Controller not OBS ${4}
+  MRP Group Accurate ${5}
+
+
+
+  ### 4-Dot Pathing \`ZMM006\`
+  All materials pathed correctly ${6}
+
+
+  ### Duplicated Ink Patterns \`ZMM004\`
+  No duplicate ink patterns ${7}
+
+
+  ### CMIR Script Check \`Material Master Search\`
+  \`GCO - CMIR Validation Layout\`
+  Assigned customer on FERT channel 10 and 20 ${8}
+
+
+  SEND TO RUNNER for VALIDATION

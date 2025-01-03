@@ -58,16 +58,17 @@ return {
 
   { "elihunter173/dirbuf.nvim", lazy = false },
 
-  -- {
-  --   "TheLeoP/powershell.nvim",
-  --   ---@type powershell.user_config
-  --   opts = { bundle_path = pwsh_bundlepath },
-  --   config = function()
-  --     require("powershell").setup {
-  --       bundle_path = pwsh_bundlepath,
-  --     }
-  --   end,
-  -- },
+  {
+    "TheLeoP/powershell.nvim",
+    ---@type powershell.user_config
+    ft = { 'ps1' },
+    opts = { bundle_path = pwsh_bundlepath },
+    config = function()
+      require("powershell").setup {
+        bundle_path = pwsh_bundlepath,
+      }
+    end,
+  },
 
   {
     "williamboman/mason.nvim",
