@@ -3,37 +3,49 @@ local pwsh_bundlepath = vim.fn.stdpath "data" .. pwsh_services
 
 return {
   {
-    'dhruvasagar/vim-table-mode',
+    "dhruvasagar/vim-table-mode",
     ft = { "markdown", "text", "plaintex" },
-    config = function ()
-      vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
-        desc = 'Table keymaps for specific buffers',
+    config = function()
+      vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
+        desc = "Table keymaps for specific buffers",
         pattern = { "*.md", "*.txt", "*.tex" },
         callback = function()
-          vim.api.nvim_buf_set_keymap(0, 'i', '|', '|<Esc>:TableModeRealign<cr>A', { noremap = true, silent = true, desc = 'Table Mode Realign' })
-          vim.api.nvim_buf_set_keymap(0, 'n', '<leader>ta', ':TableModeToggle<cr>', { noremap = true, silent = true, desc = 'Table Mode Enable' })
-        end })
-    end
+          vim.api.nvim_buf_set_keymap(
+            0,
+            "i",
+            "|",
+            "|<Esc>:TableModeRealign<cr>A",
+            { noremap = true, silent = true, desc = "Table Mode Realign" }
+          )
+          vim.api.nvim_buf_set_keymap(
+            0,
+            "n",
+            "<leader>ta",
+            ":TableModeToggle<cr>",
+            { noremap = true, silent = true, desc = "Table Mode Enable" }
+          )
+        end,
+      })
+    end,
   },
 
-  {
-    'MeanderingProgrammer/render-markdown.nvim',
-    opts = {},
-    dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' },
-    ft = { "markdown", "text", "plaintex" },
-    config = function ()
-      require('render-markdown').setup({
-        pipe_table = { style = 'normal' },
-      })
-    end
-  },
+  -- {
+  --   "MeanderingProgrammer/render-markdown.nvim",
+  --   opts = {},
+  --   dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.icons" },
+  --   ft = { "markdown", "text", "plaintex" },
+  --   config = function()
+  --     require("render-markdown").setup {
+  --       pipe_table = { style = "normal" },
+  --     }
+  --   end,
+  -- },
 
   {
     "folke/twilight.nvim",
     cmd = "Twilight",
     opts = {},
   },
-
 
   {
     "preservim/vim-pencil",
@@ -45,7 +57,7 @@ return {
       "PencilHard",
     },
 
-    ft = {"text", 'markdown', 'plaintex'},
+    ft = { "text", "markdown", "plaintex" },
     config = function()
       vim.api.nvim_create_autocmd({ "BufEnter" }, {
         pattern = { "*.md", "*.txt", "*.tex" },
@@ -61,7 +73,7 @@ return {
   {
     "TheLeoP/powershell.nvim",
     ---@type powershell.user_config
-    ft = { 'ps1' },
+    ft = { "ps1" },
     opts = { bundle_path = pwsh_bundlepath },
     config = function()
       require("powershell").setup {
@@ -111,14 +123,13 @@ return {
   },
   {
     "nvim-telescope/telescope.nvim",
-    opts ={
+    opts = {
       defaults = {
-        layout_strategy = 'flex'
-      }
-    }
+        layout_strategy = "flex",
+      },
+    },
   },
 
   -- Disabled plugins
   { "hrsh7th/cmp-buffer", enabled = false },
 }
-

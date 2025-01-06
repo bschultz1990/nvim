@@ -8,6 +8,7 @@ map(
   { desc = "display help under cursor" }
 )
 map("n", "<leader>?", ":Telescope help_tags<cr>", { desc = "Telescope help tags" })
+map("n", "<leader>tk", ":Telescope keymaps<cr>", { desc = "Telescope keymaps" })
 
 
 -- Clipboard and Text Manipulation

@@ -1,4 +1,5 @@
 require "user.mappings"
 require "user.neovide"
 require "user.options"
+require "user.sessions"
 require "user.user_lspconfig"
