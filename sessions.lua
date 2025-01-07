@@ -1,15 +1,16 @@
+Session_dir = vim.fn.expand("~/Documents/nvim_sessions/")
+Session_file = vim.fn.expand(Session_dir .. '/sessions.txt')
+
 vim.api.nvim_create_user_command('Sessions', function()
-  local session_dir = vim.fn.expand("~/Documents/nvim_sessions/")
-  local session_file = vim.fn.expand(session_dir .. '/sessions.txt')
-  if not vim.loop.fs_stat(session_file) then
-    vim.fn.mkdir(session_dir, "p")
-    vim.fn.writefile({}, session_file)
+  if not vim.loop.fs_stat(Session_file) then
+    vim.fn.mkdir(Session_dir, "p")
+    vim.fn.writefile({}, Session_file)
     print("Session file created. Run :Session to get started.")
     return
   end
 
   local lines = {}
-  for line in io.lines(session_file) do
+  for line in io.lines(Session_file) do
     table.insert(lines, line)
   end
 
@@ -33,5 +34,5 @@ end, { nargs = 0 })
 
 
 vim.api.nvim_create_user_command('Session', function()
-  print(vim.fn.getcwd(0))
+
 end, { nargs = 0 })
