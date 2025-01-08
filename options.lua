@@ -1,5 +1,5 @@
 vim.o.cursorlineopt = "both" -- to enable cursorline!
-vim.o.colorcolumn = "100" -- line length limit
+-- vim.o.colorcolumn = "100" -- line length limit
 
 if vim.loop.os_uname().sysname == "Windows_NT" then
   vim.o.shell = "powershell.exe"

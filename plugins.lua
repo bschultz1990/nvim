@@ -2,6 +2,10 @@ local pwsh_services = vim.fn.expand "/mason/packages/powershell-editor-services"
 local pwsh_bundlepath = vim.fn.stdpath "data" .. pwsh_services
 
 return {
+  { "atiladefreitas/dooing",
+    cmd = { "Dooing" },
+    keys = { "<leader>td" }
+  },
   {
     "dhruvasagar/vim-table-mode",
     ft = { "markdown", "text", "plaintex" },
