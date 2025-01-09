@@ -10,8 +10,8 @@ snippet caution Caution in quote block
 snippet warning Warning in quote block
   > ❗ **WARNING:** 
 
-snippet hyperlink
-  [${1:title}](${2:link})
+snippet link
+  [${1:title}](<${2:link}>)
 
 snippet codeblock Code block
   \`\`\`${1:language}
@@ -55,17 +55,12 @@ snippet barcode Barcode Check
 snippet colorchange
   ### Color Change \`CA02\`
   Plate Mounting: 
-  \`${1:x}\` hours / plate or color * 
-  \`${2:y}\` plates or colors
-  = \`${3:z}\` hrs. plate mounting setup time
+  \`${1:x}\` hours / ${2:plate or color} * 
+  \`${3:y}\` ${2:plate or color}
+  = \`${4:z}\` hrs. plate mounting setup time
 
-  PRT Material | ${4}
-  PRT          | ${6}
-  Tech         | ${5}
-  Colors       | ${7}
-  
   Work Centers: 
-    - ${8:C00000} : ${9}
+  C00000 : 
 
 
 snippet pack "PCK ID Change"
