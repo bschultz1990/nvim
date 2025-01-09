@@ -44,8 +44,7 @@ vim.api.nvim_create_user_command("Config", function(opts)
 end, {
   nargs = 1,
   complete = function(ArgLead, CmdLine, CursorPos)
-    -- return completion candidates as a list-like table
-    return { "grep", "files", "dir" }
+    return { "grep", "files", "dir" } -- return completion candidates as a list-like table
   end,
 })
 
@@ -76,7 +75,17 @@ vim.api.nvim_create_user_command("RS", function()
   print(final_text)
 end, { nargs = 0, range = true })
 
--- Snippet goodness
+
+vim.api.nvim_create_user_command('Preview', function()
+  local buf_number = vim.api.nvim_get_current_buf()
+  local buf_path = vim.api.nvim_buf_get_name(buf_number)
+
+  vim.ui.open(buf_path)
+
+end, { nargs = 0 })
+
+
+-- Snippet goodness. Can be a list of paths.
 vim.g.snipmate_snippets_path = vim.fn.stdpath "config" .. "/lua/user/snippets/"
 
 vim.cmd "set foldlevel=99"
