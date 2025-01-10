@@ -35,16 +35,11 @@ vim.api.nvim_create_user_command("Config", function(opts)
     require("telescope.builtin").find_files {
       cwd = user_config_path,
     }
-  elseif string.lower(opts.fargs[1]) == "dir" then
-    vim.cmd("cd " .. user_config_path)
-    require("telescope.builtin").find_files {
-      cwd = user_config_path,
-    }
   end
 end, {
   nargs = 1,
-  complete = function(ArgLead, CmdLine, CursorPos)
-    return { "grep", "files", "dir" } -- return completion candidates as a list-like table
+  complete = function()
+    return { "grep", "files" } -- return completion candidates as a list-like table
   end,
 })
 

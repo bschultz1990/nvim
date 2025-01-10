@@ -2,10 +2,10 @@ local pwsh_services = vim.fn.expand "/mason/packages/powershell-editor-services"
 local pwsh_bundlepath = vim.fn.stdpath "data" .. pwsh_services
 
 return {
-  { "atiladefreitas/dooing",
-    cmd = { "Dooing" },
-    keys = { "<leader>td" }
-  },
+  -- { "atiladefreitas/dooing",
+  --   cmd = { "Dooing" },
+  --   keys = { "<leader>td" }
+  -- },
   {
     "dhruvasagar/vim-table-mode",
     ft = { "markdown", "text", "plaintex" },
@@ -26,7 +26,7 @@ return {
             "n",
             "<leader>ta",
             ":TableModeToggle<cr>",
-            { noremap = true, silent = true, desc = "Table Mode Enable" }
+            { noremap = true, silent = true, desc = "Table Mode Toggle" }
           )
         end,
       })
@@ -101,14 +101,24 @@ return {
     },
   },
 
-  -- {
-  --   "hrsh7th/nvim-cmp",
-  --   opts = {
-  --     sources = require('cmp').config.sources({
-  --
-  --     })
-  --   },
-  -- },
+  -- TODO: Table deep extend for options? So far, these overwrite the defaults in chunks.
+  {
+    "hrsh7th/nvim-cmp",
+    -- opts = function(_, conf)
+      -- local cmp = require('cmp')
+      -- conf.mapping = cmp.mapping.preset.insert({
+      --   ['<Esc>'] = cmp.mapping.abort(),
+        -- ['<Tab>'] = require ('cmp').mapping.confirm({ select = true })
+      -- })
+      -- conf.setup = cmp.setup({
+        -- performance = { max_view_entries = 20 },
+      -- })
+      -- conf.sources = cmp.config.sources({
+      --   { name = 'buffer' },
+      -- })
+      -- return conf
+    -- end
+  },
 
   {
     "nvim-treesitter/nvim-treesitter",
