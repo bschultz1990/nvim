@@ -14,6 +14,9 @@ map("n", "<leader>tk", ":Telescope keymaps<cr>", { desc = "Telescope keymaps" })
 -- Clipboard and Text Manipulation
 vim.o.clipboard = ""
 
+-- https://www.neovim.io
+map('n', '<C-l>', ':silent! lua vim.ui.open("<C-r><C-a>")<cr>:<cr>', { desc = 'Open link or file under cursor' })
+
 map('n','<M-Up>',':m-2<CR>', { desc = "Move line up" })
 map('n','<M-Down>',':m+<CR>', { desc = "Move line down" })
 map("n", "x", '"_x', { noremap = true, silent = true, nowait = true }) -- Do not yank with x

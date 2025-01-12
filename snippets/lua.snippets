@@ -1,0 +1,6 @@
+snippet user_command "Create Neovim User Command"
+  
+  vim.api.nvim_create_user_command("${1:name}", function()
+    ${2:body}
+  end, { nargs = 0 })
+  
