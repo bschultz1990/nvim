@@ -2,10 +2,6 @@ local pwsh_services = vim.fn.expand "/mason/packages/powershell-editor-services"
 local pwsh_bundlepath = vim.fn.stdpath "data" .. pwsh_services
 
 return {
-  -- { "atiladefreitas/dooing",
-  --   cmd = { "Dooing" },
-  --   keys = { "<leader>td" }
-  -- },
   {
     "dhruvasagar/vim-table-mode",
     ft = { "markdown", "text", "plaintex" },
@@ -33,17 +29,6 @@ return {
     end,
   },
 
-  -- {
-  --   "MeanderingProgrammer/render-markdown.nvim",
-  --   opts = {},
-  --   dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.icons" },
-  --   ft = { "markdown", "text", "plaintex" },
-  --   config = function()
-  --     require("render-markdown").setup {
-  --       pipe_table = { style = "normal" },
-  --     }
-  --   end,
-  -- },
 
   {
     "folke/twilight.nvim",
@@ -51,24 +36,6 @@ return {
     opts = {},
   },
 
-  -- {
-  --   "preservim/vim-pencil",
-  --   cmd = {
-  --     "Pencil",
-  --     "PencilOff",
-  --     "PencilToggle",
-  --     "PencilSoft",
-  --     "PencilHard",
-  --   },
-  --
-  --   ft = { "text", "markdown", "plaintex" },
-  --   config = function()
-  --     vim.api.nvim_create_autocmd({ "BufEnter" }, {
-  --       pattern = { "*.md", "*.txt", "*.tex" },
-  --       command = "PencilSoft",
-  --     })
-  --   end,
-  -- },
 
   { "tpope/vim-surround", keys = { "ys", "cs", { "S", mode = "v" }, "ds" } },
 
@@ -102,8 +69,8 @@ return {
   },
 
   -- TODO: Table deep extend for options? So far, these overwrite the defaults in chunks.
-  {
-    "hrsh7th/nvim-cmp",
+  -- {
+  --   "hrsh7th/nvim-cmp",
     -- opts = function(_, conf)
       -- local cmp = require('cmp')
       -- conf.mapping = cmp.mapping.preset.insert({
@@ -118,7 +85,7 @@ return {
       -- })
       -- return conf
     -- end
-  },
+  -- },
 
   {
     "nvim-treesitter/nvim-treesitter",

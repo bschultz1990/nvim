@@ -1,0 +1,36 @@
+
+  -- {
+  --   "MeanderingProgrammer/render-markdown.nvim",
+  --   opts = {},
+  --   dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.icons" },
+  --   ft = { "markdown", "text", "plaintex" },
+  --   config = function()
+  --     require("render-markdown").setup {
+  --       pipe_table = { style = "normal" },
+  --     }
+  --   end,
+  -- },
+
+  -- {
+  --   "preservim/vim-pencil",
+  --   cmd = {
+  --     "Pencil",
+  --     "PencilOff",
+  --     "PencilToggle",
+  --     "PencilSoft",
+  --     "PencilHard",
+  --   },
+  --
+  --   ft = { "text", "markdown", "plaintex" },
+  --   config = function()
+  --     vim.api.nvim_create_autocmd({ "BufEnter" }, {
+  --       pattern = { "*.md", "*.txt", "*.tex" },
+  --       command = "PencilSoft",
+  --     })
+  --   end,
+  -- },
+
+  -- { "atiladefreitas/dooing",
+  --   cmd = { "Dooing" },
+  --   keys = { "<leader>td" }
+  -- },

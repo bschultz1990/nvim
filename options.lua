@@ -11,7 +11,8 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter", "BufWinLeave" }, {
     pattern = "*", -- any filetype
     callback = function()
         vim.api.nvim_set_hl(0, "MatchParen", { link = "IncSearch" })
-        -- vim.api.nvim_set_hl(0, "MatchParen", { ctermbg = 'orange' })
+        -- TODO: If NvChad theme = Solarized Osaka, highlight in orange instead.
+        -- vim.api.nvim_set_hl(0, "MatchParen", { guibg = 'orange' })
     end
 })
 

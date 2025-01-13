@@ -10,6 +10,12 @@ map(
 map("n", "<leader>?", ":Telescope help_tags<cr>", { desc = "Telescope help tags" })
 map("n", "<leader>tk", ":Telescope keymaps<cr>", { desc = "Telescope keymaps" })
 
+-- local cmp_ok = pcall(require ("cmp"))
+-- if cmp_ok then
+--   map("i", "<Esc>", function ()
+--     require('cmp').mapping.abort()
+--   end)
+-- end
 
 -- Clipboard and Text Manipulation
 vim.o.clipboard = ""
