@@ -44,15 +44,6 @@ end, {
   end,
 })
 
--- TODO: Find the current file type. Search in snippets directory for filetype.snippets.
--- If it doesn't exist, create it in the proper directory.
--- Then, open it to the right.
-vim.api.nvim_create_user_command("Snip", function()
-  vim.cmd "vs"
-  require("telescope.builtin").find_files {
-    cwd = vim.fn.stdpath "config" .. "/lua/user/snippets",
-  }
-end, { nargs = 0 })
 
 
 vim.api.nvim_create_user_command("RS", function()
@@ -81,7 +72,29 @@ vim.api.nvim_create_user_command('Preview', function()
 end, { nargs = 0 })
 
 
+
 -- Snippet goodness. Can be a list of paths.
-vim.g.snipmate_snippets_path = vim.fn.stdpath "config" .. "/lua/user/snippets/"
+vim.g.snipmate_snippets_path = { vim.fn.stdpath "config" .. "/lua/user/snippets/", "~/Desktop/snippets/" }
+
+-- TODO: Find the current file type. Search in snippets directory for filetype.snippets.
+-- If it doesn't exist, create it in the proper directory.
+-- Then, open it to the right.
+
+-- TODO: Make a Telescope picker like with Warp.
+-- Include all directories from vim.g.snipmate_snippets_path.
+-- Upon selection, THEN cwd into that path instead of hard-coding it.
+-- This will allow for multiple snippets directories.
+
+-- for index, value in ipairs(vim.g.snipmate_snippets_path) do
+--   print(value)
+-- end
+
+vim.api.nvim_create_user_command("Snip", function()
+  vim.cmd "vs"
+  require("telescope.builtin").find_files {
+    cwd = vim.fn.stdpath "config" .. "/lua/user/snippets",
+  }
+end, { nargs = 0 })
 
 vim.cmd "set foldlevel=99"
+
