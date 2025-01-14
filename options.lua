@@ -75,13 +75,8 @@ end, { nargs = 0 })
 
 
 -- Snippet goodness. Can be a list of paths.
-Snipmate_path = {}
-table.insert(Snipmate_path, vim.fn.stdpath "config" .. "/lua/user/snippets/")
-table.insert(Snipmate_path, "~/Desktop/snippets/")
-for _, value in ipairs(Snipmate_path) do
-  print(value)
-end
 
+table.insert(Snipmate_path, vim.fn.stdpath "config" .. "/lua/user/snippets/")
 vim.g.snipmate_snippets_path = Snipmate_path
 
 -- TODO: Find the current file type. Search in snippets directory for filetype.snippets.
@@ -93,7 +88,7 @@ vim.g.snipmate_snippets_path = Snipmate_path
 -- Upon selection, THEN cwd into that path instead of hard-coding it.
 -- This will allow for multiple snippets directories.
 
--- for index, value in ipairs(vim.g.snipmate_snippets_path) do
+-- for index, value in ipairs(Snipmate_path) do
 --   print(value)
 -- end
 
