@@ -76,6 +76,9 @@ end, { nargs = 0 })
 
 -- Snippet goodness. Can be a list of paths.
 
+if not Snipmate_path then
+  Snipmate_path = {}
+end
 table.insert(Snipmate_path, vim.fn.stdpath "config" .. "/lua/user/snippets/")
 vim.g.snipmate_snippets_path = Snipmate_path
 
