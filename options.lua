@@ -6,7 +6,7 @@ if vim.loop.os_uname().sysname == "Windows_NT" then
 end
 
 
-vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter", "BufWinLeave" }, {
+vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "BufWinEnter", "BufWinLeave" }, {
     desc = "Highlight matching brackets in IncSearch hl group.",
     pattern = "*", -- any filetype
     callback = function()
@@ -75,7 +75,14 @@ end, { nargs = 0 })
 
 
 -- Snippet goodness. Can be a list of paths.
-vim.g.snipmate_snippets_path = { vim.fn.stdpath "config" .. "/lua/user/snippets/", "~/Desktop/snippets/" }
+Snipmate_path = {}
+table.insert(Snipmate_path, vim.fn.stdpath "config" .. "/lua/user/snippets/")
+table.insert(Snipmate_path, "~/Desktop/snippets/")
+for _, value in ipairs(Snipmate_path) do
+  print(value)
+end
+
+vim.g.snipmate_snippets_path = Snipmate_path
 
 -- TODO: Find the current file type. Search in snippets directory for filetype.snippets.
 -- If it doesn't exist, create it in the proper directory.
