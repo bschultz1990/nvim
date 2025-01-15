@@ -1,6 +1,5 @@
 local map = vim.keymap.set
 
--- HALP
 map(
   "n",
   "<leader>H",
@@ -9,18 +8,11 @@ map(
 )
 map("n", "<leader>?", ":Telescope help_tags<cr>", { desc = "Telescope help tags" })
 map("n", "<leader>tk", ":Telescope keymaps<cr>", { desc = "Telescope keymaps" })
-
--- local cmp_ok = pcall(require ("cmp"))
--- if cmp_ok then
---   map("i", "<Esc>", function ()
---     require('cmp').mapping.abort()
---   end)
--- end
+map("n", "<leader>ts", "<cmd>Telescope symbols<cr>", { desc = "Telescope symbols" })
 
 -- Clipboard and Text Manipulation
 vim.o.clipboard = ""
 
--- https://www.neovim.io
 map('n', '<C-l>', ':silent! lua vim.ui.open("<C-r><C-a>")<cr>:<cr>', { desc = 'Open link or file under cursor' })
 
 map('n','<M-Up>',':m-2<CR>', { desc = "Move line up" })

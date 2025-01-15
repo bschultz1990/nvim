@@ -29,13 +29,11 @@ return {
     end,
   },
 
-
   {
     "folke/twilight.nvim",
     cmd = "Twilight",
     opts = {},
   },
-
 
   { "tpope/vim-surround", keys = { "ys", "cs", { "S", mode = "v" }, "ds" } },
 
@@ -69,23 +67,18 @@ return {
   },
 
   -- TODO: Table deep extend for options? So far, these overwrite the defaults in chunks.
-  -- {
-  --   "hrsh7th/nvim-cmp",
-    -- opts = function(_, conf)
-      -- local cmp = require('cmp')
-      -- conf.mapping = cmp.mapping.preset.insert({
-      --   ['<Esc>'] = cmp.mapping.abort(),
-        -- ['<Tab>'] = require ('cmp').mapping.confirm({ select = true })
-      -- })
-      -- conf.setup = cmp.setup({
-        -- performance = { max_view_entries = 20 },
-      -- })
-      -- conf.sources = cmp.config.sources({
-      --   { name = 'buffer' },
-      -- })
-      -- return conf
-    -- end
-  -- },
+  {
+    "hrsh7th/nvim-cmp",
+    config = function(_, opts)
+      local cmp = require "cmp"
+
+      local custom_mappings = {
+        ["<Esc>"] = cmp.mapping.abort(),
+      }
+      opts.mapping = vim.tbl_deep_extend("force", opts.mapping, custom_mappings)
+      cmp.setup(opts)
+    end,
+  },
 
   {
     "nvim-treesitter/nvim-treesitter",
