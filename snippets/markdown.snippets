@@ -21,5 +21,8 @@ snippet codeblock Code block
 snippet img Embedded image
   ![${1:title}](${2:image})
 
-snippet -- checkbox
-  - [ ] 
+snippet -- Clickable checkbox
+  <li class="task-list-item"> <input class="task-list-item-checkbox", type="checkbox">$1</li>
+
+snippet INDIRECT INDIRECT SQL Function
+  INDIRECT("'[" & ${1:idr_ref} & "]${2:tab}'!$${3:letter}$${4:num}")
