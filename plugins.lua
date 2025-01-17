@@ -3,6 +3,11 @@ local pwsh_bundlepath = vim.fn.stdpath "data" .. pwsh_services
 
 return {
   {
+    "folke/zen-mode.nvim",
+    cmd = "ZenMode",
+    opts = { },
+  },
+  {
     "dhruvasagar/vim-table-mode",
     ft = { "markdown", "text", "plaintex" },
     config = function()
@@ -10,20 +15,8 @@ return {
         desc = "Table keymaps for specific buffers",
         pattern = { "*.md", "*.txt", "*.tex" },
         callback = function()
-          vim.api.nvim_buf_set_keymap(
-            0,
-            "i",
-            "|",
-            "|<Esc>:TableModeRealign<cr>A",
-            { noremap = true, silent = true, desc = "Table Mode Realign" }
-          )
-          vim.api.nvim_buf_set_keymap(
-            0,
-            "n",
-            "<leader>ta",
-            ":TableModeToggle<cr>",
-            { noremap = true, silent = true, desc = "Table Mode Toggle" }
-          )
+          vim.api.nvim_buf_set_keymap( 0, "i", "|", "|<Esc>:TableModeRealign<cr>A", { desc = "Table Mode Realign" })
+          vim.api.nvim_buf_set_keymap( 0, "n", "<leader>ta", ":TableModeToggle<cr>", { desc = "Table Mode Toggle" })
         end,
       })
     end,
