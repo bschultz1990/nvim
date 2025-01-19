@@ -33,8 +33,6 @@ map("n", "<leader><C-a>", "maggVG", { desc = "Select all; Return via mark 'a' " 
 -- Yes, we need both of these so this will work in terminal and Neovide
 map("i", "<C-h>", "<C-w>", { desc = "Delete word" })
 map("i", "<C-BS>", "<C-w>", { desc = "Delete word" })
-map("n", "<C-z>", ":undo<cr>", { desc = "Undo" })
-map("i", "<C-z>", function() vim.cmd("undo") end, { desc = "Undo" })
 map("i", "<C-S-z>", function() vim.cmd("redo") end, { desc = "Redo" })
 
 -- Source current buffer and snippets

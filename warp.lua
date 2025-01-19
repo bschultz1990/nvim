@@ -45,3 +45,12 @@ vim.api.nvim_create_user_command("WarpEdit", function()
   print(fileSize)
   vim.cmd("10split " .. Warp_file)
 end, { nargs = 0 })
+
+
+-- TODO: Search for TODO, FIXME, BUG, etc...
+-- TODO: Add todo, fixme, highlight groups based on todo-comments.nvim
+vim.api.nvim_create_user_command("Todos", function()
+  vim.cmd('vimgrep /TODO: /*')
+  vim.cmd('copen')
+end, { nargs = 0 })
+

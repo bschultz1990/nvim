@@ -4,3 +4,12 @@ snippet user_command "Create Neovim User Command"
     ${2:body}
   end, { nargs = 0 })
   
+
+snippet autocmd "Create Neovim Autocommand"
+  vim.api.nvim_create_autocmd({"${1:event(s)}"}, {
+    desc = "${2:description}",
+    pattern = "${3:default *}",
+    callback = function()
+      $0
+    end
+    })

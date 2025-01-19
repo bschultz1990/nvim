@@ -23,14 +23,26 @@ return {
   },
 
   {
+    'stevearc/oil.nvim',
+    ---@module 'oil'
+    ---@type oil.SetupOpts
+    opts = {},
+    -- Optional dependencies
+    dependencies = { { "echasnovski/mini.icons", opts = {} } },
+    lazy = false,
+    config = function()
+      require("oil").setup()
+      vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+    end
+  },
+
+  {
     "folke/twilight.nvim",
     cmd = "Twilight",
     opts = {},
   },
 
   { "tpope/vim-surround", keys = { "ys", "cs", { "S", mode = "v" }, "ds" } },
-
-  { "elihunter173/dirbuf.nvim", lazy = false },
 
   {
     "TheLeoP/powershell.nvim",
@@ -59,7 +71,6 @@ return {
     },
   },
 
-  -- TODO: Table deep extend for options? So far, these overwrite the defaults in chunks.
   {
     "hrsh7th/nvim-cmp",
     config = function(_, opts)
@@ -100,4 +111,5 @@ return {
 
   -- Disabled plugins
   { "hrsh7th/cmp-buffer", enabled = false },
+  { "nvim-tree", enabled = false },
 }

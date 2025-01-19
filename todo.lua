@@ -4,5 +4,5 @@ vim.api.nvim_create_user_command("Todo", function()
     print("Todos empty")
     return
   end
-  vim.cmd("100vs "..todo_path)
+  vim.cmd("66vs "..todo_path)
 end, { nargs = 0 })
