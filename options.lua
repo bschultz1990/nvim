@@ -4,7 +4,6 @@ vim.o.foldlevel = 99
 
 -- TODO: Keybind in markdown files to bold and italicize selected text
 -- TODO: Auto trigger nvim-cmp in command mode. No tab needed.
--- TODO: Add Markdown table of contents user command
 -- TODO: Show line diagnostics automatically in hover window
 -- https://github.com/neovim/nvim-lspconfig/wiki/UI-Customization#show-line-diagnostics-automatically-in-hover-window
 
@@ -48,15 +47,9 @@ vim.api.nvim_create_user_command("Bold", function()
   -- local selected_text = vim.fn.getreg('z')
   vim.api.nvim_command 'normal! gv'
   vim.api.nvim_command 'S*'
+  vim.api.nvim_command 'normal! gv'
+  vim.api.nvim_command 'S*'
 end, { nargs = 0 })
-
-
-
-vim.api.nvim_create_autocmd("FileType", {
-	desc = "Automatically Split help Buffers to the right",
-	pattern = "help",
-	command = "wincmd L",
-})
 
 
 
@@ -106,6 +99,14 @@ end, { nargs = 0 })
 -- TODO: Add todo, fixme, highlight groups based on todo-comments.nvim
 vim.api.nvim_create_user_command("Todos", function()
   vim.cmd('vimgrep /TODO: /*')
+  vim.cmd('copen')
+end, { nargs = 0 })
+
+-- TODO: Add Markdown table of contents user command
+-- TODO: make a window split to the right
+-- TODO Nix the file name / path result with a custom vimgrep formatter function
+vim.api.nvim_create_user_command("Toc", function()
+  vim.cmd('vimgrep /^#\\+/ %')
   vim.cmd('copen')
 end, { nargs = 0 })
 

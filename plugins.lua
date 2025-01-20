@@ -5,7 +5,7 @@ return {
   {
     "folke/zen-mode.nvim",
     cmd = "ZenMode",
-    opts = { },
+    opts = {},
   },
   {
     "dhruvasagar/vim-table-mode",
@@ -15,15 +15,15 @@ return {
         desc = "Table keymaps for specific buffers",
         pattern = { "*.md", "*.txt", "*.tex" },
         callback = function()
-          vim.api.nvim_buf_set_keymap( 0, "i", "|", "|<Esc>:TableModeRealign<cr>A", { desc = "Table Mode Realign" })
-          vim.api.nvim_buf_set_keymap( 0, "n", "<leader>ta", ":TableModeToggle<cr>", { desc = "Table Mode Toggle" })
+          vim.api.nvim_buf_set_keymap(0, "i", "|", "|<Esc>:TableModeRealign<cr>A", { desc = "Table Mode Realign" })
+          vim.api.nvim_buf_set_keymap(0, "n", "<leader>ta", ":TableModeToggle<cr>", { desc = "Table Mode Toggle" })
         end,
       })
     end,
   },
 
   {
-    'stevearc/oil.nvim',
+    "stevearc/oil.nvim",
     ---@module 'oil'
     ---@type oil.SetupOpts
     opts = {},
@@ -33,7 +33,7 @@ return {
     config = function()
       require("oil").setup()
       vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
-    end
+    end,
   },
 
   {
@@ -73,14 +73,26 @@ return {
 
   {
     "hrsh7th/nvim-cmp",
-    config = function(_, opts)
-      local cmp = require "cmp"
+    -- TODO Add a cmd for Minuet and config with Deepseek
+    -- dependencies = {
+    --   { "milanglacier/minuet-ai.nvim", opts = {
+    --     require'minuet-ai'.setup{
+    --       -- minuet setup opts here
+    --     }
+    --   }
+    --   }
+    -- },
+    config = function(_, default_opts)
+      local merged_opts = vim.tbl_deep_extend('force', default_opts, {
+        mapping = {
+          ["<Esc>"] = require'cmp'.mapping.abort(),
+          -- ['<A-y>'] = require'minuet'.make_cmp_map(),
+        },
 
-      local custom_mappings = {
-        ["<Esc>"] = cmp.mapping.abort(),
-      }
-      opts.mapping = vim.tbl_deep_extend("force", opts.mapping, custom_mappings)
-      cmp.setup(opts)
+        -- sources = { { name = 'minuet' }, },
+        -- performance = { fetching_timeout = 2000 }
+      })
+      require'cmp'.setup(merged_opts)
     end,
   },
 
