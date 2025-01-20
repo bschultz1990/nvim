@@ -73,26 +73,44 @@ return {
 
   {
     "hrsh7th/nvim-cmp",
-    -- TODO Add a cmd for Minuet and config with Deepseek
+    -- TODO Add a cmd for Minuet and config with ollama
     -- dependencies = {
-    --   { "milanglacier/minuet-ai.nvim", opts = {
-    --     require'minuet-ai'.setup{
-    --       -- minuet setup opts here
-    --     }
-    --   }
-    --   }
+    --   {
+    --     "milanglacier/minuet-ai.nvim",
+    --     opts = {
+    --       virtualtext = {
+    --         auto_trigger_ft = {},
+    --         keymap = {
+    --           accept = "<A-A>",
+    --           accept_line = "<A-a>",
+    --           prev = "<A-[>",
+    --           next = "<A-]>",
+    --           dismiss = "<A-e>",
+    --         },
+    --       },
+    --       provider = "openai_vim_compatible",
+    --       provider_options = {
+    --         openai_vim_compatible = {
+    --           api_key = "TERM",
+    --           name = "Ollama",
+    --           end_point = "http://localhost:11434/v1/completions",
+    --           model = "deepseek-coder-v2",
+    --         },
+    --       },
+    --     },
+    --   },
     -- },
     config = function(_, default_opts)
-      local merged_opts = vim.tbl_deep_extend('force', default_opts, {
+      local merged_opts = vim.tbl_deep_extend("force", default_opts, {
         mapping = {
-          ["<Esc>"] = require'cmp'.mapping.abort(),
+          ["<Esc>"] = require("cmp").mapping.abort(),
           -- ['<A-y>'] = require'minuet'.make_cmp_map(),
         },
 
         -- sources = { { name = 'minuet' }, },
         -- performance = { fetching_timeout = 2000 }
       })
-      require'cmp'.setup(merged_opts)
+      require("cmp").setup(merged_opts)
     end,
   },
 

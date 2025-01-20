@@ -1,3 +1,4 @@
+
 vim.o.cursorlineopt = "both" -- to enable cursorline!
 vim.o.signcolumn = "no" -- No left margin
 vim.o.foldlevel = 99
