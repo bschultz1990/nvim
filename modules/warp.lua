@@ -16,7 +16,7 @@ vim.api.nvim_create_user_command("Warp", function()
   end
   require("telescope.pickers")
     .new({}, {
-      prompt_title = "Select a Session",
+      prompt_title = "Select a Warp Point",
       finder = require("telescope.finders").new_table { results = lines },
       sorter = require("telescope.sorters").get_fzy_sorter(),
       attach_mappings = function(_, map)
