@@ -2,6 +2,7 @@
 vim.o.cursorlineopt = "both" -- to enable cursorline!
 vim.o.signcolumn = "no" -- No left margin
 vim.o.foldlevel = 99
+vim.o.wrap = false
 
 -- TODO: Keybind in markdown files to bold and italicize selected text
 -- TODO: Auto trigger nvim-cmp in command mode. No tab needed.
