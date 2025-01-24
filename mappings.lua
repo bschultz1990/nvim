@@ -8,7 +8,7 @@ map(
 )
 map("n", "<leader>?", ":Telescope help_tags<cr>", { desc = "Telescope help tags" })
 map("n", "<leader>tk", ":Telescope keymaps<cr>", { desc = "Telescope keymaps" })
-map("n", "<leader>ts", "<cmd>Telescope symbols<cr>", { desc = "Telescope symbols" })
+map("i", "<C-;>", "<cmd>Telescope symbols<cr>", { desc = "Telescope symbols" })
 
 -- Clipboard and Text Manipulation
 vim.o.clipboard = ""
