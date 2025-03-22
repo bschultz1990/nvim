@@ -34,4 +34,4 @@ vim.api.nvim_create_user_command("Snip", function()
       end,
     })
     :find()
-end, { nargs = 0 })
+end, { desc = "Edit and create snippets based on the open buffer.", nargs = 0 })

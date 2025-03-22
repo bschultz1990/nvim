@@ -33,7 +33,7 @@ vim.api.nvim_create_user_command("Warp", function()
       end,
     })
     :find()
-end, { nargs = 0 })
+end, { desc="Change working directory based on your favorites", nargs = 0 })
 
 
 vim.api.nvim_create_user_command("WarpEdit", function()
@@ -45,4 +45,4 @@ vim.api.nvim_create_user_command("WarpEdit", function()
   end
   print(fileSize)
   vim.cmd("10split " .. Warp_file)
-end, { nargs = 0 })
+end, { desc = "Edit favorite warp points", nargs = 0 })
