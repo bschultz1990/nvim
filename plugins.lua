@@ -80,6 +80,7 @@ return {
         "pyright",
         "stylua",
         "typescript-language-server",
+        "emmet-language-server",
       },
     },
   },
