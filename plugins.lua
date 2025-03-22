@@ -78,6 +78,7 @@ return {
         "powershell-editor-services",
         "prettier",
         "stylua",
+        "typescript-language-server",
       },
     },
   },

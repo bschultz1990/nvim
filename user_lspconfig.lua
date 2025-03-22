@@ -5,6 +5,7 @@ local servers = {
   "bashls",
   "cssls",
   "html",
+  "ts_ls",
 }
 local nvlsp = require "nvchad.configs.lspconfig"
 
@@ -22,4 +23,4 @@ end
 --   on_attach = nvlsp.on_attach,
 --   on_init = nvlsp.on_init,
 --   capabilities = nvlsp.capabilities,
--- }
+
