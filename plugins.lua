@@ -77,6 +77,7 @@ return {
         "lua-language-server",
         "powershell-editor-services",
         "prettier",
+        "pyright",
         "stylua",
         "typescript-language-server",
       },

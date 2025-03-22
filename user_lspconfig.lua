@@ -5,6 +5,7 @@ local servers = {
   "bashls",
   "cssls",
   "html",
+  "pyright",
   "ts_ls",
 }
 local nvlsp = require "nvchad.configs.lspconfig"
