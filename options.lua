@@ -10,6 +10,7 @@ if vim.loop.os_uname().sysname == "Windows_NT" then
   vim.o.shell = "powershell.exe"
 end
 
+
 vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "BufWinEnter", "BufWinLeave", "BufDelete" }, {
   desc = "Highlight matching brackets in IncSearch hl group.",
   pattern = "*", -- any filetype
