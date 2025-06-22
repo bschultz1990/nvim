@@ -13,6 +13,26 @@ return {
     dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.icons" },
     ft = { "markdown", "text", "plaintex" },
   },
+
+{
+  "preservim/vim-pencil",
+  cmd = {
+    "Pencil",
+    "PencilOff",
+    "PencilToggle",
+    "PencilSoft",
+    "PencilHard",
+  },
+
+  ft = { "text", "markdown", "plaintex" },
+  config = function()
+    vim.api.nvim_create_autocmd({ "BufEnter" }, {
+      pattern = { "*.md", "*.txt", "*.tex" },
+      command = "PencilSoft",
+    })
+  end,
+},
+
   {
     "folke/zen-mode.nvim",
     cmd = "ZenMode",
