@@ -88,8 +88,6 @@ vim.api.nvim_create_user_command("Todos", function()
   vim.cmd "copen"
 end, { desc = "Show TODO comments in the current project", nargs = 0 })
 
--- TODO: Add Markdown table of contents user command
--- TODO: make a window split to the right
 -- TODO Nix the file name / path result with a custom vimgrep formatter function
 vim.api.nvim_create_user_command("Toc", function()
   if vim.o.filetype ~= "markdown" then print "Not a Markdown file." return end

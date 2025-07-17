@@ -22,10 +22,13 @@ snippet img Embedded image
   ![${1:title}](${2:image})
 
 snippet checkbox Clickable checkbox
-  <div> <input type="checkbox" id="$1"> <label for="$1">${0:}</label> </div>
+  <div> <input type="checkbox" id="$1"> <label for="$1"><b>$2:</b> ${0:}</label> </div>
 
 snippet dropdown Dropdown menu
   <details>
       <summary>$1</summary>
   $0
   </details>
+
+snippet b "Bold text"
+  <b>$1</b>$0
