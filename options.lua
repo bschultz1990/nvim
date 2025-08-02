@@ -55,6 +55,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 -- Oooh, birrrd, tweak that code!
 vim.api.nvim_create_user_command("Config", function(opts)
   local user_config_path = vim.fn.stdpath "config" .. "/lua/user/"
+
   if string.lower(opts.fargs[1]) == "grep" then
     require("telescope.builtin").live_grep {
       cwd = user_config_path,
