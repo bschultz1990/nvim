@@ -1,6 +1,8 @@
 local pwsh_services = vim.fn.expand "/mason/packages/powershell-editor-services"
 local pwsh_bundlepath = vim.fn.stdpath "data" .. pwsh_services
 
+
+
 return {
   {
     "MeanderingProgrammer/render-markdown.nvim",
@@ -27,7 +29,7 @@ return {
   ft = { "text", "markdown", "plaintex" },
   config = function()
     vim.api.nvim_create_autocmd({ "BufEnter" }, {
-      pattern = { "*.md", "*.txt", "*.tex" },
+      pattern = { "*.txt", "*.tex" },
       command = "PencilSoft",
     })
   end,
@@ -70,7 +72,6 @@ return {
   {
     "folke/twilight.nvim",
     cmd = "Twilight",
-    opts = {},
   },
 
   { "tpope/vim-surround", keys = { "ys", "cs", { "S", mode = "v" }, "ds" } },
@@ -93,14 +94,15 @@ return {
       ensure_installed = {
         "bash-language-server",
         "css-lsp",
+        "emmet-language-server",
         "html-lsp",
         "lua-language-server",
         "powershell-editor-services",
         "prettier",
         "pyright",
         "stylua",
+        "tinymist",
         "typescript-language-server",
-        "emmet-language-server",
       },
     },
   },
@@ -144,5 +146,5 @@ return {
 
   -- Disabled plugins
   { "hrsh7th/cmp-buffer", enabled = false },
-  { "nvim-tree", enabled = false },
+  { "nvim-tree/nvim-tree.lua", enabled = false, },
 }

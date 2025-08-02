@@ -2,6 +2,7 @@ local lspconfig = require "lspconfig"
 
 -- EXAMPLE
 local servers = {
+  "tinymist",
   "bashls",
   "cssls",
   "html",

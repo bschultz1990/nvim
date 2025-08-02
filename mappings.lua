@@ -1,5 +1,10 @@
 local map = vim.keymap.set
 
+-- UNUSED MAPPINGS FROM BUILT-IN PLUGINS
+-- nvim-tree mappings; unused
+vim.keymap.del({'n'}, '<C-n>')
+vim.keymap.del({'n'}, '<leader>e')
+
 map(
   "n",
   "<leader>H",
@@ -33,7 +38,6 @@ map("n", "<leader><C-a>", "maggVG", { desc = "Select all; Return via mark 'a' " 
 -- Yes, we need both of these so this will work in terminal and Neovide
 map("i", "<C-h>", "<C-w>", { desc = "Delete word" })
 map("i", "<C-BS>", "<C-w>", { desc = "Delete word" })
-map("i", "<C-S-z>", function() vim.cmd("redo") end, { desc = "Redo" })
 
 -- Source current buffer and snippets
 map("n", "<F5>", ":luafile %<cr>", { desc = "Source current buffer" })
@@ -68,7 +72,6 @@ map("n", "<leader>tx", ":tabclose<cr>", { desc = "tab close" })
 -- Files
 map("n", "<leader>rg", ":Telescope live_grep<cr>", { desc = "Live grep" })
 
-
 -- Indents
 map("n", "<leader><Tab>", "0magg=G`azz", { desc = "reindent buffer" })
 
@@ -88,3 +91,4 @@ map({ "n", "i", "v" }, "<C-s>", "<cmd> wa <cr>", { desc = "save all buffers" })
 map('n', '<leader>bb', ':Telescope buffers<cr>', { desc = 'Telescope buffers' })
 map('n', '<leader>vs', ':vs<cr>', { desc = 'Vertical split'})
 map('n', '<leader>sp', ':sp<cr>', { desc = 'Horizontal split'})
+

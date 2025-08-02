@@ -7,7 +7,7 @@ if vim.g.neovide then
   -- vim.o.guifont="NotoMono Nerd Font Mono:h12"
   -- vim.o.guifont="Hack Nerd Font Mono:h12"
   vim.g.neovide_scale_factor = UI_scale
-  vim.g.neovide_title_background_color = "#1c2433"
+  vim.g.neovide_title_background_color = "#282828"
   local change_scale_factor = function(delta)
     vim.g.neovide_scale_factor = vim.g.neovide_scale_factor * delta
   end
