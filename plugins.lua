@@ -1,10 +1,9 @@
 local pwsh_services = vim.fn.expand "/mason/packages/powershell-editor-services"
 local pwsh_bundlepath = vim.fn.stdpath "data" .. pwsh_services
 
-
+-- Use opts = {} for passing setup options. This is equivalent to setup({}) function.
 
 return {
-
   {
     "hrsh7th/nvim-cmp", enabled = true,
     config = function(_, default_opts)
@@ -18,65 +17,31 @@ return {
   },
 
   {
+    'windwp/nvim-autopairs',
+    enabled = false,
+    event = "InsertEnter",
+    config = true
+  },
+
+  {
     'saghen/blink.cmp',
     enabled = false,
     lazy = false,
     -- optional: provides snippets for the snippet source
     dependencies = { 'rafamadriz/friendly-snippets', 'L3MON4D3/LuaSnip', version = 'v2.*' },
 
-    -- use a release tag to download pre-built binaries
     version = '1.*',
-    -- AND/OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
-    -- build = 'cargo build --release',
-
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
     opts = {
-      snippets = { preset = 'luasnip', 'friendly-snippets'},
-      -- ensure you have the `snippets` source (enabled by default)
-      -- 'default' (recommended) for mappings similar to built-in completions (C-y to accept)
-      -- 'super-tab' for mappings similar to vscode (tab to accept)
-      -- 'enter' for enter to accept
-      -- 'none' for no mappingssearch_paths
-      --
-      -- All presets have the following mappings:
+      snippets = { preset = 'luasnip' },
       -- C-space: Open menu or open docs if already open
       -- C-n/C-p or Up/Down: Select next/previous item
       -- C-e: Hide menu
       -- C-k: Toggle signature help (if signature.enabled = true)
-      --
-      -- See :h blink-cmp-config-keymap for defining your own keymap
       keymap = { preset = 'default' },
-
-      appearance = {
-        -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
-        -- Adjusts spacing to ensure icons are aligned
-        nerd_font_variant = 'mono'
-      },
-
-      -- (Default) Only show the documentation popup when manually triggered
+      appearance = { nerd_font_variant = 'mono' },
       completion = { documentation = { auto_show = false } },
-
-      -- Default list of enabled providers defined so that you can extend it
-      -- elsewhere in your config, without redefining it, due to `opts_extend`
-      sources = {
-        -- providers = {
-        --   snippets = {
-        --     opts = {
-        --       search_paths = {
-        --         "C:/Users/bjs19/AppData/Local/nvim/lua/user/snippets",
-        --       },
-        --     },
-        --   },
-        -- },
-        default = { 'lsp', 'path', 'snippets', 'buffer' },
-      },
-
-      -- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
-      -- You may use a lua implementation instead by using `implementation = "lua"` or fallback to the lua implementation,
-      -- when the Rust fuzzy matcher is not available, by using `implementation = "prefer_rust"`
-      --
-      -- See the fuzzy documentation for more information
       fuzzy = { implementation = "prefer_rust_with_warning" }
     },
     opts_extend = { "sources.default" }
@@ -177,7 +142,7 @@ return {
         "lua-language-server",
         "powershell-editor-services",
         "prettier",
-        "pyright",
+        "ruff",
         "stylua",
         "tinymist",
         "typescript-language-server",

@@ -45,6 +45,7 @@ map("n", "<leader><leader>s", function()
   local config_path = vim.fn.stdpath('config')
   local snippet_path = vim.fn.expand(config_path .. "/lua/user/snippets")
   require("luasnip.loaders.from_snipmate").load(snippet_path)
+  -- require("luasnip.loaders.from_vscode").load({paths = { snippet_path }})
   print("✨ Snippets reloaded ✨")
   end)
 
