@@ -16,7 +16,6 @@ M = {
 
 { 'neovim/nvim-lspconfig', config = function () require('pluginconfigs.nvim-lspconfig') end },
 
-
 {
   "williamboman/mason.nvim",
   opts = {

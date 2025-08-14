@@ -1,13 +1,14 @@
--- vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "BufWinEnter", "BufWinLeave", "BufDelete" }, {
---   desc = "Highlight matching brackets in IncSearch hl group.",
---   pattern = "*", -- any filetype
---   callback = function()
---     vim.api.nvim_set_hl(0, "MatchParen", { link = "IncSearch" })
--- vim.api.nvim_set_hl(0, "MatchParen", { bg = 'orange' })
--- vim.api.nvim_set_hl(0, "MatchParen", { link = "PmenuSel" })
--- vim.api.nvim_set_hl(0, "MatchParen", { link = "TermCursor" })
---   end,
--- })
+-- Auto complete
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(ev)
+    local client = vim.lsp.get_client_by_id(ev.data.client_id)
+    if client:supports_method('textDocument/completion') then
+      vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
+    end
+  end
+})
+vim.cmd("set completeopt+=noselect")
+vim.cmd("set pumheight=20")
 
 
 vim.api.nvim_create_autocmd("BufWritePre", {
@@ -46,11 +47,11 @@ vim.api.nvim_create_user_command("Config", function(opts)
     }
   end
 end, {
-  desc = "Configure Neovim files without changing your working directory",
-  nargs = 1,
-  complete = function()
-    return { "grep", "files" } -- return completion candidates as a list-like table
-  end,
+desc = "Configure Neovim files without changing your working directory",
+nargs = 1,
+complete = function()
+  return { "grep", "files" } -- return completion candidates as a list-like table
+end,
 })
 
 

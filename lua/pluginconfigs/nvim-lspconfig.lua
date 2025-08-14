@@ -1,6 +1,18 @@
--- more here: https://github.com/neovim/nvim-lspconfig/tree/master/lsp
+-- https://github.com/neovim/nvim-lspconfig/tree/master/lsp
 
 vim.lsp.enable('pyright')
+vim.lsp.enable('bashls')
+vim.lsp.enable('cssls')
+vim.lsp.enable('emmet_language_server')
+vim.lsp.enable('html')
+vim.lsp.enable('tinymist')
+vim.lsp.enable('typescript-language-server')
 
--- dynamically load files in lsps directory
-vim.cmd('runtime! lua/pluginconfigs/lsps/*.lua')
+
+
+vim.lsp.config['lua_ls'] = {
+  settings = {
+    Lua = { diagnostics = { globals = { "vim" }, }, }
+  }
+}
+vim.lsp.enable('lua_ls')
