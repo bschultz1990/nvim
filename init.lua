@@ -1,51 +1,8 @@
-vim.g.base46_cache = vim.fn.stdpath "data" .. "/nvchad/base46/"
-
--- bootstrap lazy and all plugins
-local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
-
-if not vim.loop.fs_stat(lazypath) then
-  local repo = "https://github.com/folke/lazy.nvim.git"
-  vim.fn.system { "git", "clone", "--filter=blob:none", repo, "--branch=stable", lazypath }
-end
-
-vim.opt.rtp:prepend(lazypath)
-vim.g.mapleader = " "
-
-local lazy_config = require "configs.lazy"
-
--- load plugins
-require("lazy").setup({
-  {
-    "NvChad/NvChad",
-    lazy = false,
-    branch = "v2.5",
-    import = "nvchad.plugins",
-    config = function()
-      require "options"
-    end,
-  },
-
-  { import = "plugins" },
-}, lazy_config)
-
--- load theme
-dofile(vim.g.base46_cache .. "defaults")
-dofile(vim.g.base46_cache .. "statusline")
-
-require "nvchad.autocmds"
-
-vim.schedule(function()
-  require "mappings"
-end)
-
-if vim.g.neovide then
-  require "configs.neovide"
-end
-
--- Disable autocomplete via a keybinding
--- function()               
---        vim.b.cmp_enabled = not vim.b.cmp_enabled
---        require('cmp').setup.buffer { enabled = vim.b.cmp_enabled }
---  end
-
-
+require "user.mappings"
+require "user.neovide"
+require "user.options"
+require "user.user_lspconfig"
+require "user.modules.rs"
+require "user.modules.snip"
+require "user.modules.warp"
+require "user.modules.help"
