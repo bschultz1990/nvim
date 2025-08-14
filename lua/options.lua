@@ -8,6 +8,11 @@ vim.o.showmode = false
 vim.o.cursorline = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
+vim.diagnostic.config({
+  virtual_text = true,
+  signs = true,
+  underline = true
+})
 
 -- Clipboard and Text Manipulation
 vim.o.clipboard = ""
