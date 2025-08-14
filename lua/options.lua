@@ -14,6 +14,8 @@ vim.diagnostic.config({
   underline = true
 })
 
+-- vim.opt.fillchars = { eob = " " } -- No squiggles on blank lines
+
 -- Clipboard and Text Manipulation
 vim.o.clipboard = ""
 
