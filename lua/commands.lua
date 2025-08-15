@@ -1,14 +1,7 @@
 -- Auto complete
-vim.api.nvim_create_autocmd("LspAttach", {
-  callback = function(ev)
-    local client = vim.lsp.get_client_by_id(ev.data.client_id)
-    if client:supports_method('textDocument/completion') then
-      vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
-    end
-  end
-})
-vim.cmd("set completeopt+=noselect")
-vim.cmd("set pumheight=20")
+-- Might not need with blink.cmp
+-- vim.cmd("set pumheight=20")
+-- vim.o.winborder = "rounded"
 
 
 vim.api.nvim_create_autocmd("BufWritePre", {
@@ -74,4 +67,3 @@ vim.api.nvim_create_user_command("Preview", function()
   local buf_path = vim.api.nvim_buf_get_name(buf_number)
   vim.ui.open(buf_path)
 end, { desc = "Preview the current active buffer in the default app", nargs = 0 })
-
