@@ -3,6 +3,13 @@
 -- vim.cmd("set pumheight=20")
 -- vim.o.winborder = "rounded"
 
+-- Disable completions from current buffer
+-- vim.api.nvim_create_autocmd('BufEnter', {
+--   pattern = '*',
+--   callback = function()
+--     vim.b.completion = false
+--   end,
+-- })
 
 vim.api.nvim_create_autocmd("BufWritePre", {
   desc = "Autocreate a dir when saving a file",

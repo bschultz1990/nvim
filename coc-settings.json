@@ -1,0 +1,11 @@
+{
+  "lua-language-sever": {
+    "settings": {
+      "Lua": {
+        "diagnostics": {
+          "globals": [ "vim" ]
+        }
+      }
+    }
+  }
+}

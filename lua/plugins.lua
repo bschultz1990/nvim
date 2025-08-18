@@ -13,9 +13,13 @@ return {
   end
 },
 
-{ import = "pluginconfigs.nvim-lspconfig" },
-{ import = "pluginconfigs.blink" },
-{ import = "pluginconfigs.mason" },
+{ import = "pluginconfigs.coc" },
+-- { import = "pluginconfigs.nvim-lspconfig" },
+-- { import = "pluginconfigs.nvim-lspconfig-blink" },
+-- { import = "pluginconfigs.blink" },
+{ import = "pluginconfigs.nvim-treesitter" },
+-- { import = "pluginconfigs.mason" },
 { import = "pluginconfigs.telescope" }
+
 
 }
