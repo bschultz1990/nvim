@@ -1,18 +1,22 @@
 {
+  "diagnostic.virtualText": true,
+  "diagnostic.virtualTextCurrentLineOnly": false,
   "languageserver": {
     "pyrefly": {
       "command": "pyrefly",
-      "args": ["lsp"],
-      "filetypes": ["python"],
-      "rootPatterns": ["pyrefly.toml", "pyproject.toml", ".git"]
+      "args": [
+        "lsp"
+      ],
+      "filetypes": [
+        "python"
+      ],
+      "rootPatterns": [
+        "pyrefly.toml",
+        "pyproject.toml",
+        ".git"
+      ]
     },
-    "lua-language-sever": {
-      "settings": {
-        "diagnostics": {
-          "globals": [ "vim" ]
-        }
-      }
-    }
+    "lua-language-sever.settings.diagnostics.globals": [ "vim" ]
   },
   "snippets.ultisnips.pythonPrompt": false
 }
