@@ -16,7 +16,8 @@
         ".git"
       ]
     },
-    "lua-language-sever.settings.diagnostics.globals": [ "vim" ]
+    "lua.settings.Lua.diagnostics.globals": [ "vim" ]
   },
+  "Lua.diagnostics.globals": ["vim"],
   "snippets.ultisnips.pythonPrompt": false
 }
