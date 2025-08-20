@@ -15,24 +15,24 @@ vim.api.nvim_create_user_command("Warp", function()
     table.insert(lines, line)
   end
   require("telescope.pickers")
-    .new({}, {
-      prompt_title = "Select a Warp Point",
-      finder = require("telescope.finders").new_table { results = lines },
-      sorter = require("telescope.sorters").get_fzy_sorter(),
-      attach_mappings = function(_, map)
-        map("i", "<CR>", function(prompt_bufnr)
-          local selection = require("telescope.actions.state").get_selected_entry()
-          if selection then
-            vim.cmd("cd " .. selection.value)
-            print("Warped to: " .. selection.value)
-          end
-          require("telescope.actions").close(prompt_bufnr)
-          require("telescope.builtin").find_files()
-        end)
-        return true
-      end,
-    })
-    :find()
+  .new({}, {
+    prompt_title = "Select a Warp Point",
+    finder = require("telescope.finders").new_table { results = lines },
+    sorter = require("telescope.sorters").get_fzy_sorter(),
+    attach_mappings = function(_, map)
+      map("i", "<CR>", function(prompt_bufnr)
+        local selection = require("telescope.actions.state").get_selected_entry()
+        if selection then
+          vim.cmd("cd " .. selection.value)
+          print("Warped to: " .. selection.value)
+        end
+        require("telescope.actions").close(prompt_bufnr)
+        require("telescope.builtin").find_files()
+      end)
+      return true
+    end,
+  })
+  :find()
 end, { desc="Change working directory based on your favorites", nargs = 0 })
 
 

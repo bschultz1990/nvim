@@ -1,6 +1,12 @@
 {
   "diagnostic.virtualText": true,
   "diagnostic.virtualTextCurrentLineOnly": false,
+
+  "snippets.ultisnips.pythonPrompt": false,
+  "snippets.textmateSnippetsRoots": [
+    "/home/bens/.config/nvim/snippets"
+  ],
+
   "languageserver": {
     "pyrefly": {
       "command": "pyrefly",
@@ -16,8 +22,11 @@
         ".git"
       ]
     },
-    "lua.settings.Lua.diagnostics.globals": [ "vim" ]
+    "lua.settings.Lua.diagnostics.globals": [
+      "vim"
+    ]
   },
-  "Lua.diagnostics.globals": ["vim"],
-  "snippets.ultisnips.pythonPrompt": false
+  "Lua.diagnostics.globals": [
+    "vim"
+  ]
 }
