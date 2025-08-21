@@ -1,7 +1,7 @@
 {
   "snippet": {
     "prefix": "snippet",
-    "description": "Create CoC Snippet in JSON",
+    "description": "Create a VSCode style snippet in JSON",
     "body": [
       "\"${1:title}\": {",
         "\"prefix\": \"$2\",",
