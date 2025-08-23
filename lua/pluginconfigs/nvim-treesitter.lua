@@ -1,5 +1,8 @@
 return {
-  "nvim-treesitter/nvim-treesitter", branch = 'master', lazy = false, build = ":TSUpdate",
+  "nvim-treesitter/nvim-treesitter",
+  branch = 'master',
+  lazy = false,
+  build = ":TSUpdate",
   opts = {
     ensure_installed = {
       "vim",
@@ -11,6 +14,10 @@ return {
       "markdown",
       "markdown_inline",
       "sql",
+    },
+    highlight = {
+      enable = true,
+      additional_vim_regex_highlighting = true
     },
   },
 }
