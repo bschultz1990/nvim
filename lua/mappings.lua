@@ -49,13 +49,14 @@ map('n', 'N', 'Nzzzv', { desc = "Center previous search result" })
 -- Windows
 map("n", "<leader>q", "<C-w>q", { desc = "Quit window"})
 
-map("n", "<leader>l", "<C-w><Right>", { desc = "Window focus right" })
 map("n", "<leader><Right>", "<C-w><Right>", { desc = "Window focus right" })
-map("n", "<leader>j", "<C-w><Left>", { desc = "Window focus left" })
 map("n", "<leader><Left>", "<C-w><Left>", { desc = "Window focus left" })
 map("n", "<leader><Up>", "<C-w><Up>", { desc = "Window focus up" })
-map("n", "<leader>k", "<C-w><Up>", { desc = "Window focus up" })
 map("n", "<leader><Down>", "<C-w><Down>", { desc = "Window focus down" })
+
+map("n", "<leader>l", "<C-w><Right>", { desc = "Window focus right" })
+map("n", "<leader>h", "<C-w><Left>", { desc = "Window focus left" })
+map("n", "<leader>k", "<C-w><Up>", { desc = "Window focus up" })
 map("n", "<leader>j", "<C-w><Down>", { desc = "Window focus down" })
 
 
