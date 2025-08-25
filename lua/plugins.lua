@@ -21,7 +21,7 @@ return {
   { import = "pluginconfigs.zenmode" },
   { import = "pluginconfigs.nvim-treesitter" },
   { import = "pluginconfigs.telescope" },
-  -- { import = "pluginconfigs.coc" },
+  { import = "pluginconfigs.coc" },
   { import = "pluginconfigs.nvim-scissors" },
   {
     'tanvirtin/monokai.nvim',
