@@ -31,15 +31,15 @@ vim.opt.shortmess:append "sI"
 
 -- Indenting
 vim.o.expandtab = true
-vim.o.shiftwidth = 2
 vim.o.smartindent = true
+vim.o.shiftwidth = 2
 vim.o.tabstop = 2
 vim.o.softtabstop = 2
 
 -- Numbers
 vim.o.number = true
-vim.o.numberwidth = 2
 vim.o.ruler = false
+vim.o.numberwidth = 2
 
 vim.o.signcolumn = "yes"
 vim.o.splitbelow = true
@@ -69,3 +69,11 @@ local delim = is_windows and ";" or ":"
 vim.env.PATH = table.concat({ vim.fn.stdpath "data", "mason", "bin" }, sep) .. delim .. vim.env.PATH
 
 
+vim.g.markdown_fenced_languages = {
+  "vim",
+  "lua",
+  "html",
+  "css",
+  "python",
+  "ps1"
+}

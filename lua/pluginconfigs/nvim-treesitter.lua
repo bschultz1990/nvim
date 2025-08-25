@@ -11,13 +11,15 @@ return {
       "html",
       "css",
       "python",
+      "powershell",
       "markdown",
-      "markdown_inline",
-      "sql",
+      "markdown_inline"
     },
     highlight = {
       enable = true,
-      additional_vim_regex_highlighting = true
+      -- use_languagetree = true,
+      -- additional_vim_regex_highlighting = true
     },
+    indent = { enable = true }
   },
 }
