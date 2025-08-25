@@ -28,4 +28,6 @@ vim.schedule(function()
   require "user.init"
 end)
 
+Snipmate_path = {}
+table.insert(Snipmate_path, "C:/Users/326630/OneDrive - Amcor/Documents/snippets")
 ```
