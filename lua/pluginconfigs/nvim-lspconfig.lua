@@ -1,4 +1,6 @@
-return { 'neovim/nvim-lspconfig', config = function ()
+return { 'neovim/nvim-lspconfig',
+dependencies = { 'saghen/blink.cmp' },
+config = function ()
   -- https://github.com/neovim/nvim-lspconfig/tree/master/lsp
   -- local capabilities = require('blink.cmp').get_lsp_capabilities()
 

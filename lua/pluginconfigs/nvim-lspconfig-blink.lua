@@ -1,6 +1,6 @@
 return { 'neovim/nvim-lspconfig', config = function ()
   -- https://github.com/neovim/nvim-lspconfig/tree/master/lsp
-  -- local capabilities = require('blink.cmp').get_lsp_capabilities()
+  local capabilities = require('blink.cmp').get_lsp_capabilities()
 
   vim.lsp.enable('pyright')
   vim.lsp.enable('bashls')
@@ -12,7 +12,7 @@ return { 'neovim/nvim-lspconfig', config = function ()
 
 
   vim.lsp.config['lua_ls'] = {
-    -- capabilities = capabilities,
+    capabilities = capabilities,
     settings = {
       Lua = { diagnostics = { globals = { "vim" }, }, }
     }
