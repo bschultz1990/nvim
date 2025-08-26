@@ -9,6 +9,7 @@ vim.o.cursorline = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
 vim.o.confirm = true
+vim.opt.termguicolors = true
 vim.diagnostic.config({
   virtual_text = true,
   signs = true,
@@ -69,11 +70,11 @@ local delim = is_windows and ";" or ":"
 vim.env.PATH = table.concat({ vim.fn.stdpath "data", "mason", "bin" }, sep) .. delim .. vim.env.PATH
 
 
-vim.g.markdown_fenced_languages = {
-  "vim",
-  "lua",
-  "html",
-  "css",
-  "python",
-  "ps1"
-}
+-- vim.g.markdown_fenced_languages = {
+--   "vim",
+--   "lua",
+--   "html",
+--   "css",
+--   "python",
+--   "ps1"
+-- }

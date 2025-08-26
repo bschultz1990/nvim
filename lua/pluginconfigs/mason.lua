@@ -9,7 +9,7 @@ return {
       "lua-language-server",
       "powershell-editor-services",
       "prettier",
-      "ruff",
+      "pyright",
       "stylua",
       "tinymist",
       "typescript-language-server",

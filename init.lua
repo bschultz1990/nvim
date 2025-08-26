@@ -21,7 +21,6 @@ vim.opt.rtp:prepend(lazypath)
 -- This is also a good place to setup other settings (vim.opt)
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
-UserSnippetDir = vim.fn.stdpath("config") .. "/snippets/"
 
 -- Setup lazy.nvim
 require("lazy").setup({
@@ -36,3 +35,5 @@ require("lazy").setup({
 
 -- Source all lua files from a path
 vim.cmd('runtime! lua/*.lua')
+
+UserSnippetDir = vim.fn.stdpath("config") .. "/snippets/"
