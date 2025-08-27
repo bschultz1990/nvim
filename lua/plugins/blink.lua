@@ -12,6 +12,6 @@ return {
     completion = { documentation = { auto_show = false } },
     sources = {
       default = { 'lsp', 'path', 'snippets', 'buffer' },
-    }
+    },
   },
 }

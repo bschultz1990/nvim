@@ -1,4 +1,22 @@
-return { 'neovim/nvim-lspconfig', config = function ()
+return { 'neovim/nvim-lspconfig',
+dependencies = { "williamboman/mason.nvim",
+opts = {
+  ensure_installed = {
+    "bash-language-server",
+    "css-lsp",
+    "emmet-language-server",
+    "html-lsp",
+    "lua-language-server",
+    "powershell-editor-services",
+    "prettier",
+    "pyright",
+    "stylua",
+    "tinymist",
+    "typescript-language-server",
+  },
+}
+, 'saghen/blink.cmp' },
+config = function ()
   -- https://github.com/neovim/nvim-lspconfig/tree/master/lsp
   local capabilities = require('blink.cmp').get_lsp_capabilities()
 
