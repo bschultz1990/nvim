@@ -1,7 +1,6 @@
 -- Auto complete
 -- Might not need with blink.cmp
 -- vim.cmd("set pumheight=20")
--- vim.o.winborder = "rounded"
 
 -- Disable completions from current buffer
 -- vim.api.nvim_create_autocmd('BufEnter', {

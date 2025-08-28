@@ -2,7 +2,6 @@ vim.o.cursorlineopt = "both" -- enable cursorline
 vim.o.signcolumn = "no" -- No left margin
 vim.o.foldlevel = 99
 vim.o.wrap = false
-vim.o.number = true
 vim.o.laststatus = 3
 vim.o.showmode = false
 vim.o.cursorline = true
@@ -10,12 +9,16 @@ vim.o.ignorecase = true
 vim.o.smartcase = true
 vim.o.confirm = true
 vim.opt.termguicolors = true
+
+vim.o.winborder = "single"
 vim.diagnostic.config({
   virtual_text = true,
   signs = true,
   underline = true
 })
 
+vim.o.list = true -- Show invisible characters
+vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' } -- Show invisible characters 
 vim.opt.fillchars = { eob = " " } -- No margin squiggles on blank lines
 
 -- Clipboard and Text Manipulation
@@ -26,8 +29,7 @@ if vim.loop.os_uname().sysname == "Windows_NT" then
   vim.o.shell = "powershell.exe"
 end
 
--- disable nvim intro
-vim.opt.shortmess:append "sI"
+vim.opt.shortmess:append "sI" -- disable nvim intro
 
 
 -- Indenting
@@ -71,10 +73,10 @@ vim.env.PATH = table.concat({ vim.fn.stdpath "data", "mason", "bin" }, sep) .. d
 
 
 -- vim.g.markdown_fenced_languages = {
---   "vim",
---   "lua",
---   "html",
---   "css",
---   "python",
---   "ps1"
--- }
+  --   "vim",
+  --   "lua",
+  --   "html",
+  --   "css",
+  --   "python",
+  --   "ps1"
+  -- }
