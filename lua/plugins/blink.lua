@@ -2,6 +2,7 @@ return {
   'saghen/blink.cmp',
   dependencies = {},
   version = '1.*',
+  event = 'BufReadPost',
 
   ---@module 'blink.cmp'
   ---@type blink.cmp.Config
