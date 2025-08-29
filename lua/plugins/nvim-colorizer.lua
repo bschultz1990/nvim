@@ -1,6 +1,6 @@
 return {
   "catgoose/nvim-colorizer.lua",
-  event = "VimEnter",
+  event = "BufReadPre",
   config = function()
     vim.o.termguicolors = true
     require("colorizer").setup({
