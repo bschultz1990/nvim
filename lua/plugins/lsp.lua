@@ -18,27 +18,17 @@ return {
     vim.api.nvim_create_autocmd('LspAttach', {
       group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
       callback = function(event)
-        -- NOTE: Remember that Lua is a real programming language, and as such it is possible
-        -- to define small helper and utility functions so you don't have to repeat yourself.
-        --
-        -- In this case, we create a function that lets us more easily define mappings specific
-        -- for LSP related items. It sets the mode, buffer and description for us each time.
-        -- TODO: Delete the function below and replace it with native vim.keymap.set configuration
-        -- after blink.cmp has been set up.
-        local map = function(keys, func, desc, mode)
-          mode = mode or 'n'
-          vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
-        end
 
         vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { desc = '[R]e[n]ame' })
         vim.keymap.set({ 'n', 'x' }, '<leader>ca', vim.lsp.buf.code_action, { desc = '[G]oto Code [A]ction' })
-        map('grr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-        map('gri', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
-        map('grd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
-        map('grD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
-        map('gO', require('telescope.builtin').lsp_document_symbols, 'Open Document Symbols')
-        map('gW', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Open Workspace Symbols')
-        map('grt', require('telescope.builtin').lsp_type_definitions, '[G]oto [T]ype Definition')
+        vim.keymap.set('n','<leader>gr',require('telescope.builtin').lsp_references, { desc =  '[G]oto [R]eferences' })
+        vim.keymap.set('n','<leader>gi',require('telescope.builtin').lsp_implementations, { desc =  '[G]oto [I]mplementation' })
+        vim.keymap.set('n','<leader>gd',require('telescope.builtin').lsp_definitions, { desc =  '[G]oto [D]efinition' })
+        vim.keymap.set('n','<leader>gD',vim.lsp.buf.declaration, { desc =  '[G]oto [D]eclaration' })
+        vim.keymap.set('n','<leader>ds',require('telescope.builtin').lsp_document_symbols, { desc =  'Open [D]ocument [S]ymbols' })
+        vim.keymap.set('n','<leader>ws',require('telescope.builtin').lsp_dynamic_workspace_symbols, { desc =  'Open [W]orkspace [S]ymbols' })
+        vim.keymap.set('n','<leader>gt',require('telescope.builtin').lsp_type_definitions, { desc =  '[G]oto [T]ype Definition' })
+
 
         -- This function resolves a difference between neovim nightly (version 0.11) and stable (version 0.10)
         ---@param client vim.lsp.Client
@@ -83,9 +73,10 @@ return {
         --
         -- This may be unwanted, since they displace some of your code
         if client and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
-          map('<leader>th', function()
+          vim.keymap.set('n', '<leader>th',
+          function()
             vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
-          end, '[T]oggle Inlay [H]ints')
+          end, { desc = '[T]oggle Inlay [H]ints'})
         end
       end,
     })
@@ -127,14 +118,10 @@ return {
 
     -- Enable the following language servers
     --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
-    --
     --  Add any additional override configuration in the following tables. Available keys are:
-    --  - cmd (table): Override the default command used to start the server
-    --  - filetypes (table): Override the default list of associated filetypes for the server
-    --  - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
-    --  - settings (table): Override the default settings passed when initializing the server.
-    --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
+
     local servers = {
+      prettier = {},
       -- pyright = {},
       -- See `:help lspconfig-all` for a list of all the pre-configured LSPs
       -- ts_ls = {},
@@ -147,8 +134,7 @@ return {
           completion = {
             callSnippet = 'Replace',
           },
-          -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-          -- diagnostics = { disable = { 'missing-fields' } },
+          -- diagnostics = { disable = { 'missing-fields' } }, -- Disable noisy 'missing fields' warnings
         },
       },
     }

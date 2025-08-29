@@ -36,9 +36,9 @@ vim.keymap.set("t", "<Esc>", "<C-\\><C-N>", { desc = "Escape terminal mode" })
 vim.keymap.set("n", "<leader><leader>s", function()
   local config_path = vim.fn.stdpath('config')
   local snippet_path = vim.fn.expand(config_path .. "/lua/user/snippets")
-  require("luasnip.loaders.from_snipmate").load(snippet_path)
-  -- require("luasnip.loaders.from_vscode").load({paths = { snippet_path }})
-  print("✨ Snippets reloaded ✨")
+  -- require("luasnip.loaders.from_snipmate").load(snippet_path)
+  require("luasnip.loaders.from_vscode").load({paths = { snippet_path }})
+  print("✨ Snippets reloaded from " ..snippet_path.." ✨")
 end)
 
 

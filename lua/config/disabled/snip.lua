@@ -1,13 +1,11 @@
 -- Dynamically append snippets from multiple locations.
-if not Snipmate_path then
-  Snipmate_path = {}
+if not Master_Snippet_Path then
+  Master_Snippet_Path = {}
 end
 
 
-
-table.insert(Snipmate_path, vim.fn.stdpath "config" .. vim.fn.expand "/lua/user/snippets/")
-vim.g.snipmate_snippets_path = Snipmate_path
-
+table.insert(Master_Snippet_Path, UserSnippetDir)
+vim.g.snipmate_snippets_path = Master_Snippet_Path
 
 
 local function ft_check(newfile, ft)
@@ -21,7 +19,7 @@ vim.api.nvim_create_user_command("Snip", function()
   require("telescope.pickers")
     .new({}, {
       prompt_title = "Snippets Directories",
-      finder = require("telescope.finders").new_table { results = Snipmate_path },
+      finder = require("telescope.finders").new_table { results = Master_Snippet_Path },
       sorter = require("telescope.sorters").get_fzy_sorter(),
       attach_mappings = function(_, map)
         map("i", "<CR>", function()
