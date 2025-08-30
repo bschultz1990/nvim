@@ -3,24 +3,21 @@ return {
   branch = 'master',
   lazy = false,
   build = ":TSUpdate",
-  opts = {
-    auto_install = true,
-    ensure_installed = {
-      "vim",
-      "vimdoc",
-      "lua",
-      "html",
-      "css",
-      "python",
-      "powershell",
-      "markdown",
-      "markdown_inline"
-    },
-    highlight = {
-      enable = true,
-      -- use_languagetree = true,
-      -- additional_vim_regex_highlighting = true
-    },
-    indent = { enable = true }
-  },
+  -- This plugin does not support lazy loading.
+  -- You MUST run config = function() instead of opts = {}
+  config = function()
+    require('nvim-treesitter.configs').setup {
+      auto_install = true,
+      sync_install = true,
+      ensure_installed = {
+        "lua",
+        "markdown_inline",
+        "vim",
+        "vimdoc",
+      },
+      highlight = { enable = true, },
+      indent = { enable = true, },
+
+    }
+  end,
 }

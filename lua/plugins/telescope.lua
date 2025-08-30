@@ -2,6 +2,7 @@ return {
   'nvim-telescope/telescope.nvim', tag = '0.1.8',
   -- event = 'VimEnter',
   cmd = 'Telescope',
+  keys = { '<leader>/' },
   dependencies = {
     'nvim-lua/plenary.nvim',
     { 'nvim-telescope/telescope-ui-select.nvim' },
