@@ -27,7 +27,6 @@ vim.api.nvim_create_user_command("Warp", function()
           print("Warped to: " .. selection.value)
         end
         require("telescope.actions").close(prompt_bufnr)
-        require("telescope.builtin").find_files()
       end)
       return true
     end,

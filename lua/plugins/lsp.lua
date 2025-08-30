@@ -1,5 +1,4 @@
 return {
-  -- Main LSP Configuration
   'neovim/nvim-lspconfig',
   dependencies = {
     -- Automatically install LSPs and related tools to stdpath for Neovim
@@ -10,14 +9,21 @@ return {
     'WhoIsSethDaniel/mason-tool-installer.nvim',
 
     -- Useful status updates for LSP.
-    -- { 'j-hui/fidget.nvim', opts = {} },
+    { 'j-hui/fidget.nvim', opts = {} },
 
+    -- Allows extra capabilities provided by blink.cmp
     'saghen/blink.cmp',
   },
+  event = 'InsertEnter',
   config = function()
     vim.api.nvim_create_autocmd('LspAttach', {
       group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
       callback = function(event)
+        local map = function(keys, func, desc, mode)
+          mode = mode or 'n'
+          vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
+        end
+
         vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { desc = '[R]e[n]ame' })
         vim.keymap.set({ 'n', 'x' }, '<leader>ca', vim.lsp.buf.code_action, { desc = '[G]oto Code [A]ction' })
         vim.keymap.set('n','<leader>gr',require('telescope.builtin').lsp_references, { desc =  '[G]oto [R]eferences' })
@@ -59,24 +65,25 @@ return {
       },
     }
 
-    -- Broadcast completion engine capabilities to the LSP.
     local capabilities = require('blink.cmp').get_lsp_capabilities()
 
-    -- See `:help lspconfig-all` for a list of all the pre-configured LSPs
+    -- Enable the following language servers
+    --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
+    --
     local servers = {
-      prettier = {},
-      -- pyright = {},
-      -- ts_ls = {},
+      pyright = {},
+      html = {},
       lua_ls = {
         -- cmd = { ... },
         -- filetypes = { ... },
         -- capabilities = {},
         settings = {
-          Lua = { diagnostics = { globals = { "vim" }, }, },
-          completion = {
-            callSnippet = 'Replace',
+          Lua = {
+            completion = {
+              callSnippet = 'Replace',
+            },
+            -- diagnostics = { disable = { 'missing-fields' } }, -- Disable lua's noisy 'missing fields' report
           },
-          -- diagnostics = { disable = { 'missing-fields' } }, -- Disable noisy 'missing fields' warnings
         },
       },
     }
@@ -90,17 +97,19 @@ return {
     local ensure_installed = vim.tbl_keys(servers or {})
     vim.list_extend(ensure_installed, {
       'stylua', -- Used to format Lua code
+      'tree-sitter-cli'
     })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
     require('mason-lspconfig').setup {
-      ensure_installed = {
-        'lua_ls',
-      },
-      automatic_installation = true,
+      ensure_installed = {}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
+      automatic_installation = false,
       handlers = {
         function(server_name)
           local server = servers[server_name] or {}
+          -- This handles overriding only values explicitly passed
+          -- by the server configuration above. Useful when disabling
+          -- certain features of an LSP (for example, turning off formatting for ts_ls)
           server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
           require('lspconfig')[server_name].setup(server)
         end,

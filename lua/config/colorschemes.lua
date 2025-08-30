@@ -1,16 +1,19 @@
-function neovideTitleColor (color)
+local function scs (scheme, bg, nv_banner)
+  vim.cmd("colorscheme "..scheme)
+  vim.opt.background = bg
   if vim.g.neovide then
-    vim.g.neovide_title_background_color = color
+    vim.g.neovide_title_background_color = nv_banner
   end
+
 end
 
 -- DARK
-vim.cmd("colorscheme miniautumn") neovideTitleColor ("#262029")
--- vim.cmd("colorscheme miniwinter") neovideTitleColor ("#11262d")
--- vim.cmd("colorscheme minicyan") neovideTitleColor ("#0a2a2a")
--- vim.cmd("colorscheme slate") neovideTitleColor ("#262626")
--- vim.cmd("colorscheme minischeme") neovideTitleColor ("#112641")
+scs("miniautumn", "dark", "#262029")
+-- scs("miniwinter", "dark", "#11262d")
+-- scs("minicyan", "dark", "#0a2a2a")
+-- scs("slate", "dark", "#262626")
+-- scs("minischeme", "dark", "#112641")
 
 -- LIGHT
--- vim.cmd("colorscheme peachpuff") neovideTitleColor ("#000000")
--- vim.cmd("colorscheme morning") neovideTitleColor ("#FFFFFF")
+-- scs("peachpuff", "light", "#000000")
+-- scs("morning", "dark", "#FFFFFF")
