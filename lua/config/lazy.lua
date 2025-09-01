@@ -26,7 +26,7 @@ vim.g.maplocalleader = "\\"
 require("lazy").setup({
   change_detection = { notify = false },
   spec = {
-    { import = "lazyplugins", },
+    { import = "plugins", },
   },
 
   -- automatically check for plugin updates

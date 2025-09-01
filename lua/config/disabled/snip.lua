@@ -8,9 +8,9 @@ table.insert(Master_Snippet_Path, UserSnippetDir)
 vim.g.snipmate_snippets_path = Master_Snippet_Path
 
 
-local function ft_check(newfile, ft)
-  if not vim.loop.fs_stat(newfile .. ft .. ".snippets") then
-    vim.fn.writefile({}, newfile .. ft .. ".snippets")
+local function ft_check(newfile, ft, ext)
+  if not vim.loop.fs_stat(newfile .. ft .. ext) then
+    vim.fn.writefile({}, newfile .. ft .. ext)
   end
 end
 
@@ -26,7 +26,7 @@ vim.api.nvim_create_user_command("Snip", function()
           local selection = require("telescope.actions.state").get_selected_entry()
           if selection then
             vim.cmd "vs"
-            ft_check(selection.value, filetype)
+            ft_check(selection.value, filetype, ".snippets")
             require("telescope.builtin").find_files { cwd = selection.value, }
           end
         end)

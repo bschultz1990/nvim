@@ -1,1 +1,1 @@
-require('config.colorschemes').Scs("miniautumn", "dark", "#262029")
+require('config.colorschemes').Scs('retrobox', 'dark', '')
