@@ -29,17 +29,23 @@ vim.keymap.set("n", "<leader><C-a>", "maggVG", { desc = "Select all; Return via 
 -- Yes, we need both of these so this will work in terminal and Neovide
 vim.keymap.set("i", "<C-h>", "<C-w>", { desc = "Delete word" })
 vim.keymap.set("i", "<C-BS>", "<C-w>", { desc = "Delete word" })
-vim.keymap.set("t", "<Esc>", "<C-\\><C-N>", { desc = "Escape terminal mode" })
+vim.keymap.set("t", "<Esc-Esc>", "<C-\\><C-N>", { desc = "Escape Terminal Mode" })
+vim.keymap.set("n", "<M-i>", function() vim.cmd("terminal") vim.cmd("startinsert") end,
+  { desc = "Enter Terminal Mode" })
 
 
 -- Snippets
-vim.keymap.set("n", "<leader><leader>s", function()
+vim.keymap.set('n', '<leader><leader>s', function()
   local config_path = vim.fn.stdpath('config')
-  local snippet_path = vim.fn.expand(config_path .. "/lua/user/snippets")
-  -- require("luasnip.loaders.from_snipmate").load(snippet_path)
-  require("luasnip.loaders.from_vscode").load({paths = { snippet_path }})
-  print("✨ Snippets reloaded from " ..snippet_path.." ✨")
+  local snippet_path = vim.fn.expand(config_path .. '/snippets')
+  -- require("luasnip.loaders.from_snipmate").load({ paths = { snippet_path } })
+  require("luasnip").cleanup() -- Clear all snippets
+  -- require("luasnip.loaders.from_vscode").load({paths = { snippet_path }})
+  require("luasnip.loaders.from_vscode").lazy_load()
+  -- require('luasnip.loaders').reload_file(snippet_path)
+  print('✨ Snippets reloaded from ' ..snippet_path.." ✨")
 end)
+
 
 
 -- Center search results on the page
