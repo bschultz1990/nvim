@@ -34,20 +34,6 @@ vim.keymap.set("n", "<M-i>", function() vim.cmd("terminal") vim.cmd("startinsert
   { desc = "Enter Terminal Mode" })
 
 
--- Snippets
-vim.keymap.set('n', '<leader><leader>s', function()
-  local config_path = vim.fn.stdpath('config')
-  local snippet_path = vim.fn.expand(config_path .. '/snippets')
-  -- require("luasnip.loaders.from_snipmate").load({ paths = { snippet_path } })
-  require("luasnip").cleanup() -- Clear all snippets
-  -- require("luasnip.loaders.from_vscode").load({paths = { snippet_path }})
-  require("luasnip.loaders.from_vscode").lazy_load()
-  -- require('luasnip.loaders').reload_file(snippet_path)
-  print('✨ Snippets reloaded from ' ..snippet_path.." ✨")
-end)
-
-
-
 -- Center search results on the page
 vim.keymap.set('n', 'n', 'nzzzv', { desc = "Center next search result" })
 vim.keymap.set('n', 'N', 'Nzzzv', { desc = "Center previous search result" })
