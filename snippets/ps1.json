@@ -1,1 +1,21 @@
-{"confirm (binary user choice)":{"body":["$confirmed = $false","while ($confirmed -eq $false)","{","  Write-Host \"${1:#do something}\"","  $confirm = Read-Host \"${2:#choice} ($3/$4)\"","  if ($confirm.ToLower() -eq '$3')","  {","    ${5:#do-something}","  } elseif ($confirm.ToLower() -eq '$4')","  {","    ${0:#do-something-else}","    $confirmed = $true","  }","","}"],"prefix":"confirm (binary user choice)"}}
+{
+  "confirm (binary user choice)":{
+    "body":[
+      "$confirmed = $false",
+      "while ($confirmed -eq $false)",
+      "{",
+      "  Write-Host \"${1:#do something}\"",
+      "  $confirm = Read-Host \"${2:#choice} ($3/$4)\"",
+      "  if ($confirm.ToLower() -eq '$3')",
+      "  {",
+      "    ${5:#do-something}",
+      "  } elseif ($confirm.ToLower() -eq '$4')",
+      "  {",
+      "    ${0:#do-something-else}",
+      "    $confirmed = $true",
+      "  }",
+      "",
+      "}"],
+    "prefix":"confirm (binary user choice)"
+  }
+}

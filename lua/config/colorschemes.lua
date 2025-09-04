@@ -25,11 +25,11 @@ M.schemes = {
   ['minicyan'] = function() return M.Scs ('minicyan', 'dark', '#0a2a2a') end,
   ['minispring'] = function() return M.Scs ('minispring', 'dark', '') end,
   ['minischeme'] = function() return M.Scs ('minischeme', 'dark', '#112641') end,
-  ['minisummer'] = function() return M.Scs ('minisummer', 'dark', '') end,
+  ['minisummer'] = function() return M.Scs ('minisummer', 'dark', '#1b1512') end,
   ['miniwinter'] = function() return M.Scs ('miniwinter', 'dark', '#11262d') end,
   ['morning'] = function() return M.Scs ('morning', 'light', '#FFFFFF') end,
   ['peachpuff'] = function() return M.Scs ('peachpuff', 'light', '#000000') end,
-  ['retrobox'] = function() return M.Scs ('retrobox', 'dark', '') end,
+  ['retrobox'] = function() return M.Scs ('retrobox', 'dark', '#1c1c1c') end,
   ['slate'] = function() return M.Scs ('slate', 'dark', '#262626') end,
 }
 

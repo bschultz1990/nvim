@@ -2,7 +2,11 @@ return {
   "chrisgrieser/nvim-scissors",
   dependencies = "nvim-telescope/telescope.nvim",
   opts = {
-    snippetDir = UserSnippetDir
+    editSnippetPopup = {
+      keymaps = {
+        deleteSnippet = "<leader>dd"
+      }
+    }
   },
   keys = {
     { '<leader>sa', ':ScissorsAddNewSnippet<cr>', { desc = "Snippet: Edit" }, mode = 'n' },

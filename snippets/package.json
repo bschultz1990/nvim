@@ -12,6 +12,10 @@
       },
       {
         "language": "markdown",
+        "path": "./wk/markdown.json"
+      },
+      {
+        "language": "markdown",
         "path": "./markdown.json"
       },
       {
