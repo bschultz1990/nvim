@@ -1,3 +1,4 @@
+-- require("start.snippet_pkg_generator")
 require("config.lazy")
 
 -- Source all lua files from a path
