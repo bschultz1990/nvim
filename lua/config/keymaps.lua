@@ -29,7 +29,7 @@ vim.keymap.set("n", "<leader><C-a>", "maggVG", { desc = "Select all; Return via 
 -- Yes, we need both of these so this will work in terminal and Neovide
 vim.keymap.set("i", "<C-h>", "<C-w>", { desc = "Delete word" })
 vim.keymap.set("i", "<C-BS>", "<C-w>", { desc = "Delete word" })
-vim.keymap.set("t", "<Esc-Esc>", "<C-\\><C-N>", { desc = "Escape Terminal Mode" })
+vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-N>", { desc = "Escape Terminal Mode" })
 vim.keymap.set("n", "<M-i>", function() vim.cmd("terminal") vim.cmd("startinsert") end,
   { desc = "Enter Terminal Mode" })
 
