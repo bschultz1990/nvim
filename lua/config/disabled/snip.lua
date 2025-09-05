@@ -1,3 +1,6 @@
+-- Might have to put this in the initial init.lua...
+UserSnippetDir = vim.fn.stdpath("config") .. "/snippets/"
+
 -- Dynamically append snippets from multiple locations.
 if not Master_Snippet_Path then
   Master_Snippet_Path = {}
