@@ -25,12 +25,13 @@ local base_json = read_json(vim.fn.stdpath('config') .. "/lua/config/pkg_generat
 local work_json = read_json(vim.fn.stdpath('config') .. "/lua/config/pkg_generator/package.work.json")
 local output_file = vim.fn.stdpath('config') .. "/snippets/package.json"
 
-if vim.fn.getenv("WORK_COMPUTER") == "1" then
-  print("WORK COMPUTER")
-  local merged = merge_snippets(base_json, work_json)
-  write_json(output_file, merged)
-else
-  write_json(output_file, base_json)
-end
+if not vim.loop.fs_stat(output_file) then
+  if vim.fn.getenv("WORK_COMPUTER") == "1" then
+    local merged = merge_snippets(base_json, work_json)
+    write_json(output_file, merged)
+  else
+    write_json(output_file, base_json)
+  end
 
-print("✅ package.json generated")
+  print("✅ package.json generated")
+end
