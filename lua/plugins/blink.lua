@@ -5,6 +5,7 @@ return {
 
   ---@module 'blink.cmp'
   ---@type blink.cmp.Config
+
   opts = {
     keymap = { preset = 'default' },
     signature = { enabled = true },

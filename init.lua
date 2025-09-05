@@ -1,4 +1,4 @@
--- require('start.pkg_generator.init')
+vim.cmd('runtime! lua/config/pkg_generator/init.lua')
 require("config.lazy")
 
 -- Source all lua files from a path
