@@ -25,6 +25,12 @@ local base_json = read_json(vim.fn.stdpath('config') .. "/lua/config/pkg_generat
 local work_json = read_json(vim.fn.stdpath('config') .. "/lua/config/pkg_generator/package.work.json")
 local output_file = vim.fn.stdpath('config') .. "/snippets/package.json"
 
+-- Recursively bootstrap current colorscheme directory
+local colorscheme_dir = vim.fn.stdpath('config') .. "/after/plugin/"
+if not vim.loop.fs_stat(colorscheme_dir) then
+  vim.fn.mkdir(colorscheme_dir, 'p')
+end
+
 if not vim.loop.fs_stat(output_file) then
   if vim.fn.getenv("WORK_COMPUTER") == "1" then
     local merged = merge_snippets(base_json, work_json)
