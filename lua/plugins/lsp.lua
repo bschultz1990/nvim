@@ -70,6 +70,7 @@ return {
     local servers = {
       pyright = {},
       html = {},
+      jsonls = {},
       lua_ls = {
         -- cmd = { ... },
         -- filetypes = { ... },
