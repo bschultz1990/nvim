@@ -1,4 +1,4 @@
-require('start.pkg_generator.init')
+-- require('start.pkg_generator.init')
 require("config.lazy")
 
 -- Source all lua files from a path
