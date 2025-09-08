@@ -13,11 +13,11 @@ local function write_json(path, data)
   file:close()
 end
 
-local function merge_snippets (base, work)
-  for _, snippet in ipairs(work.contributes.snippets or {}) do
-    table.insert(base.contributes.snippets, snippet)
+local function merge_snippets (json1, json2)
+  for _, snippet in ipairs(json2.contributes.snippets or {}) do
+    table.insert(json1.contributes.snippets, snippet)
   end
-  return base
+  return json1
 end
 
 -- MAIN --
