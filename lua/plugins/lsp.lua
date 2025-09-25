@@ -71,6 +71,7 @@ return {
       pyright = {},
       html = {},
       jsonls = {},
+      eslint = {},
       lua_ls = {
         -- cmd = { ... },
         -- filetypes = { ... },
