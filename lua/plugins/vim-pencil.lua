@@ -9,7 +9,7 @@ return   {
   },
   keys = {
     { '<leader>ps', ':PencilSoft<cr>', { desc = 'PencilSoft' }, mode = 'n' },
-    { '<leader>po', ':PencilOff<cr>', { desc = 'PencilOff' }, mode = 'n' },
+    { '<leader>pt', ':PencilToggle<cr>', { desc = 'PencilToggle' }, mode = 'n' },
   },
   ft = { "text", "markdown", "plaintex" },
   config = function()
