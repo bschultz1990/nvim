@@ -111,7 +111,7 @@ return {
     --
     -- But for many setups, the LSP (`ts_ls`) will work just fine
     -- ======================================================
-    --              INSTALL LSP SERVERS HERE!
+    --              INSTALL LSPS HERE!
     -- ======================================================
     local servers = {
       sqlls = {},
@@ -132,16 +132,11 @@ return {
         },
       },
       -- clangd = {},
-      -- gopls = {},
+      gopls = {},
       -- rust_analyzer = {},
     }
 
     -- Ensure the servers and tools above are installed
-    --
-    -- To check the current status of installed tools and/or manually install
-    -- other tools, you can run
-    --    :Mason
-    --
     -- `mason` had to be setup earlier: to configure its options see the
     -- `dependencies` table for `nvim-lspconfig` above.
     --
