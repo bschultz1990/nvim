@@ -1,0 +1,1 @@
+{"boilerplate":{"body":["package ${1:main}","","import(","\t\"fmt\"",")","","","func main () {","  $2","}"],"prefix":"boilerplate"}}
