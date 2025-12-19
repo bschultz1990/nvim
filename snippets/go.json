@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 {"fmt.Println":{"prefix":"fmt.Println","body":"fmt.Println(${1:})"},"fmt.Scan":{"body":"fmt.Scan(${1:})","prefix":"fmt.Scan"}}
+=======
+{"boilerplate":{"body":["package ${1:main}","","import(","\t\"fmt\"",")","","","func main () {","  $2","}"],"prefix":"boilerplate"}}
+>>>>>>> d53c98cb1e15bc294fe3330237dda7f763b55e33
