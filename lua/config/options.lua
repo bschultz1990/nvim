@@ -17,7 +17,7 @@ vim.diagnostic.config({
   underline = true
 })
 
-vim.o.list = true -- Show invisible characters
+vim.o.list = false -- Show invisible characters
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' } -- Show invisible characters 
 vim.opt.fillchars = { eob = " " } -- No margin squiggles on blank lines
 

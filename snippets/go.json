@@ -1,0 +1,1 @@
+{"fmt.Println":{"prefix":"fmt.Println","body":"fmt.Println(${1:})"},"fmt.Scan":{"body":"fmt.Scan(${1:})","prefix":"fmt.Scan"}}
