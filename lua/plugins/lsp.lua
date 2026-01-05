@@ -114,6 +114,7 @@ return {
     --              INSTALL LSPS HERE!
     -- ======================================================
     local servers = {
+      powershell_es = {},
       sqlls = {},
       pyright = {},
       ts_ls = {},

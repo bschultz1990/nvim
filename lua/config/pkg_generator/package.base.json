@@ -2,8 +2,15 @@
   "name": "master-snippet-file",
   "contributes": {
     "snippets": [
+      { "language": "ps1",
+        "path": "./ps1.json"
+      },
       { "language": "go",
-      "path": "./go.json"
+        "path": "./go.json"
+      },
+      {
+        "language": "gcode",
+        "path": "./gcode.json"
       },
       { "language": "lua",
         "path": "./lua.json"

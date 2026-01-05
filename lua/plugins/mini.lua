@@ -4,7 +4,7 @@ return {
     version = false,
     config = function()
       require('mini.icons').setup()
-      require('mini.pairs').setup()
+      -- require('mini.pairs').setup()
       require('mini.align').setup()
       require('mini.files').setup()
       require('mini.tabline').setup()

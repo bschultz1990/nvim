@@ -1,5 +1,4 @@
--- FOR USE WITH NATIVE NVIM-LSPCONFIG AND MASON
-
+local pwsh_services = vim.fn.expand "/mason/packages/powershell-editor-services"
 local pwsh_bundlepath = vim.fn.stdpath "data" .. pwsh_services
 
 return   {
