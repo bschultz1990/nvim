@@ -10,6 +10,7 @@
 --   end,
 -- })
 
+
 vim.api.nvim_create_autocmd("BufWritePre", {
   desc = "Autocreate a dir when saving a file",
   group = vim.api.nvim_create_augroup("auto_create_dir", { clear = true }),
@@ -29,6 +30,11 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     vim.highlight.on_yank({ higroup = "IncSearch", timeout = 400 })
   end,
 })
+
+-- vim.api.nvim_create_user_command("CSV", function()
+--   vim.cmd("%s/	/,/g")
+--   vim.cmd("2")
+-- end, { desc = "Replace tabs with commas and remove emoji on the current line.", nargs = 0 })
 
 -- Oooh, birrrd, tweak that code!
 vim.api.nvim_create_user_command("Config", function(opts)
