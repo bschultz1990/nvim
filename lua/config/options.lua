@@ -9,6 +9,7 @@ vim.o.ignorecase = true
 vim.o.smartcase = true
 vim.o.confirm = true
 vim.opt.termguicolors = true
+vim.opt.mousescroll = 'ver:1'
 
 vim.o.winborder = "single"
 vim.diagnostic.config({
