@@ -4,97 +4,106 @@
 
 -- Disable completions from current buffer
 -- vim.api.nvim_create_autocmd('BufEnter', {
---   pattern = '*',
---   callback = function()
---     vim.b.completion = false
---   end,
--- })
+    --   pattern = '*',
+    --   callback = function()
+    --     vim.b.completion = false
+    --   end,
+    -- })
+
+
 
 vim.api.nvim_create_autocmd({ 'VimLeavePre' }, {
-  group = vim.api.nvim_create_augroup('delete_shada_tmp', { clear = true }),
-  pattern = { '*' },
-  callback = function()
+    group = vim.api.nvim_create_augroup('delete_shada_tmp', { clear = true }),
+    pattern = { '*' },
+    callback = function()
     local status = 0
     for _, f in ipairs(vim.fn.globpath(vim.fn.stdpath('data') .. '/shada', '*tmp*', false, true)) do
-      if vim.tbl_isempty(vim.fn.readfile(f)) then
-        status = status + vim.fn.delete(f)
-      end
+    if vim.tbl_isempty(vim.fn.readfile(f)) then
+    status = status + vim.fn.delete(f)
+    end
     end
     if status ~= 0 then
-      vim.notify('Could not delete empty temporary ShaDa files.', vim.log.levels.ERROR)
-      vim.fn.getchar()
+    vim.notify('Could not delete empty temporary ShaDa files.', vim.log.levels.ERROR)
+    vim.fn.getchar()
     end
-  end,
-  desc = "Delete empty temp ShaDa files"
-})
+    end,
+    desc = "Delete empty temp ShaDa files"
+    })
 
 vim.api.nvim_create_autocmd("BufWritePre", {
-  desc = "Autocreate a dir when saving a file",
-  group = vim.api.nvim_create_augroup("auto_create_dir", { clear = true }),
-  callback = function(event)
+    desc = "Autocreate a dir when saving a file",
+    group = vim.api.nvim_create_augroup("auto_create_dir", { clear = true }),
+    callback = function(event)
     if event.match:match("^%w%w+:[\\/][\\/]") then
-      return
+    return
     end
     local file = vim.uv.fs_realpath(event.match) or event.match
     vim.fn.mkdir(vim.fn.fnamemodify(file, ":p:h"), "p")
-  end,
-})
+    end,
+    })
 
 vim.api.nvim_create_autocmd("TextYankPost", {
-  desc = "Hightlight selection on yank",
-  pattern = "",
-  callback = function()
+    desc = "Hightlight selection on yank",
+    pattern = "",
+    callback = function()
     vim.highlight.on_yank({ higroup = "IncSearch", timeout = 400 })
-  end,
-})
+    end,
+    })
+
+vim.api.nvim_create_user_command("Dedup",
+    function(opts)
+    vim.cmd(string.format([[%d,%ds/^\(.*\)\(\n\1\)\+$/\1/]],
+        opts.line1,
+        opts.line2)) end,
+    { desc = "Deduplicate adjacent selected lines", range = true })
 
 -- vim.api.nvim_create_user_command("CSV", function()
---   vim.cmd("%s/	/,/g")
---   vim.cmd("2")
--- end, { desc = "Replace tabs with commas and remove emoji on the current line.", nargs = 0 })
+    --   vim.cmd("%s/	/,/g")
+    --   vim.cmd("2")
+    -- end, { desc = "Replace tabs with commas and remove emoji on the current line.", nargs = 0 })
 
 -- Oooh, birrrd, tweak that code!
 vim.api.nvim_create_user_command("Config", function(opts)
-  local user_config_path = vim.fn.stdpath("config")
+    local user_config_path = vim.fn.stdpath("config")
 
-  if string.lower(opts.fargs[1]) == "grep" then
+    if string.lower(opts.fargs[1]) == "grep" then
     require("telescope.builtin").live_grep({
       cwd = user_config_path,
-    })
-  elseif string.lower(opts.fargs[1]) == "files" then
+      })
+    elseif string.lower(opts.fargs[1]) == "files" then
     require("telescope.builtin").find_files({
       cwd = user_config_path,
-    })
-  end
-end, {
+      })
+    end
+    end, {
     desc = "Configure Neovim files without changing your working directory",
     nargs = 1,
     complete = function()
-      return { "grep", "files" } -- return completion candidates as a list-like table
+    return { "grep", "files" } -- return completion candidates as a list-like table
     end,
-  })
+    })
 
 vim.api.nvim_create_user_command("Reload", function()
-  vim.cmd("luafile" .. vim.fn.stdpath('config') .. "/init.lua")
-end, { nargs = 0 })
+    vim.cmd("luafile" .. vim.fn.stdpath('config') .. "/init.lua")
+    end, { nargs = 0 })
 
 vim.api.nvim_create_user_command("Todos", function()
-  vim.cmd("vimgrep /TODO: /*")
-  vim.cmd("copen")
-end, { desc = "Show TODO comments in the current project", nargs = 0 })
+    vim.cmd("vimgrep /TODO: /*")
+    vim.cmd("copen")
+    end, { desc = "Show TODO comments in the current project", nargs = 0 })
 
 -- TODO Nix the file name / path result with a custom vimgrep formatter function
 vim.api.nvim_create_user_command("Toc", function()
-  if vim.o.filetype ~= "markdown" then
+    if vim.o.filetype ~= "markdown" then
     print("Not a Markdown file.")
     return
-  end
-  vim.cmd("vimgrep /^#\\+/ %")
-  vim.cmd("copen")
-end, { desc = "View table of contents in Markdown", nargs = 0 })
+    end
+    vim.cmd("vimgrep /^#\\+/ %")
+    vim.cmd("copen")
+    end, { desc = "View table of contents in Markdown", nargs = 0 })
 
-vim.api.nvim_create_user_command("Preview", function()
-  local buf_number = vim.api.nvim_get_current_buf()
-  local buf_path = vim.api.nvim_buf_get_name(buf_number)
-  vim.ui.open(buf_path)
-end, { desc = "Preview the current active buffer in the default app", nargs = 0 })
+  vim.api.nvim_create_user_command("Preview", function()
+      local buf_number = vim.api.nvim_get_current_buf()
+      local buf_path = vim.api.nvim_buf_get_name(buf_number)
+      vim.ui.open(buf_path)
+      end, { desc = "Preview the current active buffer in the default app", nargs = 0 })

@@ -7,6 +7,7 @@ vim.keymap.set(
 )
 
 
+-- vim.keymap.set('v', '<leader>de', function () vim.cmd "'<,'>s/^\\(.*\\)\\(\n\1\\)\\+$/\1/" end, { desc = 'Open link or file under cursor' })
 vim.keymap.set('n', '<C-l>', ':silent! lua vim.ui.open("<C-r><C-a>")<cr>:<cr>', { desc = 'Open link or file under cursor' })
 vim.keymap.set('n', 'gl', function() vim.diagnostic.open_float() end, { desc = "Open Diagnostics in Floating Window" })
 

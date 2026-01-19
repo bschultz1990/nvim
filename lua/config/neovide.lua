@@ -1,8 +1,8 @@
 if vim.g.neovide then
   UI_scale = 0.9
   -- vim.o.guifont="*" -- for a font list prompt at Neovide startup
-  -- vim.o.guifont="JetBrainsMonoNL Nerd Font Mono:h12"
-  vim.o.guifont="JetBrainsMonoNL Nerd Font:h12"
+  vim.o.guifont="JetBrainsMonoNL Nerd Font Mono:h12"
+  -- vim.o.guifont="JetBrainsMonoNL Nerd Font:h12"
   -- vim.o.guifont="Inconsolata Nerd Font:h14"
   -- vim.o.guifont="NotoMono Nerd Font Mono:h12"
   -- vim.o.guifont="Hack Nerd Font Mono:h12"
