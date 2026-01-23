@@ -115,8 +115,8 @@ return {
     -- ======================================================
     local servers = {
       powershell_es = {},
-      sqlls = {},
-      pyright = {},
+      -- sqlls = {},
+      -- pyright = {},
       ts_ls = {},
       jsonls = {},
       lua_ls = {
@@ -134,6 +134,7 @@ return {
       },
       -- clangd = {},
       gopls = {},
+      bashls = {},
       -- rust_analyzer = {},
     }
 
