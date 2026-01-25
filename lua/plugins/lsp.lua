@@ -134,6 +134,7 @@ return {
       },
       -- clangd = {},
       gopls = {},
+      shellcheck = {},
       bashls = {},
       -- rust_analyzer = {},
     }
