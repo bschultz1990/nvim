@@ -1,0 +1,1 @@
+{"requirements":{"prefix":"requirements","body":"if ! requirements ${1:\"app1\" \"app2\"}; then return; fi"},"source":{"prefix":"import_require","body":["SCRIPT_DIR=\"\\$(cd \"\\$(dirname \"\\${BASH_SOURCE[0]}\")\" && pwd)\"","source \"\\$SCRIPT_DIR/$1\""]}}
