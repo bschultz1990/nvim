@@ -1,0 +1,1 @@
+{"exist_directory":{"prefix":"exist_directory","body":["if ! [ -d ${1:directory_path} ]; then","  mkdir $1","fi"]}}
