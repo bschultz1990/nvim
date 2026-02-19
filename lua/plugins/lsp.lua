@@ -136,6 +136,7 @@ return {
       gopls = {},
       shellcheck = {},
       bashls = {},
+      tinymist = {},
       -- rust_analyzer = {},
     }
 
