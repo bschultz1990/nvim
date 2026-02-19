@@ -17,6 +17,7 @@ local function ft_check(newfile, ft, ext)
   end
 end
 
+
 vim.api.nvim_create_user_command("Snip", function()
   local filetype = vim.o.filetype
   require("telescope.pickers")
