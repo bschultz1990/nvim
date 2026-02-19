@@ -75,6 +75,8 @@ if package.loaded['mini.files'] then
   vim.keymap.set("n", "-", ":lua MiniFiles.open()<cr>", { desc = "Open files" })
 end
 
+-- LSP
+vim.keymap.set("n", "<leader>rr", ":LspRestart<cr>", { desc = "Restart LSP" })
 
 -- FOLDS AND SUCH
 vim.keymap.set("n", "<leader>fd", ':set foldlevel=1<cr><cmd>echo "Folding..."<cr>', { desc = "fold" })
