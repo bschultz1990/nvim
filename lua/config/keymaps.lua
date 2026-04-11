@@ -6,6 +6,22 @@ vim.keymap.set(
   { desc = "display help under cursor" }
 )
 
+-- Snippets
+function snippets_package_json_wipeout()
+  local config_path = vim.fn.stdpath('config')
+  local snippets_package_path = vim.fn.expand(config_path .. '/snippets/package.json')
+
+  if not vim.loop.fs_stat(snippets_package_path) then
+    print "No snippets/package.json file found to wipe out. Exiting cleanly."
+    return
+  end
+
+  vim.fn.delete(snippets_package_path)
+
+end
+
+vim.keymap.set('n', '<leader>sr', snippets_package_json_wipeout, { desc = "Reload snippets.json" })
+
 
 -- vim.keymap.set('v', '<leader>de', function () vim.cmd "'<,'>s/^\\(.*\\)\\(\n\1\\)\\+$/\1/" end, { desc = 'Open link or file under cursor' })
 vim.keymap.set('n', '<C-l>', ':silent! lua vim.ui.open("<C-r><C-a>")<cr>:<cr>', { desc = 'Open link or file under cursor' })
