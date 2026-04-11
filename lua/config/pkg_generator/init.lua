@@ -6,12 +6,14 @@ local function read_json(path)
   return vim.fn.json_decode(content)
 end
 
+
 local function write_json(path, data)
   local file = io.open(path, 'w')
   if not file then error("Could not write to file: " .. path) end
   file:write(vim.fn.json_encode(data))
   file:close()
 end
+
 
 local function merge_snippets (json1, json2)
   for _, snippet in ipairs(json2.contributes.snippets or {}) do
@@ -20,16 +22,19 @@ local function merge_snippets (json1, json2)
   return json1
 end
 
+
 -- MAIN --
 local base_json = read_json(vim.fn.stdpath('config') .. "/lua/config/pkg_generator/package.base.json")
 local work_json = read_json(vim.fn.stdpath('config') .. "/lua/config/pkg_generator/package.work.json")
 local output_file = vim.fn.stdpath('config') .. "/snippets/package.json"
+
 
 -- Recursively bootstrap current colorscheme directory
 local colorscheme_dir = vim.fn.stdpath('config') .. "/after/plugin/"
 if not vim.loop.fs_stat(colorscheme_dir) then
   vim.fn.mkdir(colorscheme_dir, 'p')
 end
+
 
 if not vim.loop.fs_stat(output_file) then
   if vim.fn.getenv("WORK_COMPUTER") == "1" then

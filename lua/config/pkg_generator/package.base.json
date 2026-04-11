@@ -2,9 +2,6 @@
   "name": "master-snippet-file",
   "contributes": {
     "snippets": [
-      { "language": "ps1",
-        "path": "./ps1.json"
-      },
       { "language": "go",
         "path": "./go.json"
       },
@@ -14,6 +11,10 @@
       },
       { "language": "lua",
         "path": "./lua.json"
+      },
+      {
+        "language": "typst",
+        "path": "./typst.json"
       },
       {
         "language": "json",
@@ -35,12 +36,20 @@
         "path": "./html.json"
       },
       {
+        "language": "sh",
+        "path": "./sh.json"
+      },
+      {
         "language": "ps1",
         "path": "./ps1.json"
       },
       {
         "language": "python",
         "path": "./python.json"
+      },
+      {
+        "language": "typst",
+        "path": "./typst.json"
       },
       {
         "language": [

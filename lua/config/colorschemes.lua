@@ -6,7 +6,9 @@ local actions = require('telescope.actions')
 local action_state = require('telescope.actions.state')
 local conf = require('telescope.config').values
 
+
 M = {}
+
 
 M.Scs = function (scheme, bg, nv_banner)
   scheme = scheme or "default"
@@ -19,6 +21,7 @@ M.Scs = function (scheme, bg, nv_banner)
   end
   return scheme, bg, nv_banner
 end
+
 
 M.schemes = {
   ['miniautumn'] = function() return M.Scs ('miniautumn', 'dark', '#262029') end,
@@ -50,6 +53,7 @@ local function save_scheme(scheme, bg, nv_banner)
   end
 end
 
+
 local pick_colorscheme = function(opts)
   pickers.new(opts, {
     prompt_title = 'Pick a Colorscheme',
@@ -67,6 +71,7 @@ local pick_colorscheme = function(opts)
     end,
   }):find()
 end
+
 
 vim.keymap.set('n', '<leader>th', function()
   pick_colorscheme(require('telescope.themes').get_dropdown())
