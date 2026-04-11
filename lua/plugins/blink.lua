@@ -1,5 +1,7 @@
 return {
   'saghen/blink.cmp',
+  -- staying on stable until version 2 drops
+  -- when finished version 2 will require blink.lib https://github.com/saghen/blink.lib
   version = '1.*',
   event = { 'BufReadPost', 'CmdlineEnter' },
 
@@ -8,6 +10,7 @@ return {
 
   opts = {
     keymap = { preset = 'default' },
+    fuzzy = { implementation = "lua" },
     signature = { enabled = true },
     appearance = { nerd_font_variant = 'mono' },
     completion = { documentation = { auto_show = false } },
