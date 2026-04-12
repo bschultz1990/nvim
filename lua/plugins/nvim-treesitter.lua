@@ -21,8 +21,6 @@ return {
 
   config = function()
     require('nvim-treesitter').setup {
-      auto_install = true,
-      sync_install = true,
       install_dir = vim.fn.stdpath('data') .. '/site' -- parser install directory
     }
 
@@ -31,23 +29,34 @@ return {
       vim.env.CC = "gcc"
     end
 
-    --   local ensure_installed = {
-    --     "lua",
-    --     "markdown_inline",
-    --     "vim",
-    --     "vimdoc",
-    --   }
-    --
-    --   local alreadyInstalled = require('nvim-treesitter.config').get_installed()
-    --   local parsersToInstall = vim.iter(ensure_installed)
-    --   :filter(function(parser)
-    --     return not vim.tbl_contains(alreadyInstalled, parser)
-    --   end)
-    --   :totable()
-    --   require('nvim-treesitter').install(parsersToInstall)
-    -- end,
-    --
-    --
+    local ensure_installed = {
+      "lua",
+      "markdown_inline",
+      "vim",
+      "vimdoc",
+    }
+
+
+    local alreadyInstalled = require('nvim-treesitter.config').get_installed()
+    local parsersToInstall = vim.iter(ensure_installed)
+      :filter(function(parser)
+        return not vim.tbl_contains(alreadyInstalled, parser)
+      end)
+      :totable()
+    require('nvim-treesitter').install(parsersToInstall)
+
+
+    vim.api.nvim_create_autocmd("BufEnter", {
+      desc = "Enable auto-install of TreeSitter parsers",
+      pattern = "*", -- filetype
+      group = vim.api.nvim_create_augroup("TSAutoInstall", { clear = true }),
+      callback = function()
+        if vim.o.filetype == "" then return end
+        require('nvim-treesitter').install(vim.treesitter.language.get_lang(vim.o.filetype))
+      end,
+    })
+
+
     -- Enable highlighting and indentation
     vim.api.nvim_create_autocmd('FileType', {
       desc = "Enable TreeSitter highlighting and indentation",
@@ -59,6 +68,5 @@ return {
         vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
       end,
     })
-
   end,
 }
