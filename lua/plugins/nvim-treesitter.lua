@@ -24,10 +24,9 @@ return {
       install_dir = vim.fn.stdpath('data') .. '/site' -- parser install directory
     }
 
-    -- Set local c compiler to 'gcc' if on Windows
-    if vim.loop.os_uname().sysname == "Windows_NT" then
-      vim.env.CC = "gcc"
-    end
+    -- Set local c compiler
+    if vim.loop.os_uname().sysname == "Windows_NT" then vim.env.CC = "gcc" end
+    if vim.loop.os_uname().sysname == "Linux" then vim.env.CC = "gcc" end
 
     local ensure_installed = {
       "lua",
