@@ -10,7 +10,7 @@ return {
 
   opts = {
     keymap = { preset = 'default' },
-    fuzzy = { implementation = "lua" },
+    fuzzy = { implementation = "prefer_rust_with_warning" },
     signature = { enabled = true },
     appearance = { nerd_font_variant = 'mono' },
     completion = { documentation = { auto_show = false } },
