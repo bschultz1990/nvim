@@ -36,6 +36,18 @@ return {
     }
 
 
+    local function checkParsers()
+      local getAvailableParsers = require('nvim-treesitter.config').get_available()
+      local currentFileType = vim.treesitter.language.get_lang(vim.o.filetype)
+
+      for _, parser in ipairs(getAvailableParsers) do
+        if currentFileType == parser then return true end
+      end
+
+      return false
+    end
+
+
     local alreadyInstalled = require('nvim-treesitter.config').get_installed()
     local parsersToInstall = vim.iter(ensure_installed)
       :filter(function(parser)
@@ -50,8 +62,9 @@ return {
       pattern = "*", -- filetype
       group = vim.api.nvim_create_augroup("TSAutoInstall", { clear = true }),
       callback = function()
-        if vim.o.filetype == "" then return end
-        require('nvim-treesitter').install(vim.treesitter.language.get_lang(vim.o.filetype))
+        if checkParsers() then
+          require('nvim-treesitter').install(vim.treesitter.language.get_lang(vim.o.filetype))
+        end
       end,
     })
 
@@ -61,10 +74,14 @@ return {
       desc = "Enable TreeSitter highlighting and indentation",
       pattern = "*", -- filetype
       callback = function()
-        -- Enable treesitter highlighting and disable regex syntax
-        pcall(vim.treesitter.start)
-        -- Enable treesitter-based indentation
-        vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+
+        if checkParsers() then
+          -- Enable treesitter highlighting and disable regex syntax
+          -- Enable treesitter-based indentation
+          pcall(vim.treesitter.start)
+          vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+        end
+
       end,
     })
   end,
