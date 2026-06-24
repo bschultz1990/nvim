@@ -1,5 +1,9 @@
 return {
   "folke/zen-mode.nvim",
   cmd = "ZenMode",
-  opts = {},
+  opts = {
+    plugins = {
+      twilight = { enbaled = false }
+    }
+  },
 }
