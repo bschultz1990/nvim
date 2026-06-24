@@ -30,6 +30,7 @@ vim.api.nvim_create_autocmd({ 'VimLeavePre' }, {
     desc = "Delete empty temp ShaDa files"
     })
 
+
 vim.api.nvim_create_autocmd("BufWritePre", {
     desc = "Autocreate a dir when saving a file",
     group = vim.api.nvim_create_augroup("auto_create_dir", { clear = true }),
@@ -42,6 +43,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     end,
     })
 
+
 vim.api.nvim_create_autocmd("TextYankPost", {
     desc = "Hightlight selection on yank",
     pattern = "",
@@ -50,6 +52,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     end,
     })
 
+
 vim.api.nvim_create_user_command("Dedup",
     function(opts)
     vim.cmd(string.format([[%d,%ds/^\(.*\)\(\n\1\)\+$/\1/]],
@@ -57,10 +60,6 @@ vim.api.nvim_create_user_command("Dedup",
         opts.line2)) end,
     { desc = "Deduplicate adjacent selected lines", range = true })
 
--- vim.api.nvim_create_user_command("CSV", function()
-    --   vim.cmd("%s/	/,/g")
-    --   vim.cmd("2")
-    -- end, { desc = "Replace tabs with commas and remove emoji on the current line.", nargs = 0 })
 
 -- Oooh, birrrd, tweak that code!
 vim.api.nvim_create_user_command("Config", function(opts)
@@ -83,14 +82,17 @@ vim.api.nvim_create_user_command("Config", function(opts)
     end,
     })
 
+
 vim.api.nvim_create_user_command("Reload", function()
     vim.cmd("luafile" .. vim.fn.stdpath('config') .. "/init.lua")
     end, { nargs = 0 })
+
 
 vim.api.nvim_create_user_command("Todos", function()
     vim.cmd("vimgrep /TODO: /*")
     vim.cmd("copen")
     end, { desc = "Show TODO comments in the current project", nargs = 0 })
+
 
 -- TODO Nix the file name / path result with a custom vimgrep formatter function
 vim.api.nvim_create_user_command("Toc", function()
@@ -102,8 +104,19 @@ vim.api.nvim_create_user_command("Toc", function()
     vim.cmd("copen")
     end, { desc = "View table of contents in Markdown", nargs = 0 })
 
+
   vim.api.nvim_create_user_command("Preview", function()
       local buf_number = vim.api.nvim_get_current_buf()
       local buf_path = vim.api.nvim_buf_get_name(buf_number)
       vim.ui.open(buf_path)
       end, { desc = "Preview the current active buffer in the default app", nargs = 0 })
+
+
+vim.api.nvim_create_autocmd("BufEnter", {
+  desc = "Enable CsvView automatically",
+  pattern = "*.csv", -- filetype
+  group = vim.api.nvim_create_augroup("CsvView", { clear = true }),
+  callback = function()
+    vim.cmd("CsvViewEnable")
+  end,
+})

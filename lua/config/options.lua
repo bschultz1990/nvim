@@ -42,6 +42,7 @@ vim.o.softtabstop = 2
 
 -- Numbers
 vim.o.number = true
+vim.o.relativenumber = true
 vim.o.ruler = false
 vim.o.numberwidth = 2
 
