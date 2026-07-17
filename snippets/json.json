@@ -1,0 +1,11 @@
+{
+  "bookmark": {
+    "body": [
+      "\"bookmark\": {",
+      "  \"name\": \"${1:name}\",",
+      "  \"url\": \"${2:url}\"",
+      "},"
+    ],
+    "prefix": "bookmark"
+  }
+}
