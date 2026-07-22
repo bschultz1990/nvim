@@ -24,7 +24,6 @@ vim.keymap.set('n', '<leader>sr', snippets_package_json_wipeout, { desc = "Reloa
 
 
 -- General Utilities
--- vim.keymap.set('v', '<leader>de', function () vim.cmd "'<,'>s/^\\(.*\\)\\(\n\1\\)\\+$/\1/" end, { desc = 'Open link or file under cursor' })
 vim.keymap.set('n', '<C-l>', ':silent! lua vim.ui.open("<C-r><C-a>")<cr>:<cr>', { desc = 'Open link or file under cursor' })
 vim.keymap.set('n', 'gl', function() vim.diagnostic.open_float() end, { desc = "Open Diagnostics in Floating Window" })
 
@@ -79,15 +78,6 @@ vim.keymap.set("n", "<leader>tp", ":tabprevious<cr>", { desc = "tab previous" })
 vim.keymap.set("n", "<leader>tx", ":tabclose<cr>", { desc = "tab close" })
 
 
--- Files and Telescope
-vim.keymap.set("n", "<leader>?", ":Telescope help_tags<cr>", { desc = "Telescope help tags" })
-vim.keymap.set("n", "<leader>tk", ":Telescope keymaps<cr>", { desc = "Telescope keymaps" })
-vim.keymap.set("i", "<C-;>", "<cmd>Telescope symbols<cr>", { desc = "Telescope symbols" })
-
-vim.keymap.set("n", "<leader>rg", ":Telescope live_grep<cr>", { desc = "Live grep" })
-vim.keymap.set("n", "<leader>ff", ":Telescope find_files<cr>", { desc = "Find files" })
-vim.keymap.set("n", "<leader>fo", ":Telescope oldfiles<cr>", { desc = "Old Files" })
-
 -- LSP
 vim.keymap.set("n", "<leader>rr", ":LspRestart<cr>", { desc = "Restart LSP" })
 
@@ -103,7 +93,6 @@ vim.keymap.set({ "n", "i", "v" }, "<C-s>", "<cmd> wa <cr>", { desc = "save all b
 
 
 -- Buffers and Splits
-vim.keymap.set("n", "<leader>bb", ":Telescope buffers<cr>", { desc = "Buffers" })
 vim.keymap.set("n", "<leader>x", ":bd<cr>", { desc = "Delete buffer" })
 vim.keymap.set("n", "<Tab>", ":bn<cr>", { desc = "Next Buffer" })
 vim.keymap.set("n", "<S-Tab>", ":bp<cr>", { desc = "Previous Buffer" })
@@ -112,7 +101,6 @@ vim.keymap.set("n", "<leader><Tab>", "0magg=G`azz", { desc = "reindent buffer" }
 
 vim.keymap.set('n', '<leader>vs', ':vs<cr>', { desc = 'Vertical split'})
 vim.keymap.set('n', '<leader>sp', ':sp<cr>', { desc = 'Horizontal split'})
-vim.keymap.set('n', '<leader>rr', function() vim.cmd('restart') end, { desc = "Restart Neovim" })
 
 
 -- KEYBINDS: Plugins

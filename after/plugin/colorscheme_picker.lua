@@ -1,0 +1,42 @@
+local pickers = require('telescope.pickers')
+local finders = require('telescope.finders')
+local actions = require('telescope.actions')
+local action_state = require('telescope.actions.state')
+local conf = require('telescope.config').values
+
+
+local function save_scheme(scheme, bg, nv_banner)
+  local cs_file = vim.fn.stdpath("config") .. "/after/plugin/current_colorscheme.lua"
+  local file = io.open(cs_file, 'w')
+  if file then
+    local line = string.format("require('colorscheme_library').Scs('%s', '%s', '%s')\n",
+      scheme, bg, nv_banner
+    )
+    file:write(line)
+    file:close()
+  end
+end
+
+
+local pick_colorscheme = function(opts)
+  pickers.new(opts, {
+    prompt_title = 'Pick a Colorscheme',
+    finder = finders.new_table{results = vim.tbl_keys(M.schemes)},
+    sorter = conf.generic_sorter({}),
+    layout_config = { width=0.5, height=0.5 },
+    attach_mappings = function(prompt_bufnr,map)
+      map('i', '<CR>', function()
+        local selection = action_state.get_selected_entry()
+        actions.close(prompt_bufnr)
+        local scheme, bg, banner = M.schemes[selection[1]]()
+        save_scheme(scheme, bg, banner)
+      end)
+      return true
+    end,
+  }):find()
+end
+
+
+vim.keymap.set('n', '<leader>th', function()
+  pick_colorscheme(require('telescope.themes').get_dropdown())
+end, { desc = "Pick a Colorscheme" })
