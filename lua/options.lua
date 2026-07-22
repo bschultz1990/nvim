@@ -9,7 +9,7 @@ vim.o.ignorecase = true
 vim.o.smartcase = true
 vim.o.confirm = true
 vim.opt.termguicolors = true
-vim.opt.mousescroll = 'ver:1'
+vim.opt.mousescroll = 'ver:1' --vertical lines
 
 vim.o.winborder = "single"
 vim.diagnostic.config({
@@ -27,7 +27,7 @@ vim.o.clipboard = ""
 
 -- PowerShell as default on Windows
 if vim.loop.os_uname().sysname == "Windows_NT" then
-  vim.o.shell = "powershell.exe"
+  vim.o.shell = "powershell.exe -"
 end
 
 -- vim.opt.shortmess:append "sI" -- disable nvim intro
@@ -73,3 +73,16 @@ local sep = is_windows and "\\" or "/"
 local delim = is_windows and ";" or ":"
 vim.env.PATH = table.concat({ vim.fn.stdpath "data", "mason", "bin" }, sep) .. delim .. vim.env.PATH
 
+local help_group = vim.api.nvim_create_augroup('help_as_buffer', { clear = true })
+
+-- vim.api.nvim_create_autocmd('FileType', {
+--   group = help_group,
+--   pattern = 'help',
+--   callback = function()
+--     vim.cmd('tabnew %')
+--     vim.cmd('tabprevious')
+--     vim.cmd('quit')
+--     vim.cmd('tabnext')
+--     vim.bo.buflisted = true
+--   end
+-- })
