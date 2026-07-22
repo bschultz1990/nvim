@@ -1,0 +1,6 @@
+{
+  "helloworld": {
+    "body": "fmt.prntln(\"Hello, world!\")",
+    "prefix": "helloworld"
+  }
+}
