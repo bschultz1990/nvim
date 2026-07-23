@@ -2,9 +2,7 @@ vim.pack.add({
   { src = 'https://github.com/preservim/vim-pencil', },
 })
 
--- require('vim-pencil').setup({
---
--- })
+-- require('pencil').setup({})
 
 vim.api.nvim_create_autocmd({ "BufEnter" }, {
   pattern = { "*.txt", "*.tex" },

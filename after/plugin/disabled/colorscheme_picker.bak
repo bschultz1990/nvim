@@ -37,6 +37,13 @@ local pick_colorscheme = function(opts)
 end
 
 
+-- Recursively bootstrap current colorscheme directory
+local colorscheme_dir = vim.fn.stdpath('config') .. "/after/plugin/"
+if not vim.loop.fs_stat(colorscheme_dir) then
+  vim.fn.mkdir(colorscheme_dir, 'p')
+end
+
+
 vim.keymap.set('n', '<leader>th', function()
   pick_colorscheme(require('telescope.themes').get_dropdown())
 end, { desc = "Pick a Colorscheme" })

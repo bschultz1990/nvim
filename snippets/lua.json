@@ -41,15 +41,16 @@
     "body": [
       "vim.pack.add({",
       "    {",
-      "      src = 'https://github.com/${1:}',",
-      "      -- version = vim.version.range('${5:1.x}')",
+      "    src = 'https://github.com/${1:}',",
+      "    -- version = vim.version.range('${5:1.x}'),",
+      "    -- load = false,",
       "    },",
       "    -- { src = 'https://github.com/' },",
-      "  })",
+      "    })",
       "",
       "require('${3:plugin_name}').setup({",
       "    ${4:}",
-      "  })"
+      "    })"
     ],
     "prefix": "vim.pack.add"
   }
