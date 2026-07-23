@@ -33,17 +33,22 @@
     "description": "Create Neovim User Command",
     "prefix": "user_command"
   },
+  "vim.keymap": {
+    "body": "vim.keymap.set('${1:mode}', '${2:key_combo}', '${3:action}', { desc = \"$0\" })",
+    "prefix": "vim.keymap"
+  },
   "vim.pack.add": {
     "body": [
       "vim.pack.add({",
       "    {",
-      "      src = '${1:https://github.com/}',",
-      "      version = vim.version.range('${5:1.x}')",
+      "      src = 'https://github.com/${1:}',",
+      "      -- version = vim.version.range('${5:1.x}')",
       "    },",
+      "    -- { src = 'https://github.com/' },",
       "  })",
       "",
       "require('${3:plugin_name}').setup({",
-      "    ${4:setup_things}",
+      "    ${4:}",
       "  })"
     ],
     "prefix": "vim.pack.add"

@@ -10,6 +10,7 @@ vim.o.smartcase = true
 vim.o.confirm = true
 vim.opt.termguicolors = true
 vim.opt.mousescroll = 'ver:1' --vertical lines
+vim.opt.cmdheight = 0
 
 vim.o.winborder = "single"
 vim.diagnostic.config({
@@ -27,7 +28,7 @@ vim.o.clipboard = ""
 
 -- PowerShell as default on Windows
 if vim.loop.os_uname().sysname == "Windows_NT" then
-  vim.o.shell = "powershell.exe -"
+  vim.o.shell = "powershell.exe -NoLogo"
 end
 
 -- vim.opt.shortmess:append "sI" -- disable nvim intro

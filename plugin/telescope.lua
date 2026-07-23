@@ -6,7 +6,7 @@ vim.pack.add({
 
 require('telescope').setup{
 
-  layout_stragety = "flex",
+  layout_strategy = "flex",
   extensions = { ['ui-select'] = {
     require('telescope.themes').get_dropdown(),
   }},

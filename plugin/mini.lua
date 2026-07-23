@@ -1,9 +1,8 @@
 vim.pack.add({
-    {
-      src = 'https://github.com/echasnovski/mini.nvim',
-    },
+    { src = 'https://github.com/echasnovski/mini.nvim', },
   })
       require('mini.icons').setup()
+      require('mini.cmdline').setup()
       require('mini.pairs').setup()
       require('mini.align').setup()
       require('mini.files').setup()
