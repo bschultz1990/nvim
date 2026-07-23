@@ -68,14 +68,7 @@ vim.g.loaded_perl_provider = 0
 vim.g.loaded_ruby_provider = 0
 
 
--- add binaries installed by mason.nvim to path
-local is_windows = vim.fn.has "win32" ~= 0
-local sep = is_windows and "\\" or "/"
-local delim = is_windows and ";" or ":"
-vim.env.PATH = table.concat({ vim.fn.stdpath "data", "mason", "bin" }, sep) .. delim .. vim.env.PATH
-
-local help_group = vim.api.nvim_create_augroup('help_as_buffer', { clear = true })
-
+-- local help_group = vim.api.nvim_create_augroup('help_as_buffer', { clear = true })
 -- vim.api.nvim_create_autocmd('FileType', {
 --   group = help_group,
 --   pattern = 'help',

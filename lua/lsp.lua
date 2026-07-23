@@ -1,0 +1,163 @@
+vim.pack.add({
+  { src = 'https://github.com/j-hui/fidget.nvim', },
+})
+require('fidget').setup({ })
+
+
+--  This function gets run when an LSP attaches to a particular buffer.
+--    That is to say, every time a new file is opened that is associated with
+--    an lsp (for example, opening `main.rs` is associated with `rust_analyzer`) this
+--    function will be executed to configure the current buffer
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
+  callback = function(event)
+    -- NOTE: Remember that Lua is a real programming language, and as such it is possible
+    -- to define small helper and utility functions so you don't have to repeat yourself.
+    --
+    -- In this case, we create a function that lets us more easily define mappings specific
+    -- for LSP related items. It sets the mode, buffer and description for us each time.
+    local map = function(keys, func, desc, mode)
+      mode = mode or 'n'
+      vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
+    end
+
+    vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { desc = '[R]e[n]ame' })
+    vim.keymap.set({ 'n', 'x' }, '<leader>ca', vim.lsp.buf.code_action, { desc = '[G]oto Code [A]ction' })
+    vim.keymap.set('n','<leader>gr',require('telescope.builtin').lsp_references, { desc =  '[G]oto [R]eferences' })
+    vim.keymap.set('n','<leader>gi',require('telescope.builtin').lsp_implementations, { desc =  '[G]oto [I]mplementation' })
+    vim.keymap.set('n','<leader>gd',require('telescope.builtin').lsp_definitions, { desc =  '[G]oto [D]efinition' })
+    vim.keymap.set('n','<leader>gD',vim.lsp.buf.declaration, { desc =  '[G]oto [D]eclaration' })
+    vim.keymap.set('n','<leader>ds',require('telescope.builtin').lsp_document_symbols, { desc =  'Open [D]ocument [S]ymbols' })
+    vim.keymap.set('n','<leader>ws',require('telescope.builtin').lsp_dynamic_workspace_symbols, { desc =  'Open [W]orkspace [S]ymbols' })
+    vim.keymap.set('n','<leader>gt',require('telescope.builtin').lsp_type_definitions, { desc =  '[G]oto [T]ype Definition' })
+
+    -- The following two autocommands are used to highlight references of the
+    -- word under your cursor when your cursor rests there for a little while.
+    --    See `:help CursorHold` for information about when this is executed
+    --
+    -- When you move your cursor, the highlights will be cleared (the second autocommand).
+    local client = vim.lsp.get_client_by_id(event.data.client_id)
+    if client and client:supports_method('textDocument/documentHighlight', event.buf) then
+      local highlight_augroup = vim.api.nvim_create_augroup('kickstart-lsp-highlight', { clear = false })
+      vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
+        buffer = event.buf,
+        group = highlight_augroup,
+        callback = vim.lsp.buf.document_highlight,
+      })
+
+      vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
+        buffer = event.buf,
+        group = highlight_augroup,
+        callback = vim.lsp.buf.clear_references,
+      })
+
+      vim.api.nvim_create_autocmd('LspDetach', {
+        group = vim.api.nvim_create_augroup('kickstart-lsp-detach', { clear = true }),
+        callback = function(event2)
+          vim.lsp.buf.clear_references()
+          vim.api.nvim_clear_autocmds { group = 'kickstart-lsp-highlight', buffer = event2.buf }
+        end,
+      })
+    end
+
+    -- The following code creates a keymap to toggle inlay hints in your
+    -- code, if the language server you are using supports them
+    --
+    -- This may be unwanted, since they displace some of your code
+    if client and client:supports_method('textDocument/inlayHint', event.buf) then
+      map('<leader>th', function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf }) end, '[T]oggle Inlay [H]ints')
+    end
+  end,
+})
+
+
+
+-- ======================================================
+--              INSTALL LSPS HERE!
+--              INSTALL SERVERS HERE!
+--              DON'T USE THE MASON INTERFACE!
+-- ======================================================
+local servers = {
+  powershell_es = {},
+  -- sqlls = {},
+  -- pyright = {},
+  ts_ls = {},
+  jsonls = {},
+  lua_ls = {
+    -- cmd = { ... },
+    -- filetypes = { ... },
+    -- capabilities = {},
+    settings = {
+      Lua = {
+        diagnostics = {
+          globals = {"vim"},
+        },
+        completion = {
+          callSnippet = 'Replace',
+        },
+        -- diagnostics = { disable = { 'missing-fields' } }, -- Disable lua's noisy 'missing fields' report
+      },
+    },
+  },
+  -- clangd = {},
+  gopls = {},
+  shellcheck = {},
+  bashls = {},
+  tinymist = {},
+  -- rust_analyzer = {},
+}
+
+
+-- Automatically install LSPs and related tools to stdpath for Neovim
+
+vim.pack.add({
+  { src = 'https://github.com/neovim/nvim-lspconfig', },
+  { src = 'https://github.com/mason-org/mason.nvim', },
+  { src = 'https://github.com/mason-org/mason-lspconfig.nvim', },
+  { src = 'https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim', },
+})
+
+
+require('mason').setup({})
+
+-- add binaries installed by mason.nvim to path
+local is_windows = vim.fn.has "win32" ~= 0
+local sep = is_windows and "\\" or "/"
+local delim = is_windows and ";" or ":"
+vim.env.PATH = table.concat({ vim.fn.stdpath "data", "mason", "bin" }, sep) .. delim .. vim.env.PATH
+
+
+-- Ensure the servers and tools above are installed
+--
+-- To check the current status of installed tools and/or manually install
+-- other tools, you can run
+--    :Mason
+--
+-- You can press `g?` for help in this menu.
+local ensure_installed = vim.tbl_keys(servers or {})
+vim.list_extend(ensure_installed, {
+  -- You can add other tools here that you want Mason to install
+})
+
+
+require('mason-tool-installer').setup ({ ensure_installed = ensure_installed })
+
+    require('mason-lspconfig').setup {
+      ensure_installed = {}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
+      automatic_installation = false,
+      handlers = {
+        function(server_name)
+          local server = servers[server_name] or {}
+          -- This handles overriding only values explicitly passed
+          -- by the server configuration above. Useful when disabling
+          -- certain features of an LSP (for example, turning off formatting for ts_ls)
+          server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
+          require('lspconfig')[server_name].setup(server)
+        end,
+      },
+    }
+
+for name, server in pairs(servers) do
+  vim.lsp.config(name, server)
+  vim.lsp.enable(name)
+end

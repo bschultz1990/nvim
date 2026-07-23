@@ -25,7 +25,7 @@ vim.keymap.set('n', '<leader>sr', snippets_package_json_wipeout, { desc = "Reloa
 
 -- General Utilities
 vim.keymap.set('n', '<C-l>', ':silent! lua vim.ui.open("<C-r><C-a>")<cr>:<cr>', { desc = 'Open link or file under cursor' })
-vim.keymap.set('n', 'gl', function() vim.diagnostic.open_float() end, { desc = "Open Diagnostics in Floating Window" })
+vim.keymap.set('n', 'tr', function() vim.diagnostic.open_float() end, { desc = "Open Diagnostics in Floating Window" })
 
 -- Clipboard
 vim.keymap.set("n", "x", '"_x', { noremap = true, silent = true, nowait = true }) -- Do not yank with x
