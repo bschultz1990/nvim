@@ -15,4 +15,3 @@ end,
   { desc = "Open help in a vertical window", nargs = 1,
     complete = function (ArgLead)
       return vim.fn.getcompletion(ArgLead, 'help') end })
-

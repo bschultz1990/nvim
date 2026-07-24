@@ -6,7 +6,7 @@ vim.pack.add({
 
 require('blink.cmp').setup({
   keymap = { preset = 'default' },
-  fuzzy = { implementation = "rust" },
+  fuzzy = { implementation = "prefer_rust_with_warning" },
   signature = { enabled = true },
   appearance = { nerd_font_variant = 'mono' },
   completion = { documentation = { auto_show = false } },
@@ -15,3 +15,4 @@ require('blink.cmp').setup({
     default = { 'lsp', 'path', 'snippets' },
   },
 })
+
