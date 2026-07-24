@@ -4,9 +4,6 @@ vim.pack.add({
 }
 })
 
----@module 'blink.cmp'
----@type blink.cmp.Config
-
 require('blink.cmp').setup({
   keymap = { preset = 'default' },
   fuzzy = { implementation = "rust" },
@@ -16,5 +13,5 @@ require('blink.cmp').setup({
   -- `lsp`, `buffer`, `snippets`, `path` and `omni` are built-in
   sources = {
     default = { 'lsp', 'path', 'snippets' },
-  }
+  },
 })
