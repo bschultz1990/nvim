@@ -6,6 +6,13 @@ vim.keymap.set(
   { desc = "display help under cursor" }
 )
 
+
+-- Disable command history window
+vim.keymap.set('n', 'q:', '<Nop>', { noremap = true, silent = true })
+vim.keymap.set('n', 'q/', '<Nop>', { noremap = true, silent = true })
+vim.keymap.set('n', 'q?', '<Nop>', { noremap = true, silent = true })
+
+
 -- Snippets
 function snippets_package_json_wipeout()
   local config_path = vim.fn.stdpath('config')
@@ -47,7 +54,12 @@ vim.keymap.set("n", "<leader><C-a>", "maggVG", { desc = "Select all; Return via 
 vim.keymap.set("i", "<C-h>", "<C-w>", { desc = "Delete word" })
 vim.keymap.set("i", "<C-BS>", "<C-w>", { desc = "Delete word" })
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-N>", { desc = "Escape Terminal Mode" })
-vim.keymap.set("n", "<M-i>", function() vim.cmd("terminal") vim.cmd("startinsert") end,
+vim.keymap.set("n", "<M-i>",
+function()
+  vim.cmd("sp")
+  vim.cmd("terminal")
+  vim.cmd("startinsert")
+end,
   { desc = "Enter Terminal Mode" })
 
 
@@ -93,7 +105,7 @@ vim.keymap.set({ "n", "i", "v" }, "<C-s>", "<cmd> wa <cr>", { desc = "save all b
 
 
 -- Buffers and Splits
-vim.keymap.set("n", "<leader>x", ":bd<cr>", { desc = "Delete buffer" })
+vim.keymap.set("n", "<leader>x", "<cmd>bp | sp | bn | bd<cr>", { desc = "Delete buffer, while keeping split windows" })
 vim.keymap.set("n", "<Tab>", ":bn<cr>", { desc = "Next Buffer" })
 vim.keymap.set("n", "<S-Tab>", ":bp<cr>", { desc = "Previous Buffer" })
 vim.keymap.set("n", "<F5>", ":luafile %<cr>", { desc = "Source current buffer" })

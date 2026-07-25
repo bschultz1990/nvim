@@ -11,6 +11,8 @@ vim.o.confirm = true
 vim.opt.termguicolors = true
 vim.opt.mousescroll = 'ver:1' --vertical lines
 vim.opt.cmdheight = 0
+vim.opt.shortmess:append "sI" -- disable nvim intro
+vim.opt.scrolloff = 5
 
 vim.o.winborder = "single"
 vim.diagnostic.config({
@@ -30,8 +32,6 @@ vim.o.clipboard = ""
 if vim.loop.os_uname().sysname == "Windows_NT" then
   vim.o.shell = "powershell.exe -NoLogo"
 end
-
--- vim.opt.shortmess:append "sI" -- disable nvim intro
 
 
 -- Indenting
