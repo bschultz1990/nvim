@@ -4,6 +4,8 @@ vim.pack.add({
 
 -- require('vim-table-mode').setup({ })
 
+vim.keymap.del({ 'n', 'x' }, '<leader>tt')
+
 vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
   desc = "Table keymaps for specific buffers",
   pattern = { "*.md", "*.txt", "*.tex" },

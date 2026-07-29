@@ -21,4 +21,4 @@ require("transparent").setup({
   on_clear = function() end,
 })
 
-vim.cmd('TransparentEnable')
+vim.keymap.set('n', '<leader>aa', '<cmd>TransparentToggle<cr>', { desc = "Toggle transparent mode" })

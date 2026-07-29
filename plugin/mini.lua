@@ -8,6 +8,8 @@ vim.pack.add({
       require('mini.files').setup()
       require('mini.tabline').setup()
       require('mini.statusline').setup()
+      -- require('mini.diff').setup()
+      require('mini.git').setup()
       require('mini.clue').setup()
 
 vim.keymap.set("n", "-", ":lua MiniFiles.open()<cr>", { desc = "Open files" })

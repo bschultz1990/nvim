@@ -47,6 +47,7 @@ vim.o.relativenumber = true
 vim.o.ruler = false
 vim.o.numberwidth = 2
 
+-- Splits
 vim.o.signcolumn = "yes"
 vim.o.splitbelow = true
 vim.o.splitright = true

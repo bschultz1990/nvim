@@ -1,8 +1,8 @@
 {
   "exist_directory": {
     "body": [
-      "if ! [ -d ${1:directory_path} ]; then",
-      "  mkdir $1",
+      "if ${1:!} [ -d ${2:directory_path} ]; then",
+      "  ${3:verb} $2",
       "fi"
     ],
     "prefix": "exist_directory"
