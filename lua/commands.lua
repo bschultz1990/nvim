@@ -121,3 +121,14 @@ vim.api.nvim_create_autocmd("BufEnter", {
   end,
 })
 
+
+vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "BufWinEnter", "BufWinLeave", "BufDelete" }, {
+  desc = "Highlight matching brackets in IncSearch hl group.",
+  pattern = "*", -- any filetype
+  callback = function()
+    vim.api.nvim_set_hl(0, "MatchParen", { link = "IncSearch" })
+vim.api.nvim_set_hl(0, "MatchParen", { bg = 'orange' })
+-- vim.api.nvim_set_hl(0, "MatchParen", { link = "PmenuSel" })
+-- vim.api.nvim_set_hl(0, "MatchParen", { link = "TermCursor" })
+  end,
+})
