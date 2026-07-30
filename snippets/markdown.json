@@ -38,6 +38,13 @@
     ],
     "prefix": "dropdown"
   },
+  "hashbang": {
+    "body": [
+      "#! /usr/bin/bash",
+      "$0"
+    ],
+    "prefix": "hashbang"
+  },
   "img": {
     "body": "![${1:title}](${2:image})",
     "prefix": "img"
