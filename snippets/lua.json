@@ -24,6 +24,22 @@
     ],
     "prefix": "config = function"
   },
+  "hl.animation": {
+    "body": "hl.animation({ leaf = \"${1:}\", enabled = ${2:true/false}, speed = ${3:int}, bezier = \"${4:name}\", style = \"${5:style}\" })",
+    "prefix": "hl.animation"
+  },
+  "hl.bind": {
+    "body": "hl.bind(${1:key} .. \" + ${2:key2...3}\", ${3:dispatcher})",
+    "prefix": "hl.bind"
+  },
+  "hl.curve": {
+    "body": "hl.curve(\"${1:name}\", { type = \"${2:type}\", points = { {${3:x}, ${4:y}}, {${5:x1}, ${6:y1}} } })",
+    "prefix": "hl.curve"
+  },
+  "hl.dsp.exec_cmd": {
+    "body": "hl.dsp.exec_cmd(${1:command})",
+    "prefix": "hl.dsp.exec_cmd"
+  },
   "user_command": {
     "body": [
       "vim.api.nvim_create_user_command(\"${1:name}\", function()",
